@@ -1,0 +1,84 @@
+{
+  "updated_at": "2026-10-06T14:51:45Z",
+  "picks": [
+    {
+      "bet": "Padres moneyline",
+      "candidates": [
+        {
+          "bet": "Braves moneyline (-109)",
+          "event": "Dodgers @ Braves, NLDS Game 3",
+          "note": "Sale has a 0.55 ERA vs LA in 2026 and Atlanta took 5 of 6 in the season series, but Yamamoto matches him and the market is a near pick'em. Estimated edge about 1 point, too thin."
+        },
+        {
+          "bet": "Under 6 runs (-105)",
+          "event": "Dodgers @ Braves, NLDS Game 3",
+          "note": "Both aces fit an under, but the total has already dropped from 6.5 to 6 and the value is mostly gone. A landing on exactly 6 only pushes."
+        },
+        {
+          "bet": "Blues moneyline (-125 to -142)",
+          "event": "Blues @ Blackhawks",
+          "note": "Preview sources contradicted each other on recent results and odds. Without reliable info, I passed."
+        },
+        {
+          "bet": "Hurricanes moneyline (-120)",
+          "event": "Hurricanes @ Canadiens",
+          "note": "Starting goalies weren't confirmed and Montreal's Dobes has a .862 SV%. Reasonable, but no clear edge over the price."
+        }
+      ],
+      "confidence": "Low",
+      "created_at": "2026-10-06T13:18:08Z",
+      "date": "2026-10-06",
+      "event": "Brewers @ Padres",
+      "implied_prob": 0.571,
+      "league": "NLDS Game 3 (Brewers lead 2-0)",
+      "market": "Moneyline",
+      "model_prob": 0.59,
+      "odds_american": -134,
+      "odds_decimal": 1.75,
+      "reasoning": [
+        "Dustin May has a 5.65 ERA in 10 appearances with Milwaukee and an 8.59 ERA over his final three regular-season starts, lasting 3 innings or fewer in each. He hasn't pitched in the postseason since 2020.",
+        "Nick Pivetta has a 1.64 ERA in five starts (22 IP, 4 BB) since coming back from the IL on Sept. 7. He allowed 1 run in 3.1 IP in the Wild Card clincher and has a 2.86 career postseason ERA.",
+        "San Diego went 53-30 at home this season, and Game 3 is at Petco Park.",
+        "Both Milwaukee wins were by one run (3-2, 4-3). San Diego's offense went 3-for-18 with runners in scoring position, which points to bad sequencing more than a real talent gap.",
+        "Market: Padres -134 to -136 across books (implied 57%). I estimate about 59%, an edge of roughly 2 points, so this is sized Low."
+      ],
+      "risks": [
+        "May has dominated San Diego this year (1.23 ERA, 22 K in 22 IP over three starts), and Milwaukee is a deep, elite team (the NL Central leader), so its bullpen can cover a short May outing.",
+        "Pivetta is just back from a five-month elbow injury and may be on a short leash, which pushes more innings onto the Padres bullpen.",
+        "San Diego's offense has scored only 5 runs in two games and could keep stalling."
+      ],
+      "sources": [
+        {
+          "title": "Backs against the wall, Padres turn to Pivetta in must-win NLDS Game 3 (MLB.com)",
+          "url": "https://www.mlb.com/news/nick-pivetta-to-start-nlds-game-3-for-padres"
+        },
+        {
+          "title": "Padres facing Brewers pitcher who has dominated them in Game 3 (SI)",
+          "url": "https://www.si.com/mlb/padres/onsi/padres-facing-brewers-pitcher-dominated-them-nlds-game-3"
+        },
+        {
+          "title": "Walk-Off Wagers: MLB Best Bets for NLDS Game 3s (SI)",
+          "url": "https://www.si.com/betting/walk-off-wagers-mlb-best-bets-today-predictions-for-dodgers-braves-brewers-padres-01m470jenbpc"
+        },
+        {
+          "title": "Brewers vs Padres NLDS Game 3 odds (SportsLine)",
+          "url": "https://www.sportsline.com/insiders/brewers-vs-padres-odds-line-prediction-2026-mlb-nlds-game-3-picks-for-tuesday-oct-6-from-proven-model/"
+        },
+        {
+          "title": "2026 MLB playoff bracket and results (CBS Sports)",
+          "url": "https://www.cbssports.com/mlb/news/2026-mlb-playoff-bracket-schedule-scores-results-how-to-watch/"
+        },
+        {
+          "title": "Braves turn to rested Chris Sale in Game 3 vs. Dodgers (CBS Sports)",
+          "url": "https://www.cbssports.com/mlb/news/braves-turn-to-rested-chris-sale-in-game-3-vs-dodgers/"
+        }
+      ],
+      "sport": "MLB",
+      "start_time": "2026-10-06T22:30:00-03:00",
+      "status": "pending",
+      "summary": "Milwaukee is starting Dustin May, who struggled badly late in the season, against a Padres team that was 53-30 at home and has a healthy, sharp Nick Pivetta. The price of -134 doesn't fully reflect that pitching gap, but the edge is small.",
+      "units": 0.5,
+      "id": "2026-10-06"
+    }
+  ]
+}

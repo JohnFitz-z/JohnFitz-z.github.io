@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T05:04:51Z",
+  "updated_at": "2026-10-07T15:23:11Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -82,6 +82,90 @@
       "summary": "Milwaukee is starting Dustin May, who struggled badly late in the season, against a Padres team that was 53-30 at home and has a healthy, sharp Nick Pivetta. The price of -134 doesn't fully reflect that pitching gap, but the edge is small.",
       "units": 0.5,
       "id": "2026-10-06"
+    },
+    {
+      "bet": "Rays moneyline",
+      "candidates": [
+        {
+          "bet": "Dodgers moneyline (-144)",
+          "event": "Dodgers @ Braves, NLDS Game 4",
+          "note": "Glasnow vs Mahle favors LA, but at about 59% implied I only estimate around 60%. Price is below the 1.70 range and the edge is negligible."
+        },
+        {
+          "bet": "Padres moneyline (about -110)",
+          "event": "Brewers @ Padres, NLDS Game 4",
+          "note": "Buehler (4.63 ERA, 3.62 second half) vs an unannounced Brewers bullpen game. Close to a coin flip with no clear edge until Milwaukee names a starter."
+        },
+        {
+          "bet": "Under 7 runs (+100 to +110)",
+          "event": "Rays @ Yankees, ALDS Game 3",
+          "note": "Fried and Martinez support a low total and the Yankees offense is cold, but sources on sharp action were inconsistent and Yankee Stadium plays small. Kept as a lean only."
+        },
+        {
+          "bet": "White Sox moneyline (-120)",
+          "event": "Guardians @ White Sox, ALDS Game 3",
+          "note": "Both teams using openers, so the game is a bullpen coin flip. White Sox momentum is not enough to justify -120."
+        }
+      ],
+      "confidence": "Low",
+      "created_at": "2026-10-07T12:31:00Z",
+      "date": "2026-10-07",
+      "event": "Rays @ Yankees",
+      "implied_prob": 0.42,
+      "league": "ALDS Game 3 (Rays lead 2-0)",
+      "market": "Moneyline",
+      "model_prob": 0.45,
+      "odds_american": 138,
+      "odds_decimal": 2.38,
+      "reasoning": [
+        "Aaron Judge (right calf strain) is not on the ALDS roster, and the Yankees have scored just 2 runs across Games 1 and 2 (lost 1-0 and 5-2).",
+        "Tampa Bay went 31-17 against left-handed starters in the regular season, which blunts the main edge New York has with Max Fried on the mound.",
+        "Fried allowed 7 runs on 12 hits over 14.2 innings in two starts against Tampa Bay this season, despite a 2.80 ERA overall in 20 starts (he missed time on the IL).",
+        "Nick Martinez had a 3.10 ERA and 1.09 WHIP over 31 starts, with a 2.38 ERA in 16 road starts and 3 runs allowed in 12 innings at Yankee Stadium this year.",
+        "The Rays bullpen needed only about seven relief outs over the first two games, so it is fully rested for a short leash on Martinez.",
+        "Fried's partner is due to give birth this week; Carlos Rodon would move up if he is unavailable. Market range is +134 to +145 (implied about 42%); I estimate about 45%, an edge of roughly 3 points, sized Low."
+      ],
+      "risks": [
+        "Fried is a true ace when right, and the Yankees ranked fourth in MLB in home wRC+ (111) and scored 18 runs in two home Wild Card games, so the offense could wake up back in the Bronx.",
+        "Martinez has allowed 6 runs over his last two starts and lost three of his last four outings.",
+        "This is a popular underdog side with many previews on it, so some of the value may already be priced in; a 3-point edge is thin."
+      ],
+      "sources": [
+        {
+          "title": "Rays vs. Yankees Prediction, Odds, Probable Pitchers for ALDS Game 3 (SI)",
+          "url": "https://www.si.com/betting/rays-vs-yankees-prediction-odds-probable-pitchers-prop-bets-for-alds-game-3-01m49mmq1km3"
+        },
+        {
+          "title": "Rays vs. Yankees Prediction: ALDS Game 3 (Bettors Insider)",
+          "url": "https://bettorsinsider.com/mlb/2026/10/07/rays-vs-yankees-prediction-alds-game-3-picks-odds-and-best-bet-oct-7/"
+        },
+        {
+          "title": "Rays vs. Yankees Prediction: Game 3 ALDS Preview (BetMGM)",
+          "url": "https://sports.betmgm.com/en/blog/mlb/rays-vs-yankees-prediction-game-3-alds-2026-bm23/"
+        },
+        {
+          "title": "Rays vs. Yankees Prediction, Props, and Odds (TheLines)",
+          "url": "https://www.thelines.com/mlb/picks/rays-vs-yankees-prediction-odds-props-for-oct-7-ny-avoids-sweep/"
+        },
+        {
+          "title": "Yankees' Max Fried Could Miss Must-Win Rays Start After Personal Update (Forbes)",
+          "url": "https://www.forbes.com/sites/peterchawaga/2026/10/07/yankees-max-fried-could-miss-must-win-rays-start-after-personal-update/"
+        },
+        {
+          "title": "Dodgers vs. Braves Prediction, Odds for NLDS Game 4 (SI)",
+          "url": "https://www.si.com/betting/dodgers-vs-braves-prediction-odds-probable-pitchers-prop-bets-for-nlds-game-4-2026"
+        },
+        {
+          "title": "Padres Announce Starting Pitcher for NLDS Game 4 (SI)",
+          "url": "https://www.si.com/mlb/padres/onsi/padres-announce-starting-pitcher-must-win-nlds-game-4-brewers"
+        }
+      ],
+      "sport": "MLB",
+      "start_time": "2026-10-07T21:00:00-03:00",
+      "status": "pending",
+      "summary": "The Yankees are priced around -160 at home, but they are without Aaron Judge, have scored 2 runs in 18 innings this series, and face a Rays team that hits lefties well. Fried's start also carries some late-scratch risk, so the Rays at roughly +138 look a few points underpriced.",
+      "units": 0.5,
+      "id": "2026-10-07"
     }
   ]
 }

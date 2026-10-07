@@ -15,11 +15,12 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
+<!--HEAD-END-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout: racing-form masthead, a bet ticket beside the record rail, then the units line, breakdowns, the full pick log, and how it works */
+/* Layout: racing-form masthead, a bet ticket beside the record rail, then the units line, breakdowns, model checks, the full pick log, and how it works */
 :root{
   --paper:#ECF0F2; --card:#FFFFFF; --ink:#0F1B24; --ink-2:#465763; --ink-3:#7A8994; --rule:#D3DBE0; --track:#E3E9ED;
   --accent:#0A6A85; --accent-soft:#DAECF2; --shadow:rgba(15,27,36,.18);
@@ -40,11 +41,10 @@
   --win:#5BC98C; --win-soft:#123124; --loss:#EF7B70; --loss-soft:#391B18;
   --push:#9AA6AF; --push-soft:#1E2A32; --pending:#E6B24A; --pending-soft:#32270F; color-scheme:dark}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--paper)}
-body{margin:0}
+html{-webkit-text-size-adjust:100%;background:var(--paper);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 [hidden]{display:none!important}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1100px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:flex;flex-direction:column;gap:22px}
 a{color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
@@ -69,6 +69,9 @@ a{color:var(--accent)}
 .t-odds{text-align:right;flex:0 0 auto}
 .t-odds .dec{font-family:var(--display);font-weight:600;font-size:54px;line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums}
 .t-odds .am{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:4px}
+.take{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:12px;padding:4px 9px;border-radius:5px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.take b{font-weight:500}
+.take.warn{background:var(--pending-soft);color:var(--pending)}
 .t-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:18px}
 .fact{background:var(--card);padding:10px 12px;min-width:0}
 .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
@@ -76,7 +79,7 @@ a{color:var(--accent)}
 .perf{position:relative;height:0;border-top:2px dashed var(--rule);margin:0 22px}
 .perf::before,.perf::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--paper)}
 .perf::before{left:-34px}.perf::after{right:-34px}
-.t-body{padding:20px 24px 24px;display:flex;flex-direction:column;gap:20px}
+.t-body{padding:20px 24px 24px;display:flex;flex-direction:column;gap:22px}
 .edge .lbls{display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
 .edge .lbls b{font-weight:500;color:var(--ink)}
 .edge .lbls .e{color:var(--accent)}
@@ -85,7 +88,7 @@ a{color:var(--accent)}
 .bar .gap{position:absolute;top:0;bottom:0;background:var(--accent)}
 .bar .gap.neg{background:var(--loss)}
 .thesis{font-size:17.5px;line-height:1.5;margin:0;max-width:62ch;text-wrap:pretty}
-.sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:500}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
 ul.pts{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
 ul.pts li::marker{color:var(--accent)}
 ul.pts.risks li::marker{color:var(--loss)}
@@ -96,12 +99,47 @@ ul.pts.risks li::marker{color:var(--loss)}
 .srcs{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
 .srcs a{overflow-wrap:anywhere}
 .result{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 12px;border-radius:8px;font-size:14px}
-.result.won{background:var(--win-soft);color:var(--win)}.result.lost{background:var(--loss-soft);color:var(--loss)}.result.push,.result.void{background:var(--push-soft);color:var(--push)}
+.result.won,.result.half_won{background:var(--win-soft);color:var(--win)}.result.lost,.result.half_lost{background:var(--loss-soft);color:var(--loss)}.result.push,.result.void{background:var(--push-soft);color:var(--push)}
 .notice{font-size:13.5px;color:var(--ink-2);background:var(--pending-soft);border-radius:8px;padding:9px 12px}
+.notice b{color:var(--pending);font-weight:600}
 .t-empty p{color:var(--ink-2);max-width:56ch;margin:12px 0 0}
 .pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;display:inline-block}
-.pill.won{background:var(--win-soft);color:var(--win)}.pill.lost{background:var(--loss-soft);color:var(--loss)}
+.pill.won,.pill.half_won{background:var(--win-soft);color:var(--win)}.pill.lost,.pill.half_lost{background:var(--loss-soft);color:var(--loss)}
 .pill.push,.pill.void{background:var(--push-soft);color:var(--push)}.pill.pending{background:var(--pending-soft);color:var(--pending)}
+/* price guide */
+.pguide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pg{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;min-width:0}
+.pg.main{border-color:var(--accent);background:var(--accent-soft)}
+.pg .v{font-family:var(--display);font-weight:600;font-size:26px;line-height:1.05;margin-top:3px;font-variant-numeric:tabular-nums}
+.pg.main .v{color:var(--accent)}
+.pg .s{font-size:12px;color:var(--ink-2);margin-top:2px}
+/* how the number was built */
+.ladder{display:flex;flex-direction:column}
+.lrow{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr) 5.2rem;grid-template-areas:"name track val";gap:4px 14px;align-items:center;padding:8px 0}
+.lname{grid-area:name;min-width:0;font-size:14px;line-height:1.3}
+.lname .lsub{display:block;font-size:12px;color:var(--ink-2);margin-top:2px;overflow-wrap:anywhere}
+.lrow.k-final .lname{font-weight:600}
+.ltrack{grid-area:track;position:relative;height:20px}
+.ltrack::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--track);border-radius:1px}
+.lneed{position:absolute;top:-9px;bottom:-9px;border-left:1.5px dashed var(--ink-3)}
+.lbar{position:absolute;top:50%;height:6px;margin-top:-3px;border-radius:3px;background:var(--win);opacity:.75}
+.lbar.down{background:var(--loss)}
+.ldot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ink-2);border:2px solid var(--card)}
+.k-model .ldot{background:var(--card);border:2px solid var(--accent)}
+.k-blend .ldot,.k-adj .ldot{background:var(--accent)}
+.k-final .ldot{width:16px;height:16px;margin:-8px 0 0 -8px;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.lval{grid-area:val;text-align:right;font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lval .ld{display:block;font-size:11.5px}
+.lrow.k-final .lval{font-weight:500;color:var(--accent)}
+.laxis{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr) 5.2rem;gap:14px}
+.laxis .ax{grid-column:2;position:relative;height:38px;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.laxis .ax span{position:absolute;top:2px;white-space:nowrap}
+.laxis .ax .need{color:var(--ink);transform:translateX(-50%);top:19px}
+.mnotes{font-size:13px;color:var(--ink-2);margin:10px 0 0;display:flex;flex-direction:column;gap:3px}
+details.books{margin-top:10px;font-size:13px}
+details.books summary{cursor:pointer;color:var(--accent);width:max-content;max-width:100%}
+.mini{overflow-x:auto;margin-top:8px}
+/* record rail */
 .rail{display:flex;flex-direction:column;gap:12px}
 .rail-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -116,9 +154,10 @@ ul.pts.risks li::marker{color:var(--loss)}
 .panel{background:var(--card);border-radius:14px;padding:20px 22px;min-width:0}
 .ph{display:flex;justify-content:space-between;align-items:flex-end;gap:10px 16px;flex-wrap:wrap;margin-bottom:12px}
 .ph h2{font-family:var(--display);font-weight:600;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1}
-.ph p{margin:4px 0 0;font-size:13px;color:var(--ink-2)}
+.ph p{margin:4px 0 0;font-size:13px;color:var(--ink-2);max-width:60ch}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .empty{color:var(--ink-2);font-size:14px;margin:4px 0}
+.caveat{font-size:12.5px;color:var(--ink-3);margin:12px 0 0}
 #chart svg{display:block;width:100%;height:auto}
 #chart .ax{fill:var(--ink-3);font-family:var(--mono);font-size:11px}
 #chart .end{fill:var(--ink);font-family:var(--mono);font-size:12px;font-weight:500}
@@ -128,12 +167,23 @@ th{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.09em
 td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
 th:first-child,td:first-child{text-align:left;padding-left:0}
 th:last-child,td:last-child{padding-right:0}
+td.wrapcell,th.wrapcell{white-space:normal;text-align:left;min-width:6rem}
 tr:last-child td{border-bottom:0}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.stat{background:var(--track);border-radius:8px;padding:10px 12px;min-width:0}
+.stat .v{font-family:var(--display);font-weight:600;font-size:26px;line-height:1.05;margin-top:3px;font-variant-numeric:tabular-nums}
+.stat .s{font-size:12px;color:var(--ink-2)}
+.hbars{display:flex;flex-direction:column;gap:8px}
+.hb{display:grid;grid-template-columns:5.5rem minmax(0,1fr) 3.6rem;gap:10px;align-items:center;font-size:13px}
+.hb .tr{height:10px;border-radius:5px;background:var(--track);position:relative;overflow:hidden}
+.hb .fl{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--ink-3)}
+.hb.model .fl{background:var(--accent)}
+.hb .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .filters select{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
 .log{border-top:1px solid var(--rule)}
 .row{border-bottom:1px solid var(--rule)}
-.row>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:84px 74px minmax(0,1fr) 82px 78px;grid-template-areas:"date sport bet res pl";gap:6px 12px;align-items:center;padding:12px 2px}
+.row>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:84px 74px minmax(0,1fr) 92px 78px;grid-template-areas:"date sport bet res pl";gap:6px 12px;align-items:center;padding:12px 2px}
 .row>summary::-webkit-details-marker{display:none}
 .row>summary:hover{background:var(--track)}
 .c-date{grid-area:date;font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
@@ -143,8 +193,8 @@ tr:last-child td{border-bottom:0}
 .c-bet .b2{font-size:12.5px;color:var(--ink-2);overflow-wrap:anywhere}
 .c-res{grid-area:res}
 .c-pl{grid-area:pl;text-align:right;font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums}
-.row-body{padding:4px 2px 18px;display:flex;flex-direction:column;gap:14px}
-.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+.row-body{padding:4px 2px 18px;display:flex;flex-direction:column;gap:16px}
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .step{border-top:2px solid var(--ink);padding-top:10px}
 .step .n{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;color:var(--accent)}
 .step h3{font-family:var(--display);font-weight:600;font-size:19px;text-transform:uppercase;letter-spacing:.02em;margin:6px 0 4px}
@@ -152,6 +202,14 @@ tr:last-child td{border-bottom:0}
 footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
 @media (max-width:880px){.top{grid-template-columns:minmax(0,1fr)}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.how{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:720px){.grid2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){
+  .lrow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name val" "track track";padding:9px 0}
+  .lneed{top:-4px;bottom:-4px}
+  .laxis{grid-template-columns:minmax(0,1fr)}
+  .laxis .ax{grid-column:1}
+  .pguide{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .pg{padding:8px 9px}.pg .v{font-size:22px}
+}
 @media (max-width:560px){
   .wrap{padding-inline:16px;padding-block:20px 44px;gap:18px}
   .mark{font-size:38px}
@@ -162,9 +220,15 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   .panel{padding:18px 16px}
   .row>summary{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"date sport res" "bet bet pl"}
   .how{grid-template-columns:minmax(0,1fr)}
+  .pguide{grid-template-columns:minmax(0,1fr)}
+  .pg{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  th,td{padding-inline:5px}
+  td.wrapcell,th.wrapcell{min-width:4.5rem}
+  .pg .s{display:none}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
+<!--BODY-START-->
 </head>
 <body>
 <div class="wrap">
@@ -196,8 +260,19 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   </section>
 
   <section class="panel">
-    <div class="ph"><div><h2>Units over time</h2><p>Running profit after each graded pick. One unit is one standard bet.</p></div></div>
+    <div class="ph"><div><h2>Units over time</h2><p>Running profit after each graded pick. One unit is 1% of a bankroll.</p></div></div>
     <div id="chart"><p class="empty">The line starts once the first pick is graded.</p></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <div class="ph"><div><h2>Closing line</h2><p>Did the price move our way before the game? Beating the closing price is the quickest sign of a real edge, long before the record means much.</p></div></div>
+      <div id="clvPanel"><p class="empty">Fills in once a graded pick has its closing price recorded.</p></div>
+    </div>
+    <div class="panel">
+      <div class="ph"><div><h2>Model vs market</h2><p>On each result, was our final estimate closer than the market's own fair probability?</p></div></div>
+      <div id="mvm"><p class="empty">Fills in as picks priced by the model are graded.</p></div>
+    </div>
   </section>
 
   <section class="grid2">
@@ -226,14 +301,15 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   </section>
 
   <section class="how" aria-label="How the pick is made">
-    <div class="step"><div class="n">1</div><h3>Scan the slate</h3><p>Every game starting after 10:30 AM Atlantic, across every sport with action that day.</p></div>
-    <div class="step"><div class="n">2</div><h3>Shortlist</h3><p>Four or five spots where news, matchups or line movement suggest the price is off.</p></div>
-    <div class="step"><div class="n">3</div><h3>Dig in</h3><p>Injuries and lineups, form and underlying stats, rest and travel, weather, motivation, market moves.</p></div>
-    <div class="step"><div class="n">4</div><h3>Price it</h3><p>Estimate the real win chance, compare it to the odds, and take the strongest edge. Graded the next morning.</p></div>
+    <div class="step"><div class="n">1</div><h3>Scan the slate</h3><p>Every game starting after 10:30 AM Atlantic, in every sport with action that day.</p></div>
+    <div class="step"><div class="n">2</div><h3>Research</h3><p>Four or five candidates: odds from several books, injuries and lineups, underlying stats, rest, travel and weather.</p></div>
+    <div class="step"><div class="n">3</div><h3>Price it</h3><p>Strip the bookmaker's margin, run a score model for the sport, blend the two, then add capped adjustments for news the numbers miss.</p></div>
+    <div class="step"><div class="n">4</div><h3>Bet and grade</h3><p>Rank by edge against risk, size with quarter Kelly, set a minimum price. Graded each morning with the closing line.</p></div>
   </section>
 
   <footer>
-    Odds are the market consensus at research time and shown in decimal, as Stake displays them. Stake's price can differ slightly, so check it before placing. Educational tracking only; no pick is a sure thing. 19+ in Nova Scotia.
+    Odds are the consensus at research time, in decimal like Stake shows them. Only bet at the "take at" price or better. Educational tracking only; no pick is a sure thing. 19+ in Nova Scotia.
+    <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/blob/main/model/METHOD.md" target="_blank" rel="noopener">How the model works</a>
   </footer>
 </div>
 
@@ -242,8 +318,10 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const TZ = "America/Halifax";
-  const GRADED = new Set(["won","lost","push"]);
-  const STATUS = {pending:"Pending",won:"Won",lost:"Lost",push:"Push",void:"Void"};
+  const GRADED = new Set(["won","lost","push","half_won","half_lost"]);
+  const STATUS = {pending:"Pending",won:"Won",lost:"Lost",push:"Push",void:"Void",half_won:"Half won",half_lost:"Half lost"};
+  const isW = s => s === "won" || s === "half_won";
+  const isL = s => s === "lost" || s === "half_lost";
   let picks = [], loaded = false, failed = "";
 
   const todayISO = () => new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
@@ -252,34 +330,107 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   const num = v => (v === null || v === undefined || v === "" || isNaN(Number(v))) ? null : Number(v);
   const prob = v => { const n = num(v); if(n === null) return null; return n > 1 ? n/100 : n; };
   const decOf = p => { const d = num(p.odds_decimal); if(d && d > 1) return d; const a = num(p.odds_american); if(!a) return null; return a > 0 ? 1 + a/100 : 1 + 100/Math.abs(a); };
-  const amOf = p => { const a = num(p.odds_american); if(a) return (a > 0 ? "+" : "") + Math.round(a); const d = decOf(p); if(!d) return ""; return d >= 2 ? "+" + Math.round((d-1)*100) : String(Math.round(-100/(d-1))); };
+  const amFromDec = d => d >= 2 ? "+" + Math.round((d-1)*100) : String(Math.round(-100/(d-1)));
+  const amOf = p => { const a = num(p.odds_american); if(a) return (a > 0 ? "+" : "") + Math.round(a); const d = decOf(p); return d ? amFromDec(d) : ""; };
   const unitsOf = p => { const u = num(p.units); return u && u > 0 ? u : 1; };
-  const profitOf = p => { const r = num(p.result_units); if(r !== null && GRADED.has(p.status)) return r; if(p.status === "won") return unitsOf(p)*((decOf(p)||2)-1); if(p.status === "lost") return -unitsOf(p); return 0; };
+  const profitOf = p => {
+    const r = num(p.result_units); if(r !== null && GRADED.has(p.status)) return r;
+    const u = unitsOf(p), b = (decOf(p) || 2) - 1;
+    return p.status === "won" ? u*b : p.status === "half_won" ? u*b/2 : p.status === "lost" ? -u : p.status === "half_lost" ? -u/2 : 0;
+  };
+  const evOf = p => { const e = num(p.ev); if(e !== null) return Math.abs(e) > 1 ? e/100 : e; const m = prob(p.model_prob), d = decOf(p); return (m !== null && d) ? m*d - 1 : null; };
   const sign = n => n > 0.0049 ? "+" : n < -0.0049 ? "−" : "";
   const fmtU = n => sign(n) + Math.abs(n).toFixed(2) + "u";
   const pct = (n, d) => (n*100).toFixed(d === undefined ? 1 : d) + "%";
+  const spct = (n, d) => sign(n*100) + Math.abs(n*100).toFixed(d === undefined ? 1 : d) + "%";
   const cls = n => n > 0.0049 ? "pos" : n < -0.0049 ? "neg" : "";
   const list = v => Array.isArray(v) ? v.filter(Boolean) : (v ? String(v).split(/\n+/).map(s => s.trim()).filter(Boolean) : []);
   const byDateAsc = (a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+  const clvOf = p => p && p.close ? num(p.close.clv) : null;
 
   let unitSize = null;
   try { const s = localStorage.getItem("ml-unit"); if(s) unitSize = num(s); } catch(e){}
   const money = n => { if(!unitSize) return ""; const v = n*unitSize; return (v < 0 ? "−$" : "$") + Math.abs(v).toFixed(2); };
 
-  function detailHTML(p, big){
-    const out = [];
+  function ladderHTML(p){
+    const m = p.model || {}, d = decOf(p);
+    const steps = (m.steps || []).filter(s => num(s.prob) !== null);
+    if(!steps.length || !d) return "";
+    const need = 1/d;
+    const vals = steps.map(s => s.prob).concat([need]);
+    let lo = Math.min(...vals), hi = Math.max(...vals);
+    const pad = Math.max(0.015, (hi - lo) * 0.18);
+    lo = Math.max(0, Math.floor((lo - pad) * 100) / 100); hi = Math.min(1, Math.ceil((hi + pad) * 100) / 100);
+    const X = v => (((v - lo) / (hi - lo)) * 100).toFixed(2);
+    const mk = steps.find(s => s.key === "market");
+    let chain = null;
+    const rows = steps.map(s => {
+      let bar = "", delta = "";
+      if(s.key === "market"){ chain = s.prob; }
+      else if(s.key === "blend" || s.key === "adj" || (s.key === "final" && chain !== null)){
+        const from = s.key === "final" ? (mk ? mk.prob : chain) : (chain === null ? s.prob : chain);
+        const a = Math.min(from, s.prob), b = Math.max(from, s.prob);
+        if(b - a > 0.0004) bar = `<span class="lbar ${s.prob < from ? "down" : ""}" style="left:${X(a)}%;width:${(X(b) - X(a)).toFixed(2)}%"></span>`;
+        const dd = s.prob - from;
+        if(s.key !== "final" || mk) delta = `<span class="ld ${cls(dd)}">${sign(dd*100)}${Math.abs(dd*100).toFixed(1)}</span>`;
+        if(s.key !== "final") chain = s.prob;
+      }
+      let sub = s.detail || "";
+      if(s.key === "adj" && s.size) sub = s.size[0].toUpperCase() + s.size.slice(1) + (sub ? " · " + sub : "");
+      return `<div class="lrow k-${esc(s.key)}">
+        <div class="lname">${esc(s.label)}${sub ? `<span class="lsub">${esc(sub)}</span>` : ""}</div>
+        <div class="ltrack"><span class="lneed" style="left:${X(need)}%"></span>${bar}<span class="ldot" style="left:${X(s.prob)}%"></span></div>
+        <div class="lval">${pct(s.prob)}${delta}</div></div>`;
+    }).join("");
+    const needX = +X(need);
+    const lab = needX < 18 ? "left" : needX > 82 ? "right" : "mid";
+    const needLabel = `<span class="need" style="left:${needX}%;${lab === "left" ? "transform:none" : lab === "right" ? "transform:translateX(-100%)" : ""}">Price needs ${pct(need)}</span>`;
+    const books = Array.isArray(m.books) ? m.books : [];
+    const notes = [m.inputs_text].concat(Array.isArray(m.notes) ? m.notes : []).filter(Boolean);
+    return `<div><h3 class="sub">How the number was built</h3>
+      <div class="ladder">${rows}</div>
+      <div class="laxis"><div class="ax"><span style="left:0">${Math.round(lo*100)}%</span><span style="right:0">${Math.round(hi*100)}%</span>${needLabel}</div></div>
+      ${notes.length ? `<div class="mnotes">${notes.map(n => `<span>${esc(n)}</span>`).join("")}</div>` : ""}
+      ${books.length ? `<details class="books"><summary>Prices used (${books.length} book${books.length === 1 ? "" : "s"})</summary><div class="mini"><table><thead><tr><th>Book</th><th>Price</th><th>Decimal</th><th>Fair</th><th>Margin</th></tr></thead><tbody>${books.map(b => `<tr><td>${esc(b.book)}</td><td>${esc(b.price)}</td><td>${num(b.decimal) ? num(b.decimal).toFixed(2) : "—"}</td><td>${num(b.fair) !== null ? pct(num(b.fair)) : "—"}</td><td>${num(b.margin) !== null ? pct(num(b.margin)) : "—"}</td></tr>`).join("")}</tbody></table></div></details>` : ""}
+    </div>`;
+  }
+
+  function priceGuideHTML(p){
+    const minD = num(p.min_odds_decimal) || num(p.model && p.model.min_odds_decimal);
+    const fairD = num(p.model && p.model.fair_odds_decimal);
+    const mf = prob(p.fair_prob);
+    if(!minD && !fairD && mf === null) return "";
+    const item = (k, v, s, main) => `<div class="pg ${main ? "main" : ""}"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`;
+    return `<div class="pguide">
+      ${item("Take at", minD ? minD.toFixed(2) + "+" : "—", minD ? amFromDec(minD) + " or better" : "", true)}
+      ${item("Our fair price", fairD ? fairD.toFixed(2) : "—", prob(p.model_prob) !== null ? pct(prob(p.model_prob)) + " chance" : "")}
+      ${item("Market fair price", mf ? (1/mf).toFixed(2) : "—", mf !== null ? pct(mf) + ", margin removed" : "")}
+    </div>`;
+  }
+
+  function legacyEdge(p){
     const dec = decOf(p), mod = prob(p.model_prob);
     let imp = prob(p.implied_prob); if(imp === null && dec) imp = 1/dec;
-    if(mod !== null && imp !== null){
-      const e = mod - imp, lo = Math.min(mod, imp), w = Math.abs(e);
-      out.push(`<div class="edge"><div class="lbls"><span>Odds imply <b>${pct(imp)}</b></span><span>Our estimate <b>${pct(mod)}</b></span><span class="e">Edge ${sign(e*100)}${Math.abs(e*100).toFixed(1)} pts</span></div>
-        <div class="bar" role="img" aria-label="Odds imply ${pct(imp)}, estimate ${pct(mod)}"><div class="mkt" style="width:${(imp*100).toFixed(2)}%"></div><div class="gap ${e<0?"neg":""}" style="left:${(lo*100).toFixed(2)}%;width:${(w*100).toFixed(2)}%"></div></div></div>`);
-    }
+    if(mod === null || imp === null) return "";
+    const e = mod - imp, lo = Math.min(mod, imp), w = Math.abs(e);
+    return `<div class="edge"><div class="lbls"><span>Odds imply <b>${pct(imp)}</b></span><span>Our estimate <b>${pct(mod)}</b></span><span class="e">Edge ${sign(e*100)}${Math.abs(e*100).toFixed(1)} pts</span></div>
+      <div class="bar" role="img" aria-label="Odds imply ${pct(imp)}, estimate ${pct(mod)}"><div class="mkt" style="width:${(imp*100).toFixed(2)}%"></div><div class="gap ${e<0?"neg":""}" style="left:${(lo*100).toFixed(2)}%;width:${(w*100).toFixed(2)}%"></div></div></div>`;
+  }
+
+  function resultHTML(p){
+    if(!(GRADED.has(p.status) || p.status === "void")) return "";
+    const pl = profitOf(p), c = clvOf(p);
+    const close = c !== null ? ` · Closed ${num(p.close.odds_decimal) ? num(p.close.odds_decimal).toFixed(2) : "?"}, CLV ${spct(c)}` : "";
+    return `<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${unitSize ? " · " + money(pl) : ""}${close}</span></div>`;
+  }
+
+  function detailHTML(p, big){
+    const out = [];
+    const hasModel = p.model && Array.isArray(p.model.steps) && p.model.steps.length;
+    if(!hasModel){ const le = legacyEdge(p); if(le) out.push(le); }
     if(p.summary) out.push(`<p class="thesis">${esc(p.summary)}</p>`);
-    if(GRADED.has(p.status) || p.status === "void"){
-      const pl = profitOf(p);
-      out.push(`<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${unitSize ? " · " + money(pl) : ""}</span></div>`);
-    }
+    out.push(resultHTML(p));
+    if(hasModel){ out.push(priceGuideHTML(p)); out.push(ladderHTML(p)); }
     const why = list(p.reasoning);
     if(why.length) out.push(`<div><h3 class="sub">Why this bet</h3><ul class="pts">${why.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`);
     const risks = list(p.risks);
@@ -289,7 +440,7 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     const srcs = Array.isArray(p.sources) ? p.sources : [];
     const links = srcs.map(s => { const u = typeof s === "string" ? s : (s && s.url); const t = typeof s === "string" ? s.replace(/^https?:\/\/(www\.)?/,"").split("/")[0] : (s.title || s.url); return /^https?:\/\//.test(u||"") ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>` : ""; }).filter(Boolean);
     if(links.length) out.push(`<div><h3 class="sub">Sources</h3><div class="srcs">${links.join("")}</div></div>`);
-    return out.join("");
+    return out.filter(Boolean).join("");
   }
 
   function renderTicket(){
@@ -304,10 +455,10 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
       el.innerHTML = `<div class="t-head"><div class="t-eyebrow"><span class="chip">Today's pick</span><span class="when">${esc(fmtDay(today))}</span></div><div class="t-empty"><div class="t-bet" style="margin-top:16px">First pick lands at 10:00 AM</div><p>Each morning the research runs across the full slate, settles on one bet, and posts it here with the reasoning, the risks, and what else was considered.</p></div></div>`;
       return;
     }
-    const isToday = p.date === today, dec = decOf(p), mod = prob(p.model_prob);
-    let imp = prob(p.implied_prob); if(imp === null && dec) imp = 1/dec;
-    const edge = (mod !== null && imp !== null) ? mod - imp : prob(p.edge);
+    const isToday = p.date === today, dec = decOf(p), ev = evOf(p);
     const st = STATUS[p.status] ? p.status : "pending";
+    const minD = num(p.min_odds_decimal);
+    const take = minD ? `<div class="take ${dec && dec < minD ? "warn" : ""}">Take at <b>${minD.toFixed(2)}</b> or better</div>` : "";
     el.innerHTML = `
       <div class="t-head">
         <div class="t-eyebrow">
@@ -316,34 +467,35 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
         </div>
         <div class="t-main">
           <div><h1 class="t-bet">${esc(p.bet || "")}</h1><div class="t-event">${esc(p.event || "")}</div></div>
-          <div class="t-odds"><div class="dec">${dec ? dec.toFixed(2) : "—"}</div><div class="am">${esc(amOf(p))} American</div></div>
+          <div class="t-odds"><div class="dec">${dec ? dec.toFixed(2) : "—"}</div><div class="am">${esc(amOf(p))} American</div>${take}</div>
         </div>
         <div class="t-facts">
           <div class="fact"><div class="k">Size</div><div class="v">${unitsOf(p)}u${unitSize ? `<span class="k" style="margin-left:6px">${money(unitsOf(p))}</span>` : ""}</div></div>
           <div class="fact"><div class="k">Confidence</div><div class="v">${esc(p.confidence || "—")}</div></div>
-          <div class="fact"><div class="k">Edge</div><div class="v ${edge !== null && edge > 0 ? "pos" : ""}">${edge !== null ? sign(edge*100) + Math.abs(edge*100).toFixed(1) + " pts" : "—"}</div></div>
+          <div class="fact"><div class="k">Expected value</div><div class="v ${ev !== null ? cls(ev) : ""}">${ev !== null ? spct(ev) : "—"}</div></div>
           <div class="fact"><div class="k">Market</div><div class="v">${esc(p.market || "—")}</div></div>
         </div>
       </div>
       <div class="perf" aria-hidden="true"></div>
       <div class="t-body">
         ${isToday ? "" : `<div class="notice">Today's pick hasn't posted yet. It lands at 10:00 AM Atlantic.</div>`}
+        ${p.no_edge ? `<div class="notice"><b>No clear edge today.</b> Nothing on the slate priced above break-even, so this is the closest call at the minimum stake.</div>` : ""}
         ${detailHTML(p, true)}
       </div>`;
   }
 
   function stats(){
     const g = picks.filter(p => GRADED.has(p.status));
-    const W = g.filter(p => p.status === "won").length, L = g.filter(p => p.status === "lost").length, P = g.filter(p => p.status === "push").length;
+    const W = g.filter(p => isW(p.status)).length, L = g.filter(p => isL(p.status)).length, P = g.filter(p => p.status === "push").length;
     const units = g.reduce((s,p) => s + profitOf(p), 0);
     const staked = g.reduce((s,p) => s + unitsOf(p), 0);
     const wl = g.filter(p => p.status !== "push");
     const be = wl.length ? wl.reduce((s,p) => s + 1/(decOf(p)||2), 0)/wl.length : null;
     const desc = wl.slice().sort(byDateAsc).reverse();
     let streak = "";
-    if(desc.length){ const k = desc[0].status; let n = 0; for(const p of desc){ if(p.status === k) n++; else break; } streak = (k === "won" ? "W" : "L") + n; }
-    const last10 = desc.slice(0,10); const l10w = last10.filter(p => p.status === "won").length;
-    return {g, W, L, P, units, staked, be, streak, l10: last10.length ? `${l10w}-${last10.length - l10w} in last ${last10.length}` : "", pending: picks.filter(p => p.status === "pending" || !p.status).length};
+    if(desc.length){ const k = isW(desc[0].status); let n = 0; for(const p of desc){ if(isW(p.status) === k) n++; else break; } streak = (k ? "W" : "L") + n; }
+    const cl = picks.filter(p => clvOf(p) !== null);
+    return {g, W, L, P, units, staked, be, streak, cl, pending: picks.filter(p => p.status === "pending" || !p.status).length};
   }
 
   function renderTiles(){
@@ -352,13 +504,15 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     const wr = (s.W + s.L) ? s.W/(s.W + s.L) : null;
     const roi = s.staked ? s.units/s.staked : null;
     const t = (k, v, sub, c) => `<div class="tile"><div class="k">${k}</div><div class="v ${c||""}">${v}</div><div class="s">${sub||"&nbsp;"}</div></div>`;
+    const beat = s.cl.filter(p => clvOf(p) > 0).length;
+    const avgClv = s.cl.length ? s.cl.reduce((a,p) => a + clvOf(p), 0)/s.cl.length : null;
     $("#tiles").innerHTML =
       t("Record", `${s.W}-${s.L}-${s.P}`, "Won · lost · push") +
       t("Win rate", wr === null ? "—" : pct(wr), s.be !== null ? `Break-even ${pct(s.be)}` : "Excludes pushes", wr !== null && s.be !== null ? (wr >= s.be ? "pos" : "neg") : "") +
       t("Units", s.g.length ? fmtU(s.units) : "0.00u", unitSize ? money(s.units) + " at $" + unitSize + "/unit" : "Profit in units", cls(s.units)) +
-      t("ROI", roi === null ? "—" : sign(roi*100) + Math.abs(roi*100).toFixed(1) + "%", s.staked ? `On ${s.staked.toFixed(1)}u staked` : "Return per unit bet", roi !== null ? cls(roi) : "") +
-      t("Streak", s.streak || "—", s.l10 || "Wins or losses in a row", s.streak ? (s.streak[0] === "W" ? "pos" : "neg") : "") +
-      t("Avg odds", s.g.length ? (s.g.reduce((a,p) => a + (decOf(p)||0), 0)/s.g.length).toFixed(2) : "—", "Decimal, graded picks");
+      t("ROI", roi === null ? "—" : spct(roi), s.staked ? `On ${s.staked.toFixed(2)}u staked` : "Return per unit bet", roi !== null ? cls(roi) : "") +
+      t("Streak", s.streak || "—", "Wins or losses in a row", s.streak ? (s.streak[0] === "W" ? "pos" : "neg") : "") +
+      t("Beat the close", s.cl.length ? `${beat}/${s.cl.length}` : "—", avgClv !== null ? `Average CLV ${spct(avgClv)}` : "Price moved our way", avgClv !== null ? cls(avgClv) : "");
   }
 
   function renderChart(){
@@ -378,8 +532,9 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     let grid = "";
     for(let v = lo; v <= hi + 1e-9; v += step){
       const yy = y(v).toFixed(1), zero = Math.abs(v) < 1e-9;
-      grid += `<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="var(--rule)" stroke-width="1" ${zero ? 'stroke-dasharray="4 4" stroke="var(--ink-3)"' : ""}/>`;
-      grid += `<text class="ax" x="${L-8}" y="${(+yy+4).toFixed(1)}" text-anchor="end">${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v) % 1 ? Math.abs(v).toFixed(2).replace(/0$/,"") : Math.abs(v)}</text>`;
+      grid += `<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="${zero ? "var(--ink-3)" : "var(--rule)"}" stroke-width="1" ${zero ? 'stroke-dasharray="4 4"' : ""}/>`;
+      const av = Math.abs(v), lab = Number.isInteger(av) ? String(av) : av.toFixed(2).replace(/0$/,"");
+      grid += `<text class="ax" x="${L-8}" y="${(+yy+4).toFixed(1)}" text-anchor="end">${v > 1e-9 ? "+" : v < -1e-9 ? "−" : ""}${lab}</text>`;
     }
     const line = pts.map((p,i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(" ");
     const area = `${line} L${x(pts.length-1).toFixed(1)},${y(0).toFixed(1)} L${x(0).toFixed(1)},${y(0).toFixed(1)} Z`;
@@ -396,15 +551,54 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     </svg>`;
   }
 
+  function renderClv(){
+    const el = $("#clvPanel");
+    const rows = picks.filter(p => clvOf(p) !== null).sort(byDateAsc).reverse();
+    if(!rows.length){ el.innerHTML = `<p class="empty">Fills in once a graded pick has its closing price recorded.</p>`; return; }
+    const beat = rows.filter(p => clvOf(p) > 0).length;
+    const avg = rows.reduce((a,p) => a + clvOf(p), 0)/rows.length;
+    el.innerHTML = `<div class="stats">
+        <div class="stat"><div class="k">Beat the close</div><div class="v">${beat} of ${rows.length}</div><div class="s">${pct(beat/rows.length,0)} of picks</div></div>
+        <div class="stat"><div class="k">Average CLV</div><div class="v ${cls(avg)}">${spct(avg)}</div><div class="s">Value against the closing price</div></div>
+      </div>
+      <div class="tbl"><table><thead><tr><th>Date</th><th class="wrapcell">Bet</th><th>Taken</th><th>Close</th><th>CLV</th></tr></thead><tbody>
+      ${rows.slice(0,8).map(p => `<tr><td>${esc(fmtDay(p.date,{weekday:undefined}))}</td><td class="wrapcell">${esc(p.bet || "")}</td><td>${decOf(p) ? decOf(p).toFixed(2) : "—"}</td><td>${num(p.close.odds_decimal) ? num(p.close.odds_decimal).toFixed(2) : "—"}</td><td class="${cls(clvOf(p))}">${spct(clvOf(p))}</td></tr>`).join("")}
+      </tbody></table></div>
+      ${rows.length < 30 ? `<p class="caveat">Small sample. Average CLV starts to mean something after about 30 picks.</p>` : ""}`;
+  }
+
+  function renderMvm(){
+    const el = $("#mvm");
+    const rows = picks.filter(p => (p.status === "won" || p.status === "lost") && prob(p.model_prob) !== null && prob(p.fair_prob) !== null);
+    if(!rows.length){ el.innerHTML = `<p class="empty">Fills in as picks priced by the model are graded. Lower Brier score means more accurate estimates.</p>`; return; }
+    const y = p => p.status === "won" ? 1 : 0;
+    const bm = rows.reduce((a,p) => a + Math.pow(prob(p.model_prob) - y(p), 2), 0)/rows.length;
+    const bk = rows.reduce((a,p) => a + Math.pow(prob(p.fair_prob) - y(p), 2), 0)/rows.length;
+    const closer = rows.filter(p => Math.abs(prob(p.model_prob) - y(p)) < Math.abs(prob(p.fair_prob) - y(p))).length;
+    const gap = rows.reduce((a,p) => a + prob(p.model_prob) - prob(p.fair_prob), 0)/rows.length;
+    const mx = Math.max(bm, bk, 0.3);
+    const better = bm < bk;
+    el.innerHTML = `<div class="stats">
+        <div class="stat"><div class="k">Closer to the result</div><div class="v">${closer} of ${rows.length}</div><div class="s">Model beat the market's estimate</div></div>
+        <div class="stat"><div class="k">Average gap</div><div class="v">${sign(gap*100)}${Math.abs(gap*100).toFixed(1)} pts</div><div class="s">Our estimate above the market</div></div>
+      </div>
+      <h3 class="sub">Brier score, lower is better</h3>
+      <div class="hbars">
+        <div class="hb model"><span>Our model</span><span class="tr"><span class="fl" style="width:${(bm/mx*100).toFixed(1)}%"></span></span><span class="n ${better ? "pos" : ""}">${bm.toFixed(3)}</span></div>
+        <div class="hb"><span>Market</span><span class="tr"><span class="fl" style="width:${(bk/mx*100).toFixed(1)}%"></span></span><span class="n ${!better ? "pos" : ""}">${bk.toFixed(3)}</span></div>
+      </div>
+      ${rows.length < 100 ? `<p class="caveat">Based on ${rows.length} graded pick${rows.length === 1 ? "" : "s"}. This needs about 100 before it says anything reliable.</p>` : ""}`;
+  }
+
   function renderBreakdowns(){
     const g = picks.filter(p => GRADED.has(p.status));
     if(!g.length){ $("#bySport").innerHTML = $("#byConf").innerHTML = `<p class="empty">Fills in as picks are graded.</p>`; return; }
     const groups = {};
     for(const p of g){ const k = p.sport || "Other"; (groups[k] = groups[k] || []).push(p); }
-    const rows = Object.keys(groups).map(k => { const a = groups[k]; const w = a.filter(p => p.status === "won").length, l = a.filter(p => p.status === "lost").length, pu = a.length - w - l; const u = a.reduce((s,p) => s + profitOf(p), 0); return {k, w, l, pu, u}; }).sort((a,b) => b.u - a.u);
+    const rows = Object.keys(groups).map(k => { const a = groups[k]; const w = a.filter(p => isW(p.status)).length, l = a.filter(p => isL(p.status)).length, pu = a.length - w - l; const u = a.reduce((s,p) => s + profitOf(p), 0); return {k, w, l, pu, u}; }).sort((a,b) => b.u - a.u);
     $("#bySport").innerHTML = `<div class="tbl"><table><thead><tr><th>Sport</th><th>Record</th><th>Win %</th><th>Units</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(r.k)}</td><td>${r.w}-${r.l}${r.pu ? "-" + r.pu : ""}</td><td>${(r.w + r.l) ? pct(r.w/(r.w + r.l), 0) : "—"}</td><td class="${cls(r.u)}">${fmtU(r.u)}</td></tr>`).join("")}</tbody></table></div>`;
     const tiers = ["High","Medium","Low"];
-    const crow = tiers.map(t => { const a = g.filter(p => String(p.confidence || "").toLowerCase() === t.toLowerCase() && p.status !== "push"); if(!a.length) return ""; const w = a.filter(p => p.status === "won").length; const ests = a.map(p => prob(p.model_prob)).filter(v => v !== null); const est = ests.length ? ests.reduce((s,v) => s + v, 0)/ests.length : null; return `<tr><td>${t}</td><td>${a.length}</td><td>${est !== null ? pct(est, 0) : "—"}</td><td class="${est !== null ? (w/a.length >= est ? "pos" : "neg") : ""}">${pct(w/a.length, 0)}</td></tr>`; }).join("");
+    const crow = tiers.map(t => { const a = g.filter(p => String(p.confidence || "").toLowerCase() === t.toLowerCase() && p.status !== "push"); if(!a.length) return ""; const w = a.filter(p => isW(p.status)).length; const ests = a.map(p => prob(p.model_prob)).filter(v => v !== null); const est = ests.length ? ests.reduce((s,v) => s + v, 0)/ests.length : null; return `<tr><td>${t}</td><td>${a.length}</td><td>${est !== null ? pct(est, 0) : "—"}</td><td class="${est !== null ? (w/a.length >= est ? "pos" : "neg") : ""}">${pct(w/a.length, 0)}</td></tr>`; }).join("");
     $("#byConf").innerHTML = crow ? `<div class="tbl"><table><thead><tr><th>Confidence</th><th>Picks</th><th>Estimated</th><th>Actual</th></tr></thead><tbody>${crow}</tbody></table></div>` : `<p class="empty">Fills in as picks are graded.</p>`;
   }
 
@@ -414,17 +608,20 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     fs.innerHTML = `<option value="">All sports</option>` + sports.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
     fs.value = sports.includes(cur) ? cur : "";
     const fst = $("#fStatus").value;
-    const rows = picks.slice().sort(byDateAsc).reverse().filter(p => (!fs.value || p.sport === fs.value) && (!fst || (p.status || "pending") === fst));
+    const rows = picks.slice().sort(byDateAsc).reverse().filter(p => (!fs.value || p.sport === fs.value) && (!fst || (p.status || "pending").replace("half_", "") === fst));
     const el = $("#log");
     if(!loaded){ el.innerHTML = `<p class="empty" style="padding-top:12px">Loading…</p>`; return; }
     if(!rows.length){ el.innerHTML = `<p class="empty" style="padding-top:12px">${picks.length ? "No picks match these filters." : "No picks yet. The first one lands at 10:00 AM Atlantic."}</p>`; return; }
     const open = new Set(Array.from(el.querySelectorAll("details[open]")).map(d => d.dataset.id));
     el.innerHTML = rows.map(p => {
-      const st = STATUS[p.status] ? p.status : "pending", pl = profitOf(p), dec = decOf(p);
+      const st = STATUS[p.status] ? p.status : "pending", pl = profitOf(p), dec = decOf(p), c = clvOf(p);
+      const bits = [esc(p.event || ""), dec ? dec.toFixed(2) : "—", unitsOf(p) + "u"];
+      if(p.confidence) bits.push(esc(p.confidence));
+      if(c !== null) bits.push("CLV " + spct(c));
       return `<details class="row" data-id="${esc(p.id)}" ${open.has(p.id) ? "open" : ""}><summary>
         <span class="c-date">${esc(fmtDay(p.date))}</span>
         <span class="c-sport">${esc(p.sport || "")}</span>
-        <span class="c-bet"><div class="b1">${esc(p.bet || "")}</div><div class="b2">${esc(p.event || "")} · ${dec ? dec.toFixed(2) : "—"} · ${unitsOf(p)}u${p.confidence ? " · " + esc(p.confidence) : ""}</div></span>
+        <span class="c-bet"><div class="b1">${esc(p.bet || "")}</div><div class="b2">${bits.join(" · ")}</div></span>
         <span class="c-res"><span class="pill ${st}">${STATUS[st]}</span></span>
         <span class="c-pl ${cls(pl)}">${GRADED.has(st) ? fmtU(pl) : "—"}</span>
       </summary><div class="row-body">${detailHTML(p, true)}</div></details>`;
@@ -433,31 +630,35 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
 
   function renderAll(){
     $("#todayLabel").textContent = fmtDay(todayISO(), {weekday:"long", month:"long", day:"numeric", year:"numeric"});
-    renderTicket(); renderTiles(); renderChart(); renderBreakdowns(); renderLog();
+    renderTicket(); renderTiles(); renderChart(); renderClv(); renderMvm(); renderBreakdowns(); renderLog();
   }
 
   $("#fSport").addEventListener("change", renderLog);
   $("#fStatus").addEventListener("change", renderLog);
   const us = $("#unitSize");
   if(unitSize) us.value = unitSize;
-  us.addEventListener("input", () => { const v = num(us.value); unitSize = v && v > 0 ? v : null; try { unitSize ? localStorage.setItem("ml-unit", String(unitSize)) : localStorage.removeItem("ml-unit"); } catch(e){} renderTicket(); renderTiles(); });
+  us.addEventListener("input", () => { const v = num(us.value); unitSize = v && v > 0 ? v : null; try { unitSize ? localStorage.setItem("ml-unit", String(unitSize)) : localStorage.removeItem("ml-unit"); } catch(e){} renderAll(); });
   let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(renderChart, 150); });
 
   renderAll();
 
+  function setPicks(arr, updatedAt){
+    picks = arr.filter(Boolean).map(b => Object.assign({}, b, {id: b.id || b.date, date: b.date || b.id, status: String(b.status || "pending").toLowerCase().replace("-", "_")}));
+    if(updatedAt){ const t = new Date(updatedAt); if(!isNaN(t)) $("#updated").textContent = "Updated " + new Intl.DateTimeFormat("en-US",{timeZone:TZ,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}).format(t); }
+    loaded = true; failed = ""; renderAll();
+  }
+
+  /*LOADER*/
   let lastStamp = "";
   async function load(){
     try {
       const r = await fetch("picks.json?t=" + Date.now(), {cache: "no-store"});
       if(!r.ok) throw new Error("HTTP " + r.status);
       const j = await r.json();
-      const arr = Array.isArray(j) ? j : (j.picks || []);
       const stamp = JSON.stringify(j);
       if(stamp === lastStamp && loaded) return;
       lastStamp = stamp;
-      picks = arr.filter(Boolean).map(b => Object.assign({}, b, {id: b.id || b.date, date: b.date || b.id}));
-      if(j.updated_at){ const t = new Date(j.updated_at); if(!isNaN(t)) $("#updated").textContent = "Updated " + new Intl.DateTimeFormat("en-US",{timeZone:TZ,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}).format(t); }
-      loaded = true; failed = ""; renderAll();
+      setPicks(Array.isArray(j) ? j : (j.picks || []), j.updated_at);
     } catch(e){
       if(!loaded){ failed = "Couldn't load the picks. Check your connection and reload the page."; renderAll(); }
     }
@@ -465,6 +666,7 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   load();
   setInterval(() => { if(document.visibilityState === "visible") load(); }, 5*60*1000);
   document.addEventListener("visibilitychange", () => { if(document.visibilityState === "visible") load(); });
+  /*END LOADER*/
 })();
 </script>
 </body>

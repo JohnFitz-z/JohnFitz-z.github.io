@@ -1,0 +1,97 @@
+{
+  "note": "Worked example with made-up numbers to show the format. Not a real pick.",
+  "date": "2026-10-07",
+  "candidates": [
+    {
+      "id": "mlb-ml",
+      "sport": "MLB",
+      "league": "NLDS Game 4",
+      "event": "Brewers @ Padres",
+      "home": "Padres",
+      "away": "Brewers",
+      "start_time": "2026-10-07T23:08:00-03:00",
+      "market": "moneyline",
+      "selection": "home",
+      "line": null,
+      "price": 1.8,
+      "market_odds": [
+        { "book": "DraftKings", "prices": { "home": -125, "away": 105 } },
+        { "book": "FanDuel", "prices": { "home": -128, "away": 108 } },
+        { "book": "BetMGM", "prices": { "home": -125, "away": 105 } }
+      ],
+      "model_inputs": {
+        "home": { "off": 104, "opp_sp": 4.6, "opp_sp_ip": 4.5, "opp_pen": 3.7 },
+        "away": { "off": 106, "opp_sp": 3.5, "opp_sp_ip": 5.5, "opp_pen": 3.6 },
+        "park": 95
+      },
+      "adjustments": [
+        { "factor": "Brewers bullpen used heavily the last two nights", "direction": "+", "size": "small",
+          "note": "Top three relievers threw 60+ pitches combined in Games 2 and 3." }
+      ]
+    },
+    {
+      "id": "nhl-total",
+      "sport": "NHL",
+      "event": "Bruins @ Canadiens",
+      "home": "Canadiens",
+      "away": "Bruins",
+      "start_time": "2026-10-07T20:00:00-03:00",
+      "market": "total",
+      "selection": "under",
+      "line": 6,
+      "price": -105,
+      "market_odds": [
+        { "book": "DraftKings", "line": 6, "prices": { "over": -115, "under": -105 } },
+        { "book": "FanDuel", "line": 6, "prices": { "over": -112, "under": -108 } }
+      ],
+      "model_inputs": {
+        "home": { "xgf60": 2.4, "xga60": 2.7, "goalie_gsax60": -0.1 },
+        "away": { "xgf60": 2.6, "xga60": 2.3, "goalie_gsax60": 0.35 }
+      },
+      "adjustments": []
+    },
+    {
+      "id": "epl-1x2",
+      "sport": "Soccer",
+      "league": "Premier League",
+      "event": "Arsenal vs Brighton",
+      "home": "Arsenal",
+      "away": "Brighton",
+      "start_time": "2026-10-07T11:30:00-03:00",
+      "market": "moneyline",
+      "selection": "home",
+      "price": 1.62,
+      "market_odds": [
+        { "book": "Pinnacle", "prices": { "home": 1.6, "draw": 4.3, "away": 5.6 } },
+        { "book": "bet365", "prices": { "home": 1.57, "draw": 4.2, "away": 5.5 } }
+      ],
+      "model_inputs": {
+        "home": { "xgf": 2.0, "xga": 0.9 },
+        "away": { "xgf": 1.5, "xga": 1.4 },
+        "league_avg": 1.4
+      },
+      "adjustments": [
+        { "factor": "Brighton without first-choice centre-backs", "direction": "+", "size": "medium",
+          "note": "Both ruled out in Friday's press conference." }
+      ]
+    },
+    {
+      "id": "nfl-spread",
+      "sport": "NFL",
+      "event": "Bills @ Chiefs",
+      "home": "Chiefs",
+      "away": "Bills",
+      "start_time": "2026-10-11T20:25:00-03:00",
+      "market": "spread",
+      "selection": "away",
+      "line": 3,
+      "price": -110,
+      "market_odds": [
+        { "book": "DraftKings", "line": 3, "prices": { "home": -110, "away": -110 } },
+        { "book": "FanDuel", "line": 3, "prices": { "home": -108, "away": -112 } }
+      ],
+      "model_inputs": { "home_rating": 5.0, "away_rating": 4.5, "total": 48.5 },
+      "adjustments": []
+    }
+  ]
+}

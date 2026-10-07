@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-06T14:51:45Z",
+  "updated_at": "2026-10-07T05:04:51Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -29,6 +29,8 @@
       "created_at": "2026-10-06T13:18:08Z",
       "date": "2026-10-06",
       "event": "Brewers @ Padres",
+      "final_score": "Padres 4, Brewers 3",
+      "graded_at": "2026-10-07T05:06:00Z",
       "implied_prob": 0.571,
       "league": "NLDS Game 3 (Brewers lead 2-0)",
       "market": "Moneyline",
@@ -42,6 +44,7 @@
         "Both Milwaukee wins were by one run (3-2, 4-3). San Diego's offense went 3-for-18 with runners in scoring position, which points to bad sequencing more than a real talent gap.",
         "Market: Padres -134 to -136 across books (implied 57%). I estimate about 59%, an edge of roughly 2 points, so this is sized Low."
       ],
+      "result_units": 0.38,
       "risks": [
         "May has dominated San Diego this year (1.23 ERA, 22 K in 22 IP over three starts), and Milwaukee is a deep, elite team (the NL Central leader), so its bullpen can cover a short May outing.",
         "Pivetta is just back from a five-month elbow injury and may be on a short leash, which pushes more innings onto the Padres bullpen.",
@@ -75,7 +78,7 @@
       ],
       "sport": "MLB",
       "start_time": "2026-10-06T22:30:00-03:00",
-      "status": "pending",
+      "status": "won",
       "summary": "Milwaukee is starting Dustin May, who struggled badly late in the season, against a Padres team that was 53-30 at home and has a healthy, sharp Nick Pivetta. The price of -134 doesn't fully reflect that pitching gap, but the edge is small.",
       "units": 0.5,
       "id": "2026-10-06"

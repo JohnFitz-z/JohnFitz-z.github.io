@@ -18,7 +18,7 @@ Ranking uses expected log growth at the full Kelly stake. It rewards a big edge 
 |---|---|
 | Market | Each book's two-way or three-way prices have the margin removed (power method). The median across books is the market's fair probability. |
 | Model | A score model for the sport prices the exact bet, including pushes on whole lines, half results on quarter lines, extra innings and overtime. |
-| Blend | Market and model are combined in log-odds space, 60% market and 40% model. The market is usually right, so it gets the larger share. |
+| Blend | Market and model are combined in log-odds space, 50% market and 50% model. |
 | Adjust | Up to four researched factors the model can't see. Small, medium and large move the log-odds by 0.04, 0.08 and 0.12 (about 1, 2 and 3 points near 50%). The total is capped at 0.20 (about 5 points). |
 | Bet | Expected value at the real price, quarter-Kelly stake (1 unit = 1% of bankroll, 0.25u to 2u), and the lowest price that still gives at least +1% EV ("take it at"). |
 

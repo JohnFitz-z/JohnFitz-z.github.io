@@ -1,0 +1,25 @@
+<div class="page-title"><div><h1>Bankroll</h1><p>Your real bets. Enter what you put on each pick and the odds you got. Results and your balance update by themselves.</p></div></div>
+<section class="top">
+  <div>
+    <section class="panel" id="moneyPanel">
+      <div class="stats4" id="moneyStats"></div>
+      <div id="moneyChart"></div>
+    </section>
+  </div>
+  <aside class="rail" aria-label="Bankroll">{{BANK_CARD}}</aside>
+</section>
+<section class="panel">
+  <div class="ph"><div><h2>Your bets</h2><p>Leave a pick blank if you didn't bet on it. If you don't enter odds, the pick's odds are used.</p></div></div>
+  <div class="mlist" id="moneyList"></div>
+  <details class="backup">
+    <summary>Back up or move your bets</summary>
+    <div class="bk">
+      <p id="bkWhere"></p>
+      <div class="brow"><button type="button" class="btn" id="bkCopy">Copy backup code</button><span class="bmsg" id="bkMsg"></span></div>
+      <textarea id="bkOut" rows="3" readonly hidden aria-label="Backup code"></textarea>
+      <label for="bkIn" class="k">Paste a backup code to restore</label>
+      <textarea id="bkIn" rows="3"></textarea>
+      <div class="brow"><button type="button" class="btn" id="bkRestore">Restore</button><span class="bmsg" id="bkErr"></span></div>
+    </div>
+  </details>
+</section>

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Morning Line</title>
-<meta name="description" content="Today&#x27;s researched pick, with every reason shown and every result kept.">
+<title>Bankroll · Morning Line</title>
+<meta name="description" content="Track your own bets and balance.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://johnfitz-z.github.io/">
+<link rel="canonical" href="https://johnfitz-z.github.io/bankroll/">
 <meta property="og:site_name" content="Morning Line">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Morning Line">
-<meta property="og:description" content="Today&#x27;s researched pick, with every reason shown and every result kept.">
-<meta property="og:url" content="https://johnfitz-z.github.io/">
+<meta property="og:title" content="Bankroll · Morning Line">
+<meta property="og:description" content="Track your own bets and balance.">
+<meta property="og:url" content="https://johnfitz-z.github.io/bankroll/">
 <meta property="og:image" content="https://johnfitz-z.github.io/icon-512.png">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#ECF0F2" media="(prefers-color-scheme: light)">
@@ -29,26 +29,31 @@
 <link rel="stylesheet" href="/assets/css/main.css?v=c1dd44d874">
 <link rel="modulepreload" href="/assets/js/app.js?v=c1dd44d874">
 </head>
-<body data-page="today">
+<body data-page="bankroll">
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="site-head">
     <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">One researched bet a day, every reason shown, every result kept.</span></a>
     <nav class="topnav" aria-label="Main">
-      <a href="/" aria-current="page">Today</a>
+      <a href="/">Today</a>
       <a href="/results/">Results</a>
       <a href="/stats/">Stats</a>
-      <a href="/bankroll/">Bankroll</a>
+      <a href="/bankroll/" aria-current="page">Bankroll</a>
       <a href="/method/">How it works</a>
     </nav>
   </header>
   <div class="subhead"><span id="todayLabel"></span><span><span class="offline" id="offline" hidden>Offline</span> <span id="updated"></span></span></div>
 
   <main id="main" class="wrap-main" style="display:flex;flex-direction:column;gap:22px">
+<div class="page-title"><div><h1>Bankroll</h1><p>Your real bets. Enter what you put on each pick and the odds you got. Results and your balance update by themselves.</p></div></div>
 <section class="top">
-  <article class="ticket" id="ticket" aria-live="polite"></article>
-  <aside class="rail" aria-label="Bankroll and record">
-    <div class="bank" id="bank">
+  <div>
+    <section class="panel" id="moneyPanel">
+      <div class="stats4" id="moneyStats"></div>
+      <div id="moneyChart"></div>
+    </section>
+  </div>
+  <aside class="rail" aria-label="Bankroll"><div class="bank" id="bank">
   <div class="bank-top"><span class="k">My bankroll</span><span class="k" id="bankNote"></span></div>
   <div class="bank-grid">
     <div class="bstat"><label class="k" for="startMoney">Starting money</label><div class="bin">$<input class="inp" id="startMoney" type="number" min="0" step="0.01" inputmode="decimal" value="100"></div></div>
@@ -56,15 +61,22 @@
   </div>
   <div class="todaybet" id="todayBet"></div>
 </div>
-
-    <div class="rail-top"><span class="k">Record to date</span><span class="k" id="gradedCount"></span></div>
-    <div class="tiles four" id="tiles"></div>
-    <a class="more" href="/stats/">All stats →</a>
-  </aside>
+</aside>
 </section>
 <section class="panel">
-  <div class="ph"><div><h2>Recent picks</h2><p>Open any pick for the full breakdown.</p></div><a class="more" href="/results/">All results →</a></div>
-  <div class="plist" id="recent"></div>
+  <div class="ph"><div><h2>Your bets</h2><p>Leave a pick blank if you didn't bet on it. If you don't enter odds, the pick's odds are used.</p></div></div>
+  <div class="mlist" id="moneyList"></div>
+  <details class="backup">
+    <summary>Back up or move your bets</summary>
+    <div class="bk">
+      <p id="bkWhere"></p>
+      <div class="brow"><button type="button" class="btn" id="bkCopy">Copy backup code</button><span class="bmsg" id="bkMsg"></span></div>
+      <textarea id="bkOut" rows="3" readonly hidden aria-label="Backup code"></textarea>
+      <label for="bkIn" class="k">Paste a backup code to restore</label>
+      <textarea id="bkIn" rows="3"></textarea>
+      <div class="brow"><button type="button" class="btn" id="bkRestore">Restore</button><span class="bmsg" id="bkErr"></span></div>
+    </div>
+  </details>
 </section>
 
   </main>
@@ -75,10 +87,10 @@
 </div>
 
 <nav class="tabbar" aria-label="Main">
-  <a href="/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></svg>Today</a>
+  <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></svg>Today</a>
   <a href="/results/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>Results</a>
   <a href="/stats/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Stats</a>
-  <a href="/bankroll/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4z"/><path d="M4 7l11-3v3"/><path d="M15 13.5h2"/></svg>Bankroll</a>
+  <a href="/bankroll/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4z"/><path d="M4 7l11-3v3"/><path d="M15 13.5h2"/></svg>Bankroll</a>
   <a href="/method/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How it works · Morning Line</title>
+<meta name="description" content="How each Morning Line pick is researched, priced and graded.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://johnfitz-z.github.io/method/">
+<meta property="og:site_name" content="Morning Line">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How it works · Morning Line">
+<meta property="og:description" content="How each Morning Line pick is researched, priced and graded.">
+<meta property="og:url" content="https://johnfitz-z.github.io/method/">
+<meta property="og:image" content="https://johnfitz-z.github.io/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#ECF0F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A1117" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Morning Line">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css?v=c1dd44d874">
+<link rel="modulepreload" href="/assets/js/app.js?v=c1dd44d874">
+</head>
+<body data-page="method">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">One researched bet a day, every reason shown, every result kept.</span></a>
+    <nav class="topnav" aria-label="Main">
+      <a href="/">Today</a>
+      <a href="/results/">Results</a>
+      <a href="/stats/">Stats</a>
+      <a href="/bankroll/">Bankroll</a>
+      <a href="/method/" aria-current="page">How it works</a>
+    </nav>
+  </header>
+  <div class="subhead"><span id="todayLabel"></span><span><span class="offline" id="offline" hidden>Offline</span> <span id="updated"></span></span></div>
+
+  <main id="main" class="wrap-main" style="display:flex;flex-direction:column;gap:22px">
+<div class="page-title"><div><h1>How it works</h1><p>What happens every day between the slate opening and a pick landing on your phone.</p></div></div>
+<section class="panel">
+<div class="prose">
+  <div class="callout">Every morning at 9:09 a scheduled run researches the day's games, prices a shortlist with the model, and posts one pick by 10:00. Every hour from 1 PM to 2 AM another run checks whether the game is over, grades it, records the closing line, and updates this site.</div>
+
+  <h2>1. Shortlist</h2>
+  <p>The run scans every game starting after 10:30 AM in every sport, then picks four or five spots where news, matchups or line movement suggest the price might be off. For each one it collects odds from at least two sportsbooks, the inputs the model needs, and any late news.</p>
+
+  <h2>2. The market's view</h2>
+  <p>Sportsbook odds include a cut, so the probabilities they imply add up to more than 100%. The model removes that cut from each book's prices (the "power" method, which takes a bit more off long shots) and takes the middle value across books. That's the market's fair probability.</p>
+
+  <h2>3. The model's view</h2>
+  <p>Each sport has its own score model that prices the exact bet, including pushes and overtime rules:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Sport</th><th>Model</th><th>Main inputs</th></tr></thead>
+    <tbody>
+      <tr><td>MLB</td><td>Runs for each team (negative binomial)</td><td>Offense (wRC+), opposing starter and bullpen quality, expected innings, park</td></tr>
+      <tr><td>NHL</td><td>Goals for each team (Poisson), with overtime and shootouts</td><td>5-on-5 expected goals for and against, starting goalies</td></tr>
+      <tr><td>Soccer</td><td>Goals (Poisson with the Dixon-Coles draw correction)</td><td>Expected goals for and against per match</td></tr>
+      <tr><td>NFL, CFL, college football</td><td>Points margin, weighted toward 3, 7, 10 and 14</td><td>Power ratings, home field, projected total</td></tr>
+      <tr><td>NBA, WNBA, college basketball</td><td>Points margin and total</td><td>Power or net ratings, home court, projected total</td></tr>
+      <tr><td>Tennis, MMA</td><td>No score model</td><td>Market price plus adjustments</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>4. Blend and adjust</h2>
+  <p>The market and the model each get half the say. Then up to four adjustments cover things the inputs can't see, like a tired bullpen or a late scratch. Each one is small, medium or large (about 1, 2 or 3 percentage points), and together they can't move the number more than about 5 points.</p>
+
+  <h2>5. Bet or pass</h2>
+  <ul>
+    <li><b>Expected value</b>: the final probability against the actual price. Positive means the price pays more than the risk deserves.</li>
+    <li><b>Ranking</b>: the pick is the candidate with the best edge for its risk, so a solid edge at short odds beats the same edge on a long shot.</li>
+    <li><b>Size</b>: a quarter of the Kelly stake, between 0.25 and 2 units. One unit is 1% of your bankroll.</li>
+    <li><b>Take at</b>: the lowest price that still gives at least +1% expected value. Below that, skip the bet.</li>
+    <li><b>Confidence</b>: High at +4% expected value or more, Medium at +2% to +4%, Low below that.</li>
+  </ul>
+  <p>There's always a pick. If nothing has a positive edge, it's the closest call at the minimum size, marked "No clear edge".</p>
+
+  <h2>6. Grading and the closing line</h2>
+  <p>Once the game ends, the result is graded and the closing odds are recorded. Beating the closing price means the market moved toward the pick after it was made. Over many picks, that's the earliest reliable sign the edge is real, long before the win-loss record means much.</p>
+
+  <h2>Under the hood</h2>
+  <p>The pricing code and its settings are in the <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/tree/main/model" target="_blank" rel="noopener">model folder</a> on GitHub, and the full playbook the daily run follows is in <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/blob/main/model/METHOD.md" target="_blank" rel="noopener">METHOD.md</a>.</p>
+</div>
+</section>
+
+  </main>
+
+  <footer>
+    Odds are the consensus at research time, in decimal like Stake shows them. Only bet at the "take at" price or better. Educational tracking only; no pick is a sure thing. 19+ in Nova Scotia.
+  </footer>
+</div>
+
+<nav class="tabbar" aria-label="Main">
+  <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></svg>Today</a>
+  <a href="/results/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>Results</a>
+  <a href="/stats/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Stats</a>
+  <a href="/bankroll/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4z"/><path d="M4 7l11-3v3"/><path d="M15 13.5h2"/></svg>Bankroll</a>
+  <a href="/method/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
+</nav>
+
+<script type="module" src="/assets/js/app.js?v=c1dd44d874"></script>
+</body>
+</html>

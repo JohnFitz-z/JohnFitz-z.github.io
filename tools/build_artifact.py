@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Make the claude.ai artifact copy of the site from index.html.
+Make the claude.ai artifact copy of the site from tools/artifact/page.html (the single-page version).
 
-    python3 tools/build_artifact.py index.html out.html
+    python3 tools/build_artifact.py tools/artifact/page.html out.html
 
 Same page and styles. The only differences: the artifact reads picks live from
 its own database instead of picks.json, keeps the viewer's bets in their

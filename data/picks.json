@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T05:18:02Z",
+  "updated_at": "2026-10-08T13:07:40Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -169,6 +169,147 @@
       "summary": "The Yankees are priced around -160 at home, but they are without Aaron Judge, have scored 2 runs in 18 innings this series, and face a Rays team that hits lefties well. Fried's start also carries some late-scratch risk, so the Rays at roughly +138 look a few points underpriced.",
       "units": 0.5,
       "id": "2026-10-07"
+    },
+    {
+      "away": "Guardians",
+      "bet": "Under 7.5 runs",
+      "candidates": [
+        {
+          "bet": "Over 48.5 points",
+          "event": "Buccaneers @ Cowboys",
+          "note": "EV -2.7% at 1.95, estimate 49.8% vs 51.2% needed. Passed over: the 5-point drop after Mayfield's injury looks right with Jalon Daniels starting, and the over price is shorter than fair."
+        },
+        {
+          "bet": "Guardians moneyline",
+          "event": "Guardians @ White Sox",
+          "note": "EV -3.3% at 1.87, estimate 51.7% vs 53.5% needed. Passed over: the price moved from -111 to about -118 since opening, past what the market supports."
+        },
+        {
+          "bet": "Senators moneyline",
+          "event": "Flyers @ Senators",
+          "note": "EV -4.4% at 1.69, estimate 56.6% vs 59.2% needed. Passed over: Ottawa moved from -140 to -148, Sanderson is out and Ersson is in net, so no value left."
+        },
+        {
+          "bet": "Buccaneers +8.5",
+          "event": "Buccaneers @ Cowboys",
+          "note": "EV -5.8% at 1.91, estimate 49.4% vs 52.4% needed. Passed over: Tampa is missing Winfield Jr. and Morrison in the secondary against the top offense in points per drive."
+        }
+      ],
+      "confidence": "Low",
+      "created_at": "2026-10-08T12:17:00Z",
+      "date": "2026-10-08",
+      "ev": -0.0138,
+      "event": "Guardians @ White Sox",
+      "fair_prob": 0.5275,
+      "home": "White Sox",
+      "implied_prob": 0.5349,
+      "league": "ALDS Game 4 (White Sox lead 2-1)",
+      "market": "Total",
+      "min_odds_american": -109,
+      "min_odds_decimal": 1.92,
+      "model": {
+        "books": [
+          {
+            "book": "DraftKings",
+            "decimal": 1.82,
+            "fair": 0.5266,
+            "margin": 0.0471,
+            "price": -122
+          },
+          {
+            "book": "Consensus (Grueling Truth)",
+            "decimal": 1.885,
+            "fair": 0.5283,
+            "margin": 0.0045,
+            "price": -113
+          }
+        ],
+        "engine": "1.0",
+        "ev": -0.0138,
+        "fair_odds_decimal": 1.9,
+        "growth_bp": 0,
+        "inputs": {},
+        "inputs_text": "",
+        "kelly_fraction": 0.25,
+        "kelly_full": 0,
+        "market_margin": 0.0258,
+        "method": "market_only",
+        "method_label": "Market only",
+        "min_ev": 0.01,
+        "min_odds_decimal": 1.92,
+        "no_edge": true,
+        "notes": [],
+        "outcomes": {
+          "loss": 0.4725,
+          "win": 0.5275
+        },
+        "steps": [
+          {
+            "detail": "Median of 2 books, power method, average margin 2.6%",
+            "key": "market",
+            "label": "Market, margin removed",
+            "prob": 0.5275
+          },
+          {
+            "key": "final",
+            "label": "Final estimate",
+            "prob": 0.5275
+          }
+        ],
+        "warnings": []
+      },
+      "model_prob": 0.5275,
+      "no_edge": true,
+      "odds_american": -115,
+      "odds_decimal": 1.87,
+      "reasoning": [
+        "Parker Messick: 2.56 ERA, 3.07 FIP, 3.37 xFIP over 186.1 innings and 32 starts; 2 runs on 4 hits with 6 strikeouts in Game 1 of this series.",
+        "Messick has gone at least five innings in all four starts against Chicago this year, with eight strikeouts in three of them and a 2.45 ERA at Rate Field (18 K, 2 BB in 14.2 innings).",
+        "Before Game 3, the White Sox openers Hagen Smith and Grant Taylor had combined for 17 strikeouts and 1 earned run over 14 innings in the postseason; Cleveland scored only 3 runs in Games 1 and 2.",
+        "Game 3 had a postseason-record 19 combined strikeouts, and Chicago struck out 19 times on its own side of that.",
+        "Market: the under is about 52.8% fair after removing the margin (DraftKings 7.5 at -122, another listing at -113). At 1.87 that is a 1.4% expected loss, so it is sized at the 0.25u minimum and should only be taken at 1.92 or better."
+      ],
+      "risks": [
+        "Both bullpens are stretched: Chicago's has worked extra innings three games in a row, and Cleveland used Griffin, Cantillo and closer Cade Smith for over six innings on Wednesday.",
+        "Cleveland just scored 9 runs in Game 3, including a bases-loaded triple off Smith, and these teams went over in 8 of their last 10 meetings.",
+        "The total is only priced at two sources, and the White Sox (776 runs) have far more power than Cleveland, so one big inning sinks it."
+      ],
+      "sources": [
+        {
+          "title": "Guardians-White Sox ALDS Game 4 FAQ (MLB.com)",
+          "url": "https://www.mlb.com/news/guardians-vs-white-sox-alds-game-4-starting-lineups-and-pitching-matchup"
+        },
+        {
+          "title": "Guardians vs. White Sox ALDS Game 4 Prediction (Bettors Insider)",
+          "url": "https://bettorsinsider.com/mlb/2026/10/08/guardians-vs-white-sox-alds-game-4-prediction-cleveland-fights-for-game-5-at-rate-field/"
+        },
+        {
+          "title": "Guardians vs White Sox Game 4 Betting Preview (The Grueling Truth)",
+          "url": "https://thegruelingtruth.com/baseball/guardians-vs-white-sox-game-4-betting-preview-odds-props-and-prediction-for-thursday/"
+        },
+        {
+          "title": "Parker Messick stats (FanGraphs)",
+          "url": "https://www.fangraphs.com/players/parker-messick/31986/stats/pitching"
+        },
+        {
+          "title": "MLB odds (Covers)",
+          "url": "https://www.covers.com/sport/baseball/mlb/odds"
+        },
+        {
+          "title": "Buccaneers vs Cowboys Prediction, Picks & Odds (Covers)",
+          "url": "https://www.covers.com/nfl/buccaneers-vs-cowboys-prediction-picks-oct-8-2026"
+        },
+        {
+          "title": "Flyers vs Senators Prediction Oct. 8 (TheSpread)",
+          "url": "https://www.thespread.com/nhl-articles/flyers-vs-senators-prediction-october-8-2026/"
+        }
+      ],
+      "sport": "MLB",
+      "start_time": "2026-10-08T21:00:00-03:00",
+      "status": "pending",
+      "summary": "No candidate cleared the engine's edge bar today, so this is a minimum-stake tracking pick. The Under 7.5 in Game 4 was the closest call: Parker Messick has been excellent all year and against Chicago, and the White Sox bullpen game has allowed little outside Game 3, but the price only gets you to fair at about 1.90.",
+      "units": 0.25,
+      "id": "2026-10-08"
     }
   ]
 }

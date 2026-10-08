@@ -147,10 +147,51 @@ details.books summary{cursor:pointer;color:var(--accent);width:max-content;max-w
 .tile .v{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.05;margin-top:4px;font-variant-numeric:tabular-nums}
 .tile .s{font-size:12px;color:var(--ink-2);margin-top:2px}
 .pos{color:var(--win)}.neg{color:var(--loss)}
-.unit{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--card);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--ink-2)}
-.unit label{display:flex;flex-direction:column;gap:1px}
-.money{display:flex;align-items:center;gap:4px;font-family:var(--mono)}
-.money input{width:84px;font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
+/* my bankroll */
+.bank{background:var(--card);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--accent)}
+.bank-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.bank-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px}
+.bstat{min-width:0}
+.bstat .v{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.05;margin-top:4px;font-variant-numeric:tabular-nums}
+.bstat .s{font-size:12px;color:var(--ink-2);margin-top:2px}
+.bin{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:14px;color:var(--ink-2)}
+.inp{width:100%;min-width:0;font:inherit;font-family:var(--mono);font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:7px 8px;font-variant-numeric:tabular-nums}
+.inp:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 2px var(--accent-soft)}
+.bstat .bin{margin-top:6px}
+.todaybet{border-top:1px solid var(--rule);padding-top:12px;display:flex;flex-direction:column;gap:8px}
+.todaybet .tb-name{font-size:13.5px;font-weight:500;overflow-wrap:anywhere}
+.tb-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px}
+.tb-row label{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tb-out{font-size:12.5px;color:var(--ink-2)}
+/* my money panel */
+.stats4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}
+#moneyChart svg{display:block;width:100%;height:auto}
+#moneyChart .ax{fill:var(--ink-3);font-family:var(--mono);font-size:11px}
+#moneyChart .end{fill:var(--ink);font-family:var(--mono);font-size:12px;font-weight:500}
+.mlist{border-top:1px solid var(--rule);margin-top:14px}
+.mrow{display:grid;grid-template-columns:70px minmax(0,1fr) 88px 128px 96px 92px;grid-template-areas:"date pick res stake odds pl";gap:6px 12px;align-items:center;padding:10px 2px;border-bottom:1px solid var(--rule)}
+.mrow.head{padding-block:8px}
+.mrow.head span{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.mrow.head .m-pl{text-align:right}
+.m-date{grid-area:date;font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+.m-pick{grid-area:pick;min-width:0}
+.m-pick .b1{font-weight:500;overflow-wrap:anywhere}
+.m-pick .b2{font-size:12.5px;color:var(--ink-2)}
+.m-res{grid-area:res}
+.m-stake{grid-area:stake;min-width:0}
+.m-odds{grid-area:odds;min-width:0}
+.m-pl{grid-area:pl;text-align:right;font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums}
+.mrow .lbl{display:none}
+.backup{margin-top:16px;font-size:13.5px}
+.backup summary{cursor:pointer;color:var(--accent);width:max-content;max-width:100%}
+.backup .bk{display:flex;flex-direction:column;gap:10px;margin-top:10px;max-width:560px}
+.backup p{margin:0;color:var(--ink-2)}
+.backup textarea{width:100%;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:8px;resize:vertical}
+.brow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{font:inherit;font-size:13.5px;font-weight:500;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:6px;padding:7px 12px;cursor:pointer}
+.btn:hover{filter:brightness(.97)}
+.bmsg{font-size:12.5px;color:var(--ink-2)}
+.bmsg.err{color:var(--loss)}
 .panel{background:var(--card);border-radius:14px;padding:20px 22px;min-width:0}
 .ph{display:flex;justify-content:space-between;align-items:flex-end;gap:10px 16px;flex-wrap:wrap;margin-bottom:12px}
 .ph h2{font-family:var(--display);font-weight:600;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1}
@@ -201,7 +242,15 @@ tr:last-child td{border-bottom:0}
 .step p{margin:0;font-size:13.5px;color:var(--ink-2)}
 footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
 @media (max-width:880px){.top{grid-template-columns:minmax(0,1fr)}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.how{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:720px){.grid2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:720px){
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .stats4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mrow{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"date date res" "pick pick pick" "stake odds pl";padding:12px 2px;gap:8px 10px}
+  .mrow.head{display:none}
+  .m-res{justify-self:end}
+  .mrow .lbl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+  .m-pl{align-self:end;padding-bottom:8px}
+}
 @media (max-width:600px){
   .lrow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name val" "track track";padding:9px 0}
   .lneed{top:-4px;bottom:-4px}
@@ -250,13 +299,35 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
         <div class="t-empty"><div class="t-bet" style="margin-top:16px">Loading picks…</div></div></div>
     </article>
     <aside class="rail" aria-label="Record">
+      <div class="bank" id="bank">
+        <div class="bank-top"><span class="k">My bankroll</span><span class="k" id="bankNote"></span></div>
+        <div class="bank-grid">
+          <div class="bstat"><label class="k" for="startMoney">Starting money</label><div class="bin">$<input class="inp" id="startMoney" type="number" min="0" step="0.01" inputmode="decimal" value="100"></div></div>
+          <div class="bstat"><div class="k">Current balance</div><div class="v" id="curBal">$100.00</div><div class="s" id="curSub">&nbsp;</div></div>
+        </div>
+        <div class="todaybet" id="todayBet"></div>
+      </div>
       <div class="rail-top"><span class="k">Record to date</span><span class="k" id="gradedCount"></span></div>
       <div class="tiles" id="tiles"></div>
-      <div class="unit">
-        <label for="unitSize"><span class="k">Unit size</span><span>Shows results in dollars</span></label>
-        <span class="money">$<input id="unitSize" type="number" min="0" step="1" inputmode="decimal" placeholder="10"></span>
-      </div>
     </aside>
+  </section>
+
+  <section class="panel" id="moneyPanel">
+    <div class="ph"><div><h2>My money</h2><p>Your real bets. Enter what you put on each pick and the odds you got. Results and your balance update by themselves.</p></div></div>
+    <div class="stats4" id="moneyStats"></div>
+    <div id="moneyChart"></div>
+    <div class="mlist" id="moneyList"></div>
+    <details class="backup">
+      <summary>Back up or move your bets</summary>
+      <div class="bk">
+        <p id="bkWhere"></p>
+        <div class="brow"><button type="button" class="btn" id="bkCopy">Copy backup code</button><span class="bmsg" id="bkMsg"></span></div>
+        <textarea id="bkOut" rows="3" readonly hidden aria-label="Backup code"></textarea>
+        <label for="bkIn" class="k">Paste a backup code to restore</label>
+        <textarea id="bkIn" rows="3"></textarea>
+        <div class="brow"><button type="button" class="btn" id="bkRestore">Restore</button><span class="bmsg" id="bkErr"></span></div>
+      </div>
+    </details>
   </section>
 
   <section class="panel">
@@ -348,9 +419,58 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
   const byDateAsc = (a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
   const clvOf = p => p && p.close ? num(p.close.clv) : null;
 
-  let unitSize = null;
-  try { const s = localStorage.getItem("ml-unit"); if(s) unitSize = num(s); } catch(e){}
-  const money = n => { if(!unitSize) return ""; const v = n*unitSize; return (v < 0 ? "−$" : "$") + Math.abs(v).toFixed(2); };
+  /* ---- my bankroll: the viewer's own bets, kept private to them ---- */
+  /*STORE*/
+  const Store = {
+    where: "Saved in this browser on this device only. The home-screen app and Safari keep separate copies, so stick to one, and copy a backup code now and then.",
+    note: "",
+    async load(){
+      try { localStorage.setItem("ml-probe", "1"); localStorage.removeItem("ml-probe"); }
+      catch(e){ this.note = "Not saving"; this.where = "This browser is blocking storage, so bets you enter here won't be kept. Try the home-screen app or a normal browser window."; return null; }
+      try { const s = localStorage.getItem("ml-bank"); return s ? JSON.parse(s) : null; } catch(e){ return null; }
+    },
+    async save(st){ try { localStorage.setItem("ml-bank", JSON.stringify(st)); return true; } catch(e){ return false; } }
+  };
+  /*END STORE*/
+
+  let bank = {v: 1, start: 100, bets: {}};
+  let bankLoaded = false;
+  const normBank = st => {
+    const out = {v: 1, start: 100, bets: {}};
+    if(!st || typeof st !== "object") return out;
+    const s = num(st.start); if(s !== null && s >= 0) out.start = s;
+    const b = st.bets && typeof st.bets === "object" ? st.bets : {};
+    for(const k of Object.keys(b)){
+      const stake = num(b[k] && b[k].stake), odds = num(b[k] && b[k].odds);
+      const e = {};
+      if(stake !== null && stake > 0) e.stake = Math.round(stake * 100) / 100;
+      if(odds !== null && odds > 1) e.odds = Math.round(odds * 1000) / 1000;
+      if(e.stake || e.odds) out.bets[k] = e;
+    }
+    return out;
+  };
+  const fmt$ = n => (n < -0.004 ? "−$" : "$") + Math.abs(n).toFixed(2);
+  const sfmt$ = n => (n > 0.004 ? "+$" : n < -0.004 ? "−$" : "$") + Math.abs(n).toFixed(2);
+  const stakeOf = p => { const b = bank.bets[p.id]; return b && b.stake > 0 ? b.stake : 0; };
+  const oddsTaken = p => { const b = bank.bets[p.id]; return b && b.odds > 1 ? b.odds : decOf(p); };
+  const myProfit = p => {
+    const s = stakeOf(p); if(!s) return 0;
+    const b = (oddsTaken(p) || 2) - 1;
+    return p.status === "won" ? s*b : p.status === "half_won" ? s*b/2 : p.status === "lost" ? -s : p.status === "half_lost" ? -s/2 : 0;
+  };
+  function bankStats(){
+    const placed = picks.filter(p => stakeOf(p) > 0);
+    const settled = placed.filter(p => GRADED.has(p.status) || p.status === "void");
+    const open = placed.filter(p => !(GRADED.has(p.status) || p.status === "void"));
+    const profit = settled.reduce((a,p) => a + myProfit(p), 0);
+    const inPlay = open.reduce((a,p) => a + stakeOf(p), 0);
+    const staked = settled.filter(p => p.status !== "void").reduce((a,p) => a + stakeOf(p), 0);
+    const W = settled.filter(p => isW(p.status)).length, L = settled.filter(p => isL(p.status)).length;
+    return {placed, settled, open, profit, inPlay, staked, W, L, balance: bank.start + profit - inPlay};
+  }
+  const suggested = p => { const s = bankStats(); const base = s.balance + s.inPlay; return base > 0 ? unitsOf(p) / 100 * base : 0; };
+  let saveTimer = null;
+  function saveBank(){ clearTimeout(saveTimer); saveTimer = setTimeout(() => { Store.save(bank); }, 350); }
 
   function ladderHTML(p){
     const m = p.model || {}, d = decOf(p);
@@ -421,7 +541,8 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     if(!(GRADED.has(p.status) || p.status === "void")) return "";
     const pl = profitOf(p), c = clvOf(p);
     const close = c !== null ? ` · Closed ${num(p.close.odds_decimal) ? num(p.close.odds_decimal).toFixed(2) : "?"}, CLV ${spct(c)}` : "";
-    return `<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${unitSize ? " · " + money(pl) : ""}${close}</span></div>`;
+    const mine = stakeOf(p) > 0 ? ` · You ${sfmt$(myProfit(p))}` : "";
+    return `<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${mine}${close}</span></div>`;
   }
 
   function detailHTML(p, big){
@@ -470,7 +591,7 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
           <div class="t-odds"><div class="dec">${dec ? dec.toFixed(2) : "—"}</div><div class="am">${esc(amOf(p))} American</div>${take}</div>
         </div>
         <div class="t-facts">
-          <div class="fact"><div class="k">Size</div><div class="v">${unitsOf(p)}u${unitSize ? `<span class="k" style="margin-left:6px">${money(unitsOf(p))}</span>` : ""}</div></div>
+          <div class="fact"><div class="k">Size</div><div class="v">${unitsOf(p)}u${bankLoaded && suggested(p) > 0 ? `<span class="k" style="margin-left:6px">≈ ${fmt$(suggested(p))}</span>` : ""}</div></div>
           <div class="fact"><div class="k">Confidence</div><div class="v">${esc(p.confidence || "—")}</div></div>
           <div class="fact"><div class="k">Expected value</div><div class="v ${ev !== null ? cls(ev) : ""}">${ev !== null ? spct(ev) : "—"}</div></div>
           <div class="fact"><div class="k">Market</div><div class="v">${esc(p.market || "—")}</div></div>
@@ -509,46 +630,62 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     $("#tiles").innerHTML =
       t("Record", `${s.W}-${s.L}-${s.P}`, "Won · lost · push") +
       t("Win rate", wr === null ? "—" : pct(wr), s.be !== null ? `Break-even ${pct(s.be)}` : "Excludes pushes", wr !== null && s.be !== null ? (wr >= s.be ? "pos" : "neg") : "") +
-      t("Units", s.g.length ? fmtU(s.units) : "0.00u", unitSize ? money(s.units) + " at $" + unitSize + "/unit" : "Profit in units", cls(s.units)) +
+      t("Units", s.g.length ? fmtU(s.units) : "0.00u", "Profit in units", cls(s.units)) +
       t("ROI", roi === null ? "—" : spct(roi), s.staked ? `On ${s.staked.toFixed(2)}u staked` : "Return per unit bet", roi !== null ? cls(roi) : "") +
       t("Streak", s.streak || "—", "Wins or losses in a row", s.streak ? (s.streak[0] === "W" ? "pos" : "neg") : "") +
       t("Beat the close", s.cl.length ? `${beat}/${s.cl.length}` : "—", avgClv !== null ? `Average CLV ${spct(avgClv)}` : "Price moved our way", avgClv !== null ? cls(avgClv) : "");
+  }
+
+  function lineChart(el, pts, o){
+    const W = Math.max(300, Math.round(el.clientWidth || 640)), H = W < 480 ? 190 : 230;
+    const L = o.left || 40, R = 64, T = 14, B = 26;
+    const vals = pts.map(p => p.v); let lo = Math.min(o.base, ...vals), hi = Math.max(o.base, ...vals);
+    if(hi - lo < o.minSpan){ hi += o.minSpan/2; lo -= o.minSpan/2; }
+    const step = o.steps.find(s => (hi - lo)/s <= 5) || o.steps[o.steps.length - 1] * 2;
+    lo = Math.floor(lo/step)*step; hi = Math.ceil(hi/step)*step;
+    const x = i => L + i*(W - L - R)/Math.max(1, pts.length - 1);
+    const y = v => T + (hi - v)*(H - T - B)/(hi - lo);
+    let grid = "";
+    for(let v = lo; v <= hi + 1e-9; v += step){
+      const yy = y(v).toFixed(1), isBase = Math.abs(v - o.base) < 1e-9;
+      grid += `<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="${isBase ? "var(--ink-3)" : "var(--rule)"}" stroke-width="1" ${isBase ? 'stroke-dasharray="4 4"' : ""}/>`;
+      grid += `<text class="ax" x="${L-8}" y="${(+yy+4).toFixed(1)}" text-anchor="end">${o.fmtAxis(v)}</text>`;
+    }
+    const line = pts.map((p,i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(" ");
+    const area = `${line} L${x(pts.length-1).toFixed(1)},${y(o.base).toFixed(1)} L${x(0).toFixed(1)},${y(o.base).toFixed(1)} Z`;
+    const endV = pts[pts.length-1].v, ex = x(pts.length-1), ey = y(endV);
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label)}">
+      ${grid}
+      <path d="${area}" fill="var(--accent)" fill-opacity="0.12" stroke="none"/>
+      <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="4.5" fill="var(--accent)" stroke="var(--card)" stroke-width="2"/>
+      <text class="end" x="${(ex+9).toFixed(1)}" y="${(ey+4).toFixed(1)}">${o.fmtEnd(endV)}</text>
+      ${o.first ? `<text class="ax" x="${L}" y="${H-6}">${esc(fmtDay(o.first,{weekday:undefined}))}</text>` : ""}
+      ${o.last && o.last !== o.first ? `<text class="ax" x="${W-R}" y="${H-6}" text-anchor="end">${esc(fmtDay(o.last,{weekday:undefined}))}</text>` : ""}
+    </svg>`;
   }
 
   function renderChart(){
     const el = $("#chart");
     const g = picks.filter(p => GRADED.has(p.status)).sort(byDateAsc);
     if(!g.length){ el.innerHTML = `<p class="empty">The line starts once the first pick is graded.</p>`; return; }
-    const pts = [{date:"", v:0}]; let c = 0;
-    for(const p of g){ c += profitOf(p); pts.push({date:p.date, v:c}); }
-    const W = Math.max(300, Math.round(el.clientWidth || 640)), H = W < 480 ? 190 : 230;
-    const L = 40, R = 60, T = 14, B = 26;
-    const vals = pts.map(p => p.v); let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
-    if(hi - lo < 1){ hi += 0.5; lo -= 0.5; }
-    const step = [0.25,0.5,1,2,2.5,5,10,20,25,50,100].find(s => (hi - lo)/s <= 5) || 200;
-    lo = Math.floor(lo/step)*step; hi = Math.ceil(hi/step)*step;
-    const x = i => L + i*(W - L - R)/(pts.length - 1);
-    const y = v => T + (hi - v)*(H - T - B)/(hi - lo);
-    let grid = "";
-    for(let v = lo; v <= hi + 1e-9; v += step){
-      const yy = y(v).toFixed(1), zero = Math.abs(v) < 1e-9;
-      grid += `<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="${zero ? "var(--ink-3)" : "var(--rule)"}" stroke-width="1" ${zero ? 'stroke-dasharray="4 4"' : ""}/>`;
-      const av = Math.abs(v), lab = Number.isInteger(av) ? String(av) : av.toFixed(2).replace(/0$/,"");
-      grid += `<text class="ax" x="${L-8}" y="${(+yy+4).toFixed(1)}" text-anchor="end">${v > 1e-9 ? "+" : v < -1e-9 ? "−" : ""}${lab}</text>`;
-    }
-    const line = pts.map((p,i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(" ");
-    const area = `${line} L${x(pts.length-1).toFixed(1)},${y(0).toFixed(1)} L${x(0).toFixed(1)},${y(0).toFixed(1)} Z`;
-    const ex = x(pts.length-1), ey = y(c);
-    const first = g[0].date, last = g[g.length-1].date;
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative units: ${fmtU(c)} after ${g.length} graded picks">
-      ${grid}
-      <path d="${area}" fill="var(--accent)" fill-opacity="0.12" stroke="none"/>
-      <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
-      <circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="4.5" fill="var(--accent)" stroke="var(--card)" stroke-width="2"/>
-      <text class="end" x="${(ex+9).toFixed(1)}" y="${(ey+4).toFixed(1)}">${fmtU(c)}</text>
-      <text class="ax" x="${L}" y="${H-6}">${esc(fmtDay(first,{weekday:undefined}))}</text>
-      ${g.length > 1 ? `<text class="ax" x="${W-R}" y="${H-6}" text-anchor="end">${esc(fmtDay(last,{weekday:undefined}))}</text>` : ""}
-    </svg>`;
+    const pts = [{v:0}]; let c = 0;
+    for(const p of g){ c += profitOf(p); pts.push({v:c}); }
+    const ax = v => { const av = Math.abs(v), lab = Number.isInteger(av) ? String(av) : av.toFixed(2).replace(/0$/,""); return (v > 1e-9 ? "+" : v < -1e-9 ? "−" : "") + lab; };
+    lineChart(el, pts, {base: 0, minSpan: 1, steps: [0.25,0.5,1,2,2.5,5,10,20,25,50,100], fmtAxis: ax, fmtEnd: fmtU,
+      label: `Cumulative units: ${fmtU(c)} after ${g.length} graded picks`, first: g[0].date, last: g[g.length-1].date});
+  }
+
+  function renderMoneyChart(s){
+    const el = $("#moneyChart");
+    const done = s.settled.slice().sort(byDateAsc);
+    if(!done.length){ el.innerHTML = `<p class="empty">Your balance line starts once a pick you bet on is graded.</p>`; return; }
+    const pts = [{v: bank.start}]; let c = bank.start;
+    for(const p of done){ c += myProfit(p); pts.push({v: c}); }
+    const ax = v => "$" + (Number.isInteger(v) ? v : v.toFixed(2));
+    lineChart(el, pts, {base: bank.start, minSpan: Math.max(10, bank.start * 0.1), steps: [1,2,5,10,20,25,50,100,200,250,500,1000,2000,5000],
+      fmtAxis: ax, fmtEnd: fmt$, left: 52, label: `Settled balance ${fmt$(c)} after ${done.length} bets`, first: done[0].date, last: done[done.length-1].date});
+    el.insertAdjacentHTML("afterbegin", `<h3 class="sub">Balance after each settled bet${s.inPlay > 0 ? ", before the " + fmt$(s.inPlay) + " in play" : ""}</h3>`);
   }
 
   function renderClv(){
@@ -628,17 +765,132 @@ footer{font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule);padd
     }).join("");
   }
 
+  /* ---- my money: rail card and panel ---- */
+  const currentPick = () => picks.find(p => p.date === todayISO()) || null;
+  const sel = (id, f) => `input[data-id="${window.CSS && CSS.escape ? CSS.escape(id) : id}"][data-f="${f}"]`;
+
+  function plText(p){
+    const st = stakeOf(p);
+    if(!st) return {t: "—", c: ""};
+    if(p.status === "void") return {t: "Refunded", c: ""};
+    if(!GRADED.has(p.status)) return {t: "In play", c: ""};
+    const v = myProfit(p); return {t: sfmt$(v), c: cls(v)};
+  }
+
+  function rowHTML(p){
+    const b = bank.bets[p.id] || {}, st = STATUS[p.status] ? p.status : "pending", d = decOf(p), id = esc(p.id), name = esc(p.bet || "");
+    return `<div class="mrow">
+      <div class="m-date">${esc(fmtDay(p.date,{weekday:undefined}))}</div>
+      <div class="m-pick"><div class="b1">${name}</div><div class="b2">${esc(p.event || "")}${d ? " · pick odds " + d.toFixed(2) : ""}</div></div>
+      <div class="m-res"><span class="pill ${st}">${STATUS[st]}</span></div>
+      <label class="m-stake"><span class="lbl">Your stake</span><span class="bin">$<input class="inp" id="stake-${id}" data-id="${id}" data-f="stake" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0" value="${b.stake || ""}" aria-label="Your stake on ${name}"></span></label>
+      <label class="m-odds"><span class="lbl">Odds you got</span><input class="inp" id="odds-${id}" data-id="${id}" data-f="odds" type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="${d ? d.toFixed(2) : ""}" value="${b.odds || ""}" aria-label="Odds you got on ${name}"></label>
+      <div class="m-pl" id="pl-${id}"></div>
+    </div>`;
+  }
+
+  function renderMoneyList(){
+    const el = $("#moneyList");
+    if(el.contains(document.activeElement)) return;
+    if(!loaded){ el.innerHTML = ""; return; }
+    const rows = picks.slice().sort(byDateAsc).reverse();
+    if(!rows.length){ el.innerHTML = `<p class="empty" style="padding-top:12px">Your bets show here once picks are posted.</p>`; return; }
+    el.innerHTML = `<div class="mrow head"><span class="m-date">Date</span><span class="m-pick">Pick</span><span class="m-res">Result</span><span class="m-stake">Your stake</span><span class="m-odds">Odds you got</span><span class="m-pl">Profit</span></div>` + rows.map(rowHTML).join("");
+  }
+
+  function renderTodayBet(){
+    const el = $("#todayBet");
+    if(el.contains(document.activeElement)) return;
+    if(!loaded){ el.innerHTML = ""; return; }
+    const p = currentPick();
+    if(!p){ el.innerHTML = `<div class="k">Bet on today's pick</div><div class="tb-out">Today's pick posts at 10:00 AM. You can log your stake here once it's up.</div>`; return; }
+    const b = bank.bets[p.id] || {}, d = decOf(p), id = esc(p.id);
+    el.innerHTML = `<div class="k">Bet on today's pick</div><div class="tb-name">${esc(p.bet || "")}</div>
+      <div class="tb-row">
+        <label for="tb-stake"><span class="k">Amount</span><span class="bin">$<input class="inp" id="tb-stake" data-id="${id}" data-f="stake" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0" value="${b.stake || ""}"></span></label>
+        <label for="tb-odds"><span class="k">Odds you got</span><input class="inp" id="tb-odds" data-id="${id}" data-f="odds" type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="${d ? d.toFixed(2) : ""}" value="${b.odds || ""}"></label>
+      </div>
+      <div class="tb-out" id="tb-out"></div>`;
+  }
+
+  function updateMoney(){
+    const s = bankStats();
+    const bal = $("#curBal");
+    bal.textContent = fmt$(s.balance);
+    $("#curSub").textContent = s.inPlay > 0 ? `${fmt$(s.inPlay)} in play · ${sfmt$(s.profit)} settled` : (s.placed.length ? `${sfmt$(s.profit)} since you started` : "Log a bet to start tracking");
+    $("#bankNote").textContent = Store.note || "";
+    $("#bkWhere").textContent = Store.where;
+    const roi = s.staked ? s.profit/s.staked : null;
+    const tile = (k, v, sub, c) => `<div class="stat"><div class="k">${k}</div><div class="v ${c || ""}">${v}</div><div class="s">${sub}</div></div>`;
+    $("#moneyStats").innerHTML =
+      tile("Balance", fmt$(s.balance), s.inPlay > 0 ? `${fmt$(s.inPlay)} in play` : `Started with ${fmt$(bank.start)}`, "") +
+      tile("Profit", sfmt$(s.profit), "From settled bets", cls(s.profit)) +
+      tile("Return", roi === null ? "—" : spct(roi), s.staked ? `On ${fmt$(s.staked)} bet` : "Profit per dollar bet", roi !== null ? cls(roi) : "") +
+      tile("Your record", `${s.W}-${s.L}`, `${s.placed.length} bet${s.placed.length === 1 ? "" : "s"} placed`, "");
+    renderMoneyChart(s);
+    for(const p of picks){ const c = document.getElementById("pl-" + p.id); if(c){ const r = plText(p); c.textContent = r.t; c.className = "m-pl " + r.c; } }
+    const out = document.getElementById("tb-out"), cp = currentPick();
+    if(out && cp){
+      const st = stakeOf(cp), d = oddsTaken(cp) || 0, sug = suggested(cp);
+      out.textContent = st ? `Pays ${fmt$(st * d)} if it wins (${sfmt$(st * (d - 1))} profit). Model size ≈ ${fmt$(sug)}.`
+                           : `Model size ≈ ${fmt$(sug)}, which is ${unitsOf(cp)}% of your bankroll.`;
+    }
+  }
+
+  function renderMoney(){
+    const sm = $("#startMoney");
+    if(document.activeElement !== sm) sm.value = bank.start;
+    renderTodayBet(); renderMoneyList(); updateMoney();
+  }
+
   function renderAll(){
     $("#todayLabel").textContent = fmtDay(todayISO(), {weekday:"long", month:"long", day:"numeric", year:"numeric"});
-    renderTicket(); renderTiles(); renderChart(); renderClv(); renderMvm(); renderBreakdowns(); renderLog();
+    renderTicket(); renderTiles(); renderChart(); renderMoney(); renderClv(); renderMvm(); renderBreakdowns(); renderLog();
   }
+
+  let bankDirty = false;
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if(t.id === "startMoney"){
+      const v = num(t.value); bank.start = v !== null && v >= 0 ? Math.round(v*100)/100 : 0;
+      bankDirty = true; saveBank(); updateMoney(); renderTicket(); return;
+    }
+    if(!t.dataset || !t.dataset.f || !t.dataset.id) return;
+    const id = t.dataset.id, f = t.dataset.f, v = num(t.value);
+    const entry = Object.assign({}, bank.bets[id] || {});
+    if(f === "stake"){ if(v !== null && v > 0) entry.stake = Math.round(v*100)/100; else delete entry.stake; }
+    if(f === "odds"){ if(v !== null && v > 1) entry.odds = Math.round(v*1000)/1000; else delete entry.odds; }
+    if(entry.stake || entry.odds) bank.bets[id] = entry; else delete bank.bets[id];
+    document.querySelectorAll(sel(id, f)).forEach(x => { if(x !== t) x.value = t.value; });
+    bankDirty = true; saveBank(); updateMoney(); renderTicket();
+  });
+
+  $("#bkCopy").addEventListener("click", async () => {
+    const code = btoa(unescape(encodeURIComponent(JSON.stringify(bank))));
+    const out = $("#bkOut"), msg = $("#bkMsg");
+    out.value = code;
+    try { await navigator.clipboard.writeText(code); out.hidden = true; msg.textContent = "Copied. Keep it somewhere safe, like your Notes app."; }
+    catch(err){ out.hidden = false; out.focus(); out.select(); msg.textContent = "Copy the code below."; }
+  });
+  let restoreArmed = false;
+  $("#bkIn").addEventListener("input", () => { restoreArmed = false; const er = $("#bkErr"); er.textContent = ""; er.className = "bmsg"; });
+  $("#bkRestore").addEventListener("click", () => {
+    const raw = $("#bkIn").value.trim(), er = $("#bkErr");
+    if(!raw){ er.textContent = "Paste a backup code first."; er.className = "bmsg err"; return; }
+    let st = null;
+    try { st = JSON.parse(raw); } catch(e1){ try { st = JSON.parse(decodeURIComponent(escape(atob(raw.replace(/\s+/g, ""))))); } catch(e2){ st = null; } }
+    if(!st || typeof st !== "object" || !st.bets || typeof st.bets !== "object"){ er.textContent = "That isn't a Morning Line backup code. Check you copied all of it."; er.className = "bmsg err"; return; }
+    if(!restoreArmed){ restoreArmed = true; er.textContent = "This replaces the bets saved here. Tap Restore again to confirm."; er.className = "bmsg"; return; }
+    restoreArmed = false; bank = normBank(st); bankDirty = true; Store.save(bank); $("#bkIn").value = "";
+    er.textContent = `Restored ${Object.keys(bank.bets).length} bet${Object.keys(bank.bets).length === 1 ? "" : "s"}.`; er.className = "bmsg";
+    renderAll();
+  });
 
   $("#fSport").addEventListener("change", renderLog);
   $("#fStatus").addEventListener("change", renderLog);
-  const us = $("#unitSize");
-  if(unitSize) us.value = unitSize;
-  us.addEventListener("input", () => { const v = num(us.value); unitSize = v && v > 0 ? v : null; try { unitSize ? localStorage.setItem("ml-unit", String(unitSize)) : localStorage.removeItem("ml-unit"); } catch(e){} renderAll(); });
-  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(renderChart, 150); });
+  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderChart(); updateMoney(); }, 150); });
+
+  Store.load().then(st => { if(!bankDirty) bank = normBank(st); bankLoaded = true; renderAll(); });
 
   renderAll();
 

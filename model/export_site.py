@@ -113,7 +113,7 @@ def main(argv=None):
         body.setdefault("id", os.path.splitext(os.path.basename(f))[0])
         body.setdefault("date", body["id"])
         picks.append(clean(body, problems))
-    picks.sort(key=lambda p: p.get("date", ""))
+    picks.sort(key=lambda p: (p.get("date", ""), str(p.get("id", ""))))
 
     out = {"updated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "picks": picks}
     with open(a.out, "w") as fh:

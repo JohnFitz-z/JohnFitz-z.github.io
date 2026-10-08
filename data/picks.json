@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T13:07:40Z",
+  "updated_at": "2026-10-08T20:33:59Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -310,6 +310,479 @@
       "summary": "No candidate cleared the engine's edge bar today, so this is a minimum-stake tracking pick. The Under 7.5 in Game 4 was the closest call: Parker Messick has been excellent all year and against Chicago, and the White Sox bullpen game has allowed little outside Game 3, but the price only gets you to fair at about 1.90.",
       "units": 0.25,
       "id": "2026-10-08"
+    },
+    {
+      "away": "Sharks",
+      "backups": [
+        {
+          "away": "Maple Leafs",
+          "bet": "Golden Knights moneyline",
+          "confidence": "Medium",
+          "ev": 0.0242,
+          "event": "Maple Leafs @ Golden Knights",
+          "fair_prob": 0.6088,
+          "home": "Golden Knights",
+          "implied_prob": 0.6227,
+          "input": {
+            "adjustments": [],
+            "away": "Maple Leafs",
+            "event": "Maple Leafs @ Golden Knights",
+            "game_id": "nhl-tor-vgk",
+            "home": "Golden Knights",
+            "id": "nhl-tor-vgk:moneyline:home",
+            "league": "Regular season",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "Circa",
+                "prices": {
+                  "away": 143,
+                  "home": -159
+                }
+              },
+              {
+                "book": "Boomers",
+                "prices": {
+                  "away": 150,
+                  "home": -170
+                }
+              },
+              {
+                "book": "BetMGM",
+                "prices": {
+                  "away": 140,
+                  "home": -165
+                }
+              },
+              {
+                "book": "Caesars",
+                "prices": {
+                  "away": 142,
+                  "home": -170
+                }
+              },
+              {
+                "book": "Stations",
+                "prices": {
+                  "away": 145,
+                  "home": -165
+                }
+              },
+              {
+                "book": "South Point",
+                "prices": {
+                  "away": 145,
+                  "home": -165
+                }
+              },
+              {
+                "book": "Wynn",
+                "prices": {
+                  "away": 145,
+                  "home": -165
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": -0.24,
+                "xga60": 2.7,
+                "xgf60": 2.24
+              },
+              "home": {
+                "goalie_gsax60": 0,
+                "xga60": 2.45,
+                "xgf60": 2.51
+              }
+            },
+            "price": 1.606,
+            "selection": "home",
+            "sport": "NHL",
+            "start_time": "2026-10-08T23:00:00-03:00"
+          },
+          "key": "b1",
+          "league": "Regular season",
+          "market": "Moneyline",
+          "min_odds_american": -169,
+          "min_odds_decimal": 1.59,
+          "model_prob": 0.6377,
+          "no_edge": false,
+          "odds_american": -165,
+          "odds_decimal": 1.61,
+          "sport": "NHL",
+          "start_time": "2026-10-08T23:00:00-03:00",
+          "status": "pending",
+          "units": 1
+        },
+        {
+          "away": "Mammoth",
+          "bet": "Bruins +1.5",
+          "confidence": "Low",
+          "ev": 0.0122,
+          "event": "Mammoth @ Bruins",
+          "fair_prob": 0.6899,
+          "home": "Bruins",
+          "implied_prob": 0.7057,
+          "input": {
+            "adjustments": [],
+            "away": "Mammoth",
+            "event": "Mammoth @ Bruins",
+            "game_id": "nhl-uta-bos",
+            "home": "Bruins",
+            "id": "nhl-uta-bos:spread:home1.5",
+            "league": "Regular season",
+            "line": 1.5,
+            "market": "spread",
+            "market_odds": [
+              {
+                "book": "Circa",
+                "prices": {
+                  "away": 200,
+                  "home": -235
+                }
+              },
+              {
+                "book": "Boomers",
+                "prices": {
+                  "away": 205,
+                  "home": -235
+                }
+              },
+              {
+                "book": "BetMGM",
+                "prices": {
+                  "away": 190,
+                  "home": -250
+                }
+              },
+              {
+                "book": "Caesars",
+                "prices": {
+                  "away": 200,
+                  "home": -250
+                }
+              },
+              {
+                "book": "Stations",
+                "prices": {
+                  "away": 200,
+                  "home": -245
+                }
+              },
+              {
+                "book": "South Point",
+                "prices": {
+                  "away": 200,
+                  "home": -240
+                }
+              },
+              {
+                "book": "Wynn",
+                "prices": {
+                  "away": 190,
+                  "home": -240
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": 0.11,
+                "xga60": 2.39,
+                "xgf60": 2.65
+              },
+              "home": {
+                "goalie_gsax60": 0.53,
+                "xga60": 2.66,
+                "xgf60": 2.4
+              }
+            },
+            "price": 1.417,
+            "selection": "home",
+            "sport": "NHL",
+            "start_time": "2026-10-08T20:00:00-03:00"
+          },
+          "key": "b2",
+          "league": "Regular season",
+          "market": "Puck line",
+          "min_odds_american": -238,
+          "min_odds_decimal": 1.42,
+          "model_prob": 0.7143,
+          "no_edge": false,
+          "odds_american": -240,
+          "odds_decimal": 1.42,
+          "sport": "NHL",
+          "start_time": "2026-10-08T20:00:00-03:00",
+          "status": "pending",
+          "units": 0.75
+        }
+      ],
+      "bet": "Over 5.5 goals",
+      "candidates": [
+        {
+          "bet": "Over 6 goals",
+          "event": "Sharks @ Blues",
+          "note": "EV +3.9% at 1.95, estimate 53.5% vs 51.2% needed."
+        },
+        {
+          "bet": "Over 5.5 goals",
+          "event": "Flyers @ Senators",
+          "note": "EV +1.3% at 1.87, estimate 54.2% vs 53.5% needed."
+        },
+        {
+          "bet": "Golden Knights -1.5",
+          "event": "Maple Leafs @ Golden Knights",
+          "note": "EV +1.2% at 2.50, estimate 40.5% vs 40.0% needed."
+        },
+        {
+          "bet": "Hurricanes moneyline",
+          "event": "Canucks @ Hurricanes",
+          "note": "EV -4.6% at 1.30, estimate 73.5% vs 77.0% needed."
+        },
+        {
+          "bet": "Hurricanes -1.5",
+          "event": "Canucks @ Hurricanes",
+          "note": "EV -8.7% at 1.77, estimate 51.6% vs 56.5% needed."
+        },
+        {
+          "bet": "Flames +1.5 / Flames moneyline",
+          "event": "Avalanche @ Flames",
+          "note": "Screened +9% EV, dropped: both teams' inputs were goals-based stand-ins, which squeeze strong and weak teams toward average and flatter big underdogs."
+        },
+        {
+          "bet": "Canucks +1.5 / Canucks moneyline",
+          "event": "Canucks @ Hurricanes",
+          "note": "Screened +9% EV, dropped: Carolina's real 5v5 expected goals (3.15 per 60) are far better than the stand-in; with it the Canucks edge disappears."
+        }
+      ],
+      "confidence": "High",
+      "created_at": "2026-10-08T20:33:39Z",
+      "date": "2026-10-08",
+      "ev": 0.046,
+      "event": "Sharks @ Blues",
+      "fair_prob": 0.5346,
+      "home": "Blues",
+      "id": "2026-10-08-2",
+      "implied_prob": 0.5556,
+      "input": {
+        "adjustments": [],
+        "away": "Sharks",
+        "event": "Sharks @ Blues",
+        "game_id": "nhl-sjs-stl",
+        "home": "Blues",
+        "id": "nhl-sjs-stl:total:over5.5",
+        "league": "Regular season",
+        "line": 5.5,
+        "market": "total",
+        "market_odds": [
+          {
+            "book": "Circa",
+            "prices": {
+              "over": -120,
+              "under": 100
+            }
+          },
+          {
+            "book": "Boomers",
+            "prices": {
+              "over": -125,
+              "under": 105
+            }
+          },
+          {
+            "book": "Caesars",
+            "prices": {
+              "over": -125,
+              "under": 105
+            }
+          },
+          {
+            "book": "Stations",
+            "prices": {
+              "over": -125,
+              "under": 105
+            }
+          },
+          {
+            "book": "South Point",
+            "prices": {
+              "over": -125,
+              "under": 105
+            }
+          },
+          {
+            "book": "Wynn",
+            "prices": {
+              "over": -125,
+              "under": 105
+            }
+          }
+        ],
+        "model_inputs": {
+          "away": {
+            "goalie_gsax60": -0.44,
+            "xga60": 2.53,
+            "xgf60": 2.46
+          },
+          "home": {
+            "goalie_gsax60": 0,
+            "xga60": 2.49,
+            "xgf60": 2.38
+          }
+        },
+        "price": 1.8,
+        "selection": "over",
+        "sport": "NHL",
+        "start_time": "2026-10-08T21:00:00-03:00"
+      },
+      "league": "Regular season",
+      "market": "Total",
+      "min_odds_american": -135,
+      "min_odds_decimal": 1.74,
+      "model": {
+        "books": [
+          {
+            "book": "Circa",
+            "decimal": 1.833,
+            "fair": 0.5232,
+            "margin": 0.0455,
+            "price": -120
+          },
+          {
+            "book": "Boomers",
+            "decimal": 1.8,
+            "fair": 0.5346,
+            "margin": 0.0434,
+            "price": -125
+          },
+          {
+            "book": "Caesars",
+            "decimal": 1.8,
+            "fair": 0.5346,
+            "margin": 0.0434,
+            "price": -125
+          },
+          {
+            "book": "Stations",
+            "decimal": 1.8,
+            "fair": 0.5346,
+            "margin": 0.0434,
+            "price": -125
+          },
+          {
+            "book": "South Point",
+            "decimal": 1.8,
+            "fair": 0.5346,
+            "margin": 0.0434,
+            "price": -125
+          },
+          {
+            "book": "Wynn",
+            "decimal": 1.8,
+            "fair": 0.5346,
+            "margin": 0.0434,
+            "price": -125
+          }
+        ],
+        "engine": "1.0",
+        "ev": 0.046,
+        "fair_odds_decimal": 1.72,
+        "growth_bp": 13.26,
+        "inputs": {
+          "away_goals": 2.94,
+          "home_goals": 3.53
+        },
+        "inputs_text": "Expected goals: Blues 3.53, Sharks 2.94",
+        "kelly_fraction": 0.25,
+        "kelly_full": 0.0575,
+        "market_margin": 0.0437,
+        "method": "nhl_poisson",
+        "method_label": "Goals model",
+        "min_ev": 0.01,
+        "min_odds_decimal": 1.74,
+        "no_edge": false,
+        "notes": [
+          "Expected goals built from 5v5 expected goals for and against, and each starting goalie.",
+          "Totals and puck lines include overtime and shootout, with a shootout counting as one goal."
+        ],
+        "outcomes": {
+          "loss": 0.4189,
+          "win": 0.5811
+        },
+        "steps": [
+          {
+            "detail": "Median of 6 books, power method, average margin 4.4%",
+            "key": "market",
+            "label": "Market, margin removed",
+            "prob": 0.5346
+          },
+          {
+            "detail": "Expected goals: Blues 3.53, Sharks 2.94",
+            "key": "model",
+            "label": "Goals model",
+            "prob": 0.6262
+          },
+          {
+            "key": "blend",
+            "label": "Blend: 50% market, 50% model",
+            "prob": 0.5811
+          },
+          {
+            "key": "final",
+            "label": "Final estimate",
+            "prob": 0.5811
+          }
+        ],
+        "warnings": []
+      },
+      "model_prob": 0.5811,
+      "no_edge": false,
+      "note": "Bonus evening pick (second pick on Oct 8).",
+      "odds_american": -125,
+      "odds_decimal": 1.8,
+      "reasoning": [
+        "Screened all 10 NHL games tonight (68 bets); this was the top bet after research. Market fair probability for 6+ goals is 53.5% (median of 6 books, margin removed); the goals model says 62.6%, blended to 58.1%.",
+        "Model expects Blues 3.53, Sharks 2.94 goals. Yaroslav Askarov allowed about 0.44 goals per 60 more than expected last season (MoneyPuck), the biggest single driver.",
+        "San Jose conceded 292 goals last season (3.56 a game, 3rd most); their games averaged 6.6 total goals.",
+        "Same-game Over 6 also showed +3.9% EV, so the lean isn't a quirk of one line.",
+        "NHL scoring level recalibrated tonight: the model's 5v5 expected-goals scale was mismatched with the data source, which had been tilting every NHL total toward the under. Fixed before pricing."
+      ],
+      "risks": [
+        "Askarov isn't confirmed. If San Jose starts its backup, most of the edge goes with him.",
+        "The edge leans on one season of goalie numbers, which are noisy. Weighting them at half gives +1.5% EV instead of +4.6%, still the top bet but a smaller one.",
+        "Team strength for both clubs comes from last season's goals for and against, shrunk toward average (their expected-goals data couldn't be pulled tonight). St. Louis scored only 231 last season."
+      ],
+      "sources": [
+        {
+          "title": "VSIN Las Vegas NHL odds tracker",
+          "url": "https://data.vsin.com/nhl/vegas-odds-linetracker/"
+        },
+        {
+          "title": "Daily Faceoff starting goalies, Oct 8",
+          "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-08"
+        },
+        {
+          "title": "MoneyPuck 2025-26 team data",
+          "url": "https://moneypuck.com/moneypuck/playerData/seasonSummary/2025/regular/teams.csv"
+        },
+        {
+          "title": "MoneyPuck 2025-26 goalie data",
+          "url": "https://moneypuck.com/moneypuck/playerData/seasonSummary/2025/regular/goalies.csv"
+        },
+        {
+          "title": "Elite Prospects 2025-26 NHL standings",
+          "url": "https://www.eliteprospects.com/league/nhl/standings/2025-2026"
+        },
+        {
+          "title": "DobberHockey: how teams score their goals (Sept 2026)",
+          "url": "https://dobberhockey.com/2026/09/18/analytics-advantage-how-teams-score-their-goals-affects-their-fantasy-value-for-2026-27/"
+        }
+      ],
+      "sport": "NHL",
+      "start_time": "2026-10-08T21:00:00-03:00",
+      "status": "pending",
+      "summary": "Second pick for tonight, made with the new screen-everything process. The model expects about 6.5 goals in St. Louis, mostly because San Jose's goaltending was among the league's worst last season; the market's 5.5 line prices roughly 6.",
+      "units": 1.5
     }
   ]
 }

@@ -42,8 +42,8 @@
   },
 
   "nhl": {
-    "league_reg_goals": 2.95,
-    "league_xg60": 2.55,
+    "league_reg_goals": 3.03,
+    "league_xg60": 2.48,
     "gsax_weight": 1.0,
     "home_mult": 1.04,
     "away_mult": 0.975,

@@ -28,7 +28,7 @@ export const pct = (n, d) => (n * 100).toFixed(d === undefined ? 1 : d) + "%";
 export const spct = (n, d) => sign(n * 100) + Math.abs(n * 100).toFixed(d === undefined ? 1 : d) + "%";
 export const cls = n => n > 0.0049 ? "pos" : n < -0.0049 ? "neg" : "";
 export const list = v => Array.isArray(v) ? v.filter(Boolean) : (v ? String(v).split(/\n+/).map(s => s.trim()).filter(Boolean) : []);
-export const byDateAsc = (a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+export const byDateAsc = (a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : (String(a.id) < String(b.id) ? -1 : String(a.id) > String(b.id) ? 1 : 0);
 export const clvOf = p => p && p.close ? num(p.close.clv) : null;
 export const pickUrl = p => `/pick/${encodeURIComponent(p.id)}/`;
 
@@ -39,7 +39,7 @@ export const fmtStamp = iso => { const t = new Date(iso); if(isNaN(t)) return ""
 
 export const newestFirst = () => state.picks.slice().sort(byDateAsc).reverse();
 export const pickById = id => state.picks.find(p => p.id === id) || null;
-export const todayPick = () => state.picks.find(p => p.date === todayISO()) || null;
+export const todayPick = () => newestFirst().find(p => p.date === todayISO()) || null;
 export const latestPick = () => newestFirst()[0] || null;
 
 // Record of the published picks, in units.

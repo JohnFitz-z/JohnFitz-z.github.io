@@ -2,15 +2,83 @@
 
 This is the playbook the daily run follows. The research finds the facts; `pricing.py` turns them into probabilities, expected value, a stake and a minimum price using the same math every day. All tunable numbers live in `config.json`.
 
-## Daily flow
+## Daily flow: screen wide, then dig deep
 
-1. Shortlist 4–5 candidate bets from today's slate.
-2. For each one, collect market prices from at least two books, the sport model inputs below, and up to four adjustments.
-3. Write them to `candidates.json` in the format below.
-4. Run `python3 model/pricing.py price candidates.json --out priced.json --pick-out pick.json`.
-5. The top-ranked candidate is the pick. Add the written fields (summary, reasoning, risks, sources) to `pick.json` and save it.
+1. **Build the slate** (`slate.json`, format below): every game today in the sports with a model (MLB, NHL, soccer top leagues, NFL, CFL, NCAAF, NBA, WNBA, NCAAB) that starts after the pick goes out. For each game: quick model inputs from the bulk sources below, and the markets with prices from at least two books. Aim for every game on the board; on a busy night that's 20–60 games.
+2. **Screen**: `python3 model/pricing.py screen slate.json --top 8 --out screen.json --candidates-out shortlist.json`. Every side of every market is priced; the best eight (at most two per game) go to the shortlist.
+3. **Research the shortlist**: confirm starters, goalies, lineups and injuries; replace the quick inputs with careful ones; add more books; add adjustments. Edit `shortlist.json` (it's a candidates file) and drop any candidate whose inputs turn out to be wrong or unavailable.
+4. **Price**: `python3 model/pricing.py price shortlist.json --out priced.json --pick-out pick.json`. The top bet is the pick; the next two best from **other games** are backups 1 and 2, each with its own take-at price.
+5. Add the written fields (summary, reasoning, risks, sources, notes on the candidates) to `pick.json` and save it.
 
-Ranking uses expected log growth at the full Kelly stake. It rewards a big edge relative to the risk, so a +3% edge at 1.80 beats a +3% edge at 4.50. If no candidate has a positive edge, the engine still returns the best one at the minimum stake and flags it `no_edge`.
+Ranking uses expected log growth at the full Kelly stake. It rewards a big edge relative to the risk, so a +3% edge at 1.80 beats a +3% edge at 4.50. Candidates priced from the market alone can never show an edge (they copy the market and pay its margin), so they always rank below candidates with a model behind them. If no candidate has a positive edge, the engine still returns the best one at the minimum stake and flags it `no_edge`.
+
+Screening dozens of bets and taking the best one favours bets where the model happens to be too optimistic. That's why the shortlist gets careful research before anything is posted, and why the closing line is tracked: if the picks don't beat the close over time, the model is overrating its edges.
+
+## Slate file format
+
+```json
+{
+  "date": "2026-10-09",
+  "games": [
+    {
+      "id": "nhl-bos-mtl",
+      "sport": "NHL",
+      "league": "Regular season",
+      "home": "Canadiens",
+      "away": "Bruins",
+      "start_time": "2026-10-09T19:00:00-03:00",
+      "model_inputs": { "home": { "xgf60": 2.45, "xga60": 2.75, "goalie_gsax60": -0.1 },
+                        "away": { "xgf60": 2.70, "xga60": 2.35, "goalie_gsax60": 0.3 } },
+      "markets": [
+        { "market": "moneyline", "books": [ { "book": "DraftKings", "prices": { "home": 120, "away": -142 } },
+                                            { "book": "FanDuel", "prices": { "home": 118, "away": -140 } } ] },
+        { "market": "total", "line": 6.5, "books": [ { "book": "DraftKings", "prices": { "over": 100, "under": -120 } } ] },
+        { "market": "spread", "line": 1.5, "books": [ { "book": "DraftKings", "prices": { "home": -210, "away": 175 } } ] },
+        { "market": "team_total", "team": "away", "line": 3.5, "books": [ { "book": "DraftKings", "prices": { "over": 105, "under": -125 } } ] }
+      ]
+    }
+  ]
+}
+```
+
+- For `spread`, `line` is the **home** team's line (home +1.5 here); the engine prices both sides.
+- For `total` and `team_total`, `line` is the total. Team totals need `"team": "home"` or `"away"`.
+- Markets: `moneyline`, `spread`, `total`, `team_total`, `draw_no_bet`, `btts`, and for MLB the first-five-innings versions `moneyline_f5`, `spread_f5`, `total_f5`, `team_total_f5`.
+- The price used for each side is the median across the books listed. Every book entry needs all sides of the market at that line.
+- See `example_slate.json` for a full worked slate.
+
+## Bulk inputs: where to get them quickly
+
+Use WebFetch on a page that lists every team and ask for the numbers back as JSON. Good sources (if one blocks, try the next):
+
+| Need | Sources |
+|---|---|
+| Odds for the whole slate | Covers odds pages, VegasInsider odds pages, OddsShark, Action Network, ESPN scoreboard (moneyline, spread, total by book) |
+| MLB probable starters | MLB.com probable pitchers, ESPN, Rotowire |
+| MLB team offense (wRC+, or OPS+ as a stand-in) | FanGraphs team batting, Baseball-Reference team batting |
+| MLB starter and bullpen quality (SIERA/xFIP, or FIP/ERA as a stand-in) | FanGraphs, Baseball-Reference, ESPN |
+| MLB park factors | FanGraphs Guts, Baseball Savant |
+| NHL 5v5 xGF/60 and xGA/60 | Natural Stat Trick team table, MoneyPuck |
+| NHL starting goalies and GSAx/60 | Daily Faceoff starting goalies, MoneyPuck goalies |
+| Soccer xG and xGA per match | FBref league stats, Understat, FotMob |
+| NFL / NCAAF power ratings | ESPN FPI, SP+, Massey, Sagarin |
+| NBA / WNBA ratings and pace | NBA.com or Basketball-Reference net rating, offensive and defensive rating, pace; ESPN BPI early in the season |
+| NCAAB ratings | Bart Torvik, KenPom |
+| CFL ratings | Season point differential per game |
+
+For a projected total in points sports: NBA total ≈ average pace × (home ORtg + away DRtg + away ORtg + home DRtg) / 200; football totals from each team's points scored and allowed per game, weighted toward recent games. Quick inputs only need to be roughly right; careful inputs come in the research step.
+
+## Backups and the afternoon price check
+
+The pick document carries `backups`: two bets from different games, each with its own odds, take-at price, units and EV. Only the main pick counts toward the record; backups are graded too so the bankroll tracker can follow whichever bet was placed.
+
+At 3:53 PM a separate run gets fresh prices for the main pick and both backups and runs:
+
+```
+python3 model/pricing.py recheck pick.json --fresh fresh.json --out update.json
+```
+
+`fresh.json` holds the new prices per bet: `{"main": {"price": 1.85, "market_odds": [...]}, "b1": {...}, "b2": {...}}`. Use the same side keys as the bet's original `market_odds` (home/away, over/under, home/draw/away). If `price` is left out, the median of the books for the bet's selection is used. If `price` is more than 12% off that median, the bet gets a `warning` (usually a home/away mix-up) and is never recommended; fix the file and rerun. The output is a `price_check` block to merge into the pick: the current odds, EV and take-at price for each bet, and `recommend`: the first of main, backup 1, backup 2 that still has at least +1% EV at the current price, or `none`. The recorded odds of the pick don't change; the price check only says which bet to place now.
 
 ## How a probability is built
 
@@ -46,6 +114,8 @@ Give either the direct expected scores or the building blocks. Direct values mus
 - Or give direct values: `"home_runs": 4.4, "away_runs": 3.9`.
 
 Totals and run lines include extra innings (the winner finishes one run ahead).
+
+First-five-innings markets use the same inputs but count only the opposing starter (plus the bullpen if `opp_sp_ip` is under 5), which is where a big starter mismatch shows up most clearly. A tie after five innings is a push on the first-five moneyline.
 
 ### NHL: goals model (Poisson)
 
@@ -139,7 +209,7 @@ Good adjustments: late lineup or injury news not yet in the ratings, a bullpen u
 }
 ```
 
-- `market`: `moneyline`, `spread`, `total`, `draw_no_bet` or `btts`.
+- `market`: `moneyline`, `spread`, `total`, `team_total`, `draw_no_bet` or `btts`; for MLB also `moneyline_f5`, `spread_f5`, `total_f5` and `team_total_f5` (first five innings, a tie after five is a push). Team totals also need `"team": "home"` or `"away"`.
 - `selection`: `home`, `away`, `draw`, `over`, `under`, `yes` or `no`.
 - `line`: the selection's own line. For a spread that's the handicap on the chosen side (Bills +3 is `"selection": "away", "line": 3`). For a total it's the total. Use `null` for moneylines.
 - `price`: the price to bet, in decimal or American. Use the consensus best price that's widely available; Stake is usually close to it.
@@ -158,4 +228,4 @@ Save the result on the pick as `close`: `{"odds_decimal": 1.667, "fair_prob": 0.
 
 ## Checks
 
-`python3 -m unittest model/test_pricing.py` runs the tests. They cover odds conversion, margin removal, every sport model, pushes, quarter lines, Kelly staking, the minimum price and the worked example in `example_candidates.json`.
+`python3 -m unittest model/test_pricing.py` runs the tests. They cover odds conversion, margin removal, every sport model, team totals, first-five innings, pushes, quarter lines, Kelly staking, the minimum price, slate screening, backups, the price recheck and the worked examples in `example_candidates.json` and `example_slate.json`.

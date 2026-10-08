@@ -1,0 +1,107 @@
+{
+  "note": "Worked example with made-up numbers to show the slate format. Not real games or prices.",
+  "date": "2026-10-09",
+  "games": [
+    {
+      "id": "mlb-cle-cws",
+      "sport": "MLB",
+      "league": "ALDS Game 5",
+      "home": "White Sox",
+      "away": "Guardians",
+      "start_time": "2026-10-09T20:08:00-03:00",
+      "model_inputs": {
+        "home": { "off": 97, "opp_sp": 3.30, "opp_sp_ip": 6.0, "opp_pen": 3.60 },
+        "away": { "off": 104, "opp_sp": 4.40, "opp_sp_ip": 4.5, "opp_pen": 4.00 },
+        "park": 102
+      },
+      "markets": [
+        { "market": "moneyline", "books": [
+          { "book": "DraftKings", "prices": { "home": 110, "away": -130 } },
+          { "book": "FanDuel", "prices": { "home": 108, "away": -128 } } ] },
+        { "market": "total", "line": 7.5, "books": [
+          { "book": "DraftKings", "prices": { "over": -115, "under": -105 } },
+          { "book": "FanDuel", "prices": { "over": -112, "under": -108 } } ] },
+        { "market": "spread", "line": 1.5, "books": [
+          { "book": "DraftKings", "prices": { "home": -170, "away": 142 } },
+          { "book": "FanDuel", "prices": { "home": -165, "away": 140 } } ] },
+        { "market": "moneyline_f5", "books": [
+          { "book": "DraftKings", "prices": { "home": 115, "away": -135 } },
+          { "book": "FanDuel", "prices": { "home": 112, "away": -132 } } ] },
+        { "market": "total_f5", "line": 4.5, "books": [
+          { "book": "DraftKings", "prices": { "over": 100, "under": -120 } },
+          { "book": "FanDuel", "prices": { "over": -102, "under": -118 } } ] },
+        { "market": "team_total", "team": "away", "line": 3.5, "books": [
+          { "book": "DraftKings", "prices": { "over": -125, "under": 105 } },
+          { "book": "FanDuel", "prices": { "over": -122, "under": 102 } } ] }
+      ]
+    },
+    {
+      "id": "nhl-bos-mtl",
+      "sport": "NHL",
+      "home": "Canadiens",
+      "away": "Bruins",
+      "start_time": "2026-10-09T19:00:00-03:00",
+      "model_inputs": {
+        "home": { "xgf60": 2.45, "xga60": 2.75, "goalie_gsax60": -0.10 },
+        "away": { "xgf60": 2.70, "xga60": 2.35, "goalie_gsax60": 0.30 }
+      },
+      "markets": [
+        { "market": "moneyline", "books": [
+          { "book": "DraftKings", "prices": { "home": 120, "away": -142 } },
+          { "book": "FanDuel", "prices": { "home": 118, "away": -140 } } ] },
+        { "market": "total", "line": 6.5, "books": [
+          { "book": "DraftKings", "prices": { "over": 100, "under": -120 } },
+          { "book": "FanDuel", "prices": { "over": -102, "under": -118 } } ] },
+        { "market": "spread", "line": 1.5, "books": [
+          { "book": "DraftKings", "prices": { "home": -210, "away": 175 } },
+          { "book": "FanDuel", "prices": { "home": -205, "away": 170 } } ] }
+      ]
+    },
+    {
+      "id": "nfl-buf-kc",
+      "sport": "NFL",
+      "home": "Chiefs",
+      "away": "Bills",
+      "start_time": "2026-10-11T20:25:00-03:00",
+      "model_inputs": { "home_rating": 5.0, "away_rating": 4.5, "total": 48.5 },
+      "markets": [
+        { "market": "spread", "line": -3, "books": [
+          { "book": "DraftKings", "prices": { "home": -110, "away": -110 } },
+          { "book": "FanDuel", "prices": { "home": -108, "away": -112 } } ] },
+        { "market": "total", "line": 47.5, "books": [
+          { "book": "DraftKings", "prices": { "over": -110, "under": -110 } },
+          { "book": "FanDuel", "prices": { "over": -110, "under": -110 } } ] },
+        { "market": "team_total", "team": "home", "line": 25.5, "books": [
+          { "book": "DraftKings", "prices": { "over": -110, "under": -110 } } ] }
+      ]
+    },
+    {
+      "id": "epl-ars-bha",
+      "sport": "Soccer",
+      "league": "Premier League",
+      "home": "Arsenal",
+      "away": "Brighton",
+      "start_time": "2026-10-10T11:30:00-03:00",
+      "model_inputs": { "home": { "xgf": 2.0, "xga": 0.9 }, "away": { "xgf": 1.5, "xga": 1.4 }, "league_avg": 1.4 },
+      "markets": [
+        { "market": "moneyline", "books": [
+          { "book": "Pinnacle", "prices": { "home": 1.60, "draw": 4.30, "away": 5.60 } },
+          { "book": "bet365", "prices": { "home": 1.57, "draw": 4.20, "away": 5.50 } } ] },
+        { "market": "total", "line": 2.75, "books": [
+          { "book": "Pinnacle", "prices": { "over": 1.95, "under": 1.95 } } ] },
+        { "market": "btts", "books": [
+          { "book": "bet365", "prices": { "yes": 1.80, "no": 2.00 } } ] }
+      ]
+    },
+    {
+      "id": "atp-a-b",
+      "sport": "Tennis",
+      "home": "Player A",
+      "away": "Player B",
+      "start_time": "2026-10-09T09:00:00-03:00",
+      "markets": [
+        { "market": "moneyline", "books": [ { "book": "Pinnacle", "prices": { "home": 1.70, "away": 2.25 } } ] }
+      ]
+    }
+  ]
+}

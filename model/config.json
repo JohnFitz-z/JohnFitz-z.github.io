@@ -22,6 +22,10 @@
     "min_ev": 0.01
   },
 
+  "ranking": {
+    "modeled_first": true
+  },
+
   "confidence": {
     "high_ev": 0.04,
     "medium_ev": 0.02

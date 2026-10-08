@@ -61,6 +61,25 @@ def clean(p, problems):
     p["status"] = st
     if st in ("won", "lost", "half_won", "half_lost") and not isinstance(p.get("result_units"), (int, float)):
         problems.append(f"{pid}: graded {st} but result_units is missing")
+    backups = p.get("backups")
+    if backups is not None and not isinstance(backups, list):
+        problems.append(f"{pid}: backups isn't a list, removed")
+        p.pop("backups")
+    for i, b in enumerate(p.get("backups") or []):
+        if not isinstance(b, dict):
+            continue
+        b.setdefault("key", f"b{i + 1}")
+        for k in NUMERIC:
+            if k in b:
+                v = to_num(b[k])
+                b[k] = None if v == "bad" else v
+        for k in PROBS:
+            if isinstance(b.get(k), (int, float)) and b[k] > 1:
+                b[k] = b[k] / 100
+        bst = str(b.get("status") or "pending").lower().replace("-", "_")
+        b["status"] = bst if bst in STATUSES else "pending"
+        if bst in ("won", "lost", "half_won", "half_lost") and not isinstance(b.get("result_units"), (int, float)):
+            problems.append(f"{pid}: backup {b['key']} graded {bst} but result_units is missing")
     close = p.get("close")
     if isinstance(close, dict):
         for k in ("odds_decimal", "fair_prob", "clv"):

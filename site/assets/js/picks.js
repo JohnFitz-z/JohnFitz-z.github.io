@@ -1,7 +1,7 @@
 // Views for a single pick: the ticket, how the number was built, the write-up, and list rows.
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
         STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js";
-import {stakeOf, myProfit, sfmt$, fmt$, suggested} from "./bank.js";
+import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);
@@ -67,11 +67,51 @@ function legacyEdge(p){
     <div class="bar" role="img" aria-label="Odds imply ${pct(imp)}, estimate ${pct(mod)}"><div class="mkt" style="width:${(imp * 100).toFixed(2)}%"></div><div class="gap ${e < 0 ? "neg" : ""}" style="left:${(lo * 100).toFixed(2)}%;width:${(w * 100).toFixed(2)}%"></div></div></div>`;
 }
 
+const KEY_NAME = {main: "the main pick", b1: "backup 1", b2: "backup 2"};
+
+function backupsHTML(p){
+  const bks = Array.isArray(p.backups) ? p.backups : [];
+  if(!bks.length) return "";
+  const pc = p.price_check || {};
+  const rows = bks.map((b, i) => {
+    const st = String(b.status || "pending").toLowerCase().replace("-", "_"), s = STATUS[st] ? st : "pending";
+    const d = num(b.odds_decimal), minD = num(b.min_odds_decimal), ev = num(b.ev), chk = pc[b.key];
+    const now = chk && num(chk.odds_decimal) ? ` · now ${num(chk.odds_decimal).toFixed(2)}` : "";
+    const res = GRADED.has(s) ? ` · ${esc(b.final_score || "")} ${num(b.result_units) !== null ? fmtU(num(b.result_units)) : ""}` : "";
+    return `<div class="bk-row${pc.recommend === b.key ? " rec" : ""}">
+      <div class="bk-key">Backup ${i + 1}</div>
+      <div class="bk-main"><div class="b1">${esc(b.bet || "")}</div>
+        <div class="b2">${esc([b.event, b.sport, fmtTime(b.start_time)].filter(Boolean).join(" · "))}</div>
+        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(b.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${b.no_edge ? " · no clear edge" : ""}${res}</div></div>
+      <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
+    </div>`;
+  }).join("");
+  return `<div><h3 class="sub">Backups if the price isn't there</h3><div class="bk-list">${rows}</div>
+    <p class="caveat" style="margin-top:8px">Only the main pick counts toward the record. If you bet a backup, mark it on the Bankroll page.</p></div>`;
+}
+
+function priceCheckHTML(p){
+  const pc = p.price_check;
+  if(!pc || !pc.at) return "";
+  const when = new Date(pc.at);
+  const t = isNaN(when) ? "" : new Intl.DateTimeFormat("en-US", {timeZone: "America/Halifax", hour: "numeric", minute: "2-digit"}).format(when);
+  const m = pc.main || {};
+  let msg;
+  if(pc.recommend === "main") msg = `Still good. The main pick is ${num(m.odds_decimal) ? num(m.odds_decimal).toFixed(2) : "unchanged"} now; take it at ${num(m.min_odds_decimal) ? num(m.min_odds_decimal).toFixed(2) : "the take-at price"} or better.`;
+  else if(pc.recommend === "none") msg = "No bet has value at current prices. Skip today.";
+  else {
+    const b = pc[pc.recommend] || {};
+    msg = `The main pick's price dropped${num(m.odds_decimal) ? " to " + num(m.odds_decimal).toFixed(2) : ""}. Bet ${KEY_NAME[pc.recommend] || pc.recommend} instead: ${esc(b.bet || "")} at ${num(b.odds_decimal) ? num(b.odds_decimal).toFixed(2) : "?"} (take at ${num(b.min_odds_decimal) ? num(b.min_odds_decimal).toFixed(2) : "?"}+).`;
+  }
+  const cls2 = pc.recommend === "main" ? "ok" : pc.recommend === "none" ? "bad" : "";
+  return `<div class="pcheck ${cls2}"><b>Price check${t ? " · " + t : ""}</b><span>${msg}</span></div>`;
+}
+
 function resultHTML(p){
   if(!(GRADED.has(p.status) || p.status === "void")) return "";
   const pl = profitOf(p), c = clvOf(p);
   const close = c !== null ? ` · Closed ${num(p.close.odds_decimal) ? num(p.close.odds_decimal).toFixed(2) : "?"}, CLV ${spct(c)}` : "";
-  const mine = stakeOf(p) > 0 ? ` · You ${sfmt$(myProfit(p))}` : "";
+  const mine = stakeOf(p) > 0 ? ` · You${choiceOf(p) !== "main" ? " (" + KEY_NAME[choiceOf(p)] + ")" : ""} ${sfmt$(myProfit(p))}` : "";
   return `<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${mine}${close}</span></div>`;
 }
 
@@ -79,9 +119,12 @@ export function detailHTML(p){
   const out = [];
   const hasModel = p.model && Array.isArray(p.model.steps) && p.model.steps.length;
   if(!hasModel){ const le = legacyEdge(p); if(le) out.push(le); }
+  out.push(priceCheckHTML(p));
   if(p.summary) out.push(`<p class="thesis">${esc(p.summary)}</p>`);
   out.push(resultHTML(p));
-  if(hasModel){ out.push(priceGuideHTML(p)); out.push(ladderHTML(p)); }
+  if(hasModel) out.push(priceGuideHTML(p));
+  out.push(backupsHTML(p));
+  if(hasModel) out.push(ladderHTML(p));
   const why = list(p.reasoning);
   if(why.length) out.push(`<div><h3 class="sub">Why this bet</h3><ul class="pts">${why.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`);
   const risks = list(p.risks);

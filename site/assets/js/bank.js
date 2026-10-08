@@ -26,30 +26,40 @@ export function normBank(st){
     const e = {};
     if(stake !== null && stake > 0) e.stake = Math.round(stake * 100) / 100;
     if(odds !== null && odds > 1) e.odds = Math.round(odds * 1000) / 1000;
-    if(e.stake || e.odds) out.bets[k] = e;
+    if(b[k] && (b[k].choice === "b1" || b[k].choice === "b2")) e.choice = b[k].choice;
+    if(e.stake || e.odds || e.choice) out.bets[k] = e;
   }
   return out;
 }
 
 export const fmt$ = n => (n < -0.004 ? "−$" : "$") + Math.abs(n).toFixed(2);
 export const sfmt$ = n => (n > 0.004 ? "+$" : n < -0.004 ? "−$" : "$") + Math.abs(n).toFixed(2);
+// The bet the viewer actually placed for a pick day: the main pick or one of its backups.
+export const choiceOf = p => { const b = bankState.bank.bets[p.id]; return b && b.choice ? b.choice : "main"; };
+export const betFor = p => {
+  const c = choiceOf(p);
+  if(c === "main") return p;
+  const bk = (p.backups || []).find(x => x.key === c);
+  return bk ? Object.assign({}, bk, {status: String(bk.status || "pending").toLowerCase().replace("-", "_")}) : p;
+};
 export const stakeOf = p => { const b = bankState.bank.bets[p.id]; return b && b.stake > 0 ? b.stake : 0; };
-export const oddsTaken = p => { const b = bankState.bank.bets[p.id]; return b && b.odds > 1 ? b.odds : decOf(p); };
+export const oddsTaken = p => { const b = bankState.bank.bets[p.id]; return b && b.odds > 1 ? b.odds : decOf(betFor(p)); };
 export const myProfit = p => {
   const s = stakeOf(p); if(!s) return 0;
-  const b = (oddsTaken(p) || 2) - 1;
-  return p.status === "won" ? s * b : p.status === "half_won" ? s * b / 2 : p.status === "lost" ? -s : p.status === "half_lost" ? -s / 2 : 0;
+  const b = (oddsTaken(p) || 2) - 1, st = betFor(p).status;
+  return st === "won" ? s * b : st === "half_won" ? s * b / 2 : st === "lost" ? -s : st === "half_lost" ? -s / 2 : 0;
 };
+const settledBet = p => { const st = betFor(p).status; return GRADED.has(st) || st === "void"; };
 
 export function bankStats(){
   const bank = bankState.bank;
   const placed = state.picks.filter(p => stakeOf(p) > 0);
-  const settled = placed.filter(p => GRADED.has(p.status) || p.status === "void");
-  const open = placed.filter(p => !(GRADED.has(p.status) || p.status === "void"));
+  const settled = placed.filter(settledBet);
+  const open = placed.filter(p => !settledBet(p));
   const profit = settled.reduce((a, p) => a + myProfit(p), 0);
   const inPlay = open.reduce((a, p) => a + stakeOf(p), 0);
-  const staked = settled.filter(p => p.status !== "void").reduce((a, p) => a + stakeOf(p), 0);
-  const W = settled.filter(p => isW(p.status)).length, L = settled.filter(p => isL(p.status)).length;
+  const staked = settled.filter(p => betFor(p).status !== "void").reduce((a, p) => a + stakeOf(p), 0);
+  const W = settled.filter(p => isW(betFor(p).status)).length, L = settled.filter(p => isL(betFor(p).status)).length;
   return {placed, settled, open, profit, inPlay, staked, W, L, balance: bank.start + profit - inPlay};
 }
 
@@ -61,20 +71,29 @@ function saveBank(){ clearTimeout(saveTimer); saveTimer = setTimeout(() => { Sto
 
 const sel = (id, f) => `input[data-id="${window.CSS && CSS.escape ? CSS.escape(id) : id}"][data-f="${f}"]`;
 
+function choiceSelect(p, id){
+  const bks = p.backups || [];
+  if(!bks.length) return "";
+  const c = choiceOf(p), opt = (v, label) => `<option value="${v}"${c === v ? " selected" : ""}>${esc(label)}</option>`;
+  return `<select class="inp choice" id="${id}" data-id="${esc(p.id)}" data-f="choice" aria-label="Which bet you placed">
+    ${opt("main", "Main: " + (p.bet || ""))}${bks.map((b, i) => opt(b.key, `Backup ${i + 1}: ${b.bet || ""}`)).join("")}</select>`;
+}
+
 function plText(p){
-  const st = stakeOf(p);
+  const st = stakeOf(p), bs = betFor(p).status;
   if(!st) return {t: "—", c: ""};
-  if(p.status === "void") return {t: "Refunded", c: ""};
-  if(!GRADED.has(p.status)) return {t: "In play", c: ""};
+  if(bs === "void") return {t: "Refunded", c: ""};
+  if(!GRADED.has(bs)) return {t: "In play", c: ""};
   const v = myProfit(p); return {t: sfmt$(v), c: cls(v)};
 }
 
 function rowHTML(p){
-  const b = bankState.bank.bets[p.id] || {}, st = STATUS[p.status] ? p.status : "pending", d = decOf(p), id = esc(p.id), name = esc(p.bet || "");
+  const b = bankState.bank.bets[p.id] || {}, bet = betFor(p), bst = STATUS[bet.status] ? bet.status : "pending";
+  const st = bst, d = decOf(bet), id = esc(p.id), name = esc(p.bet || "");
   return `<div class="mrow">
     <div class="m-date">${esc(fmtDay(p.date, {weekday: undefined}))}</div>
-    <div class="m-pick"><div class="b1"><a href="${pickUrl(p)}">${name}</a></div><div class="b2">${esc(p.event || "")}${d ? " · pick odds " + d.toFixed(2) : ""}</div></div>
-    <div class="m-res"><span class="pill ${st}">${STATUS[st]}</span></div>
+    <div class="m-pick"><div class="b1"><a href="${pickUrl(p)}">${name}</a></div><div class="b2">${esc(p.event || "")}<span id="po-${id}">${d ? " · pick odds " + d.toFixed(2) : ""}</span></div>${choiceSelect(p, "choice-" + id)}</div>
+    <div class="m-res"><span class="pill ${st}" id="st-${id}">${STATUS[st]}</span></div>
     <label class="m-stake"><span class="lbl">Your stake</span><span class="bin">$<input class="inp" id="stake-${id}" data-id="${id}" data-f="stake" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0" value="${b.stake || ""}" aria-label="Your stake on ${name}"></span></label>
     <label class="m-odds"><span class="lbl">Odds you got</span><input class="inp" id="odds-${id}" data-id="${id}" data-f="odds" type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="${d ? d.toFixed(2) : ""}" value="${b.odds || ""}" aria-label="Odds you got on ${name}"></label>
     <div class="m-pl" id="pl-${id}"></div>
@@ -96,8 +115,8 @@ function renderTodayBet(){
   if(!state.loaded){ el.innerHTML = ""; return; }
   const p = todayPick();
   if(!p){ el.innerHTML = `<div class="k">Bet on today's pick</div><div class="tb-out">Today's pick posts at 10:00 AM. You can log your stake here once it's up.</div>`; return; }
-  const b = bankState.bank.bets[p.id] || {}, d = decOf(p), id = esc(p.id);
-  el.innerHTML = `<div class="k">Bet on today's pick</div><div class="tb-name">${esc(p.bet || "")}</div>
+  const b = bankState.bank.bets[p.id] || {}, d = decOf(betFor(p)), id = esc(p.id);
+  el.innerHTML = `<div class="k">Bet on today's pick</div><div class="tb-name">${esc(p.bet || "")}</div>${choiceSelect(p, "tb-choice")}
     <div class="tb-row">
       <label for="tb-stake"><span class="k">Amount</span><span class="bin">$<input class="inp" id="tb-stake" data-id="${id}" data-f="stake" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0" value="${b.stake || ""}"></span></label>
       <label for="tb-odds"><span class="k">Odds you got</span><input class="inp" id="tb-odds" data-id="${id}" data-f="odds" type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="${d ? d.toFixed(2) : ""}" value="${b.odds || ""}"></label>
@@ -139,7 +158,12 @@ export function updateMoney(){
       tile("Your record", `${s.W}-${s.L}`, `${s.placed.length} bet${s.placed.length === 1 ? "" : "s"} placed`, "");
   }
   renderMoneyChart(s);
-  for(const p of state.picks){ const c = document.getElementById("pl-" + p.id); if(c){ const r = plText(p); c.textContent = r.t; c.className = "m-pl " + r.c; } }
+  for(const p of state.picks){
+    const c = document.getElementById("pl-" + p.id); if(c){ const r = plText(p); c.textContent = r.t; c.className = "m-pl " + r.c; }
+    const bet = betFor(p), bs = STATUS[bet.status] ? bet.status : "pending";
+    const pill = document.getElementById("st-" + p.id); if(pill){ pill.textContent = STATUS[bs]; pill.className = "pill " + bs; }
+    const po = document.getElementById("po-" + p.id); if(po){ const d = decOf(bet); po.textContent = d ? " · pick odds " + d.toFixed(2) : ""; }
+  }
   const out = document.getElementById("tb-out"), cp = todayPick();
   if(out && cp){
     const st = stakeOf(cp), d = oddsTaken(cp) || 0, sug = suggested(cp);
@@ -167,8 +191,13 @@ export function initBank(onChange){
     const entry = Object.assign({}, bank.bets[id] || {});
     if(f === "stake"){ if(v !== null && v > 0) entry.stake = Math.round(v * 100) / 100; else delete entry.stake; }
     if(f === "odds"){ if(v !== null && v > 1) entry.odds = Math.round(v * 1000) / 1000; else delete entry.odds; }
-    if(entry.stake || entry.odds) bank.bets[id] = entry; else delete bank.bets[id];
+    if(f === "choice"){ if(t.value === "b1" || t.value === "b2") entry.choice = t.value; else delete entry.choice; }
+    if(entry.stake || entry.odds || entry.choice) bank.bets[id] = entry; else delete bank.bets[id];
     document.querySelectorAll(sel(id, f)).forEach(x => { if(x !== t) x.value = t.value; });
+    if(f === "choice"){
+      const p = state.picks.find(x => x.id === id), d = p ? decOf(betFor(p)) : null;
+      document.querySelectorAll(sel(id, "odds")).forEach(x => { x.placeholder = d ? d.toFixed(2) : ""; });
+    }
     bankState.dirty = true; saveBank(); updateMoney(); onChange();
   });
 

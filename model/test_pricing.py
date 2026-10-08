@@ -10,6 +10,7 @@ import pricing as P  # noqa: E402
 
 CFG = P.load_config()
 EXAMPLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "example_candidates.json")
+SLATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "example_slate.json")
 
 
 def binary(p):
@@ -217,6 +218,98 @@ class EndToEnd(unittest.TestCase):
         r = P.price_candidate(c, CFG)
         self.assertEqual(len(r["doc"]["model"]["books"]), 1)
         self.assertTrue(any("different line" in w for w in r["doc"]["model"]["warnings"]))
+
+
+class NewMarkets(unittest.TestCase):
+    def test_team_totals_match_game_total(self):
+        d = P.nhl_dist({"home_goals": 3.1, "away_goals": 2.7}, CFG)
+        self.assertAlmostEqual(sum(d.home_pts.values()), 1, places=6)
+        mean_h = sum(k * v for k, v in d.home_pts.items())
+        mean_a = sum(k * v for k, v in d.away_pts.items())
+        mean_t = sum(k * v for k, v in d.total.items())
+        self.assertAlmostEqual(mean_h + mean_a, mean_t, places=6)
+        o = P.evaluate(d, "team_total", "over", 2.5, team="home")["win"]
+        u = P.evaluate(d, "team_total", "under", 2.5, team="home")["win"]
+        self.assertAlmostEqual(o + u, 1, places=9)
+
+    def test_points_team_totals(self):
+        d = P.points_dist("NFL", {"margin": 3.0, "total": 47.0}, CFG)
+        mh = sum(k * v for k, v in d.home_pts.items())
+        self.assertAlmostEqual(mh, 25.0, delta=0.15)
+
+    def test_first_five(self):
+        t = {"off": 100, "opp_sp": 4.15, "opp_sp_ip": 6.0, "opp_pen": 4.15}
+        full = P.mlb_dist({"home": t, "away": t}, CFG)
+        f5 = P.mlb_f5_dist({"home": t, "away": t}, CFG)
+        self.assertLess(f5.inputs["home_runs"], full.inputs["home_runs"])
+        self.assertAlmostEqual(f5.inputs["home_runs"] / full.inputs["home_runs"], 5 / 9, places=2)
+        o = P.evaluate(f5, "moneyline", "home", None)
+        self.assertGreater(o["push"], 0.08)  # ties after five are common
+        # an ace starter matters more over five innings than over nine
+        ace = dict(t, opp_sp=2.5)
+        a9 = P.mlb_dist({"home": t, "away": ace}, CFG).inputs["away_runs"] / full.inputs["away_runs"]
+        a5 = P.mlb_f5_dist({"home": t, "away": ace}, CFG).inputs["away_runs"] / f5.inputs["away_runs"]
+        self.assertLess(a5, a9)
+
+    def test_split_market(self):
+        self.assertEqual(P.split_market("total_f5"), ("total", "f5"))
+        self.assertEqual(P.split_market("Run line"), ("spread", "game"))
+        self.assertEqual(P.split_market("team_total"), ("team_total", "game"))
+
+
+class Slate(unittest.TestCase):
+    def test_expand_and_screen(self):
+        import json
+        with open(SLATE) as f:
+            data = json.load(f)
+        cands = P.expand_slate(data)
+        ids = [c["id"] for c in cands]
+        self.assertEqual(len(ids), len(set(ids)))
+        spread = [c for c in cands if c["game_id"] == "nhl-bos-mtl" and c["market"] == "spread"]
+        self.assertEqual({(c["selection"], c["line"]) for c in spread}, {("home", 1.5), ("away", -1.5)})
+        res = P.screen_file(SLATE, CFG, top=8)
+        self.assertEqual(res["errors"], [])
+        self.assertEqual(res["games"], 5)
+        pick = res["pick"]
+        self.assertEqual(len(pick["backups"]), 2)
+        games = [pick["input"]["game_id"]] + [b["input"]["game_id"] for b in pick["backups"]]
+        self.assertEqual(len(games), len(set(games)), "backups must come from different games")
+        self.assertTrue(all(b["status"] == "pending" and b["key"] in ("b1", "b2") for b in pick["backups"]))
+
+    def test_market_only_ranked_last(self):
+        modeled = {"id": "m", "sport": "NHL", "home": "H", "away": "A", "market": "moneyline", "selection": "home",
+                   "price": 1.80, "model_inputs": {"home_goals": 2.6, "away_goals": 3.0},
+                   "market_odds": [{"book": "X", "prices": {"home": 1.80, "away": 2.05}}]}
+        mkt = {"id": "t", "sport": "Tennis", "home": "P1", "away": "P2", "market": "moneyline", "selection": "home",
+               "price": 1.95, "market_odds": [{"book": "X", "prices": {"home": 1.83, "away": 2.0}}]}
+        priced, _ = P.price_all([mkt, modeled], CFG)
+        pick = P.rank_and_pick(priced, CFG)
+        self.assertEqual(pick["input"]["id"], "m")
+
+    def test_recheck(self):
+        res = P.screen_file(SLATE, CFG, top=8)
+        doc = res["pick"]
+        fresh = {"main": {"price": 1.30}, "b1": {"price": doc["backups"][0]["odds_decimal"] + 0.3}}
+        upd = P.recheck(doc, fresh, CFG)["price_check"]
+        self.assertFalse(upd["main"]["value"])
+        self.assertTrue(upd["b1"]["value"])
+        self.assertEqual(upd["recommend"], "b1")
+        upd = P.recheck(doc, {"main": {"price": 1.20}}, CFG)["price_check"]
+        self.assertEqual(upd["recommend"], "none")
+
+    def test_recheck_price_from_books_and_side_check(self):
+        res = P.screen_file(SLATE, CFG, top=8)
+        doc = res["pick"]
+        sel = doc["input"]["selection"]
+        other = [k for k in doc["input"]["market_odds"][0]["prices"] if k != sel][0]
+        books = [{"book": "A", "prices": {sel: 1.80, other: 2.10}}, {"book": "B", "prices": {sel: 1.84, other: 2.05}}]
+        upd = P.recheck(doc, {"main": {"market_odds": books}}, CFG)["price_check"]
+        self.assertAlmostEqual(upd["main"]["odds_decimal"], 1.82, places=2)
+        self.assertNotIn("warning", upd["main"])
+        # a price that matches the other side is flagged and never recommended
+        upd = P.recheck(doc, {"main": {"price": 2.10, "market_odds": books}}, CFG)["price_check"]
+        self.assertIn("warning", upd["main"])
+        self.assertFalse(upd["main"]["value"])
 
 
 if __name__ == "__main__":

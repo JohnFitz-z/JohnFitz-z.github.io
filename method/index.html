@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=c1dd44d874">
-<link rel="modulepreload" href="/assets/js/app.js?v=c1dd44d874">
+<link rel="stylesheet" href="/assets/css/main.css?v=f9f43a5c17">
+<link rel="modulepreload" href="/assets/js/app.js?v=f9f43a5c17">
 </head>
 <body data-page="method">
 <a class="skip" href="#main">Skip to content</a>
@@ -48,15 +48,18 @@
 <div class="page-title"><div><h1>How it works</h1><p>What happens every day between the slate opening and a pick landing on your phone.</p></div></div>
 <section class="panel">
 <div class="prose">
-  <div class="callout">Every morning at 9:09 a scheduled run researches the day's games, prices a shortlist with the model, and posts one pick by 10:00. Every hour from 1 PM to 2 AM another run checks whether the game is over, grades it, records the closing line, and updates this site.</div>
+  <div class="callout">Every morning at 7:54 a scheduled run prices the whole slate, researches the best spots, and posts a pick with two backups by 10:00. At 3:53 PM it rechecks the prices for that night. Every hour from 1 PM to 2 AM another run grades finished games, records the closing line, and updates this site.</div>
 
-  <h2>1. Shortlist</h2>
-  <p>The run scans every game starting after 10:30 AM in every sport, then picks four or five spots where news, matchups or line movement suggest the price might be off. For each one it collects odds from at least two sportsbooks, the inputs the model needs, and any late news.</p>
+  <h2>1. Screen every game</h2>
+  <p>The run prices every market it can find (moneylines, totals, spreads, team totals and first-five-innings bets) for every game in the sports the model covers, using quick team stats and odds from at least two sportsbooks. That's usually dozens of games and well over a hundred bets.</p>
 
-  <h2>2. The market's view</h2>
+  <h2>2. Research the best spots</h2>
+  <p>The top eight or so from the screen get proper research: confirmed starters and goalies, injuries, fresh team numbers, more sportsbooks, and adjustments for news the numbers miss. Then they're priced again.</p>
+
+  <h2>3. The market's view</h2>
   <p>Sportsbook odds include a cut, so the probabilities they imply add up to more than 100%. The model removes that cut from each book's prices (the "power" method, which takes a bit more off long shots) and takes the middle value across books. That's the market's fair probability.</p>
 
-  <h2>3. The model's view</h2>
+  <h2>4. The model's view</h2>
   <p>Each sport has its own score model that prices the exact bet, including pushes and overtime rules:</p>
   <div class="tbl"><table>
     <thead><tr><th>Sport</th><th>Model</th><th>Main inputs</th></tr></thead>
@@ -70,10 +73,10 @@
     </tbody>
   </table></div>
 
-  <h2>4. Blend and adjust</h2>
+  <h2>5. Blend and adjust</h2>
   <p>The market and the model each get half the say. Then up to four adjustments cover things the inputs can't see, like a tired bullpen or a late scratch. Each one is small, medium or large (about 1, 2 or 3 percentage points), and together they can't move the number more than about 5 points.</p>
 
-  <h2>5. Bet or pass</h2>
+  <h2>6. Pick and backups</h2>
   <ul>
     <li><b>Expected value</b>: the final probability against the actual price. Positive means the price pays more than the risk deserves.</li>
     <li><b>Ranking</b>: the pick is the candidate with the best edge for its risk, so a solid edge at short odds beats the same edge on a long shot.</li>
@@ -81,9 +84,14 @@
     <li><b>Take at</b>: the lowest price that still gives at least +1% expected value. Below that, skip the bet.</li>
     <li><b>Confidence</b>: High at +4% expected value or more, Medium at +2% to +4%, Low below that.</li>
   </ul>
+  <p>A stat model has to back the pick. Bets priced only from the odds can't show an edge (you'd just be paying the bookmaker's cut), so they rank last.</p>
+  <p>The next two best bets from <b>different games</b> become backups, each with its own "take at" price. If Stake's price on the main pick is too low, take backup 1, then backup 2. Only the main pick counts toward the record.</p>
   <p>There's always a pick. If nothing has a positive edge, it's the closest call at the minimum size, marked "No clear edge".</p>
 
-  <h2>6. Grading and the closing line</h2>
+  <h2>7. Afternoon price check</h2>
+  <p>Odds move during the day. At 3:53 PM the run gets fresh prices for the main pick and both backups, reprices them, and posts which one to bet, or to skip if none still has value.</p>
+
+  <h2>8. Grading and the closing line</h2>
   <p>Once the game ends, the result is graded and the closing odds are recorded. Beating the closing price means the market moved toward the pick after it was made. Over many picks, that's the earliest reliable sign the edge is real, long before the win-loss record means much.</p>
 
   <h2>Under the hood</h2>
@@ -106,6 +114,6 @@
   <a href="/method/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 
-<script type="module" src="/assets/js/app.js?v=c1dd44d874"></script>
+<script type="module" src="/assets/js/app.js?v=f9f43a5c17"></script>
 </body>
 </html>

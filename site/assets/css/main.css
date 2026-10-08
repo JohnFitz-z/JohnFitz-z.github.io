@@ -312,3 +312,18 @@ a.prow .c-date{grid-area:date}
 @media (max-width:560px){
   a.prow{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"date sport res" "bet bet pl"}
 }
+/* backups and the afternoon price check */
+.bk-list{display:flex;flex-direction:column;gap:8px}
+.bk-row{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:4px 12px;align-items:start;padding:10px 12px;border-radius:8px;background:var(--track);border:1px solid transparent}
+.bk-row.rec{border-color:var(--accent);background:var(--accent-soft)}
+.bk-key{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+.bk-main{min-width:0}
+.bk-main .b1{font-weight:500;overflow-wrap:anywhere}
+.bk-main .b2{font-size:12.5px;color:var(--ink-2);overflow-wrap:anywhere}
+.bk-main .b2 b{font-weight:600;color:var(--ink)}
+.pcheck{display:flex;flex-direction:column;gap:2px;font-size:14px;border-radius:8px;padding:10px 12px;background:var(--pending-soft);color:var(--ink)}
+.pcheck b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pending);font-weight:500}
+.pcheck.ok{background:var(--win-soft)}.pcheck.ok b{color:var(--win)}
+.pcheck.bad{background:var(--loss-soft)}.pcheck.bad b{color:var(--loss)}
+select.inp.choice{margin-top:6px;font-family:var(--body);font-size:13px;padding:6px 8px;max-width:100%}
+@media (max-width:560px){.bk-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"key st" "main main"}.bk-key{grid-area:key}.bk-st{grid-area:st}.bk-main{grid-area:main}}

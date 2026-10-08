@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T15:23:11Z",
+  "updated_at": "2026-10-08T04:56:05Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -111,6 +111,8 @@
       "created_at": "2026-10-07T12:31:00Z",
       "date": "2026-10-07",
       "event": "Rays @ Yankees",
+      "final_score": "Rays 4, Yankees 3",
+      "graded_at": "2026-10-08T04:57:00Z",
       "implied_prob": 0.42,
       "league": "ALDS Game 3 (Rays lead 2-0)",
       "market": "Moneyline",
@@ -125,6 +127,7 @@
         "The Rays bullpen needed only about seven relief outs over the first two games, so it is fully rested for a short leash on Martinez.",
         "Fried's partner is due to give birth this week; Carlos Rodon would move up if he is unavailable. Market range is +134 to +145 (implied about 42%); I estimate about 45%, an edge of roughly 3 points, sized Low."
       ],
+      "result_units": 0.69,
       "risks": [
         "Fried is a true ace when right, and the Yankees ranked fourth in MLB in home wRC+ (111) and scored 18 runs in two home Wild Card games, so the offense could wake up back in the Bronx.",
         "Martinez has allowed 6 runs over his last two starts and lost three of his last four outings.",
@@ -162,7 +165,7 @@
       ],
       "sport": "MLB",
       "start_time": "2026-10-07T21:00:00-03:00",
-      "status": "pending",
+      "status": "won",
       "summary": "The Yankees are priced around -160 at home, but they are without Aaron Judge, have scored 2 runs in 18 innings this series, and face a Rays team that hits lefties well. Fried's start also carries some late-scratch risk, so the Rays at roughly +138 look a few points underpriced.",
       "units": 0.5,
       "id": "2026-10-07"

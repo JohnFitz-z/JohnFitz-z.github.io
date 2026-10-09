@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T15:42:47Z",
+  "updated_at": "2026-10-09T19:01:28Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1285,6 +1285,31 @@
       "no_edge": false,
       "odds_american": -115,
       "odds_decimal": 1.87,
+      "price_check": {
+        "at": "2026-10-09T19:01:13Z",
+        "b2": {
+          "bet": "Under 5.5 goals",
+          "ev": 0.0415,
+          "fair_prob": 0.4577,
+          "min_odds_decimal": 2.04,
+          "model_prob": 0.4971,
+          "odds_decimal": 2.1,
+          "value": true,
+          "was_odds_decimal": 2.05
+        },
+        "main": {
+          "bet": "Golden State Valkyries +4.5",
+          "ev": 0.0428,
+          "fair_prob": 0.5171,
+          "min_odds_decimal": 1.79,
+          "model_prob": 0.5646,
+          "odds_decimal": 1.85,
+          "value": true,
+          "was_odds_decimal": 1.87
+        },
+        "note": "Bet the main pick.",
+        "recommend": "main"
+      },
       "reasoning": [
         "Basketball-Reference 2026 regular season: Valkyries 32-12, net rating +9.4, SRS 6.65, best defense in the league (DRtg 100.6); Aces 31-13, net +7.1, SRS 5.15.",
         "Inputs used: Aces 5.8 (SRS plus 0.65 for regular-season games MVP A'ja Wilson missed), Valkyries 6.4 (shaded down for a weak offense), plus 2.0 points home court: Aces by 1.4 against a market line of Aces -4.5.",

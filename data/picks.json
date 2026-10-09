@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T19:01:28Z",
+  "updated_at": "2026-10-09T21:04:33Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -806,6 +806,8 @@
           "ev": 0.0701,
           "event": "Malaga vs Espanyol",
           "fair_prob": 0.3697,
+          "final_score": "Malaga 1, Espanyol 1",
+          "graded_at": "2026-10-09T21:10:00Z",
           "home": "Malaga",
           "implied_prob": 0.3846,
           "input": {
@@ -917,9 +919,10 @@
           "no_edge": false,
           "odds_american": 160,
           "odds_decimal": 2.6,
+          "result_units": -1,
           "sport": "Soccer",
           "start_time": "2026-10-09T16:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1
         },
         {

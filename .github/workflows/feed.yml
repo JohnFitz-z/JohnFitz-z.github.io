@@ -1,0 +1,77 @@
+name: Data feed
+
+# Downloads odds (The Odds API) and stats (MoneyPuck, MLB Stats API) and saves them on
+# the `feed` branch, so the daily pick run starts with complete data and closing lines
+# are captured automatically. Times are UTC (Atlantic = UTC-3 in summer, UTC-4 in winter).
+on:
+  schedule:
+    - cron: "35 9 * * *"           # morning snapshot + stats, before the 7:54 AM pick run
+    - cron: "25 18 * * *"          # afternoon snapshot for the 3:53 PM price check
+    - cron: "20,50 11-23 * * *"    # closing lines
+    - cron: "20,50 0-6 * * *"      # closing lines (late games)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "morning, afternoon, close or all"
+        default: all
+  push:
+    branches: [main]
+    paths: [".github/workflows/feed.yml", "tools/feed/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+
+      - name: Pick mode
+        id: mode
+        run: |
+          case "${{ github.event.schedule }}" in
+            "35 9 * * *") m=morning ;;
+            "25 18 * * *") m=afternoon ;;
+            "") m="${{ github.event.inputs.mode || 'all' }}" ;;
+            *) m=close ;;
+          esac
+          echo "mode=$m" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the feed branch
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          url="https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git"
+          if git ls-remote --exit-code --heads "$url" feed >/dev/null 2>&1; then
+            git clone --quiet --depth 5 --branch feed "$url" feed
+          else
+            mkdir feed && cd feed && git init --quiet -b feed && git remote add origin "$url"
+            printf "# Morning Line data feed\n\nWritten by .github/workflows/feed.yml on main. Don't edit by hand.\n" > README.md
+          fi
+
+      - name: Fetch
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python3 code/tools/feed/run.py --out feed --mode "${{ steps.mode.outputs.mode }}"
+
+      - name: Save
+        run: |
+          cd feed
+          git config user.name "Morning Line feed"
+          git config user.email "noreply@anthropic.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit --quiet -m "Feed ${{ steps.mode.outputs.mode }} $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do
+            git push --quiet origin feed && exit 0
+            git pull --quiet --rebase origin feed || true
+          done
+          exit 1

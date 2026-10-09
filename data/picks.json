@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T02:03:25Z",
+  "updated_at": "2026-10-09T04:20:56Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -201,6 +201,8 @@
       "ev": -0.0138,
       "event": "Guardians @ White Sox",
       "fair_prob": 0.5275,
+      "final_score": "Guardians 9, White Sox 5",
+      "graded_at": "2026-10-09T04:20:00Z",
       "home": "White Sox",
       "implied_prob": 0.5349,
       "league": "ALDS Game 4 (White Sox lead 2-1)",
@@ -269,6 +271,7 @@
         "Game 3 had a postseason-record 19 combined strikeouts, and Chicago struck out 19 times on its own side of that.",
         "Market: the under is about 52.8% fair after removing the margin (DraftKings 7.5 at -122, another listing at -113). At 1.87 that is a 1.4% expected loss, so it is sized at the 0.25u minimum and should only be taken at 1.92 or better."
       ],
+      "result_units": -0.25,
       "risks": [
         "Both bullpens are stretched: Chicago's has worked extra innings three games in a row, and Cleveland used Griffin, Cantillo and closer Cade Smith for over six innings on Wednesday.",
         "Cleveland just scored 9 runs in Game 3, including a bases-loaded triple off Smith, and these teams went over in 8 of their last 10 meetings.",
@@ -306,7 +309,7 @@
       ],
       "sport": "MLB",
       "start_time": "2026-10-08T21:00:00-03:00",
-      "status": "pending",
+      "status": "lost",
       "summary": "No candidate cleared the engine's edge bar today, so this is a minimum-stake tracking pick. The Under 7.5 in Game 4 was the closest call: Parker Messick has been excellent all year and against Chicago, and the White Sox bullpen game has allowed little outside Game 3, but the price only gets you to fair at about 1.90.",
       "units": 0.25,
       "id": "2026-10-08"
@@ -564,6 +567,8 @@
       "ev": 0.046,
       "event": "Sharks @ Blues",
       "fair_prob": 0.5346,
+      "final_score": "Sharks 3, Blues 2 (OT)",
+      "graded_at": "2026-10-09T04:20:00Z",
       "home": "Blues",
       "id": "2026-10-08-2",
       "implied_prob": 0.5556,
@@ -750,6 +755,7 @@
         "Same-game Over 6 also showed +3.9% EV, so the lean isn't a quirk of one line.",
         "NHL scoring level recalibrated tonight: the model's 5v5 expected-goals scale was mismatched with the data source, which had been tilting every NHL total toward the under. Fixed before pricing."
       ],
+      "result_units": -1.5,
       "risks": [
         "Askarov isn't confirmed. If San Jose starts its backup, most of the edge goes with him.",
         "The edge leans on one season of goalie numbers, which are noisy. Weighting them at half gives +1.5% EV instead of +4.6%, still the top bet but a smaller one.",
@@ -783,7 +789,7 @@
       ],
       "sport": "NHL",
       "start_time": "2026-10-08T21:00:00-03:00",
-      "status": "pending",
+      "status": "lost",
       "summary": "Second pick for tonight, made with the new screen-everything process. The model expects about 6.5 goals in St. Louis, mostly because San Jose's goaltending was among the league's worst last season; the market's 5.5 line prices roughly 6.",
       "units": 1.5
     }

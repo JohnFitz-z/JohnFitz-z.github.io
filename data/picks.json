@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T04:20:56Z",
+  "updated_at": "2026-10-09T15:42:47Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -324,6 +324,8 @@
           "ev": 0.0242,
           "event": "Maple Leafs @ Golden Knights",
           "fair_prob": 0.6088,
+          "final_score": "Golden Knights 4, Maple Leafs 3 (SO)",
+          "graded_at": "2026-10-09T05:10:08Z",
           "home": "Golden Knights",
           "implied_prob": 0.6227,
           "input": {
@@ -413,9 +415,10 @@
           "no_edge": false,
           "odds_american": -165,
           "odds_decimal": 1.61,
+          "result_units": 0.61,
           "sport": "NHL",
           "start_time": "2026-10-08T23:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1
         },
         {
@@ -792,6 +795,549 @@
       "status": "lost",
       "summary": "Second pick for tonight, made with the new screen-everything process. The model expects about 6.5 goals in St. Louis, mostly because San Jose's goaltending was among the league's worst last season; the market's 5.5 line prices roughly 6.",
       "units": 1.5
+    },
+    {
+      "away": "Golden State Valkyries",
+      "backups": [
+        {
+          "away": "Espanyol",
+          "bet": "Espanyol moneyline",
+          "confidence": "High",
+          "ev": 0.0701,
+          "event": "Malaga vs Espanyol",
+          "fair_prob": 0.3697,
+          "home": "Malaga",
+          "implied_prob": 0.3846,
+          "input": {
+            "adjustments": [],
+            "away": "Espanyol",
+            "event": "Malaga vs Espanyol",
+            "game_id": "laliga-mal-esp",
+            "home": "Malaga",
+            "id": "laliga-mal-esp:moneyline:away",
+            "league": "La Liga",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "bet365",
+                "prices": {
+                  "away": 2.55,
+                  "draw": 3.2,
+                  "home": 2.9
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 2.6,
+                  "draw": 3,
+                  "home": 2.75
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 2.545,
+                  "draw": 3.2,
+                  "home": 2.8
+                }
+              },
+              {
+                "book": "Betfred",
+                "prices": {
+                  "away": 2.6,
+                  "draw": 3,
+                  "home": 2.8
+                }
+              },
+              {
+                "book": "Betfair Sportsbook",
+                "prices": {
+                  "away": 2.625,
+                  "draw": 3.2,
+                  "home": 2.875
+                }
+              },
+              {
+                "book": "Sky Bet",
+                "prices": {
+                  "away": 2.5,
+                  "draw": 3.2,
+                  "home": 2.875
+                }
+              },
+              {
+                "book": "Paddy Power",
+                "prices": {
+                  "away": 2.5,
+                  "draw": 3.1,
+                  "home": 2.875
+                }
+              },
+              {
+                "book": "DraftKings",
+                "prices": {
+                  "away": 2.7,
+                  "draw": 3.2,
+                  "home": 2.75
+                }
+              },
+              {
+                "book": "Betfair Exchange",
+                "prices": {
+                  "away": 2.625,
+                  "draw": 3.25,
+                  "home": 2.9
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "xga": 1.4,
+                "xgf": 1.37
+              },
+              "home": {
+                "xga": 1.7,
+                "xgf": 1.03
+              },
+              "league_avg": 1.4
+            },
+            "price": 2.6,
+            "selection": "away",
+            "sport": "Soccer",
+            "start_time": "2026-10-09T16:00:00-03:00"
+          },
+          "key": "b1",
+          "league": "La Liga",
+          "market": "Moneyline",
+          "min_odds_american": 146,
+          "min_odds_decimal": 2.46,
+          "model_prob": 0.4116,
+          "no_edge": false,
+          "odds_american": 160,
+          "odds_decimal": 2.6,
+          "sport": "Soccer",
+          "start_time": "2026-10-09T16:00:00-03:00",
+          "status": "pending",
+          "units": 1
+        },
+        {
+          "away": "Rangers",
+          "bet": "Under 5.5 goals",
+          "confidence": "Medium",
+          "ev": 0.027,
+          "event": "Rangers @ Capitals",
+          "fair_prob": 0.4654,
+          "home": "Capitals",
+          "implied_prob": 0.4878,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "-",
+                "factor": "WSH D Matt Roy (lower body) and Rasmus Sandin (knee surgery, IR) out",
+                "note": "ESPN game injury list: Roy 'Out' (return date 2026-10-09, i.e. day-to-day), Sandin IR to Dec. 2025-26 WSH xGA was built with both in the lineup.",
+                "size": "small"
+              }
+            ],
+            "away": "Rangers",
+            "event": "Rangers @ Capitals",
+            "game_id": "nhl-nyr-wsh",
+            "home": "Capitals",
+            "id": "nhl-nyr-wsh:total:under5.5",
+            "league": "Regular season",
+            "line": 5.5,
+            "market": "total",
+            "market_odds": [
+              {
+                "book": "Circa",
+                "prices": {
+                  "over": -130,
+                  "under": 110
+                }
+              },
+              {
+                "book": "Boomers",
+                "prices": {
+                  "over": -125,
+                  "under": 105
+                }
+              },
+              {
+                "book": "BetMGM",
+                "prices": {
+                  "over": -120,
+                  "under": 100
+                }
+              },
+              {
+                "book": "Station Casinos",
+                "prices": {
+                  "over": -130,
+                  "under": 110
+                }
+              },
+              {
+                "book": "South Point",
+                "prices": {
+                  "over": -120,
+                  "under": 100
+                }
+              },
+              {
+                "book": "Wynn",
+                "prices": {
+                  "over": -125,
+                  "under": 105
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": 0.21,
+                "xga60": 2.41,
+                "xgf60": 2.29
+              },
+              "home": {
+                "goalie_gsax60": 0.22,
+                "xga60": 2.44,
+                "xgf60": 2.5
+              }
+            },
+            "price": 2.05,
+            "selection": "under",
+            "sport": "NHL",
+            "start_time": "2026-10-09T20:00:00-03:00"
+          },
+          "key": "b2",
+          "league": "Regular season",
+          "market": "Total",
+          "min_odds_american": 102,
+          "min_odds_decimal": 2.02,
+          "model_prob": 0.501,
+          "no_edge": false,
+          "odds_american": 105,
+          "odds_decimal": 2.05,
+          "sport": "NHL",
+          "start_time": "2026-10-09T20:00:00-03:00",
+          "status": "pending",
+          "units": 0.75
+        }
+      ],
+      "bet": "Golden State Valkyries +4.5",
+      "candidates": [
+        {
+          "bet": "Washington State moneyline",
+          "event": "Washington State @ Utah State",
+          "note": "EV +1.6% at 2.75, estimate 36.9% vs 36.4% needed. Passed over: only +1.6% EV at a 0.25u stake; WSU's offense has collapsed (11.8 ppg, QB turmoil) and the market moved USU -3 to -5.5."
+        },
+        {
+          "bet": "Atlanta Dream +2.5",
+          "event": "Atlanta Dream @ New York Liberty",
+          "note": "EV +0.0% at 1.95, estimate 51.2% vs 51.2% needed. Passed over: no edge after research (Allisha Gray questionable, Liberty fully healthy); the line already moved from +3.5 to +2.5."
+        },
+        {
+          "bet": "Over 46.5 points",
+          "event": "Iowa State @ BYU",
+          "note": "EV -0.1% at 1.94, estimate 51.5% vs 51.5% needed. Passed over: careful projection 48.0 is only 1.5 points over the market; no edge."
+        },
+        {
+          "bet": "Atlanta Dream moneyline",
+          "event": "Atlanta Dream @ New York Liberty",
+          "note": "EV -1.3% at 2.30, estimate 42.9% vs 43.5% needed. Passed over: negative EV once Gray's injury and a healthy Liberty roster were priced in."
+        },
+        {
+          "bet": "Washington State +5.5",
+          "event": "Washington State @ Utah State",
+          "note": "EV -1.5% at 1.91, estimate 51.6% vs 52.4% needed. Passed over: negative EV after the QB/play-calling adjustment."
+        },
+        {
+          "bet": "Iowa moneyline",
+          "event": "Iowa @ Washington",
+          "note": "EV -3.1% at 2.30, estimate 42.1% vs 43.5% needed. Passed over: Iowa expected to start backup QB Jeremy Hecklinski (Hank Brown, AC joint); negative EV."
+        },
+        {
+          "bet": "Iowa +3",
+          "event": "Iowa @ Washington",
+          "note": "EV -4.4% at 1.91, estimate 49.9% vs 52.4% needed. Passed over: same QB issue; negative EV."
+        },
+        {
+          "bet": "Kasimpasa moneyline",
+          "event": "Galatasaray vs Kasimpasa",
+          "note": "EV -6.5% at 10.00, estimate 9.3% vs 10.0% needed. Passed over: negative EV with real xG (statz.ai) in place of quick estimates."
+        },
+        {
+          "bet": "Eintracht Braunschweig moneyline",
+          "event": "Eintracht Braunschweig vs Holstein Kiel",
+          "note": "Removed in research: no real 2. Bundesliga xG could be found and only 2 books priced it."
+        },
+        {
+          "bet": "Over 2.5 goals",
+          "event": "Aldosivi vs Sarmiento",
+          "note": "Removed in research: only one book (bet365) quoted the total; the screen edge relied on goal totals rather than xG."
+        },
+        {
+          "bet": "Under 6 goals",
+          "event": "Rangers @ Capitals",
+          "note": "Removed in research: only Caesars quoted 6; Under 5.5 kept instead (backup 2)."
+        }
+      ],
+      "confidence": "High",
+      "created_at": "2026-10-09T11:23:49Z",
+      "date": "2026-10-09",
+      "ev": 0.0561,
+      "event": "Golden State Valkyries @ Las Vegas Aces",
+      "fair_prob": 0.5174,
+      "home": "Las Vegas Aces",
+      "implied_prob": 0.5348,
+      "input": {
+        "adjustments": [],
+        "away": "Golden State Valkyries",
+        "event": "Golden State Valkyries @ Las Vegas Aces",
+        "game_id": "wnba-gs-lv-g3",
+        "home": "Las Vegas Aces",
+        "id": "wnba-gs-lv-g3:spread:away4.5",
+        "league": "WNBA Semifinals Game 3",
+        "line": 4.5,
+        "market": "spread",
+        "market_odds": [
+          {
+            "book": "BetMGM",
+            "prices": {
+              "away": -118,
+              "home": -102
+            }
+          },
+          {
+            "book": "bet365",
+            "prices": {
+              "away": -115,
+              "home": -105
+            }
+          },
+          {
+            "book": "FanDuel",
+            "prices": {
+              "away": -118,
+              "home": -104
+            }
+          },
+          {
+            "book": "Fanatics",
+            "prices": {
+              "away": -115,
+              "home": -105
+            }
+          },
+          {
+            "book": "BetRivers",
+            "prices": {
+              "away": -115,
+              "home": -108
+            }
+          },
+          {
+            "book": "Caesars",
+            "prices": {
+              "away": -118,
+              "home": -102
+            }
+          },
+          {
+            "book": "theScore Bet",
+            "prices": {
+              "away": -120,
+              "home": 100
+            }
+          },
+          {
+            "book": "Hard Rock",
+            "prices": {
+              "away": -120,
+              "home": 100
+            }
+          }
+        ],
+        "model_inputs": {
+          "away_rating": 6.4,
+          "home_rating": 5.8,
+          "total": 160
+        },
+        "price": 1.87,
+        "selection": "away",
+        "sport": "WNBA",
+        "start_time": "2026-10-09T22:30:00-03:00"
+      },
+      "league": "WNBA Semifinals Game 3",
+      "market": "Spread",
+      "min_odds_american": -127,
+      "min_odds_decimal": 1.79,
+      "model": {
+        "books": [
+          {
+            "book": "BetMGM",
+            "decimal": 1.847,
+            "fair": 0.5186,
+            "margin": 0.0462,
+            "price": -118
+          },
+          {
+            "book": "bet365",
+            "decimal": 1.87,
+            "fair": 0.5116,
+            "margin": 0.0471,
+            "price": -115
+          },
+          {
+            "book": "FanDuel",
+            "decimal": 1.847,
+            "fair": 0.5161,
+            "margin": 0.0511,
+            "price": -118
+          },
+          {
+            "book": "Fanatics",
+            "decimal": 1.87,
+            "fair": 0.5116,
+            "margin": 0.0471,
+            "price": -115
+          },
+          {
+            "book": "BetRivers",
+            "decimal": 1.87,
+            "fair": 0.508,
+            "margin": 0.0541,
+            "price": -115
+          },
+          {
+            "book": "Caesars",
+            "decimal": 1.847,
+            "fair": 0.5186,
+            "margin": 0.0462,
+            "price": -118
+          },
+          {
+            "book": "theScore Bet",
+            "decimal": 1.833,
+            "fair": 0.5232,
+            "margin": 0.0455,
+            "price": -120
+          },
+          {
+            "book": "Hard Rock",
+            "decimal": 1.833,
+            "fair": 0.5232,
+            "margin": 0.0455,
+            "price": -120
+          }
+        ],
+        "engine": "1.0",
+        "ev": 0.0561,
+        "fair_odds_decimal": 1.77,
+        "growth_bp": 18.12,
+        "inputs": {
+          "margin": 1.4,
+          "total": 160
+        },
+        "inputs_text": "Projected margin: Las Vegas Aces by 1.4, projected total 160.0",
+        "kelly_fraction": 0.25,
+        "kelly_full": 0.0644,
+        "market_margin": 0.0478,
+        "method": "points_normal",
+        "method_label": "Points model",
+        "min_ev": 0.01,
+        "min_odds_decimal": 1.79,
+        "no_edge": false,
+        "notes": [
+          "Projected margin from power ratings plus 2 points home field."
+        ],
+        "outcomes": {
+          "loss": 0.4353,
+          "win": 0.5647
+        },
+        "steps": [
+          {
+            "detail": "Median of 8 books, power method, average margin 4.8%",
+            "key": "market",
+            "label": "Market, margin removed",
+            "prob": 0.5174
+          },
+          {
+            "detail": "Projected margin: Las Vegas Aces by 1.4, projected total 160.0",
+            "key": "model",
+            "label": "Points model",
+            "prob": 0.611
+          },
+          {
+            "key": "blend",
+            "label": "Blend: 50% market, 50% model",
+            "prob": 0.5647
+          },
+          {
+            "key": "final",
+            "label": "Final estimate",
+            "prob": 0.5647
+          }
+        ],
+        "warnings": []
+      },
+      "model_prob": 0.5647,
+      "no_edge": false,
+      "odds_american": -115,
+      "odds_decimal": 1.87,
+      "reasoning": [
+        "Basketball-Reference 2026 regular season: Valkyries 32-12, net rating +9.4, SRS 6.65, best defense in the league (DRtg 100.6); Aces 31-13, net +7.1, SRS 5.15.",
+        "Inputs used: Aces 5.8 (SRS plus 0.65 for regular-season games MVP A'ja Wilson missed), Valkyries 6.4 (shaded down for a weak offense), plus 2.0 points home court: Aces by 1.4 against a market line of Aces -4.5.",
+        "Margin removed from 8 books (Valkyries +4.5 at -115 to -120), the market gives +4.5 a 51.7% chance; the points model says 61.1%; the 50/50 blend is 56.5% against 53.5% needed at 1.87, for +5.6% EV.",
+        "Series so far: Valkyries won 71-60 and 83-81, and the slow pace (Valkyries 74.5 possessions, slowest in the league) keeps margins tight, which helps a +4.5 underdog.",
+        "No injuries reported for either team in the last 48 hours; Valkyries guard Burton left Game 1 briefly but played Game 2 and hit the winning three.",
+        "The line opened Aces -4.5 and has held at 8 of 9 books; DraftKings has moved to -3.5, a small move toward Golden State."
+      ],
+      "risks": [
+        "This is the top result of a screen of about 150 bets and the market strongly disagrees (Aces -4.5 at 8 of 9 books); screen-selected edges tend to be overstated, and the market may be pricing Wilson's impact more heavily than her missed regular-season games suggest.",
+        "Elimination game at home for an Aces team down 0-2; one big A'ja Wilson night can swing a single game well past 4.5 points.",
+        "Ratings are regular-season only; playoff margins are noisy (Aces +17, -10, +11, -11, -2) and the Valkyries' offense has been inconsistent."
+      ],
+      "sources": [
+        {
+          "title": "Basketball-Reference: 2026 WNBA season ratings",
+          "url": "https://www.basketball-reference.com/wnba/years/2026.html"
+        },
+        {
+          "title": "Covers: Valkyries @ Aces odds by book",
+          "url": "https://www.covers.com/sport/basketball/wnba/matchup/394836/odds"
+        },
+        {
+          "title": "WNBA.com: Aces vs Valkyries Game 2 recap",
+          "url": "https://www.wnba.com/news/2026-playoffs-aces-valkyries-game-2-recap"
+        },
+        {
+          "title": "CBS Sports: A'ja Wilson 2026 MVP",
+          "url": "https://cbssports.com/wnba/news/aja-wilson-2026-wnba-mvp-las-vegas-aces"
+        },
+        {
+          "title": "CBS Sports: 2026 WNBA playoffs bracket and results",
+          "url": "https://www.cbssports.com/wnba/news/2026-wnba-playoffs-bracket-schedule/"
+        },
+        {
+          "title": "statz.ai La Liga xG (Espanyol backup)",
+          "url": "https://statz.ai/competitions/la-liga/xg"
+        },
+        {
+          "title": "VSIN NHL Vegas odds tracker (Under 5.5 backup)",
+          "url": "https://data.vsin.com/nhl/vegas-odds-linetracker/"
+        },
+        {
+          "title": "Daily Faceoff starting goalies, Oct 9",
+          "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-09"
+        }
+      ],
+      "sport": "WNBA",
+      "start_time": "2026-10-09T22:30:00-03:00",
+      "status": "pending",
+      "summary": "The market makes Las Vegas a 4.5-point home favourite, but Golden State had the league's best regular-season rating (SRS 6.65 vs the Aces' 5.15) and leads the series 2-0; even after crediting the Aces for A'ja Wilson's missed games and adding 2 points for home court, the model has Las Vegas by only about 1.4.",
+      "units": 1.5,
+      "id": "2026-10-09"
     }
   ]
 }

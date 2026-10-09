@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T20:33:59Z",
+  "updated_at": "2026-10-09T02:03:25Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -422,6 +422,8 @@
           "ev": 0.0122,
           "event": "Mammoth @ Bruins",
           "fair_prob": 0.6899,
+          "final_score": "Bruins 6, Mammoth 1",
+          "graded_at": "2026-10-09T02:03:12Z",
           "home": "Bruins",
           "implied_prob": 0.7057,
           "input": {
@@ -511,9 +513,10 @@
           "no_edge": false,
           "odds_american": -240,
           "odds_decimal": 1.42,
+          "result_units": 0.32,
           "sport": "NHL",
           "start_time": "2026-10-08T20:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 0.75
         }
       ],

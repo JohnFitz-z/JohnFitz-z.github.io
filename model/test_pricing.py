@@ -312,5 +312,49 @@ class Slate(unittest.TestCase):
         self.assertFalse(upd["main"]["value"])
 
 
+class Sharp(unittest.TestCase):
+    def cand(self, books, mi=None):
+        return {"id": "s", "sport": "NHL", "home": "Blues", "away": "Sharks", "market": "total", "selection": "over",
+                "line": 5.5, "price": 1.80, "market_odds": books, "model_inputs": mi or {}}
+
+    def test_pinnacle_is_the_anchor(self):
+        books = [{"book": "DraftKings", "prices": {"over": 1.80, "under": 2.05}},
+                 {"book": "FanDuel", "prices": {"over": 1.80, "under": 2.05}},
+                 {"book": "Pinnacle", "prices": {"over": 1.95, "under": 1.95}}]
+        mv = P.market_view(self.cand(books), CFG)
+        self.assertEqual(mv["source"], "sharp")
+        self.assertAlmostEqual(mv["fair_prob"], 0.5, places=3)
+        self.assertIn("Pinnacle", mv["detail"])
+        cfg = copy.deepcopy(CFG)
+        cfg["market"]["anchor"] = "consensus"
+        self.assertEqual(P.market_view(self.cand(books), cfg)["source"], "consensus")
+
+    def test_no_sharp_book_falls_back_to_median(self):
+        books = [{"book": "DraftKings", "prices": {"over": 1.80, "under": 2.05}},
+                 {"book": "FanDuel", "prices": {"over": 1.85, "under": 2.00}}]
+        self.assertEqual(P.market_view(self.cand(books), CFG)["source"], "consensus")
+
+    def test_far_from_market_ranks_below_normal_bets(self):
+        books = [{"book": "Pinnacle", "prices": {"over": 1.87, "under": 2.03}},
+                 {"book": "Circa", "prices": {"over": 1.83, "under": 2.05}}]
+        # last night's Sharks @ Blues inputs: the model was ~9 points over the market
+        wild = self.cand(books, {"home": {"xgf60": 2.38, "xga60": 2.49, "goalie_gsax60": 0.0},
+                                 "away": {"xgf60": 2.46, "xga60": 2.53, "goalie_gsax60": -0.44}})
+        sane = dict(self.cand(books, {"home": {"xgf60": 2.5, "xga60": 2.45, "goalie_gsax60": 0.05},
+                                      "away": {"xgf60": 2.5, "xga60": 2.5, "goalie_gsax60": 0.0}}), id="t", event="Other game")
+        priced, _ = P.price_all([wild, sane], CFG)
+        self.assertTrue(priced[0]["suspect"])
+        pick = P.rank_and_pick(priced, CFG)
+        self.assertEqual(pick["input"]["id"], "t")
+
+    def test_slate_bet_price_ignores_sharp_books(self):
+        data = {"games": [{"id": "g", "sport": "NHL", "home": "A", "away": "B", "markets": [
+            {"market": "moneyline", "books": [{"book": "Pinnacle", "prices": {"home": 2.10, "away": 1.80}},
+                                              {"book": "DraftKings", "prices": {"home": 2.00, "away": 1.80}},
+                                              {"book": "FanDuel", "prices": {"home": 2.00, "away": 1.82}}]}]}]}
+        home = [c for c in P.expand_slate(data) if c["selection"] == "home"][0]
+        self.assertAlmostEqual(home["price"], 2.00)
+
+
 if __name__ == "__main__":
     unittest.main()

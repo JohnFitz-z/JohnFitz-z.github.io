@@ -31,6 +31,7 @@ and the price's own break-even is always 1 / decimal odds.
 
 import argparse
 import json
+import re
 import math
 import os
 import sys
@@ -123,13 +124,28 @@ def remove_vig(decimals, method="power"):
     return [x / t for x in fair]
 
 
+def _norm_book(name):
+    return re.sub(r"[^a-z]", "", str(name).lower())
+
+
+def sharp_weight(book, cfg):
+    """Weight of a book in the sharp anchor (0 = not a sharp book)."""
+    key = _norm_book(book)
+    for name, w in (cfg.get("market", {}).get("sharp_books") or {}).items():
+        if _norm_book(name) and _norm_book(name) in key:
+            return float(w)
+    return 0.0
+
+
 def market_view(c, cfg):
-    """Median fair (break-even) probability of the selection across books."""
+    """Fair (break-even) probability of the selection. When a sharp book (Pinnacle, Betfair
+    Exchange, Circa...) prices the market, its margin-free price is the anchor, since sharp
+    closing prices are the best public forecast; otherwise the median across books."""
     sel = c["selection"].lower()
     kind = c["market"].lower()
     line = c.get("line")
     method = cfg.get("devig_method", "power")
-    rows, fairs, margins, skipped = [], [], [], []
+    rows, fairs, margins, skipped, sharp = [], [], [], [], []
     for b in c.get("market_odds") or []:
         book = b.get("book", "?")
         if line is not None and b.get("line") is not None and abs(float(b["line"]) - float(line)) > 1e-9:
@@ -158,17 +174,34 @@ def market_view(c, cfg):
         fairs.append(fair)
         margins.append(margin)
         sel_price = prices.get(sel)
+        w = sharp_weight(book, cfg)
         rows.append({
             "book": book,
             "price": sel_price,
             "decimal": round(to_decimal(sel_price), 3) if sel_price is not None else None,
             "fair": round(fair, 4),
             "margin": round(margin, 4),
+            **({"sharp": True} if w > 0 else {}),
         })
+        if w > 0:
+            sharp.append((w, fair, book, margin))
     if not fairs:
         return None
+    use_sharp = cfg.get("market", {}).get("anchor", "sharp") == "sharp" and sharp
+    if use_sharp:
+        fair_prob = sum(w * f for w, f, _, _ in sharp) / sum(w for w, _, _, _ in sharp)
+        names = ", ".join(dict.fromkeys(b for _, _, b, _ in sharp))
+        others = len(rows) - len(sharp)
+        detail = (f"{names} (sharp), {method} method, margin {sum(m for *_, m in sharp) / len(sharp) * 100:.1f}%"
+                  + (f"; {others} other book{'s' if others != 1 else ''} shown for comparison" if others else ""))
+    else:
+        fair_prob = median(fairs)
+        detail = (f"Median of {len(rows)} book{'s' if len(rows) != 1 else ''}, {method} method, "
+                  f"average margin {sum(margins) / len(margins) * 100:.1f}%")
     return {
-        "fair_prob": median(fairs),
+        "fair_prob": fair_prob,
+        "source": "sharp" if use_sharp else "consensus",
+        "detail": detail,
         "books": rows,
         "avg_margin": sum(margins) / len(margins),
         "method": method,
@@ -747,13 +780,18 @@ def price_candidate(c, cfg):
     bw = cfg["blend"]
     steps = []
     if mv:
-        steps.append({"key": "market", "label": "Market, margin removed", "prob": mv["fair_prob"],
-                      "detail": f"Median of {len(mv['books'])} book{'s' if len(mv['books']) != 1 else ''}, "
-                                f"{mv['method']} method, average margin {mv['avg_margin'] * 100:.1f}%"})
+        steps.append({"key": "market", "label": "Sharp market, margin removed" if mv["source"] == "sharp" else "Market, margin removed",
+                      "prob": mv["fair_prob"], "detail": mv["detail"]})
     if q_model is not None:
         steps.append({"key": "model", "label": dist.label, "prob": q_model, "detail": _inputs_text(dist, c, sport)})
 
+    suspect = False
     if mv and q_model is not None:
+        gap = abs(logit(q_model) - logit(mv["fair_prob"]))
+        if gap > cfg.get("ranking", {}).get("max_model_logit_gap", 9e9):
+            suspect = True
+            warnings.append(f"Model ({q_model * 100:.0f}%) is far from the market ({mv['fair_prob'] * 100:.0f}%). A gap this big "
+                            "is usually a wrong input (starter, goalie, home/away, stale stats), so it ranks below normal bets.")
         wm, ws = bw["market_weight"], bw["model_weight"]
         q = sigmoid((wm * logit(mv["fair_prob"]) + ws * logit(q_model)) / (wm + ws))
         steps.append({"key": "blend", "label": f"Blend: {round(wm * 100)}% market, {round(ws * 100)}% model", "prob": q})
@@ -816,6 +854,8 @@ def price_candidate(c, cfg):
         "steps": [_round_step(s) for s in steps],
         "books": (mv or {}).get("books", []),
         "market_margin": round(mv["avg_margin"], 4) if mv else None,
+        "market_source": mv["source"] if mv else None,
+        "suspect": suspect,
         "outcomes": {k: round(v, 4) for k, v in final_out.items() if v > 1e-6},
         "ev": round(ev, 4),
         "kelly_full": round(k_full, 4),
@@ -851,7 +891,8 @@ def price_candidate(c, cfg):
             doc[k] = c[k]
     doc["input"] = original
     game = c.get("game_id") or f"{doc['event']}|{c.get('start_time', '')}"
-    return {"id": c.get("id"), "game": game, "score": growth, "ev": ev, "modeled": method != "market_only", "doc": doc}
+    return {"id": c.get("id"), "game": game, "score": growth, "ev": ev, "modeled": method != "market_only",
+            "suspect": suspect, "doc": doc}
 
 
 def _inputs_text(dist, c, sport):
@@ -892,7 +933,7 @@ def rank_and_pick(priced, cfg, date=None, n_backups=2):
     pay its margin), so when any candidate has a model behind it, market-only
     ones are ranked after all modeled ones."""
     prefer = cfg.get("ranking", {}).get("modeled_first", True) and any(p["modeled"] for p in priced)
-    priced.sort(key=lambda p: ((p["modeled"] if prefer else True), p["score"], p["ev"]), reverse=True)
+    priced.sort(key=lambda p: ((p["modeled"] if prefer else True), not p.get("suspect"), p["score"], p["ev"]), reverse=True)
     for i, p in enumerate(priced, 1):
         p["rank"] = i
     if not priced:
@@ -917,7 +958,7 @@ def rank_and_pick(priced, cfg, date=None, n_backups=2):
         {"bet": p["doc"]["bet"], "event": p["doc"]["event"],
          "note": f"EV {p['ev'] * 100:+.1f}% at {p['doc']['odds_decimal']:.2f}, "
                  f"estimate {p['doc']['model_prob'] * 100:.1f}% vs {p['doc']['implied_prob'] * 100:.1f}% needed"
-                 + ("" if p["modeled"] else ", market only") + "."}
+                 + ("" if p["modeled"] else ", market only") + (", model far from market (check inputs)" if p.get("suspect") else "") + "."}
         for p in priced if p["id"] not in chosen][:8]
     return pick
 
@@ -956,6 +997,14 @@ def _median_price(books, sel):
     return median(decs) if decs else None
 
 
+SHARP_NAMES = ("pinnacle", "betfair", "circa", "matchbook")
+
+
+def _is_sharp_name(book):
+    k = _norm_book(book)
+    return any(n in k for n in SHARP_NAMES)
+
+
 def expand_slate(data):
     """Turn a slate of games (each with its markets and book prices) into one
     candidate per side of every market."""
@@ -988,8 +1037,9 @@ def expand_slate(data):
                 sides = [("yes", None), ("no", None)]
             else:
                 continue
+            soft = [b for b in books if not _is_sharp_name(b.get("book", ""))]
             for sel, ln in sides:
-                price = _median_price(books, sel)
+                price = _median_price(soft if len(soft) >= 2 else books, sel)
                 if price is None:
                     continue
                 c = dict(base, market=market, selection=sel, line=ln, price=round(price, 3),

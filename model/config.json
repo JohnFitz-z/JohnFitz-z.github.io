@@ -2,6 +2,11 @@
   "engine_version": "1.0",
   "devig_method": "power",
 
+  "market": {
+    "anchor": "sharp",
+    "sharp_books": { "pinnacle": 1.0, "betfair": 1.0, "circa": 0.8, "matchbook": 0.6 }
+  },
+
   "blend": {
     "market_weight": 0.5,
     "model_weight": 0.5
@@ -23,7 +28,8 @@
   },
 
   "ranking": {
-    "modeled_first": true
+    "modeled_first": true,
+    "max_model_logit_gap": 0.35
   },
 
   "confidence": {

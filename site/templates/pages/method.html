@@ -10,7 +10,7 @@
   <p>The top eight or so from the screen get proper research: confirmed starters and goalies, injuries, fresh team numbers, more sportsbooks, and adjustments for news the numbers miss. Then they're priced again.</p>
 
   <h2>3. The market's view</h2>
-  <p>Sportsbook odds include a cut, so the probabilities they imply add up to more than 100%. The model removes that cut from each book's prices (the "power" method, which takes a bit more off long shots) and takes the middle value across books. That's the market's fair probability.</p>
+  <p>Sportsbook odds include a cut, so the probabilities they imply add up to more than 100%. The model removes that cut (the "power" method, which takes a bit more off long shots). The fair price comes from the sharpest books, Pinnacle and the Betfair Exchange, whose prices are the most accurate forecasts available. If neither has the game, it uses the middle value across all books. Odds for every game, and each game's closing line, are downloaded automatically through the day.</p>
 
   <h2>4. The model's view</h2>
   <p>Each sport has its own score model that prices the exact bet, including pushes and overtime rules:</p>
@@ -37,7 +37,7 @@
     <li><b>Take at</b>: the lowest price that still gives at least +1% expected value. Below that, skip the bet.</li>
     <li><b>Confidence</b>: High at +4% expected value or more, Medium at +2% to +4%, Low below that.</li>
   </ul>
-  <p>A stat model has to back the pick. Bets priced only from the odds can't show an edge (you'd just be paying the bookmaker's cut), so they rank last.</p>
+  <p>A stat model has to back the pick. Bets priced only from the odds can't show an edge (you'd just be paying the bookmaker's cut), so they rank last. If the model is far from the sharp price (about 9 points or more), that's almost always a bad input like the wrong goalie, so those bets rank below everything else too.</p>
   <p>The next two best bets from <b>different games</b> become backups, each with its own "take at" price. If Stake's price on the main pick is too low, take backup 1, then backup 2. Only the main pick counts toward the record.</p>
   <p>There's always a pick. If nothing has a positive edge, it's the closest call at the minimum size, marked "No clear edge".</p>
 

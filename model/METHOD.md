@@ -4,11 +4,29 @@ This is the playbook the daily run follows. The research finds the facts; `prici
 
 ## Daily flow: screen wide, then dig deep
 
-1. **Build the slate** (`slate.json`, format below): every game today in the sports with a model (MLB, NHL, soccer top leagues, NFL, CFL, NCAAF, NBA, WNBA, NCAAB) that starts after the pick goes out. For each game: quick model inputs from the bulk sources below, and the markets with prices from at least two books. Aim for every game on the board; on a busy night that's 20–60 games.
+1. **Build the slate from the data feed.** Clone the `feed` branch and run `python3 tools/feed_to_slate.py <feed> --date TODAY --goalies goalies.json --out slate.json`. It writes every game today with moneyline, spread and total from every book (Pinnacle and Betfair Exchange included), NHL inputs from MoneyPuck and MLB inputs from the MLB Stats API. `goalies.json` is `{"Bruins": "Jeremy Swayman", ...}` from Daily Faceoff. Then add `model_inputs` for the games it lists as needing them (football and basketball ratings, soccer xG), using the bulk sources below. Add team totals and first-five markets by hand when a page lists them. If the feed is missing or stale (more than 6 hours old), build the slate by hand as below.
 2. **Screen**: `python3 model/pricing.py screen slate.json --top 8 --out screen.json --candidates-out shortlist.json`. Every side of every market is priced; the best eight (at most two per game) go to the shortlist.
-3. **Research the shortlist**: confirm starters, goalies, lineups and injuries; replace the quick inputs with careful ones; add more books; add adjustments. Edit `shortlist.json` (it's a candidates file) and drop any candidate whose inputs turn out to be wrong or unavailable.
+3. **Research the shortlist**: confirm starters, goalies, lineups and injuries; replace quick inputs with careful ones; add adjustments. Edit `shortlist.json` (it's a candidates file) and drop any candidate whose inputs turn out to be wrong or unavailable.
 4. **Price**: `python3 model/pricing.py price shortlist.json --out priced.json --pick-out pick.json`. The top bet is the pick; the next two best from **other games** are backups 1 and 2, each with its own take-at price.
 5. Add the written fields (summary, reasoning, risks, sources, notes on the candidates) to `pick.json` and save it.
+
+## Data feed
+
+A GitHub Action (`.github/workflows/feed.yml`) writes to the `feed` branch:
+
+| File | What | When (Atlantic, summer) |
+|---|---|---|
+| `odds/latest.json`, `odds/DATE/morning.json` | Every game in every active sport, all books in the us and eu regions (Pinnacle, Betfair Exchange, DraftKings, FanDuel, BetMGM, Caesars, BetOnline...) | 6:35 AM |
+| `odds/latest_afternoon.json` | Same, for the price check | 3:25 PM |
+| `odds/closing/DATE.json` | Each game's last snapshot before it starts (10–40 minutes out) | every 30 min, 8:20 AM–3:50 AM |
+| `stats/nhl.json` | MoneyPuck 5v5 xGF/60, xGA/60 by team and goalie GSAx, this season and last | 6:35 AM |
+| `stats/mlb/latest.json` | Probable starters with their pitching lines, team batting and pitching, this season and last | 6:35 AM |
+| `log/*.json`, `odds/usage.json` | What ran, errors, odds credits left | each run |
+
+Odds come from The Odds API (secret `ODDS_API_KEY`, 20K credits a month). Clone with `git clone --depth 1 --branch feed https://github.com/JohnFitz-z/JohnFitz-z.github.io.git <dir>`.
+
+- Closing line value: `python3 tools/close_from_feed.py <feed> pick.json [--backup b1]` prints the `close` object, measured against Pinnacle's close (then Betfair, then the median).
+- Price check: `python3 tools/close_from_feed.py <feed> today.json --fresh --out fresh.json` builds `fresh.json` from the afternoon snapshot.
 
 Ranking uses expected log growth at the full Kelly stake. It rewards a big edge relative to the risk, so a +3% edge at 1.80 beats a +3% edge at 4.50. Candidates priced from the market alone can never show an edge (they copy the market and pay its margin), so they always rank below candidates with a model behind them. If no candidate has a positive edge, the engine still returns the best one at the minimum stake and flags it `no_edge`.
 
@@ -84,13 +102,15 @@ python3 model/pricing.py recheck pick.json --fresh fresh.json --out update.json
 
 | Step | What happens |
 |---|---|
-| Market | Each book's two-way or three-way prices have the margin removed (power method). The median across books is the market's fair probability. |
+| Market | Each book's two-way or three-way prices have the margin removed (power method). When a sharp book prices the market (Pinnacle, Betfair Exchange, Circa, Matchbook; weights in `config.json`), the sharp margin-free price is the market's fair probability, because sharp prices are the best public forecast. Otherwise it's the median across books. The bet price in a slate is the median of the non-sharp books, since that's closer to what Stake offers. |
 | Model | A score model for the sport prices the exact bet, including pushes on whole lines, half results on quarter lines, extra innings and overtime. |
 | Blend | Market and model are combined in log-odds space, 50% market and 50% model. |
 | Adjust | Up to four researched factors the model can't see. Small, medium and large move the log-odds by 0.04, 0.08 and 0.12 (about 1, 2 and 3 points near 50%). The total is capped at 0.20 (about 5 points). |
 | Bet | Expected value at the real price, quarter-Kelly stake (1 unit = 1% of bankroll, 0.25u to 2u), and the lowest price that still gives at least +1% EV ("take it at"). |
 
 Confidence comes from EV: High at +4% or more, Medium at +2% to +4%, Low below +2%.
+
+Bad-input guard: when the model is more than 0.35 in log-odds (about 9 points near 50%) away from the market, the bet is marked as suspect and ranks below every normal bet. A gap that big is almost always a wrong input (starter, goalie, home/away swap, stale or stand-in stats), not an edge. Check the inputs; if they're right after research, the gap stands but the bet still ranks below normal ones.
 
 ## Sport models and the inputs to collect
 

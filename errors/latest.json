@@ -1,20 +1,33 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-10T17:02:24Z",
+ "scanned_at": "2026-10-10T17:12:55Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "England Amateur · Northern Premier League Premier",
-  "International · UEFA Nations League",
-  "Challenger · ATP Challenger Braga, Portugal Men Singles",
-  "ITF Men · Kigali",
-  "ITF Women · Maanshan"
+  "International · Eurocup",
+  "USA · NHL",
+  "Russia · MHL",
+  "ITF Women · Chisinau",
+  "International · Europe Cup"
  ],
- "stake_fixtures": 11,
- "both_books": 11,
- "markets_compared": 0,
+ "stake_fixtures": 13,
+ "both_books": 13,
+ "markets_compared": 320,
  "min_ev": 0.03,
- "requests_left_this_month": 233,
+ "detectors": {
+  "stale_compared": 320,
+  "offline_priced": 0,
+  "self_priced": 0,
+  "palpable_skipped": 0,
+  "steam": 0,
+  "fit_failed": 0
+ },
+ "by_type": {
+  "stale": 0,
+  "offline": 0,
+  "self": 0
+ },
+ "requests_left_this_month": 230,
  "errors": [],
  "month": {
   "flagged": 0,

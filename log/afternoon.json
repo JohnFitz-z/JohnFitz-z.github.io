@@ -1,1 +1,1 @@
-{"started_at":"2026-10-09T18:39:48Z","mode":"afternoon","errors":["ODDS_API_KEY is not set, odds skipped"],"finished_at":"2026-10-09T18:39:48Z"}
+{"started_at":"2026-10-10T18:19:23Z","mode":"afternoon","errors":[],"budget":{"plan":"free","credits_for_this_run":6.6,"cost_per_sport":3},"odds":{"kind":"afternoon","events":16,"per_sport":{"icehockey_nhl":16}},"credits":{"remaining":482.0,"used":18.0,"plan":"free"},"finished_at":"2026-10-10T18:19:26Z"}

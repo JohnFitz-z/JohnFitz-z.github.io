@@ -23,7 +23,7 @@ A GitHub Action (`.github/workflows/feed.yml`) writes to the `feed` branch:
 | `stats/mlb/latest.json` | Probable starters with their pitching lines, team batting and pitching, this season and last | 6:35 AM |
 | `log/*.json`, `odds/usage.json` | What ran, errors, odds credits left | each run |
 
-Odds come from The Odds API (secret `ODDS_API_KEY`, 20K credits a month). Clone with `git clone --depth 1 --branch feed https://github.com/JohnFitz-z/JohnFitz-z.github.io.git <dir>`.
+Odds come from The Odds API (secret `ODDS_API_KEY`). On the free plan (500 credits a month) the feed switches to a budget mode by itself: European books only (Pinnacle, Betfair Exchange, BetOnline, William Hill, Unibet...), the morning snapshot covers the sports with a game in the next 24 hours in priority order (NHL, NFL, NBA, MLB, NCAAF, then soccer) until that day's share of credits is used, the afternoon snapshot covers only the sports of today's pick and backups, and closing lines are saved only for today's pick and backups. `log/morning.json` lists any sport skipped for budget; those games need odds from the bulk pages. On a paid plan it fetches every sport, US and European books, and every game's closing line. Clone with `git clone --depth 1 --branch feed https://github.com/JohnFitz-z/JohnFitz-z.github.io.git <dir>`.
 
 - Closing line value: `python3 tools/close_from_feed.py <feed> pick.json [--backup b1]` prints the `close` object, measured against Pinnacle's close (then Betfair, then the median).
 - Price check: `python3 tools/close_from_feed.py <feed> today.json --fresh --out fresh.json` builds `fresh.json` from the afternoon snapshot.

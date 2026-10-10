@@ -53,9 +53,20 @@ SPORTS = {
     "soccer_usa_mls": ("Soccer", "MLS"),
 }
 MARKETS = "h2h,spreads,totals"
-REGIONS = "us,eu"
+REGIONS = "us,eu"          # paid plan: US books + Europe (Pinnacle, Betfair)
+REGIONS_FREE = "eu"        # free plan: Pinnacle, Betfair and other European books only
 CLOSE_WINDOW_MIN = 45
 MIN_REMAINING_FOR_CLOSE = 600
+FREE_QUOTA_MAX = 1000      # a monthly quota at or below this is treated as the free plan
+# Order sports are fetched in when credits are short (free plan)
+PRIORITY = ["icehockey_nhl", "americanfootball_nfl", "basketball_nba", "baseball_mlb", "americanfootball_ncaaf",
+            "soccer_epl", "soccer_uefa_champs_league", "basketball_ncaab", "basketball_wnba", "soccer_spain_la_liga",
+            "soccer_italy_serie_a", "soccer_germany_bundesliga", "soccer_france_ligue_one", "soccer_usa_mls",
+            "soccer_uefa_europa_league", "americanfootball_cfl"]
+ENGINE_TO_KEYS = {"MLB": ["baseball_mlb"], "NHL": ["icehockey_nhl"], "NFL": ["americanfootball_nfl"],
+                  "NCAAF": ["americanfootball_ncaaf"], "CFL": ["americanfootball_cfl"], "NBA": ["basketball_nba"],
+                  "WNBA": ["basketball_wnba"], "NCAAB": ["basketball_ncaab"]}
+CODE_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
 
 def now_utc():
@@ -149,6 +160,16 @@ class Odds:
     def __init__(self, key, log):
         self.key, self.log = key, log
         self.remaining = self.used = None
+        self.plan = os.environ.get("FEED_PLAN", "").strip().lower() or None
+        self._active = None
+
+    @property
+    def regions(self):
+        return REGIONS_FREE if self.plan == "free" else REGIONS
+
+    @property
+    def cost(self):  # credits per odds call: markets x regions
+        return len(MARKETS.split(",")) * len(self.regions.split(","))
 
     def _track(self, headers):
         if "x-requests-remaining" in headers:
@@ -157,11 +178,23 @@ class Odds:
                 self.used = float(headers.get("x-requests-used", 0))
             except ValueError:
                 pass
+        if self.plan is None and self.remaining is not None and self.used is not None:
+            self.plan = "free" if self.remaining + self.used <= FREE_QUOTA_MAX else "paid"
+
+    def daily_allowance(self):
+        """Credits we can spend today without running out before the month resets."""
+        if self.remaining is None:
+            return 0
+        today = now_utc().date()
+        nxt = (today.replace(day=1) + dt.timedelta(days=32)).replace(day=1)
+        return self.remaining / max(1, (nxt - today).days)
 
     def active_sports(self):
-        data, h = get(f"{ODDS}/sports", {"apiKey": self.key})
-        self._track(h)
-        return [s["key"] for s in data if s.get("active") and s["key"] in SPORTS]
+        if self._active is None:
+            data, h = get(f"{ODDS}/sports", {"apiKey": self.key})
+            self._track(h)
+            self._active = [s["key"] for s in data if s.get("active") and s["key"] in SPORTS]
+        return self._active
 
     def events(self, sport):  # free endpoint
         data, h = get(f"{ODDS}/sports/{sport}/events", {"apiKey": self.key, "dateFormat": "iso"})
@@ -169,7 +202,7 @@ class Odds:
         return data
 
     def odds(self, sport, frm=None, to=None):
-        params = {"apiKey": self.key, "regions": REGIONS, "markets": MARKETS, "oddsFormat": "decimal", "dateFormat": "iso"}
+        params = {"apiKey": self.key, "regions": self.regions, "markets": MARKETS, "oddsFormat": "decimal", "dateFormat": "iso"}
         if frm:
             params["commenceTimeFrom"] = iso(frm)
         if to:
@@ -179,10 +212,63 @@ class Odds:
         return [compact_event(e) for e in data]
 
 
+def todays_pick_sports(t0):
+    """Odds API sport keys and start times of today's pick(s) and backups, from the site's picks.json."""
+    try:
+        with open(os.path.join(CODE_ROOT, "data", "picks.json")) as f:
+            picks = json.load(f).get("picks", [])
+    except (OSError, ValueError):
+        return {}
+    day = local_date(t0)
+    out = {}
+    for p in picks:
+        if str(p.get("date")) != day or p.get("excluded"):
+            continue
+        for bet in [p] + list(p.get("backups") or []):
+            keys = ENGINE_TO_KEYS.get(str(bet.get("sport", "")).upper())
+            if not keys and str(bet.get("sport", "")).lower() == "soccer":
+                lg = str(bet.get("league", "")).lower()
+                keys = [k for k, (_, label) in SPORTS.items() if k.startswith("soccer") and
+                        (label.lower() in lg or lg in label.lower() or any(w in lg for w in label.lower().split() if len(w) > 3))]
+            for k in keys or []:
+                if bet.get("start_time"):
+                    out.setdefault(k, []).append(parse_iso(bet["start_time"]))
+    return out
+
+
+def sports_with_games(odds, t0, hours):
+    """Active sports that have a game starting in the next `hours` (uses the free events endpoint)."""
+    out = []
+    for sport in odds.active_sports():
+        try:
+            evs = odds.events(sport)
+        except Exception as e:
+            odds.log["errors"].append(f"events {sport}: {e}")
+            continue
+        if any(t0 < parse_iso(e["commence_time"]) <= t0 + dt.timedelta(hours=hours) for e in evs):
+            out.append(sport)
+    return sorted(out, key=lambda k: PRIORITY.index(k) if k in PRIORITY else 99)
+
+
 def snapshot(odds, out, name, log):
     t0 = now_utc()
     events, per_sport = [], {}
-    for sport in odds.active_sports():
+    sports = odds.active_sports()
+    budget = None
+    if odds.plan == "free":
+        if name == "afternoon":
+            sports = [k for k in sports_with_games(odds, t0, 12) if k in todays_pick_sports(t0)]
+            budget = odds.daily_allowance() * 0.3
+        else:
+            sports = sports_with_games(odds, t0, 24)
+            budget = odds.daily_allowance() * 0.7
+        log["budget"] = {"plan": "free", "credits_for_this_run": round(budget, 1), "cost_per_sport": odds.cost}
+    spent = 0
+    for sport in sports:
+        if budget is not None and spent + odds.cost > budget:
+            log.setdefault("skipped_for_budget", []).append(sport)
+            continue
+        spent += odds.cost
         try:
             evs = odds.odds(sport, frm=t0, to=t0 + dt.timedelta(hours=40))
             events += evs
@@ -205,7 +291,15 @@ def closing(odds, out, log):
     t0 = now_utc()
     soon = t0 + dt.timedelta(minutes=CLOSE_WINDOW_MIN)
     saved, checked = 0, []
-    for sport in odds.active_sports():
+    sports = odds.active_sports()
+    if odds.plan == "free":
+        # Free plan: only the closing lines of today's pick and backups.
+        mine = todays_pick_sports(t0)
+        sports = [k for k in sports if any(t0 < st <= soon + dt.timedelta(minutes=5) for st in mine.get(k, []))]
+        if not sports:
+            log["odds"] = {"kind": "close", "plan": "free", "note": "no pick or backup starting soon"}
+            return
+    for sport in sports:
         try:
             evs = odds.events(sport)
         except Exception as e:
@@ -416,7 +510,7 @@ def main(argv=None):
             except Exception as e:
                 log["errors"].append(f"{fn.__name__}: {e}")
     if odds and odds.remaining is not None:
-        log["credits"] = {"remaining": odds.remaining, "used": odds.used}
+        log["credits"] = {"remaining": odds.remaining, "used": odds.used, "plan": odds.plan}
         write_json(os.path.join(a.out, "odds", "usage.json"), {"at": iso(now_utc()), "remaining": odds.remaining, "used": odds.used})
     log["finished_at"] = iso(now_utc())
     write_json(os.path.join(a.out, "log", f"{mode}.json"), log)

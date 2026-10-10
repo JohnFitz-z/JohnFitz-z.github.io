@@ -6,7 +6,7 @@ export const STATUS = {pending: "Pending", won: "Won", lost: "Lost", push: "Push
 export const isW = s => s === "won" || s === "half_won";
 export const isL = s => s === "lost" || s === "half_lost";
 
-export const state = {picks: [], loaded: false, failed: "", updatedAt: null, stamp: ""};
+export const state = {picks: [], allPicks: [], loaded: false, failed: "", updatedAt: null, stamp: ""};
 
 export const $ = (s, root = document) => root.querySelector(s);
 export const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
@@ -38,7 +38,7 @@ export const fmtTime = iso => { if(!iso) return ""; const t = new Date(iso); if(
 export const fmtStamp = iso => { const t = new Date(iso); if(isNaN(t)) return ""; return new Intl.DateTimeFormat("en-US", {timeZone: TZ, month: "short", day: "numeric", hour: "numeric", minute: "2-digit"}).format(t); };
 
 export const newestFirst = () => state.picks.slice().sort(byDateAsc).reverse();
-export const pickById = id => state.picks.find(p => p.id === id) || null;
+export const pickById = id => state.allPicks.find(p => p.id === id) || null;
 export const todayPick = () => newestFirst().find(p => p.date === todayISO()) || null;
 export const latestPick = () => newestFirst()[0] || null;
 
@@ -67,10 +67,12 @@ export async function loadPicks(){
     const j = JSON.parse(text);
     state.stamp = text;
     const arr = Array.isArray(j) ? j : (j.picks || []);
-    state.picks = arr.filter(Boolean).map(b => Object.assign({}, b, {
+    state.allPicks = arr.filter(Boolean).map(b => Object.assign({}, b, {
       id: b.id || b.date, date: b.date || b.id,
       status: String(b.status || "pending").toLowerCase().replace("-", "_")
     }));
+    // Picks marked excluded (posted but replaced, never bet) keep their page but don't count anywhere.
+    state.picks = state.allPicks.filter(p => !p.excluded);
     state.updatedAt = j.updated_at || null;
     state.loaded = true; state.failed = "";
     return true;

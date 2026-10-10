@@ -1,6 +1,6 @@
 // My bankroll: the viewer's own bets, kept privately in this browser.
-import {$, esc, num, decOf, unitsOf, GRADED, STATUS, isW, isL, cls, spct, fmtDay, byDateAsc, state, todayPick, pickUrl} from "./core.js?v=fcc6602e9c";
-import {lineChart} from "./charts.js?v=fcc6602e9c";
+import {$, esc, num, decOf, unitsOf, GRADED, STATUS, isW, isL, cls, spct, fmtDay, byDateAsc, state, todayPick, pickUrl} from "./core.js?v=d437938210";
+import {lineChart} from "./charts.js?v=d437938210";
 
 const KEY = "ml-bank";
 export const Store = {

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T15:12:24Z",
+  "updated_at": "2026-10-10T15:16:39Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -200,6 +200,8 @@
       "date": "2026-10-08",
       "ev": -0.0138,
       "event": "Guardians @ White Sox",
+      "excluded": true,
+      "excluded_reason": "Replaced the same evening by the Sharks @ Blues pick, which was the one bet. This one wasn't bet, so it's left out of the record.",
       "fair_prob": 0.5275,
       "final_score": "Guardians 9, White Sox 5",
       "graded_at": "2026-10-09T04:20:00Z",

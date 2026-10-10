@@ -1,5 +1,5 @@
 // Responsive SVG line chart used for units and bankroll.
-import {esc, fmtDay} from "./core.js?v=fcc6602e9c";
+import {esc, fmtDay} from "./core.js?v=d437938210";
 
 export function lineChart(el, pts, o){
   const W = Math.max(300, Math.round(el.clientWidth || 640)), H = W < 480 ? 190 : 230;

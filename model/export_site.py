@@ -119,7 +119,7 @@ def main(argv=None):
     with open(a.out, "w") as fh:
         json.dump(out, fh, indent=2, ensure_ascii=False)
 
-    graded = sum(1 for p in picks if p["status"] not in ("pending", "void"))
+    graded = sum(1 for p in picks if p["status"] not in ("pending", "void") and not p.get("excluded"))
     print(f"Wrote {len(picks)} picks ({graded} graded) to {a.out}")
     for msg in problems:
         print("WARNING", msg)

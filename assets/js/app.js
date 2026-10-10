@@ -1,8 +1,8 @@
 // Boots whichever page is open: loads the data, renders that page's views, keeps them fresh.
-import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=fcc6602e9c";
-import {ticketHTML, rowHTML} from "./picks.js?v=fcc6602e9c";
-import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=fcc6602e9c";
-import {initBank, renderBank} from "./bank.js?v=fcc6602e9c";
+import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=d437938210";
+import {ticketHTML, rowHTML} from "./picks.js?v=d437938210";
+import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=d437938210";
+import {initBank, renderBank} from "./bank.js?v=d437938210";
 
 const page = document.body.dataset.page;
 
@@ -54,7 +54,9 @@ function renderPick(){
     return;
   }
   document.title = `${p.bet} · ${fmtDay(p.date, {weekday: undefined})} · Morning Line`;
-  el.innerHTML = ticketHTML(p, "detail");
+  el.innerHTML = (p.excluded ? `<div class="callout" style="margin-bottom:14px"><b>Not counted in the record.</b> ${esc(p.excluded_reason || "This pick was replaced and not bet.")}</div>` : "")
+    + ticketHTML(p, "detail");
+  if(nav && p.excluded){ nav.innerHTML = ""; return; }
   if(nav){
     const all = newestFirst(), i = all.findIndex(x => x.id === p.id);
     const newer = all[i - 1], older = all[i + 1];

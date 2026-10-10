@@ -9,9 +9,7 @@
     "tennis",
     "american-football"
   ],
-  "max_tournaments_per_sport": 25,
-  "max_tournaments": 120,
-  "tournaments_per_request": 120,
+  "tournaments_per_request": 5,
   "skip_words": [
     "esoccer",
     "ebasketball",
@@ -32,5 +30,7 @@
   "kelly_fraction": 0.25,
   "max_units": 1.0,
   "max_listed": 60,
-  "fetch_team_names": true
+  "fetch_team_names": true,
+  "tournaments_per_scan": 5,
+  "tournament_list_days": 10
 }

@@ -136,23 +136,36 @@ def as_list(x):
     return []
 
 
-def pick_tournaments(client, cfg):
-    sports = as_list(cached(client, "sports", lambda: client.get("sports")))
+def pick_tournaments(client, cfg, state, t0):
+    """Choose this scan's leagues. The free plan allows 5 leagues per request, so the finder rotates:
+    leagues not checked for a while come first, and leagues where Stake has been wrong before get a boost."""
+    import math
+    sports = as_list(cached(client, "sports", lambda: client.get("sports"), max_age_days=30))
     by_slug = {str(s.get("slug") or s.get("sportSlug") or "").lower(): s.get("sportId") for s in sports}
-    chosen, sport_of = [], {}
+    cands = []
     for slug in cfg["sports"]:
         sid = by_slug.get(slug)
         if sid is None:
             client.log["errors"].append(f"sport '{slug}' not found")
             continue
-        tours = as_list(cached(client, f"tournaments_{sid}", lambda: client.get("tournaments", sportId=sid)))
-        tours = [t for t in tours if (t.get("upcomingFixtures") or 0) > 0
-                 and not any(x in f"{t.get('tournamentName', '')} {t.get('categoryName', '')}".lower() for x in cfg["skip_words"])]
-        tours.sort(key=lambda t: -(t.get("upcomingFixtures") or 0))
-        for t in tours[: cfg["max_tournaments_per_sport"]]:
-            chosen.append(t)
-            sport_of[t["tournamentId"]] = slug
-    return chosen[: cfg["max_tournaments"]], sport_of
+        tours = as_list(cached(client, f"tournaments_{sid}", lambda: client.get("tournaments", sportId=sid),
+                               max_age_days=cfg["tournament_list_days"]))
+        for t in tours:
+            name = f"{t.get('tournamentName', '')} {t.get('categoryName', '')}".lower()
+            if (t.get("upcomingFixtures") or 0) <= 0 or any(x in name for x in cfg["skip_words"]):
+                continue
+            st = state.get(str(t["tournamentId"]), {})
+            last = parse_t(st["last"]) if st.get("last") else None
+            hours = (t0 - last).total_seconds() / 3600 if last else 96
+            hit_rate = (st.get("hits", 0) + 1) / (st.get("scans", 0) + 2)
+            score = 3 * hit_rate + min(hours, 96) / 24 + 0.5 * math.log1p(t.get("upcomingFixtures") or 0)
+            cands.append((score, slug, sid, t))
+    cands.sort(key=lambda x: -x[0])
+    chosen, sport_of = [], {}
+    for _, slug, sid, t in cands[: cfg["tournaments_per_scan"]]:
+        chosen.append(t)
+        sport_of[t["tournamentId"]] = slug
+    return chosen, sport_of, len(cands)
 
 
 def market_names(client):
@@ -327,7 +340,9 @@ def main(argv=None):
     try:
         if client.left() < cfg["reserve_requests"] + 2:
             raise RuntimeError(f"only {client.left()} requests left this month; skipping the scan")
-        tours, sport_of = pick_tournaments(client, cfg)
+        rot_path = os.path.join(a.out, "errors", "cache", "rotation.json")
+        rotation = load(rot_path, {})
+        tours, sport_of, n_cands = pick_tournaments(client, cfg, rotation, t0)
         tour_info = {t["tournamentId"]: {"name": t.get("tournamentName"), "category": t.get("categoryName"),
                                          "sport": sport_of.get(t["tournamentId"])} for t in tours}
         ids = [t["tournamentId"] for t in tours]
@@ -337,11 +352,18 @@ def main(argv=None):
         sport_ids = {fx.get("sportId") for fx in stake.values() if fx.get("sportId") is not None}
         pnames = participant_names(client, sorted(sport_ids)) if cfg.get("fetch_team_names", True) else {}
         errs, compared = find_errors(stake, pin, cfg, mnames, pnames, tour_info, t0)
+        hit_tours = {stake[e["fixture_id"]].get("tournamentId") for e in errs if e["fixture_id"] in stake}
+        for tid in ids:
+            st = rotation.setdefault(str(tid), {"scans": 0, "hits": 0})
+            st.update(last=iso(t0), scans=st["scans"] + 1, hits=st["hits"] + (1 if tid in hit_tours else 0),
+                      name=tour_info[tid]["name"], country=tour_info[tid]["category"])
+        save(rot_path, rotation)
         new, history = update_log(a.out, errs, pin, t0)
         sent = alert(os.environ.get("NTFY_TOPIC", "").strip(), new, cfg)
         closed = [r for r in history.values() if r.get("closed")]
         save(latest_path, {
-            "status": "ok", "scanned_at": iso(t0), "tournaments": len(ids), "stake_fixtures": len(stake),
+            "status": "ok", "scanned_at": iso(t0), "tournaments": len(ids), "leagues_available": n_cands,
+            "leagues_scanned": [f"{tour_info[t]['category']} · {tour_info[t]['name']}" for t in ids], "stake_fixtures": len(stake),
             "both_books": sum(1 for f in stake if f in pin), "markets_compared": compared, "min_ev": cfg["min_ev"],
             "requests_left_this_month": client.left(), "errors": errs[: cfg["max_listed"]],
             "month": {"flagged": len(history), "closed": len(closed),

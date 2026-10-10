@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-10T17:12:55Z",
+ "scanned_at": "2026-10-10T19:17:08Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · Eurocup",
-  "USA · NHL",
-  "Russia · MHL",
-  "ITF Women · Chisinau",
-  "International · Europe Cup"
+  "International · FIBA Champions League",
+  "Cuba · Serie Nacional",
+  "Challenger · ATP Challenger Palermo, Italy Men Singles",
+  "Challenger · ATP Challenger Villena, Spain Men Singles",
+  "UTR Men · UTR Boca Raton M06"
  ],
- "stake_fixtures": 13,
- "both_books": 13,
- "markets_compared": 320,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 320,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 230,
+ "requests_left_this_month": 229,
  "errors": [],
  "month": {
   "flagged": 0,

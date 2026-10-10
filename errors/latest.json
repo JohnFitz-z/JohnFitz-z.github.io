@@ -1,5 +1,5 @@
 {
- "status": "ok",
+ "status": "error: odds-by-tournaments: HTTP 404: {\"error\":{\"message\":\"No fixtures found for the specified tournament IDs and bookmaker.\",\"code\":\"FIXTURE_NOT_FOUND\",\"details\":\"Ple",
  "scanned_at": "2026-10-10T16:59:27Z",
  "tournaments": 5,
  "leagues_available": 154,
@@ -22,5 +22,6 @@
   "avg_ev": null,
   "avg_clv": null,
   "beat_close": 0
- }
+ },
+ "checked_at": "2026-10-10T17:00:49Z"
 }

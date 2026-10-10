@@ -1,1 +1,1 @@
-{"started_at":"2026-10-10T15:34:58Z","mode":"morning","errors":["ODDS_API_KEY is not set, odds skipped"],"nhl":{"2026":32,"2025":32,"goalies_2026":62,"goalies_2025":98},"mlb":{"games":2,"pitchers":3,"team_seasons":["2026","2025"]},"finished_at":"2026-10-10T15:35:00Z"}
+{"started_at":"2026-10-10T15:45:33Z","mode":"morning","errors":["ODDS_API_KEY is not set, odds skipped"],"nhl":{"2026":32,"2025":32,"goalies_2026":62,"goalies_2025":98},"mlb":{"games":2,"pitchers":3,"team_seasons":["2026","2025"]},"finished_at":"2026-10-10T15:45:35Z"}

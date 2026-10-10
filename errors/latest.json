@@ -1,5 +1,26 @@
 {
- "status": "error: odds-by-tournaments: HTTP 400: {\"error\":{\"message\":\"Too many tournament IDs specified.\",\"code\":\"INVALID_PARAMETER\",\"details\":\"Please provide a maximum of 5 tour",
- "checked_at": "2026-10-10T16:57:50Z",
- "errors": []
+ "status": "ok",
+ "scanned_at": "2026-10-10T16:59:27Z",
+ "tournaments": 5,
+ "leagues_available": 154,
+ "leagues_scanned": [
+  "USA · NCAA, Regular Season",
+  "International Youth · U21 UEFA European Championship, Qualification",
+  "England · EFL Trophy",
+  "ITF Women · Seville",
+  "France · Coupe de France"
+ ],
+ "stake_fixtures": 6,
+ "both_books": 6,
+ "markets_compared": 0,
+ "min_ev": 0.03,
+ "requests_left_this_month": 237,
+ "errors": [],
+ "month": {
+  "flagged": 0,
+  "closed": 0,
+  "avg_ev": null,
+  "avg_clv": null,
+  "beat_close": 0
+ }
 }

@@ -1,7 +1,7 @@
 // Views for a single pick: the ticket, how the number was built, the write-up, and list rows.
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
-        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=587c58a5b8";
-import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=587c58a5b8";
+        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=44bd56026e";
+import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=44bd56026e";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);
@@ -103,7 +103,7 @@ function cardHTML(p){
       <div class="bk-key">Bet ${i + 2}</div>
       <div class="bk-main"><div class="b1">${esc(c.bet || "")}</div>
         <div class="b2">${esc([c.event, c.sport, fmtTime(c.start_time)].filter(Boolean).join(" · "))}</div>
-        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div></div>
+        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div>${c.note ? `<div class="b2">${esc(c.note)}</div>` : ""}</div>
       <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
     </div>`;
   }).join("");

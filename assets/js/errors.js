@@ -1,6 +1,6 @@
 // Error finder page: reads the scanner output from the feed branch (refreshed three times a day).
-import {$, esc, fmtTime, fmtStamp} from "./core.js?v=587c58a5b8";
-import {bankState, bankStats, riskMult, fmt$} from "./bank.js?v=587c58a5b8";
+import {$, esc, fmtTime, fmtStamp} from "./core.js?v=44bd56026e";
+import {bankState, bankStats, riskMult, fmt$} from "./bank.js?v=44bd56026e";
 
 const stakeFor = units => { if(!bankState.loaded) return null; const s = bankStats(); const v = (units || 0) / 100 * Math.max(0, s.balance + s.inPlay) * riskMult(); return v <= 0 ? null : v < 10 ? Math.max(0.1, Math.round(v * 10) / 10) : Math.round(v * 2) / 2; };
 

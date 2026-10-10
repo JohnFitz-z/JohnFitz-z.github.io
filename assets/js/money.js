@@ -2,10 +2,10 @@
 //  Normal mode  stakes from the bankroll and each bet's edge (engine units, 1u = 1% at quarter Kelly) x risk level.
 //  Target mode  stakes that give the best chance of reaching a target balance by a date (see target.js).
 // Either way, stakes never go up to chase a loss.
-import {$, esc, num, unitsOf, evOf, todayPick, todayISO, fmtTime, state} from "./core.js?v=587c58a5b8";
-import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken} from "./bank.js?v=587c58a5b8";
-import {errorsData} from "./errors.js?v=587c58a5b8";
-import {dayDP, bestPortfolio} from "./target.js?v=587c58a5b8";
+import {$, esc, num, unitsOf, evOf, todayPick, todayISO, fmtTime, state} from "./core.js?v=44bd56026e";
+import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken} from "./bank.js?v=44bd56026e";
+import {errorsData} from "./errors.js?v=44bd56026e";
+import {dayDP, bestPortfolio} from "./target.js?v=44bd56026e";
 
 export const RISK = {
   steady: {label: "Steady", mult: 0.5, cap: 0.04, kelly: "1/8 Kelly", halve: "almost 0%"},

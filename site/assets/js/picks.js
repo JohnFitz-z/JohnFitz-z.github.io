@@ -103,7 +103,7 @@ function cardHTML(p){
       <div class="bk-key">Bet ${i + 2}</div>
       <div class="bk-main"><div class="b1">${esc(c.bet || "")}</div>
         <div class="b2">${esc([c.event, c.sport, fmtTime(c.start_time)].filter(Boolean).join(" · "))}</div>
-        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div></div>
+        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div>${c.note ? `<div class="b2">${esc(c.note)}</div>` : ""}</div>
       <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
     </div>`;
   }).join("");

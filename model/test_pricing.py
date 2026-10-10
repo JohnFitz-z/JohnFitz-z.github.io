@@ -368,5 +368,39 @@ class Sharp(unittest.TestCase):
         self.assertAlmostEqual(home["price"], 2.00)
 
 
+class Card(unittest.TestCase):
+    def test_card_lists_other_games_with_an_edge(self):
+        res = P.screen_file(SLATE, CFG, top=20)
+        pick = res["pick"]
+        games = [pick["event"]] + [c["event"] for c in pick["card"]]
+        self.assertEqual(len(games), len(set(games)))
+        self.assertTrue(all(c["ev"] >= CFG["card"]["min_ev"] for c in pick["card"]))
+        self.assertLessEqual(len(pick["card"]), CFG["card"]["max_bets"] - 1)
+        self.assertEqual([c["key"] for c in pick["card"]], [f"c{i + 1}" for i in range(len(pick["card"]))])
+
+    def test_card_respects_max(self):
+        cfg = copy.deepcopy(CFG)
+        cfg["card"] = {"max_bets": 2, "min_ev": -1}
+        pick = P.screen_file(SLATE, cfg, top=20)["pick"]
+        self.assertEqual(len(pick["card"]), 1)
+
+    def test_shortlist_covers_every_game_first(self):
+        res = P.screen_file(SLATE, CFG, top=5)
+        self.assertEqual(len({p["game"] for p in res["shortlist"]}), res["games"])
+        ranks = [p["rank"] for p in res["shortlist"]]
+        self.assertEqual(ranks, sorted(ranks))
+
+    def test_price_check_covers_card_but_never_switches_to_it(self):
+        cfg = copy.deepcopy(CFG)
+        cfg["card"] = {"max_bets": 10, "min_ev": -1}
+        doc = P.screen_file(SLATE, cfg, top=20)["pick"]
+        self.assertTrue(doc["card"])
+        c1 = doc["card"][0]
+        fresh = {"main": {"price": 1.20}, "c1": {"price": c1["odds_decimal"] + 0.4}}
+        upd = P.recheck(doc, fresh, CFG)["price_check"]
+        self.assertTrue(upd["c1"]["value"])
+        self.assertEqual(upd["recommend"], "none")
+
+
 if __name__ == "__main__":
     unittest.main()

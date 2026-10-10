@@ -1,10 +1,10 @@
 // Boots whichever page is open: loads the data, renders that page's views, keeps them fresh.
-import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=95b2cd7a35";
-import {ticketHTML, rowHTML} from "./picks.js?v=95b2cd7a35";
-import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=95b2cd7a35";
-import {initBank, renderBank} from "./bank.js?v=95b2cd7a35";
-import {loadErrors, renderErrors} from "./errors.js?v=95b2cd7a35";
-import {initMoney, renderMoney} from "./money.js?v=95b2cd7a35";
+import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=587c58a5b8";
+import {ticketHTML, rowHTML} from "./picks.js?v=587c58a5b8";
+import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=587c58a5b8";
+import {initBank, renderBank} from "./bank.js?v=587c58a5b8";
+import {loadErrors, renderErrors} from "./errors.js?v=587c58a5b8";
+import {initMoney, renderMoney} from "./money.js?v=587c58a5b8";
 
 const page = document.body.dataset.page;
 

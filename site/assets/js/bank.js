@@ -24,12 +24,19 @@ export function normBank(st){
   out.money.risk = ["steady", "standard", "aggressive"].includes(m.risk) ? m.risk : "standard";
   const cap = num(m.cap); if(cap !== null && cap > 0 && cap <= 0.5) out.money.cap = cap;
   const goal = num(m.goal); if(goal !== null && goal > 0) out.money.goal = Math.round(goal * 100) / 100;
+  if(m.mode === "target") out.money.mode = "target";
+  const tgt = num(m.target); if(tgt !== null && tgt > 0) out.money.target = Math.round(tgt);
+  if(/^\d{4}-\d{2}-\d{2}$/.test(String(m.by || ""))) out.money.by = m.by;
+  const pd = num(m.perDay); if(pd !== null && pd >= 1 && pd <= 20) out.money.perDay = Math.round(pd);
   for(const x of Array.isArray(st.extras) ? st.extras : []){
     if(!x || typeof x !== "object" || !x.id) continue;
     const stake = num(x.stake), odds = num(x.odds);
-    out.extras.push({id: String(x.id), date: String(x.date || "").slice(0, 10), label: String(x.label || "Bet").slice(0, 160),
+    const rec = {id: String(x.id), date: String(x.date || "").slice(0, 10), label: String(x.label || "Bet").slice(0, 160),
       stake: stake !== null && stake > 0 ? Math.round(stake * 100) / 100 : 0, odds: odds !== null && odds > 1 ? Math.round(odds * 1000) / 1000 : 0,
-      result: RESULTS[x.result] ? x.result : "pending"});
+      result: RESULTS[x.result] ? x.result : "pending"};
+    if(x.ref && x.ref.pick && x.ref.key) rec.ref = {pick: String(x.ref.pick), key: String(x.ref.key)};
+    if(Array.isArray(x.legs)) rec.legs = x.legs.filter(l => l && l.pick && l.key).map(l => ({pick: String(l.pick), key: String(l.key)})).slice(0, 4);
+    out.extras.push(rec);
   }
   const s = num(st.start); if(s !== null && s >= 0) out.start = s;
   const b = st.bets && typeof st.bets === "object" ? st.bets : {};
@@ -63,21 +70,42 @@ export const myProfit = p => {
 };
 const settledBet = p => { const st = betFor(p).status; return GRADED.has(st) || st === "void"; };
 
-// Other bets (error finder or anything else) the viewer logged by hand, with a result they set.
-export const extraProfit = x => !x.stake ? 0 : x.result === "won" ? x.stake * ((x.odds || 2) - 1) : x.result === "lost" ? -x.stake : 0;
+// Other bets: card bets and parlays (graded automatically from the pick data), error finder bets and
+// anything else logged by hand (the viewer sets the result).
+const legStatus = l => {
+  const p = (state.allPicks || state.picks).find(x => x.id === l.pick); if(!p) return "pending";
+  const e = l.key === "main" ? p : [...(p.card || []), ...(p.backups || [])].find(c => c.key === l.key);
+  return e ? String(e.status || "pending").toLowerCase().replace("-", "_") : "pending";
+};
+export const extraResult = x => {
+  if(x.ref) return legStatus(x.ref);
+  if(x.legs && x.legs.length){
+    const st = x.legs.map(legStatus);
+    if(st.some(v => v === "lost" || v === "half_lost")) return "lost";
+    if(st.every(v => v === "void" || v === "push")) return "void";
+    if(st.every(v => v === "won" || v === "void" || v === "push")) return "won";
+    return "pending";
+  }
+  return x.result || "pending";
+};
+export const extraProfit = x => {
+  if(!x.stake) return 0;
+  const r = extraResult(x), b = (x.odds || 2) - 1;
+  return r === "won" ? x.stake * b : r === "half_won" ? x.stake * b / 2 : r === "lost" ? -x.stake : r === "half_lost" ? -x.stake / 2 : 0;
+};
 
 export function bankStats(){
   const bank = bankState.bank, extras = (bank.extras || []).filter(x => x.stake > 0);
   const placed = state.picks.filter(p => stakeOf(p) > 0);
   const settled = placed.filter(settledBet);
   const open = placed.filter(p => !settledBet(p));
-  const xSettled = extras.filter(x => x.result !== "pending"), xOpen = extras.filter(x => x.result === "pending");
+  const xSettled = extras.filter(x => extraResult(x) !== "pending"), xOpen = extras.filter(x => extraResult(x) === "pending");
   const profit = settled.reduce((a, p) => a + myProfit(p), 0) + xSettled.reduce((a, x) => a + extraProfit(x), 0);
   const inPlay = open.reduce((a, p) => a + stakeOf(p), 0) + xOpen.reduce((a, x) => a + x.stake, 0);
   const staked = settled.filter(p => betFor(p).status !== "void").reduce((a, p) => a + stakeOf(p), 0)
-               + xSettled.filter(x => x.result !== "void").reduce((a, x) => a + x.stake, 0);
-  const W = settled.filter(p => isW(betFor(p).status)).length + xSettled.filter(x => x.result === "won").length;
-  const L = settled.filter(p => isL(betFor(p).status)).length + xSettled.filter(x => x.result === "lost").length;
+               + xSettled.filter(x => extraResult(x) !== "void").reduce((a, x) => a + x.stake, 0);
+  const W = settled.filter(p => isW(betFor(p).status)).length + xSettled.filter(x => isW(extraResult(x))).length;
+  const L = settled.filter(p => isL(betFor(p).status)).length + xSettled.filter(x => isL(extraResult(x))).length;
   return {placed, settled, open, extras, xSettled, xOpen, profit, inPlay, staked, W, L, nPlaced: placed.length + extras.length,
           balance: bank.start + profit - inPlay};
 }
@@ -133,15 +161,17 @@ function renderMoneyList(){
 }
 
 function extraRow(x, i){
+  const auto = !!(x.ref || (x.legs && x.legs.length)), r = extraResult(x);
   const opts = Object.entries(RESULTS).map(([k, v]) => `<option value="${k}"${x.result === k ? " selected" : ""}>${v}</option>`).join("");
+  const resCell = auto ? `<span class="pill ${STATUS[r] ? r : "pending"}">${STATUS[r] || "Pending"}</span>` : `<select class="inp choice" data-x="${i}" data-xf="result" aria-label="Result">${opts}</select>`;
   const v = extraProfit(x);
   return `<div class="mrow">
     <div class="m-date">${esc(fmtDay(x.date || "", {weekday: undefined}))}</div>
     <div class="m-pick"><div class="b1">${esc(x.label)}</div><button type="button" class="linkbtn" data-xdel="${i}">Remove</button></div>
-    <div class="m-res"><select class="inp choice" data-x="${i}" data-xf="result" aria-label="Result">${opts}</select></div>
+    <div class="m-res">${resCell}</div>
     <label class="m-stake"><span class="lbl">Your stake</span><span class="bin">$<input class="inp" data-x="${i}" data-xf="stake" type="number" min="0" step="0.01" inputmode="decimal" value="${x.stake || ""}"></span></label>
     <label class="m-odds"><span class="lbl">Odds you got</span><input class="inp" data-x="${i}" data-xf="odds" type="number" min="1.01" step="0.01" inputmode="decimal" value="${x.odds || ""}"></label>
-    <div class="m-pl ${x.result === "pending" ? "" : cls(v)}" id="xpl-${i}">${!x.stake ? "—" : x.result === "pending" ? "In play" : x.result === "void" ? "Refunded" : sfmt$(v)}</div>
+    <div class="m-pl ${r === "pending" ? "" : cls(v)}" id="xpl-${i}">${!x.stake ? "—" : r === "pending" ? "In play" : r === "void" || r === "push" ? "Refunded" : sfmt$(v)}</div>
   </div>`;
 }
 
@@ -249,7 +279,7 @@ export function initBank(onChange){
       if(t.dataset.xf === "odds") x.odds = v !== null && v > 1 ? Math.round(v * 1000) / 1000 : 0;
       if(t.dataset.xf === "result") x.result = RESULTS[t.value] ? t.value : "pending";
       const c = document.getElementById("xpl-" + t.dataset.x);
-      if(c){ const pv = extraProfit(x); c.textContent = !x.stake ? "—" : x.result === "pending" ? "In play" : x.result === "void" ? "Refunded" : sfmt$(pv); c.className = "m-pl " + (x.result === "pending" ? "" : cls(pv)); }
+      if(c){ const pv = extraProfit(x), rr = extraResult(x); c.textContent = !x.stake ? "—" : rr === "pending" ? "In play" : rr === "void" || rr === "push" ? "Refunded" : sfmt$(pv); c.className = "m-pl " + (rr === "pending" ? "" : cls(pv)); }
       bankState.dirty = true; saveBank(); updateMoney(); onChange(); return;
     }
     if(!t.dataset || !t.dataset.f || !t.dataset.id) return;

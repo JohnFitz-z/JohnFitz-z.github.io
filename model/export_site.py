@@ -61,11 +61,12 @@ def clean(p, problems):
     p["status"] = st
     if st in ("won", "lost", "half_won", "half_lost") and not isinstance(p.get("result_units"), (int, float)):
         problems.append(f"{pid}: graded {st} but result_units is missing")
-    backups = p.get("backups")
-    if backups is not None and not isinstance(backups, list):
-        problems.append(f"{pid}: backups isn't a list, removed")
-        p.pop("backups")
-    for i, b in enumerate(p.get("backups") or []):
+    for field, prefix in (("backups", "b"), ("card", "c")):
+        lst = p.get(field)
+        if lst is not None and not isinstance(lst, list):
+            problems.append(f"{pid}: {field} isn't a list, removed")
+            p.pop(field)
+    for i, b in enumerate((p.get("backups") or []) + (p.get("card") or [])):
         if not isinstance(b, dict):
             continue
         b.setdefault("key", f"b{i + 1}")

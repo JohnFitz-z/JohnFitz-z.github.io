@@ -954,7 +954,21 @@ def rank_and_pick(priced, cfg, date=None, n_backups=2):
         b.update({"key": f"b{len(backups) + 1}", "status": "pending"})
         backups.append(b)
     pick["backups"] = backups
-    chosen = {top["id"]} | {b["input"].get("id") for b in backups}
+    # The day's card: every other bet worth placing, one per game, best first (up to card.max_bets in total
+    # including the main pick). Only modelled bets with a real edge that aren't flagged as suspect.
+    cc = cfg.get("card", {})
+    card, card_games = [], {top["game"]}
+    for p in priced[1:]:
+        if len(card) >= cc.get("max_bets", 10) - 1:
+            break
+        if p["game"] in card_games or not p["modeled"] or p.get("suspect") or p["ev"] < cc.get("min_ev", 0.02):
+            continue
+        card_games.add(p["game"])
+        c = {k: p["doc"][k] for k in BACKUP_FIELDS if k in p["doc"]}
+        c.update({"key": f"c{len(card) + 1}", "status": "pending"})
+        card.append(c)
+    pick["card"] = card
+    chosen = {top["id"]} | {b["input"].get("id") for b in backups} | {c["input"].get("id") for c in card}
     pick["candidates"] = [
         {"bet": p["doc"]["bet"], "event": p["doc"]["event"],
          "note": f"EV {p['ev'] * 100:+.1f}% at {p['doc']['odds_decimal']:.2f}, "
@@ -1060,14 +1074,18 @@ def screen_file(path, cfg, top=8):
     cands = expand_slate(data)
     priced, errors = price_all(cands, cfg)
     pick = rank_and_pick(priced, cfg, data.get("date"))
-    shortlist, seen_games = [], {}
-    for p in priced:
-        if seen_games.get(p["game"], 0) >= 2:  # at most two bets per game on the shortlist
-            continue
-        seen_games[p["game"]] = seen_games.get(p["game"], 0) + 1
-        shortlist.append(p)
-        if len(shortlist) >= top:
-            break
+    # Shortlist: the best bet from as many different games as possible first (the daily card needs one bet
+    # per game), then second bets from the same games if there's room. At most two per game.
+    chosen, seen_games = set(), {}
+    for limit in (1, 2):
+        for i, p in enumerate(priced):
+            if len(chosen) >= top:
+                break
+            if i in chosen or seen_games.get(p["game"], 0) >= limit:
+                continue
+            seen_games[p["game"]] = seen_games.get(p["game"], 0) + 1
+            chosen.add(i)
+    shortlist = [p for i, p in enumerate(priced) if i in chosen]
     games = {c["game_id"] for c in cands}
     modeled_games = {p["game"] for p in priced if p["modeled"]}
     return {"date": data.get("date"), "games": len(games), "modeled_games": len(modeled_games), "candidates": len(cands),
@@ -1082,7 +1100,9 @@ def recheck(doc, fresh, cfg, now_iso=None):
     into the pick document: a price_check block and a recommendation."""
     import datetime
     st = cfg["staking"]
-    bets = [("main", doc.get("input"), doc)] + [(b.get("key"), b.get("input"), b) for b in doc.get("backups", [])]
+    bets = ([("main", doc.get("input"), doc)] + [(b.get("key"), b.get("input"), b) for b in doc.get("backups", [])]
+            + [(c.get("key"), c.get("input"), c) for c in doc.get("card", [])])
+    switchable = {"main"} | {b.get("key") for b in doc.get("backups", [])}
     out = {"at": now_iso or datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
     recommend = None
     for key, inp, orig in bets:
@@ -1110,7 +1130,7 @@ def recheck(doc, fresh, cfg, now_iso=None):
                     "was_odds_decimal": orig.get("odds_decimal")}
         if warn:
             out[key]["warning"] = warn
-        if value and recommend is None:
+        if value and recommend is None and key in switchable:
             recommend = key
     out["recommend"] = recommend or "none"
     names = {"main": "the main pick", "b1": "backup 1", "b2": "backup 2"}
@@ -1138,6 +1158,11 @@ def print_table(result):
         for b in p.get("backups", []):
             print(f"  {b['key']}: {b['bet']} ({b['event']}) @ {b['odds_decimal']:.2f}, {b['units']}u, "
                   f"take at {b['min_odds_decimal']:.2f}{'  no edge' if b.get('no_edge') else ''}")
+        if p.get("card"):
+            print(f"Card: main pick + {len(p['card'])} more")
+            for c in p["card"]:
+                print(f"  {c['key']}: {c['bet']} ({c['event']}) @ {c['odds_decimal']:.2f}, EV {c['ev'] * 100:+.1f}%, "
+                      f"{c['units']}u, take at {c['min_odds_decimal']:.2f}")
 
 
 # ---------------------------------------------------------------- closing line value

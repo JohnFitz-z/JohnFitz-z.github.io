@@ -86,9 +86,9 @@ def sharp_or_median(prices):
 def bet_of(doc, key):
     if key in (None, "main"):
         return dict(doc.get("input") or {}, **{k: doc.get(k) for k in ("home", "away", "start_time") if doc.get(k)}), doc
-    b = next((x for x in doc.get("backups") or [] if x.get("key") == key), None)
+    b = next((x for x in list(doc.get("backups") or []) + list(doc.get("card") or []) if x.get("key") == key), None)
     if not b:
-        raise SystemExit(f"no backup {key}")
+        raise SystemExit(f"no backup or card bet {key}")
     return dict(b.get("input") or {}, **{k: b.get(k) for k in ("home", "away", "start_time") if b.get(k)}), b
 
 
@@ -96,7 +96,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("feed")
     ap.add_argument("pick")
-    ap.add_argument("--backup", help="b1 or b2 instead of the main pick")
+    ap.add_argument("--backup", help="a backup (b1, b2) or card bet (c1, c2, ...) instead of the main pick")
     ap.add_argument("--out")
     ap.add_argument("--fresh", action="store_true", help="write fresh.json for the price check from the latest snapshot")
     a = ap.parse_args(argv)
@@ -117,7 +117,7 @@ def main(argv=None):
             print("ERROR: no odds snapshot in the feed")
             return 1
         fresh = {}
-        for key in ["main"] + [b.get("key") for b in doc.get("backups") or []]:
+        for key in ["main"] + [b.get("key") for b in list(doc.get("backups") or []) + list(doc.get("card") or [])]:
             inp, src = bet_of(doc, key)
             ev = find_event(snap["events"], inp)
             if not ev:

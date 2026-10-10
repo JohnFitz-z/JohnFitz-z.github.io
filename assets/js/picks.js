@@ -1,7 +1,7 @@
 // Views for a single pick: the ticket, how the number was built, the write-up, and list rows.
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
-        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=95b2cd7a35";
-import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=95b2cd7a35";
+        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=587c58a5b8";
+import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=587c58a5b8";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);
@@ -90,6 +90,27 @@ function backupsHTML(p){
     <p class="caveat" style="margin-top:8px">Only the main pick counts toward the record. If you bet a backup, mark it on the Bankroll page.</p></div>`;
 }
 
+function cardHTML(p){
+  const cs = Array.isArray(p.card) ? p.card : [];
+  if(!cs.length) return "";
+  const pc = p.price_check || {};
+  const rows = cs.map((c, i) => {
+    const st = String(c.status || "pending").toLowerCase().replace("-", "_"), s = STATUS[st] ? st : "pending";
+    const d = num(c.odds_decimal), minD = num(c.min_odds_decimal), ev = num(c.ev), chk = pc[c.key];
+    const now = chk && num(chk.odds_decimal) && s === "pending" ? ` · now ${num(chk.odds_decimal).toFixed(2)}${chk.value === false ? " (no edge now, skip)" : ""}` : "";
+    const res = GRADED.has(s) ? ` · ${esc(c.final_score || "")} ${num(c.result_units) !== null ? fmtU(num(c.result_units)) : ""}` : "";
+    return `<div class="bk-row">
+      <div class="bk-key">Bet ${i + 2}</div>
+      <div class="bk-main"><div class="b1">${esc(c.bet || "")}</div>
+        <div class="b2">${esc([c.event, c.sport, fmtTime(c.start_time)].filter(Boolean).join(" · "))}</div>
+        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div></div>
+      <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
+    </div>`;
+  }).join("");
+  return `<div><h3 class="sub">Today's card: ${cs.length + 1} bets with an edge</h3><div class="bk-list">${rows}</div>
+    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. The Bankroll page sizes each one for your target; only the main pick counts toward the record.</p></div>`;
+}
+
 function priceCheckHTML(p){
   const pc = p.price_check;
   if(!pc || !pc.at) return "";
@@ -123,6 +144,7 @@ export function detailHTML(p){
   if(p.summary) out.push(`<p class="thesis">${esc(p.summary)}</p>`);
   out.push(resultHTML(p));
   if(hasModel) out.push(priceGuideHTML(p));
+  out.push(cardHTML(p));
   out.push(backupsHTML(p));
   if(hasModel) out.push(ladderHTML(p));
   const why = list(p.reasoning);

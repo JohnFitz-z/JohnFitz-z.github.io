@@ -5,9 +5,9 @@ This is the playbook the daily run follows. The research finds the facts; `prici
 ## Daily flow: screen wide, then dig deep
 
 1. **Build the slate from the data feed.** Clone the `feed` branch and run `python3 tools/feed_to_slate.py <feed> --date TODAY --goalies goalies.json --out slate.json`. It writes every game today with moneyline, spread and total from every book (Pinnacle and Betfair Exchange included), NHL inputs from MoneyPuck and MLB inputs from the MLB Stats API. `goalies.json` is `{"Bruins": "Jeremy Swayman", ...}` from Daily Faceoff. Then add `model_inputs` for the games it lists as needing them (football and basketball ratings, soccer xG), using the bulk sources below. Add team totals and first-five markets by hand when a page lists them. If the feed is missing or stale (more than 6 hours old), build the slate by hand as below.
-2. **Screen**: `python3 model/pricing.py screen slate.json --top 8 --out screen.json --candidates-out shortlist.json`. Every side of every market is priced; the best eight (at most two per game) go to the shortlist.
+2. **Screen**: `python3 model/pricing.py screen slate.json --top 15 --out screen.json --candidates-out shortlist.json`. Every side of every market is priced; the shortlist takes the best bet from as many different games as possible first, then second bets from the same games (at most two per game).
 3. **Research the shortlist**: confirm starters, goalies, lineups and injuries; replace quick inputs with careful ones; add adjustments. Edit `shortlist.json` (it's a candidates file) and drop any candidate whose inputs turn out to be wrong or unavailable.
-4. **Price**: `python3 model/pricing.py price shortlist.json --out priced.json --pick-out pick.json`. The top bet is the pick; the next two best from **other games** are backups 1 and 2, each with its own take-at price.
+4. **Price**: `python3 model/pricing.py price shortlist.json --out priced.json --pick-out pick.json`. The top bet is the pick; the next two best from **other games** are backups 1 and 2, each with its own take-at price. The **card** is every other bet worth placing: one per game, modelled (not market-only), not flagged as far from the market, with at least +2% EV, up to 10 bets a day including the pick (`card` in config.json).
 5. Add the written fields (summary, reasoning, risks, sources, notes on the candidates) to `pick.json` and save it.
 
 ## Data feed
@@ -86,17 +86,19 @@ Use WebFetch on a page that lists every team and ask for the numbers back as JSO
 
 For a projected total in points sports: NBA total ≈ average pace × (home ORtg + away DRtg + away ORtg + home DRtg) / 200; football totals from each team's points scored and allowed per game, weighted toward recent games. Quick inputs only need to be roughly right; careful inputs come in the research step.
 
-## Backups and the afternoon price check
+## Backups, the card and the afternoon price check
 
-The pick document carries `backups`: two bets from different games, each with its own odds, take-at price, units and EV. Only the main pick counts toward the record; backups are graded too so the bankroll tracker can follow whichever bet was placed.
+The pick document carries `backups`: two bets from different games, each with its own odds, take-at price, units and EV, and `card`: up to nine more bets from other games (keys `c1`, `c2`, ...), each a standalone bet with an edge. Only the main pick counts toward the record; backups and card bets are graded too so the bankroll tracker can follow whatever was placed. A card bet can be the same bet as a backup.
 
-At 3:53 PM a separate run gets fresh prices for the main pick and both backups and runs:
+The Bankroll page sizes every bet. In normal mode each stake comes from its units and the risk level. In target mode it finds the stakes that give the best chance of reaching a target balance by a date: a dynamic programme over bankroll and days left, where each day's bets are placed together and settle together, with the option of a 2-leg parlay of card bets from different games. The chance it shows is for that real setup.
+
+At 3:53 PM a separate run gets fresh prices for the main pick, both backups and the card, and runs:
 
 ```
 python3 model/pricing.py recheck pick.json --fresh fresh.json --out update.json
 ```
 
-`fresh.json` holds the new prices per bet: `{"main": {"price": 1.85, "market_odds": [...]}, "b1": {...}, "b2": {...}}`. Use the same side keys as the bet's original `market_odds` (home/away, over/under, home/draw/away). If `price` is left out, the median of the books for the bet's selection is used. If `price` is more than 12% off that median, the bet gets a `warning` (usually a home/away mix-up) and is never recommended; fix the file and rerun. The output is a `price_check` block to merge into the pick: the current odds, EV and take-at price for each bet, and `recommend`: the first of main, backup 1, backup 2 that still has at least +1% EV at the current price, or `none`. The recorded odds of the pick don't change; the price check only says which bet to place now.
+`fresh.json` holds the new prices per bet: `{"main": {"price": 1.85, "market_odds": [...]}, "b1": {...}, "b2": {...}}`. Use the same side keys as the bet's original `market_odds` (home/away, over/under, home/draw/away). If `price` is left out, the median of the books for the bet's selection is used. If `price` is more than 12% off that median, the bet gets a `warning` (usually a home/away mix-up) and is never recommended; fix the file and rerun. The output is a `price_check` block to merge into the pick: the current odds, EV and take-at price for each bet, and `recommend`: the first of main, backup 1, backup 2 that still has at least +1% EV at the current price, or `none`. Card bets get their own entries (`c1`, ...) with `value` true or false; the Bankroll page drops a card bet whose edge has gone. The recorded odds of the pick don't change; the price check only says which bet to place now.
 
 ## Backtests
 

@@ -31,6 +31,11 @@
     "min_ev": 0.01
   },
 
+  "card": {
+    "max_bets": 10,
+    "min_ev": 0.02
+  },
+
   "ranking": {
     "modeled_first": true,
     "max_model_logit_gap": 0.35

@@ -108,7 +108,7 @@ function cardHTML(p){
     </div>`;
   }).join("");
   return `<div><h3 class="sub">Today's card: ${cs.length + 1} bets with an edge</h3><div class="bk-list">${rows}</div>
-    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. The Bankroll page sizes each one for your target; only the main pick counts toward the record.</p></div>`;
+    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. <a href="/bankroll/"><b>See all of today's bets and how much to put on each →</b></a> Only the main pick counts toward the record.</p></div>`;
 }
 
 function priceCheckHTML(p){

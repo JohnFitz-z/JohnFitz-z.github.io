@@ -1,7 +1,7 @@
 // Views for a single pick: the ticket, how the number was built, the write-up, and list rows.
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
-        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=44bd56026e";
-import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=44bd56026e";
+        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=5dd2819881";
+import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=5dd2819881";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);
@@ -108,7 +108,7 @@ function cardHTML(p){
     </div>`;
   }).join("");
   return `<div><h3 class="sub">Today's card: ${cs.length + 1} bets with an edge</h3><div class="bk-list">${rows}</div>
-    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. The Bankroll page sizes each one for your target; only the main pick counts toward the record.</p></div>`;
+    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. <a href="/bankroll/"><b>See all of today's bets and how much to put on each →</b></a> Only the main pick counts toward the record.</p></div>`;
 }
 
 function priceCheckHTML(p){

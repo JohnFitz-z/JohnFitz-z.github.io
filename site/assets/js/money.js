@@ -3,7 +3,7 @@
 //  Target mode  stakes that give the best chance of reaching a target balance by a date (see target.js).
 // Either way, stakes never go up to chase a loss.
 import {$, esc, num, unitsOf, evOf, todayPick, todayISO, fmtTime, state} from "./core.js";
-import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken} from "./bank.js";
+import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken, choiceOf} from "./bank.js";
 import {errorsData} from "./errors.js";
 import {dayDP, bestPortfolio} from "./target.js";
 
@@ -47,6 +47,16 @@ function candidates(){
     const m = fresh("main", {odds: num(p.odds_decimal), takeAt: num(p.min_odds_decimal), ev: evOf(p) || 0});
     items.push({kind: "pick", gone: m.gone, id: p.id, key: "main", pickId: p.id, label: p.bet, sub: [p.event, fmtTime(p.start_time)].filter(Boolean).join(" · "),
       odds: m.odds, takeAt: m.takeAt, units: unitsOf(p), ev: m.ev, note: "Daily pick", start: p.start_time, parlayable: true});
+    // Backups are bets from other games with their own edge: list them too, unless the card already has the same bet.
+    const onCard = new Set((p.card || []).map(c => `${c.event}|${c.bet}`));
+    for(const b of p.backups || []){
+      if(onCard.has(`${b.event}|${b.bet}`)) continue;
+      const q = fresh(b.key, {odds: num(b.odds_decimal), takeAt: num(b.min_odds_decimal), ev: num(b.ev) || 0});
+      const weak = !pc[b.key] && q.ev < 0.02;
+      items.push({kind: "card", gone: q.gone || weak, id: `${p.id}:${b.key}`, key: b.key, pickId: p.id, date: p.date, label: b.bet,
+        sub: [b.event, fmtTime(b.start_time)].filter(Boolean).join(" · "), odds: q.odds, takeAt: q.takeAt,
+        units: num(b.units) || 0.25, ev: q.ev, note: "Card", start: b.start_time, parlayable: true});
+    }
     for(const c of p.card || []){
       const q = fresh(c.key, {odds: num(c.odds_decimal), takeAt: num(c.min_odds_decimal), ev: num(c.ev) || 0});
       items.push({kind: "card", gone: q.gone, id: `${p.id}:${c.key}`, key: c.key, pickId: p.id, date: p.date, label: c.bet,
@@ -63,7 +73,10 @@ function candidates(){
       odds: e.stake_price, takeAt: e.take_at, units: e.units, ev: e.ev, date: e.start_time, start: e.start_time, link: e.stake_link, note: "Error finder"});
   }
   for(const i of items){
-    if(i.kind === "pick"){ const s = p ? stakeOf(p) : 0; if(s > 0) i.logged = {stake: s, odds: oddsTaken(p)}; }
+    // A stake on the pick's own ticket counts for whichever bet was chosen there (the pick or a backup).
+    const slot = p && stakeOf(p) > 0 ? choiceOf(p) : null;
+    if(i.kind === "pick"){ const x = extraById(`${p.id}:main`); if(slot === "main") i.logged = {stake: stakeOf(p), odds: oddsTaken(p)}; else if(x && x.stake > 0) i.logged = {stake: x.stake, odds: x.odds}; }
+    else if(slot && i.pickId === p.id && i.key === slot) i.logged = {stake: stakeOf(p), odds: oddsTaken(p)};
     else { const x = extraById(i.id); if(x && x.stake > 0) i.logged = {stake: x.stake, odds: x.odds}; }
   }
   // Logged parlays: their legs are already in play.
@@ -78,7 +91,7 @@ function candidates(){
 // Bets already placed today that are still open (they change how much more to put down).
 function placedToday(items){
   const fixed = items.filter(i => i.logged).map(i => ({odds: i.logged.odds || i.odds, ev: i.ev, stake: i.logged.stake}));
-  const ids = new Set(items.map(i => i.id));
+  const ids = new Set(items.flatMap(i => i.kind === "pick" ? [i.id, `${i.id}:main`] : [i.id]));
   const today = todayISO();
   for(const x of bankState.bank.extras || []){
     if(ids.has(x.id) || !(x.stake > 0) || extraResult(x) !== "pending" || String(x.date).slice(0, 10) !== today) continue;
@@ -95,7 +108,8 @@ export function todaysPlan(){
   let chance = null, parlay = null, scaled = false;
   if(target && cap0 > 0){
     const open = items.filter(i => !i.logged);
-    const avg = open.length ? open.reduce((a, i) => a + i.ev, 0) / open.length : 0.04;
+    const pos = items.filter(i => i.ev > 0);  // today's whole card (placed or not) sets the typical edge for the days ahead
+    const avg = pos.length ? pos.reduce((a, i) => a + i.ev, 0) / pos.length : 0.04;
     const edge = Math.round(Math.min(0.06, Math.max(0.01, avg)) * 200) / 200;
     const days = daysLeft(), D = table(st.target, days, perDay(), edge);
     const res = bestPortfolio(open, cap0, D, days, round$, placedToday(items));
@@ -198,7 +212,10 @@ export function initMoney(onChange){
     const day = String(item.date || todayISO()).slice(0, 10);
     if(item.kind === "pick"){
       const bets = bankState.bank.bets, cur = Object.assign({}, bets[item.id] || {});
-      cur.stake = item.stake; delete cur.choice; bets[item.id] = cur;
+      if(cur.stake > 0 && cur.choice && cur.choice !== "main"){
+        // The pick's own ticket already holds a backup: record the main pick as a separate bet.
+        addExtra({id: `${item.id}:main`, ref: {pick: item.pickId, key: "main"}, date: todayISO(), label: `${item.label} (${item.sub.split(" · ")[0]})`, odds: item.odds, stake: item.stake});
+      } else { cur.stake = item.stake; delete cur.choice; bets[item.id] = cur; }
     } else if(item.kind === "card"){
       addExtra({id: item.id, ref: {pick: item.pickId, key: item.key}, date: day, label: `${item.label} (${item.sub.split(" · ")[0]})`, odds: item.odds, stake: item.stake});
     } else if(item.kind === "parlay"){

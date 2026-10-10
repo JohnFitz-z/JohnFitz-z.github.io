@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T02:09:51Z",
+  "updated_at": "2026-10-10T05:03:45Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1094,6 +1094,8 @@
       "ev": 0.0561,
       "event": "Golden State Valkyries @ Las Vegas Aces",
       "fair_prob": 0.5174,
+      "final_score": "Valkyries 87, Aces 77 (OT)",
+      "graded_at": "2026-10-10T05:12:00Z",
       "home": "Las Vegas Aces",
       "implied_prob": 0.5348,
       "input": {
@@ -1324,6 +1326,7 @@
         "No injuries reported for either team in the last 48 hours; Valkyries guard Burton left Game 1 briefly but played Game 2 and hit the winning three.",
         "The line opened Aces -4.5 and has held at 8 of 9 books; DraftKings has moved to -3.5, a small move toward Golden State."
       ],
+      "result_units": 1.31,
       "risks": [
         "This is the top result of a screen of about 150 bets and the market strongly disagrees (Aces -4.5 at 8 of 9 books); screen-selected edges tend to be overstated, and the market may be pricing Wilson's impact more heavily than her missed regular-season games suggest.",
         "Elimination game at home for an Aces team down 0-2; one big A'ja Wilson night can swing a single game well past 4.5 points.",
@@ -1365,7 +1368,7 @@
       ],
       "sport": "WNBA",
       "start_time": "2026-10-09T22:30:00-03:00",
-      "status": "pending",
+      "status": "won",
       "summary": "The market makes Las Vegas a 4.5-point home favourite, but Golden State had the league's best regular-season rating (SRS 6.65 vs the Aces' 5.15) and leads the series 2-0; even after crediting the Aces for A'ja Wilson's missed games and adding 2 points for home court, the model has Las Vegas by only about 1.4.",
       "units": 1.5,
       "id": "2026-10-09"

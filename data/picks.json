@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T18:54:37Z",
+  "updated_at": "2026-10-10T20:00:41Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1614,6 +1614,159 @@
           "bet": "NC State Wolfpack +3.5",
           "event": "Wake Forest Demon Deacons @ NC State Wolfpack",
           "note": "EV -8.6% at 1.84, estimate 49.8% vs 54.4% needed. Passed: current FPI has Wake Forest +11.0 vs NC State +3.3 (Wake by ~5); market moved to Wake -3.5 — clear negative EV."
+        }
+      ],
+      "card": [
+        {
+          "away": "Blue Jackets",
+          "bet": "Blue Jackets +1.5",
+          "confidence": "Medium",
+          "ev": 0.0203,
+          "event": "Blue Jackets @ Blues",
+          "fair_prob": 0.7013,
+          "home": "Blues",
+          "implied_prob": 0.7168,
+          "input": {
+            "adjustments": [],
+            "away": "Blue Jackets",
+            "event": "Blue Jackets @ Blues",
+            "game_id": "nhl-bluejackets-blues",
+            "home": "Blues",
+            "id": "nhl-bluejackets-blues:spread:away1.5",
+            "league": "NHL",
+            "line": 1.5,
+            "market": "spread",
+            "market_odds": [
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 1.4,
+                  "home": 2.9
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 1.4,
+                  "home": 2.95
+                }
+              },
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 1.4,
+                  "home": 2.95
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 1.38,
+                  "home": 3.05
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 1.38,
+                  "home": 3.05
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 1.38,
+                  "home": 3.05
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 1.39,
+                  "home": 3.05
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 1.38,
+                  "home": 3.07
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 1.43,
+                  "home": 3.2
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 1.38,
+                  "home": 3.08
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 1.4,
+                  "home": 3.07
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 1.39,
+                  "home": 3.17
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 1.4,
+                  "home": 3
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 1.41,
+                  "home": 3.05
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": 0.154,
+                "xga60": 2.459,
+                "xgf60": 2.516
+              },
+              "home": {
+                "goalie_gsax60": -0.342,
+                "xga60": 2.439,
+                "xgf60": 2.304
+              }
+            },
+            "price": 1.395,
+            "selection": "away",
+            "sport": "NHL",
+            "start_time": "2026-10-10T20:10:00-03:00"
+          },
+          "key": "c1",
+          "league": "NHL",
+          "market": "Puck line",
+          "min_odds_american": -256,
+          "min_odds_decimal": 1.39,
+          "model_prob": 0.7314,
+          "no_edge": false,
+          "note": "Priced at 3:20 PM odds: Pinnacle fair 70.1% (1.43) vs our 73.1%; Greaves and Binnington both confirmed. Blues by 2+ needed to lose it.",
+          "odds_american": -253,
+          "odds_decimal": 1.4,
+          "sport": "NHL",
+          "start_time": "2026-10-10T20:10:00-03:00",
+          "status": "pending",
+          "units": 1.25
         }
       ],
       "confidence": "High",

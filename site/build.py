@@ -41,11 +41,12 @@ PAGES = [
     ("results", "results.html", "results/index.html", "Results · Morning Line", "Every Morning Line pick and how it finished."),
     ("stats", "stats.html", "stats/index.html", "Stats · Morning Line", "Record, units, closing line value and model accuracy."),
     ("bankroll", "bankroll.html", "bankroll/index.html", "Bankroll · Morning Line", "Track your own bets and balance."),
+    ("errors", "errors.html", "errors/index.html", "Error finder · Morning Line", "Stake prices above the fair price, across dozens of leagues."),
     ("method", "method.html", "method/index.html", "How it works · Morning Line", "How each Morning Line pick is researched, priced and graded."),
     ("404", "404.html", "404.html", "Not found · Morning Line", "That page doesn't exist."),
 ]
-NAV = ["today", "results", "stats", "bankroll", "method"]
-GENERATED = ["index.html", "404.html", "results", "stats", "bankroll", "method", "pick", "assets", "sw.js",
+NAV = ["today", "results", "stats", "bankroll", "errors", "method"]
+GENERATED = ["index.html", "404.html", "results", "stats", "bankroll", "errors", "method", "pick", "assets", "sw.js",
              "manifest.webmanifest", "favicon.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "robots.txt"]
 
 

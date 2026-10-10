@@ -3,6 +3,7 @@ import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickB
 import {ticketHTML, rowHTML} from "./picks.js";
 import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js";
 import {initBank, renderBank} from "./bank.js";
+import {loadErrors, renderErrors} from "./errors.js";
 
 const page = document.body.dataset.page;
 
@@ -79,13 +80,17 @@ function render(){
   else if(page === "results") renderResults();
   else if(page === "pick" || (page === "404" && pickIdFromPath())) renderPick();
   else if(page === "stats") renderStats();
+  else if(page === "errors") renderErrors();
   if(document.getElementById("bank") || document.getElementById("moneyList")) renderBank();
 }
 
 // Money changes affect the suggested stake on tickets.
 const onMoneyChange = () => { if(page === "today" || page === "pick") { const a = document.activeElement; if(!(a && a.closest && a.closest("#ticket"))) render(); } };
 
-async function refresh(){ if(await loadPicks()) render(); }
+async function refresh(){
+  if(page === "errors"){ await loadErrors(); renderErrors(); }
+  if(await loadPicks()) render();
+}
 
 document.addEventListener("change", e => { if(e.target.id === "fSport" || e.target.id === "fStatus") renderResults(); });
 let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 150); });
@@ -97,6 +102,7 @@ window.addEventListener("offline", () => { const o = $("#offline"); if(o) o.hidd
 render();
 const bankReady = initBank(onMoneyChange);
 Promise.all([loadPicks(), bankReady]).then(render);
+if(page === "errors") loadErrors().then(renderErrors);
 
 if("serviceWorker" in navigator && location.protocol === "https:"){
   navigator.serviceWorker.register("/sw.js").catch(() => {});

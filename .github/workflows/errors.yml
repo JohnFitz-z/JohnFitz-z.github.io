@@ -1,0 +1,57 @@
+name: Error finder
+
+# Compares Stake's prices with Pinnacle's margin-free prices (OddsPapi) and saves any
+# Stake price above fair to the `feed` branch (errors/latest.json), which the site's
+# Error finder page reads. Three scans a day fit OddsPapi's free plan (250 requests/month).
+on:
+  schedule:
+    - cron: "5 13 * * *"    # 10:05 AM Atlantic (summer)
+    - cron: "5 18 * * *"    # 3:05 PM
+    - cron: "5 22 * * *"    # 7:05 PM
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/errors.yml", "tools/feed/errors.py", "tools/feed/errors_config.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+
+      - name: Check out the feed branch
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          url="https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git"
+          git clone --quiet --depth 5 --branch feed "$url" feed
+
+      - name: Scan
+        env:
+          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python3 code/tools/feed/errors.py --out feed
+
+      - name: Save
+        run: |
+          cd feed
+          git config user.name "Morning Line feed"
+          git config user.email "noreply@anthropic.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit --quiet -m "Error finder $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do
+            git push --quiet origin feed && exit 0
+            git pull --quiet --rebase origin feed || true
+          done
+          exit 1

@@ -1,8 +1,9 @@
 // Boots whichever page is open: loads the data, renders that page's views, keeps them fresh.
-import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=d437938210";
-import {ticketHTML, rowHTML} from "./picks.js?v=d437938210";
-import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=d437938210";
-import {initBank, renderBank} from "./bank.js?v=d437938210";
+import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js?v=29a99fe9e6";
+import {ticketHTML, rowHTML} from "./picks.js?v=29a99fe9e6";
+import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js?v=29a99fe9e6";
+import {initBank, renderBank} from "./bank.js?v=29a99fe9e6";
+import {loadErrors, renderErrors} from "./errors.js?v=29a99fe9e6";
 
 const page = document.body.dataset.page;
 
@@ -79,13 +80,17 @@ function render(){
   else if(page === "results") renderResults();
   else if(page === "pick" || (page === "404" && pickIdFromPath())) renderPick();
   else if(page === "stats") renderStats();
+  else if(page === "errors") renderErrors();
   if(document.getElementById("bank") || document.getElementById("moneyList")) renderBank();
 }
 
 // Money changes affect the suggested stake on tickets.
 const onMoneyChange = () => { if(page === "today" || page === "pick") { const a = document.activeElement; if(!(a && a.closest && a.closest("#ticket"))) render(); } };
 
-async function refresh(){ if(await loadPicks()) render(); }
+async function refresh(){
+  if(page === "errors"){ await loadErrors(); renderErrors(); }
+  if(await loadPicks()) render();
+}
 
 document.addEventListener("change", e => { if(e.target.id === "fSport" || e.target.id === "fStatus") renderResults(); });
 let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 150); });
@@ -97,6 +102,7 @@ window.addEventListener("offline", () => { const o = $("#offline"); if(o) o.hidd
 render();
 const bankReady = initBank(onMoneyChange);
 Promise.all([loadPicks(), bankReady]).then(render);
+if(page === "errors") loadErrors().then(renderErrors);
 
 if("serviceWorker" in navigator && location.protocol === "https:"){
   navigator.serviceWorker.register("/sw.js").catch(() => {});

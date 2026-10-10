@@ -136,7 +136,7 @@ def as_list(x):
     return []
 
 
-def pick_tournaments(client, cfg, state, t0):
+def pick_tournaments(client, cfg, state, t0, must=()):
     """Choose this scan's leagues. The free plan allows 5 leagues per request, so the finder rotates:
     leagues not checked for a while come first, and leagues where Stake has been wrong before get a boost."""
     import math
@@ -159,6 +159,8 @@ def pick_tournaments(client, cfg, state, t0):
             hours = (t0 - last).total_seconds() / 3600 if last else 96
             hit_rate = (st.get("hits", 0) + 1) / (st.get("scans", 0) + 2)
             score = 3 * hit_rate + min(hours, 96) / 24 + 0.5 * math.log1p(t.get("upcomingFixtures") or 0)
+            if t["tournamentId"] in must:
+                score += 100  # re-check leagues with a flagged error kicking off soon, to get its closing line
             cands.append((score, slug, sid, t))
     cands.sort(key=lambda x: -x[0])
     chosen, sport_of = [], {}
@@ -261,6 +263,7 @@ def find_errors(stake_fx, pin_fx, cfg, mnames, pnames, tour_info, t0):
                 away = pnames.get(str(sfx.get("participant2Id")), f"Team {sfx.get('participant2Id')}")
                 errors.append({
                     "id": f"{fid}:{mid}:{oid}", "fixture_id": fid, "market_id": mid, "outcome_id": oid,
+                    "tournament_id": sfx.get("tournamentId"),
                     "sport": tour.get("sport"), "league": tour.get("name"), "country": tour.get("category"),
                     "home": home, "away": away, "start_time": iso(start),
                     "market": mn.get("name", f"Market {mid}"), "outcome": (mn.get("outcomes") or {}).get(oid) or oid,
@@ -342,7 +345,10 @@ def main(argv=None):
             raise RuntimeError(f"only {client.left()} requests left this month; skipping the scan")
         rot_path = os.path.join(a.out, "errors", "cache", "rotation.json")
         rotation = load(rot_path, {})
-        tours, sport_of, n_cands = pick_tournaments(client, cfg, rotation, t0)
+        month_log = load(os.path.join(a.out, "errors", "log", f"{t0.strftime('%Y-%m')}.json"), {})
+        soon = {r.get("tournament_id") for r in month_log.values() if r.get("tournament_id") is not None
+                and parse_t(r["start_time"]) and t0 < parse_t(r["start_time"]) <= t0 + dt.timedelta(hours=30)}
+        tours, sport_of, n_cands = pick_tournaments(client, cfg, rotation, t0, must=soon)
         tour_info = {t["tournamentId"]: {"name": t.get("tournamentName"), "category": t.get("categoryName"),
                                          "sport": sport_of.get(t["tournamentId"])} for t in tours}
         ids = [t["tournamentId"] for t in tours]

@@ -20,7 +20,7 @@
     "cyber"
   ],
   "min_minutes_to_start": 20,
-  "max_hours_to_start": 48,
+  "max_hours_to_start": 120,
   "min_price": 1.3,
   "max_price": 5.0,
   "max_pinnacle_margin": 0.08,

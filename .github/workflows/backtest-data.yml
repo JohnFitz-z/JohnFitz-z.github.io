@@ -1,0 +1,54 @@
+name: Backtest data
+
+# Downloads historical game data for backtesting the models and saves it on the
+# `feed` branch under backtest/. Run by hand (Actions tab -> Backtest data -> Run
+# workflow) or automatically when a fetch script changes.
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: "NHL seasons (MoneyPuck start years), e.g. 2021-2025"
+        default: "2021-2025"
+  push:
+    branches: [main]
+    paths: [".github/workflows/backtest-data.yml", "tools/backtest/fetch_*.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  nhl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+
+      - name: Check out the feed branch
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          url="https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git"
+          git clone --quiet --depth 5 --branch feed "$url" feed
+
+      - name: Fetch NHL history
+        run: python3 code/tools/backtest/fetch_nhl.py --out feed --seasons "${{ github.event.inputs.seasons || '2021-2025' }}"
+
+      - name: Save
+        run: |
+          cd feed
+          git config user.name "Morning Line feed"
+          git config user.email "noreply@anthropic.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit --quiet -m "Backtest data $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do
+            git push --quiet origin feed && exit 0
+            git pull --quiet --rebase origin feed || true
+          done
+          exit 1

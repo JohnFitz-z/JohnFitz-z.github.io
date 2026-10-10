@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T15:16:39Z",
+  "updated_at": "2026-10-10T18:54:37Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1844,6 +1844,41 @@
       "no_edge": false,
       "odds_american": 115,
       "odds_decimal": 2.15,
+      "price_check": {
+        "at": "2026-10-10T18:54:23Z",
+        "b1": {
+          "bet": "Hurricanes moneyline",
+          "ev": 0.0292,
+          "fair_prob": 0.7015,
+          "min_odds_decimal": 1.38,
+          "model_prob": 0.7351,
+          "odds_decimal": 1.4,
+          "value": true,
+          "was_odds_decimal": 1.44
+        },
+        "b2": {
+          "bet": "Over 6.5 goals",
+          "ev": 0.0044,
+          "fair_prob": 0.4907,
+          "min_odds_decimal": 1.99,
+          "model_prob": 0.5086,
+          "odds_decimal": 1.98,
+          "value": false,
+          "was_odds_decimal": 1.98
+        },
+        "main": {
+          "bet": "Wild moneyline",
+          "ev": 0.0239,
+          "fair_prob": 0.4482,
+          "min_odds_decimal": 2.11,
+          "model_prob": 0.4796,
+          "odds_decimal": 2.13,
+          "value": true,
+          "was_odds_decimal": 2.15
+        },
+        "note": "Bet the main pick.",
+        "recommend": "main"
+      },
       "reasoning": [
         "Goals model (MoneyPuck 5v5 xG, this season blended with last, plus goalie GSAx): Wild 2.92 expected goals vs Panthers 2.77 before adjustments.",
         "Goalies: Jesper Wallstedt (shrunk GSAx +8.3 over 27h, .927 this year; ~85% likely, Gustavsson on IR) vs Jacob Markstrom (shrunk GSAx -5.2 over 33h; acquired from NJ in June, Bobrovsky now in Toronto).",

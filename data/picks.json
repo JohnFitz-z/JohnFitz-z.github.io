@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T05:03:45Z",
+  "updated_at": "2026-10-10T15:12:24Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1372,6 +1372,528 @@
       "summary": "The market makes Las Vegas a 4.5-point home favourite, but Golden State had the league's best regular-season rating (SRS 6.65 vs the Aces' 5.15) and leads the series 2-0; even after crediting the Aces for A'ja Wilson's missed games and adding 2 points for home court, the model has Las Vegas by only about 1.4.",
       "units": 1.5,
       "id": "2026-10-09"
+    },
+    {
+      "away": "Wild",
+      "backups": [
+        {
+          "away": "Hurricanes",
+          "bet": "Hurricanes moneyline",
+          "confidence": "Medium",
+          "ev": 0.0323,
+          "event": "Hurricanes @ Blackhawks",
+          "fair_prob": 0.6797,
+          "home": "Blackhawks",
+          "implied_prob": 0.6969,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "+",
+                "factor": "Chicago missing centres Nazar (suspended), Teravainen, Bedard",
+                "note": "Nazar suspended 2 games Oct 9; Teravainen (LB) likely out; Bedard recovering from shoulder surgery.",
+                "size": "small"
+              }
+            ],
+            "away": "Hurricanes",
+            "event": "Hurricanes @ Blackhawks",
+            "game_id": "nhl-hurricanes-blackhawks",
+            "home": "Blackhawks",
+            "id": "nhl-hurricanes-blackhawks:moneyline:away",
+            "league": "Regular season",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "BetMGM",
+                "prices": {
+                  "away": -235,
+                  "home": 190
+                }
+              },
+              {
+                "book": "bet365",
+                "prices": {
+                  "away": -240,
+                  "home": 195
+                }
+              },
+              {
+                "book": "DraftKings",
+                "prices": {
+                  "away": -230,
+                  "home": 190
+                }
+              },
+              {
+                "book": "FanDuel",
+                "prices": {
+                  "away": -230,
+                  "home": 188
+                }
+              },
+              {
+                "book": "Fanatics",
+                "prices": {
+                  "away": -235,
+                  "home": 190
+                }
+              },
+              {
+                "book": "BetRivers",
+                "prices": {
+                  "away": -230,
+                  "home": 188
+                }
+              },
+              {
+                "book": "Caesars",
+                "prices": {
+                  "away": -230,
+                  "home": 187
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": -0.012,
+                "xga60": 2.271,
+                "xgf60": 3.028
+              },
+              "home": {
+                "goalie_gsax60": 0.118,
+                "xga60": 2.95,
+                "xgf60": 2.111
+              }
+            },
+            "price": 1.435,
+            "selection": "away",
+            "sport": "NHL",
+            "start_time": "2026-10-10T20:00:00-03:00"
+          },
+          "key": "b1",
+          "league": "Regular season",
+          "market": "Moneyline",
+          "min_odds_american": -244,
+          "min_odds_decimal": 1.41,
+          "model_prob": 0.7194,
+          "no_edge": false,
+          "odds_american": -230,
+          "odds_decimal": 1.44,
+          "sport": "NHL",
+          "start_time": "2026-10-10T20:00:00-03:00",
+          "status": "pending",
+          "units": 1.75
+        },
+        {
+          "away": "Ducks",
+          "bet": "Over 6.5 goals",
+          "confidence": "High",
+          "ev": 0.0487,
+          "event": "Ducks @ Flames",
+          "fair_prob": 0.4793,
+          "home": "Flames",
+          "implied_prob": 0.5051,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "+",
+                "factor": "Anaheim on second leg of back-to-back with Husso in net",
+                "note": "Ducks won 5-1 in Winnipeg Friday and travelled overnight; Husso .884 last season; Wolf .797 so far.",
+                "size": "small"
+              }
+            ],
+            "away": "Ducks",
+            "event": "Ducks @ Flames",
+            "game_id": "nhl-ducks-flames",
+            "home": "Flames",
+            "id": "nhl-ducks-flames:total:over6.5",
+            "league": "Regular season",
+            "line": 6.5,
+            "market": "total",
+            "market_odds": [
+              {
+                "book": "bet365",
+                "prices": {
+                  "over": -102,
+                  "under": -118
+                }
+              },
+              {
+                "book": "DraftKings",
+                "prices": {
+                  "over": 102,
+                  "under": -122
+                }
+              },
+              {
+                "book": "FanDuel",
+                "prices": {
+                  "over": -105,
+                  "under": -115
+                }
+              },
+              {
+                "book": "Fanatics",
+                "prices": {
+                  "over": 100,
+                  "under": -120
+                }
+              },
+              {
+                "book": "BetRivers",
+                "prices": {
+                  "over": -105,
+                  "under": -120
+                }
+              },
+              {
+                "book": "Caesars",
+                "prices": {
+                  "over": -102,
+                  "under": -122
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": -0.043,
+                "xga60": 2.554,
+                "xgf60": 2.71
+              },
+              "home": {
+                "goalie_gsax60": -0.105,
+                "xga60": 2.722,
+                "xgf60": 2.339
+              }
+            },
+            "price": 1.98,
+            "selection": "over",
+            "sport": "NHL",
+            "start_time": "2026-10-10T23:00:00-03:00"
+          },
+          "key": "b2",
+          "league": "Regular season",
+          "market": "Total",
+          "min_odds_american": -110,
+          "min_odds_decimal": 1.91,
+          "model_prob": 0.5297,
+          "no_edge": false,
+          "odds_american": -102,
+          "odds_decimal": 1.98,
+          "sport": "NHL",
+          "start_time": "2026-10-10T23:00:00-03:00",
+          "status": "pending",
+          "units": 1.25
+        }
+      ],
+      "bet": "Wild moneyline",
+      "candidates": [
+        {
+          "bet": "Senators moneyline",
+          "event": "Predators @ Senators",
+          "note": "EV +1.2% at 1.60, estimate 63.3% vs 62.5% needed. Passed: edge shrank to +1.2% after Sanderson/Zub absences and Ullmark injury risk."
+        },
+        {
+          "bet": "Under 6 goals",
+          "event": "Kings @ Golden Knights",
+          "note": "EV +0.9% at 1.87, estimate 53.9% vs 53.4% needed. Passed: +0.9% only; LA's 61.5% PK and Kuemper's form cut against the under; DK has moved to 5.5."
+        },
+        {
+          "bet": "Tulsa Golden Hurricane moneyline",
+          "event": "Tulsa Golden Hurricane @ Navy Midshipmen",
+          "note": "EV -0.3% at 2.06, estimate 48.5% vs 48.7% needed. Passed: FPI inputs were stale (Sep 21); current FPI (Tulsa -4.75, Navy -7.5) makes it a coin flip, no edge."
+        },
+        {
+          "bet": "Michigan State Spartans moneyline",
+          "event": "Illinois Fighting Illini @ Michigan State Spartans",
+          "note": "EV -0.7% at 2.15, estimate 46.3% vs 46.6% needed. Passed: current FPI moves 1.4 pts toward Illinois; MSU lost 3 straight and is missing CB Chappell — negative EV."
+        },
+        {
+          "bet": "NC State Wolfpack +3.5",
+          "event": "Wake Forest Demon Deacons @ NC State Wolfpack",
+          "note": "EV -8.6% at 1.84, estimate 49.8% vs 54.4% needed. Passed: current FPI has Wake Forest +11.0 vs NC State +3.3 (Wake by ~5); market moved to Wake -3.5 — clear negative EV."
+        }
+      ],
+      "confidence": "High",
+      "created_at": "2026-10-10T11:13:38Z",
+      "date": "2026-10-10",
+      "ev": 0.0543,
+      "event": "Wild @ Panthers",
+      "fair_prob": 0.4395,
+      "home": "Panthers",
+      "implied_prob": 0.4651,
+      "input": {
+        "adjustments": [
+          {
+            "direction": "+",
+            "factor": "Panthers lose Brad Marchand (knee, ~6 weeks), announced Oct 9",
+            "note": "New absence not in season xG; Barkov already on LTIR, Ekblad day-to-day.",
+            "size": "medium"
+          },
+          {
+            "direction": "-",
+            "factor": "Florida home opener after 3 days rest",
+            "note": "Florida returns from 4-game road trip; Minnesota played Thursday in Tampa.",
+            "size": "small"
+          }
+        ],
+        "away": "Wild",
+        "event": "Wild @ Panthers",
+        "game_id": "nhl-wild-panthers",
+        "home": "Panthers",
+        "id": "nhl-wild-panthers:moneyline:away",
+        "league": "Regular season",
+        "line": null,
+        "market": "moneyline",
+        "market_odds": [
+          {
+            "book": "BetMGM",
+            "prices": {
+              "away": 115,
+              "home": -140
+            }
+          },
+          {
+            "book": "bet365",
+            "prices": {
+              "away": 120,
+              "home": -140
+            }
+          },
+          {
+            "book": "DraftKings",
+            "prices": {
+              "away": 114,
+              "home": -135
+            }
+          },
+          {
+            "book": "FanDuel",
+            "prices": {
+              "away": 118,
+              "home": -142
+            }
+          },
+          {
+            "book": "Fanatics",
+            "prices": {
+              "away": 115,
+              "home": -140
+            }
+          },
+          {
+            "book": "BetRivers",
+            "prices": {
+              "away": 112,
+              "home": -132
+            }
+          },
+          {
+            "book": "Caesars",
+            "prices": {
+              "away": 118,
+              "home": -139
+            }
+          }
+        ],
+        "model_inputs": {
+          "away": {
+            "goalie_gsax60": 0.158,
+            "xga60": 2.36,
+            "xgf60": 2.511
+          },
+          "home": {
+            "goalie_gsax60": -0.09,
+            "xga60": 2.349,
+            "xgf60": 2.422
+          }
+        },
+        "price": 2.15,
+        "selection": "away",
+        "sport": "NHL",
+        "start_time": "2026-10-10T19:00:00-03:00"
+      },
+      "league": "Regular season",
+      "market": "Moneyline",
+      "min_odds_american": 106,
+      "min_odds_decimal": 2.06,
+      "model": {
+        "books": [
+          {
+            "book": "BetMGM",
+            "decimal": 2.15,
+            "fair": 0.4395,
+            "margin": 0.0484,
+            "price": 115
+          },
+          {
+            "book": "bet365",
+            "decimal": 2.2,
+            "fair": 0.4344,
+            "margin": 0.0379,
+            "price": 120
+          },
+          {
+            "book": "DraftKings",
+            "decimal": 2.14,
+            "fair": 0.4453,
+            "margin": 0.0418,
+            "price": 114
+          },
+          {
+            "book": "FanDuel",
+            "decimal": 2.18,
+            "fair": 0.4345,
+            "margin": 0.0455,
+            "price": 118
+          },
+          {
+            "book": "Fanatics",
+            "decimal": 2.15,
+            "fair": 0.4395,
+            "margin": 0.0484,
+            "price": 115
+          },
+          {
+            "book": "BetRivers",
+            "decimal": 2.12,
+            "fair": 0.4504,
+            "margin": 0.0407,
+            "price": 112
+          },
+          {
+            "book": "Caesars",
+            "decimal": 2.18,
+            "fair": 0.4374,
+            "margin": 0.0403,
+            "price": 118
+          }
+        ],
+        "engine": "1.0",
+        "ev": 0.0543,
+        "fair_odds_decimal": 2.04,
+        "growth_bp": 12.77,
+        "inputs": {
+          "away_goals": 2.92,
+          "home_goals": 2.77
+        },
+        "inputs_text": "Expected goals: Panthers 2.77, Wild 2.92",
+        "kelly_fraction": 0.25,
+        "kelly_full": 0.0472,
+        "market_margin": 0.0433,
+        "market_source": "consensus",
+        "method": "nhl_poisson",
+        "method_label": "Goals model",
+        "min_ev": 0.01,
+        "min_odds_decimal": 2.06,
+        "no_edge": false,
+        "notes": [
+          "Expected goals built from 5v5 expected goals for and against, and each starting goalie.",
+          "Totals and puck lines include overtime and shootout, with a shootout counting as one goal."
+        ],
+        "outcomes": {
+          "loss": 0.5096,
+          "win": 0.4904
+        },
+        "steps": [
+          {
+            "detail": "Median of 7 books, power method, average margin 4.3%",
+            "key": "market",
+            "label": "Market, margin removed",
+            "prob": 0.4395
+          },
+          {
+            "detail": "Expected goals: Panthers 2.77, Wild 2.92",
+            "key": "model",
+            "label": "Goals model",
+            "prob": 0.5215
+          },
+          {
+            "key": "blend",
+            "label": "Blend: 50% market, 50% model",
+            "prob": 0.4804
+          },
+          {
+            "delta": 0.02,
+            "detail": "New absence not in season xG; Barkov already on LTIR, Ekblad day-to-day.",
+            "key": "adj",
+            "label": "Panthers lose Brad Marchand (knee, ~6 weeks), announced Oct 9",
+            "prob": 0.5003,
+            "size": "medium"
+          },
+          {
+            "delta": -0.01,
+            "detail": "Florida returns from 4-game road trip; Minnesota played Thursday in Tampa.",
+            "key": "adj",
+            "label": "Florida home opener after 3 days rest",
+            "prob": 0.4904,
+            "size": "small"
+          },
+          {
+            "key": "final",
+            "label": "Final estimate",
+            "prob": 0.4904
+          }
+        ],
+        "suspect": false,
+        "warnings": []
+      },
+      "model_prob": 0.4904,
+      "no_edge": false,
+      "odds_american": 115,
+      "odds_decimal": 2.15,
+      "reasoning": [
+        "Goals model (MoneyPuck 5v5 xG, this season blended with last, plus goalie GSAx): Wild 2.92 expected goals vs Panthers 2.77 before adjustments.",
+        "Goalies: Jesper Wallstedt (shrunk GSAx +8.3 over 27h, .927 this year; ~85% likely, Gustavsson on IR) vs Jacob Markstrom (shrunk GSAx -5.2 over 33h; acquired from NJ in June, Bobrovsky now in Toronto).",
+        "Marchand (knee, ~6 weeks) was announced out Oct 9, on top of Barkov (LTIR to late Nov) and Ekblad day-to-day: logged as a medium adjustment in Minnesota's favour, offset by a small one for Florida's rested home opener.",
+        "Engine: 49.0% win estimate vs 46.5% needed at 2.15 = +5.4% EV, 1.25u (High). No Pinnacle/Betfair price was available today (the odds feed failed); 7-book consensus no-vig is 44.0% (fair 2.28), so this is a model-vs-market call, not a sharp-steam call.",
+        "Best prices seen: DraftKings +120 (2.20), consensus 2.15; Fanatics shortest at +105 — shop it, take at 2.06 or better."
+      ],
+      "risks": [
+        "Goalie swap: if Gustavsson is activated or a backup starts for Minnesota, or Schmid replaces Markstrom, re-check the price.",
+        "Model leans on early-season xG for both teams (4-5 games); the market (no-vig 44%) disagrees by ~5 points, so the edge depends on the Marchand/Barkov absences being under-priced.",
+        "Minnesota's offence is cold (four straight unders, Boldy pointless); a low-event game makes the result close to a coin flip."
+      ],
+      "sources": [
+        {
+          "title": "Panthers without Brad Marchand eye 5-game points streak vs Wild (AP via The Ticket)",
+          "url": "https://www.theticket.com/2026/10/09/panthers-without-brad-marchand-eye-5-game-points-streak-vs-wild/"
+        },
+        {
+          "title": "Daily Faceoff starting goalies, Oct 10 2026",
+          "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-10"
+        },
+        {
+          "title": "Concerning Florida Panthers goaltending: Markstrom and Schmid (Daily Faceoff)",
+          "url": "https://www.dailyfaceoff.com/news/concerning-florida-panthers-goaltending-season-nhl-jacob-markstrom-akira-schmid"
+        },
+        {
+          "title": "Wild vs Panthers odds, Oct 10 2026 (ats.io)",
+          "url": "https://ats.io/nhl/minnesota-wild-florida-panthers-10-10-2026/"
+        },
+        {
+          "title": "Hurricanes preview: Oct 10 at Chicago (NHL.com)",
+          "url": "https://www.nhl.com/hurricanes/news/preview-october-10-at-chicago"
+        },
+        {
+          "title": "Blackhawks' Frank Nazar suspended (Chicago Sun-Times)",
+          "url": "https://chicago.suntimes.com/blackhawks/2026/10/09/blackhawks-frank-nazar-suspended-islanders-bo-horvat"
+        },
+        {
+          "title": "Takeaways: Ducks 5-1 win in Winnipeg (Yahoo Sports)",
+          "url": "https://sports.yahoo.com/articles/takeaways-ducks-5-1-win-052843042.html"
+        },
+        {
+          "title": "NHL odds, Oct 10 2026 (SportsbookReview)",
+          "url": "https://www.sportsbookreview.com/betting-odds/nhl-hockey/?date=2026-10-10"
+        }
+      ],
+      "sport": "NHL",
+      "start_time": "2026-10-10T19:00:00-03:00",
+      "status": "pending",
+      "summary": "Florida is priced off its name, but with Barkov on LTIR and Brad Marchand newly out ~6 weeks, the Panthers' top six is thin; the goals model has Minnesota as the slightly better team on 5v5 xG with the better projected goalie, so +115 is too long.",
+      "units": 1.25,
+      "id": "2026-10-10"
     }
   ]
 }

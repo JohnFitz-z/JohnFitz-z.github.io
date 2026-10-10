@@ -1,6 +1,7 @@
 {
- "started_at": "2026-10-10T16:49:21Z",
+ "started_at": "2026-10-10T16:56:42Z",
  "errors": [
-  "ODDSPAPI_KEY is not set"
- ]
+  "tournaments: HTTP 429: {\"error\":{\"message\":\"You are being rate limited. Please wait before making more requests to this endpoint.\",\"code\":\"RATE_LIMITED\",\"details\":\"Please wait 0.45 seconds before making another request to /v4/tournaments.\",\"retryAfter\":\"0.45 seconds\",\"retryMs\":447}}"
+ ],
+ "finished_at": "2026-10-10T16:56:44Z"
 }

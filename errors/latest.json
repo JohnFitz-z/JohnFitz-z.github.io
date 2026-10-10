@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-10T19:17:08Z",
+ "scanned_at": "2026-10-10T22:17:29Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · FIBA Champions League",
-  "Cuba · Serie Nacional",
-  "Challenger · ATP Challenger Palermo, Italy Men Singles",
-  "Challenger · ATP Challenger Villena, Spain Men Singles",
-  "UTR Men · UTR Boca Raton M06"
+  "WTA 125K · WTA 125K Suzhou, China Women Singles",
+  "WTA 125K · WTA 125K Suzhou, China Women Doubles",
+  "UTR Men · UTR PTT San Diego Men 01",
+  "UTR Women · UTR PTT San Diego Women 01",
+  "WTA 125K · WTA 125K Samsun, Turkiye Women Singles"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 229,
+ "requests_left_this_month": 228,
  "errors": [],
  "month": {
   "flagged": 0,

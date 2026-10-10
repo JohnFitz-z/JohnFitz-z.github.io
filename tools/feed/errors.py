@@ -172,15 +172,30 @@ def pick_tournaments(client, cfg, state, t0, must=()):
     return chosen, sport_of, len(cands)
 
 
-def market_names(client):
-    raw = as_list(cached(client, "markets", lambda: client.get("markets"), max_age_days=30))
-    names = {}
+def compact_markets(raw, sport_ids):
+    out = {}
     for m in raw:
-        mid = str(m.get("marketId", ""))
-        outs = {str(o.get("outcomeId")): o.get("outcomeName") for o in (m.get("outcomes") or []) if isinstance(o, dict)}
-        names[mid] = {"name": m.get("marketName") or m.get("marketNameShort") or f"Market {mid}",
-                      "line": m.get("handicap"), "outcomes": outs}
-    return names
+        if not isinstance(m, dict) or m.get("playerProp") or (sport_ids and m.get("sportId") not in sport_ids):
+            continue
+        out[str(m.get("marketId"))] = {
+            "name": m.get("marketName") or f"Market {m.get('marketId')}", "type": m.get("marketType"),
+            "line": m.get("handicap"), "period": m.get("period"), "sport": m.get("sportId"),
+            "outcomes": {str(o.get("outcomeId")): o.get("outcomeName") for o in (m.get("outcomes") or []) if isinstance(o, dict)}}
+    return out
+
+
+def market_meta(client, sport_ids):
+    """Market id -> name, type, line, period and outcome names (cached for a month, kept compact)."""
+    path = os.path.join(client.out, "errors", "cache", "markets.json")
+    c = load(path)
+    if c and isinstance(c.get("data"), dict) and (now() - parse_t(c["fetched_at"])).days < 30:
+        return c["data"]
+    if c and isinstance(c.get("data"), list) and (now() - parse_t(c["fetched_at"])).days < 30:
+        data = compact_markets(c["data"], sport_ids)  # convert an old raw cache without spending a request
+    else:
+        data = compact_markets(as_list(client.get("markets")), sport_ids)
+    save(path, {"fetched_at": c["fetched_at"] if c and isinstance(c.get("data"), list) else iso(now()), "data": data})
+    return data
 
 
 def participant_names(client, sport_ids):
@@ -232,60 +247,135 @@ def market_prices(fx, book):
     return out, b.get("fixturePath")
 
 
-def find_errors(stake_fx, pin_fx, cfg, mnames, pnames, tour_info, t0):
-    errors, compared = [], 0
+WHY = {
+    "stale": "Stake pays more than Pinnacle's fair price for the same bet.",
+    "offline": "Pinnacle doesn't offer this line; its fair price is worked out from Pinnacle's main markets for the game.",
+    "self": "Stake's price disagrees with its own main markets for this game (Pinnacle has no price for it).",
+}
+
+
+def _pick_outcome(e_fields, cfg, kind, o, price):
+    """EV, size and take-at for one outcome distribution at Stake's price; None if not an error."""
+    ev = P.expected_value(o, price)
+    floor = {"stale": cfg["min_ev"], "offline": cfg["min_ev_offline"], "self": cfg["min_ev_self"]}[kind]
+    if ev < floor:
+        return None, "below"
+    if ev > cfg["max_ev"]:
+        return None, "palpable"
+    k = P.kelly_fraction(o, price)
+    units = min(max(round(k * cfg["kelly_fraction"] * 100 / 0.25) * 0.25, 0.25), cfg["max_units"])
+    be = P.breakeven_prob(o)
+    return dict(e_fields, type=kind, why=WHY[kind], ev=round(ev, 4), fair_prob=round(be, 4), fair_odds=round(1 / be, 3),
+                take_at=P.min_price(o, cfg["take_at_ev"]), units=units), "ok"
+
+
+def find_errors(stake_fx, pin_fx, cfg, meta, pnames, tour_info, t0, last_prices):
+    """Three detectors:
+      stale    Stake vs Pinnacle on the same market (Pinnacle margin removed)
+      offline  Stake lines Pinnacle doesn't offer, priced from a goals model fitted to Pinnacle's main markets
+      self     no Pinnacle price: Stake lines priced from a model fitted to Stake's own main markets
+    Edges above max_ev are treated as obvious errors Stake would void and left out.
+    Returns (errors, stats, fair_now, prices_now)."""
+    import soccer_fit as F
+    from pricing import load_config
+    mcfg = load_config()
+    errors, fair_now, prices_now = [], {}, {}
+    stats = {"stale_compared": 0, "offline_priced": 0, "self_priced": 0, "palpable_skipped": 0, "steam": 0, "fit_failed": 0}
     for fid, sfx in stake_fx.items():
-        pfx = pin_fx.get(fid)
         start = parse_t(sfx.get("startTime"))
-        if not pfx or not start or start <= t0 + dt.timedelta(minutes=cfg["min_minutes_to_start"]):
+        if not start or start <= t0 + dt.timedelta(minutes=cfg["min_minutes_to_start"]):
             continue
         if start > t0 + dt.timedelta(hours=cfg["max_hours_to_start"]):
             continue
+        pfx = pin_fx.get(fid) or {}
         smk, link = market_prices(sfx, "stake")
         pmk, _ = market_prices(pfx, "pinnacle")
+        prices_now[fid] = {"t": iso(t0), "s": {m: {o: v[0] for o, v in outs.items()} for m, outs in smk.items()},
+                           "p": {m: {o: v[0] for o, v in outs.items()} for m, outs in pmk.items()}}
+        prev = last_prices.get(fid) or {}
+        tour = tour_info.get(sfx.get("tournamentId"), {})
+        base = {"fixture_id": fid, "tournament_id": sfx.get("tournamentId"), "sport": tour.get("sport"),
+                "league": tour.get("name"), "country": tour.get("category"), "start_time": iso(start), "stake_link": link,
+                "home": pnames.get(str(sfx.get("participant1Id")), f"Team {sfx.get('participant1Id')}"),
+                "away": pnames.get(str(sfx.get("participant2Id")), f"Team {sfx.get('participant2Id')}")}
+
+        def fields(mid, oid, price):
+            m = meta.get(mid, {})
+            return dict(base, id=f"{fid}:{mid}:{oid}", market_id=mid, outcome_id=oid, market=m.get("name", f"Market {mid}"),
+                        outcome=(m.get("outcomes") or {}).get(oid) or oid, stake_price=round(price, 3))
+
+        # 1) same market at both books
+        same = set()
         for mid, souts in smk.items():
             pouts = pmk.get(mid)
-            if not pouts or set(pouts) != set(souts) or len(pouts) < 2:
-                continue  # same market must have the same outcomes at both books
-            if not all(a for _, a, _ in pouts.values()):
+            if not pouts or set(pouts) != set(souts) or len(pouts) < 2 or not all(a for _, a, _ in pouts.values()):
                 continue
-            keys = sorted(pouts)
-            decs = [pouts[k][0] for k in keys]
-            margin = sum(1 / d for d in decs) - 1
+            decs = {k: v[0] for k, v in pouts.items()}
+            margin = sum(1 / d for d in decs.values()) - 1
             if margin > cfg["max_pinnacle_margin"] or margin < -0.01:
                 continue
-            fair = dict(zip(keys, P.remove_vig(decs, "power")))
-            compared += 1
+            same.add(mid)
+            fair = F.devig(decs)
+            stats["stale_compared"] += 1
             for oid, (price, active, _) in souts.items():
+                fair_now[(fid, mid, oid)] = fair[oid]
                 if not active or not (cfg["min_price"] <= price <= cfg["max_price"]):
                     continue
-                p = fair[oid]
-                ev = price * p - 1
-                if ev < cfg["min_ev"]:
+                o = {"win": fair[oid], "half_win": 0.0, "push": 0.0, "half_loss": 0.0, "loss": 1 - fair[oid]}
+                e, why = _pick_outcome(fields(mid, oid, price), cfg, "stale", o, price)
+                stats["palpable_skipped"] += why == "palpable"
+                if e:
+                    e.update(pinnacle_price=pouts[oid][0], pinnacle_margin=round(margin, 4), pinnacle_limit=pouts[oid][2])
+                    pp = ((prev.get("p") or {}).get(mid) or {}).get(oid)
+                    sp = ((prev.get("s") or {}).get(mid) or {}).get(oid)
+                    if pp and sp and abs(sp - price) < 1e-9 and abs(pp - pouts[oid][0]) / pp >= cfg["steam_move"]:
+                        e["steam"] = f"Pinnacle moved {pp:.2f} → {pouts[oid][0]:.2f} since {prev.get('t', '')[11:16]} UTC; Stake hasn't changed"
+                        stats["steam"] += 1
+                    errors.append(e)
+
+        # 2) and 3) soccer goal markets priced from a fitted model
+        if tour.get("sport") != "soccer":
+            continue
+        anchor_book, anchor_mk = ("pinnacle", pmk) if pmk else ("stake", smk)
+        tg = F.anchor_targets({m: {o: v[0] for o, v in outs.items()} for m, outs in anchor_mk.items()}, meta)
+        if not tg:
+            continue
+        lh, la, dist, rms = F.fit(tg["p_home"], tg["p_away"], tg["p_over"], tg["line"], mcfg)
+        if rms > cfg["max_fit_error"]:
+            stats["fit_failed"] += 1
+            continue
+        kind = "offline" if anchor_book == "pinnacle" else "self"
+        anchor_ids = set()
+        if kind == "self":  # the markets the fit came from can't be judged against themselves
+            anchor_ids = {tg["total_market"]} | {m for m in smk if meta.get(m, {}).get("type") == "1x2" and meta.get(m, {}).get("period") == "fulltime"}
+        for mid, souts in smk.items():
+            if mid in same or mid in anchor_ids:
+                continue
+            m = meta.get(mid)
+            if not m:
+                continue
+            for oid, (price, active, _) in souts.items():
+                o = F.price_market(dist, m, m["outcomes"].get(oid))
+                if not o:
                     continue
-                kelly = (p * price - 1) / (price - 1)
-                units = min(max(round(kelly * cfg["kelly_fraction"] * 100 / 0.25) * 0.25, 0.25), cfg["max_units"])
-                mn = mnames.get(mid, {})
-                tour = tour_info.get(sfx.get("tournamentId"), {})
-                home = pnames.get(str(sfx.get("participant1Id")), f"Team {sfx.get('participant1Id')}")
-                away = pnames.get(str(sfx.get("participant2Id")), f"Team {sfx.get('participant2Id')}")
-                errors.append({
-                    "id": f"{fid}:{mid}:{oid}", "fixture_id": fid, "market_id": mid, "outcome_id": oid,
-                    "tournament_id": sfx.get("tournamentId"),
-                    "sport": tour.get("sport"), "league": tour.get("name"), "country": tour.get("category"),
-                    "home": home, "away": away, "start_time": iso(start),
-                    "market": mn.get("name", f"Market {mid}"), "outcome": (mn.get("outcomes") or {}).get(oid) or oid,
-                    "stake_price": round(price, 3), "fair_prob": round(p, 4), "fair_odds": round(1 / p, 3),
-                    "ev": round(ev, 4), "take_at": round((1 + cfg["take_at_ev"]) / p, 2), "units": units,
-                    "pinnacle_price": pouts[oid][0], "pinnacle_margin": round(margin, 4), "pinnacle_limit": pouts[oid][2],
-                    "stake_link": link,
-                })
+                be = P.breakeven_prob(o)
+                if be <= 0 or be >= 1:
+                    continue
+                fair_now[(fid, mid, oid)] = be
+                stats[f"{kind}_priced"] += 1
+                if not active or not (cfg["min_price"] <= price <= cfg["max_price"]):
+                    continue
+                e, why = _pick_outcome(fields(mid, oid, price), cfg, kind, o, price)
+                stats["palpable_skipped"] += why == "palpable"
+                if e:
+                    e.update(model_goals=f"{base['home']} {lh:.2f}, {base['away']} {la:.2f}", anchor=anchor_book)
+                    errors.append(e)
     errors.sort(key=lambda e: -e["ev"])
-    return errors, compared
+    return errors, stats, fair_now, prices_now
 
 
-def update_log(out, errors, pin_fx, t0):
-    """Keep every flagged error and track Pinnacle's fair price for it until kick-off (closing line)."""
+def update_log(out, errors, fair_now, t0):
+    """Keep every flagged error and track its fair price until kick-off (closing line value)."""
     path = os.path.join(out, "errors", "log", f"{t0.strftime('%Y-%m')}.json")
     log = load(path, {})
     new = []
@@ -295,17 +385,13 @@ def update_log(out, errors, pin_fx, t0):
             new.append(e)
         else:
             log[e["id"]].update(last_seen=iso(t0), best_price=max(log[e["id"]].get("best_price", 0), e["stake_price"]))
-    # refresh the closing fair price for logged errors whose game hasn't started (from the Pinnacle data we already have)
     for rec in log.values():
         start = parse_t(rec["start_time"])
         if not start or start <= t0:
             continue
-        pmk, _ = market_prices(pin_fx.get(rec["fixture_id"], {}), "pinnacle")
-        pouts = pmk.get(rec["market_id"])
-        if pouts and rec["outcome_id"] in pouts and all(a for _, a, _ in pouts.values()):
-            keys = sorted(pouts)
-            fair = dict(zip(keys, P.remove_vig([pouts[k][0] for k in keys], "power")))
-            rec.update(close_fair=round(fair[rec["outcome_id"]], 4), close_at=iso(t0))
+        f = fair_now.get((rec["fixture_id"], rec["market_id"], rec["outcome_id"]))
+        if f:
+            rec.update(close_fair=round(f, 4), close_at=iso(t0))
     for rec in log.values():
         rec["clv"] = round(rec["stake_price"] * rec["close_fair"] - 1, 4)
         rec["closed"] = bool(parse_t(rec["start_time"]) and parse_t(rec["start_time"]) <= t0)
@@ -360,14 +446,20 @@ def main(argv=None):
         tour_info = {t["tournamentId"]: {"name": t.get("tournamentName"), "category": t.get("categoryName"),
                                          "sport": sport_of.get(t["tournamentId"])} for t in tours}
         ids = [t["tournamentId"] for t in tours]
-        mnames = market_names(client)
+        mnames = market_meta(client, {15, 10, 11, 12, 13, 14})
         stake = odds_for(client, "stake", ids, cfg["tournaments_per_request"])
         stake_tours = {fx.get("tournamentId") for fx in stake.values()}
         pin_ids = [t for t in ids if t in stake_tours]  # don't spend a request on leagues Stake doesn't offer
         pin = odds_for(client, "pinnacle", pin_ids, cfg["tournaments_per_request"]) if pin_ids else {}
         sport_ids = {fx.get("sportId") for fx in stake.values() if fx.get("sportId") is not None}
         pnames = participant_names(client, sorted(sport_ids)) if cfg.get("fetch_team_names", True) else {}
-        errs, compared = find_errors(stake, pin, cfg, mnames, pnames, tour_info, t0)
+        lp_path = os.path.join(a.out, "errors", "cache", "last_prices.json")
+        last_prices = load(lp_path, {})
+        errs, stats, fair_now, prices_now = find_errors(stake, pin, cfg, mnames, pnames, tour_info, t0, last_prices)
+        last_prices.update(prices_now)
+        last_prices = {k: v for k, v in last_prices.items() if (t0 - parse_t(v["t"])).days < 6}
+        save(lp_path, last_prices)
+        compared = stats["stale_compared"] + stats["offline_priced"] + stats["self_priced"]
         hit_tours = {stake[e["fixture_id"]].get("tournamentId") for e in errs if e["fixture_id"] in stake}
         for tid in ids:
             st = rotation.setdefault(str(tid), {"scans": 0, "hits": 0})
@@ -377,13 +469,14 @@ def main(argv=None):
             st.update(last=iso(t0), scans=st["scans"] + 1, hits=st["hits"] + (1 if tid in hit_tours else 0),
                       name=tour_info[tid]["name"], country=tour_info[tid]["category"])
         save(rot_path, rotation)
-        new, history = update_log(a.out, errs, pin, t0)
+        new, history = update_log(a.out, errs, fair_now, t0)
         sent = alert(os.environ.get("NTFY_TOPIC", "").strip(), new, cfg)
         closed = [r for r in history.values() if r.get("closed")]
         save(latest_path, {
             "status": "ok", "scanned_at": iso(t0), "tournaments": len(ids), "leagues_available": n_cands,
             "leagues_scanned": [f"{tour_info[t]['category']} · {tour_info[t]['name']}" for t in ids], "stake_fixtures": len(stake),
             "both_books": sum(1 for f in stake if f in pin), "markets_compared": compared, "min_ev": cfg["min_ev"],
+            "detectors": stats, "by_type": {k: sum(1 for e in errs if e["type"] == k) for k in ("stale", "offline", "self")},
             "requests_left_this_month": client.left(), "errors": errs[: cfg["max_listed"]],
             "month": {"flagged": len(history), "closed": len(closed),
                       "avg_ev": round(sum(r["ev"] for r in history.values()) / len(history), 4) if history else None,
@@ -393,7 +486,7 @@ def main(argv=None):
         if stake:
             sample = next(iter(stake.values()))
             save(os.path.join(a.out, "errors", "debug_sample.json"), {"stake_fixture": sample, "pinnacle_fixture": pin.get(sample["fixtureId"])}, pretty=True)
-        log.update(tournaments=len(ids), stake_fixtures=len(stake), pinnacle_fixtures=len(pin), compared=compared,
+        log.update(tournaments=len(ids), stake_fixtures=len(stake), pinnacle_fixtures=len(pin), compared=compared, detectors=stats,
                    errors_found=len(errs), new=len(new), alerts=sent, requests_left=client.left())
     except Exception as e:
         log["errors"].append(str(e))

@@ -1,6 +1,6 @@
 // Performance views: record tiles, units chart, closing line, model vs market, breakdowns.
-import {esc, num, prob, decOf, profitOf, fmtU, pct, spct, sign, cls, clvOf, fmtDay, byDateAsc, isW, isL, GRADED, state, modelStats} from "./core.js?v=e2e6a5450a";
-import {lineChart} from "./charts.js?v=e2e6a5450a";
+import {esc, num, prob, decOf, profitOf, fmtU, pct, spct, sign, cls, clvOf, fmtDay, byDateAsc, isW, isL, GRADED, state, modelStats} from "./core.js?v=7fe67dfe95";
+import {lineChart} from "./charts.js?v=7fe67dfe95";
 
 const tile = (k, v, sub, c) => `<div class="tile"><div class="k">${k}</div><div class="v ${c || ""}">${v}</div><div class="s">${sub || "&nbsp;"}</div></div>`;
 

@@ -1,10 +1,11 @@
 // Error finder page: reads the scanner output from the feed branch (refreshed three times a day).
-import {$, esc, fmtTime, fmtStamp} from "./core.js?v=e2e6a5450a";
+import {$, esc, fmtTime, fmtStamp} from "./core.js?v=7fe67dfe95";
 
 const FEED = "https://raw.githubusercontent.com/JohnFitz-z/JohnFitz-z.github.io/feed/errors/";
 const err = {data: null, log: null, failed: false};
 const pct = (n, d = 1) => (n >= 0 ? "+" : "−") + Math.abs(n * 100).toFixed(d) + "%";
 const tile = (k, v, sub, c) => `<div class="tile"><div class="k">${k}</div><div class="v ${c || ""}">${v}</div><div class="s">${sub || "&nbsp;"}</div></div>`;
+const TYPE = {stale: "Same bet, Pinnacle cheaper", offline: "Line Pinnacle doesn't offer", self: "Stake disagrees with itself"};
 const SPORT = {soccer: "Soccer", basketball: "Basketball", "ice-hockey": "Hockey", baseball: "Baseball", tennis: "Tennis", "american-football": "Football"};
 
 async function getJSON(name){
@@ -30,7 +31,9 @@ function card(e){
       <span class="b2" style="display:block">${league}</span>
       <span class="b1" style="display:block">${esc(e.outcome)} · ${esc(e.market)}</span>
       <span class="b2" style="display:block">${esc(e.home)} vs ${esc(e.away)} · ${esc(start)}</span>
-      <span class="b2" style="display:block">Stake <b>${Number(e.stake_price).toFixed(2)}</b> · fair ${Number(e.fair_odds).toFixed(2)} · Pinnacle ${Number(e.pinnacle_price).toFixed(2)} · take at <b>${Number(e.take_at).toFixed(2)}+</b> · ${e.units}u</span>
+      <span class="b2" style="display:block">Stake <b>${Number(e.stake_price).toFixed(2)}</b> · fair ${Number(e.fair_odds).toFixed(2)}${e.pinnacle_price ? " · Pinnacle " + Number(e.pinnacle_price).toFixed(2) : ""} · take at <b>${Number(e.take_at).toFixed(2)}+</b> · ${e.units}u</span>
+      <span class="b2" style="display:block"><b>${esc(TYPE[e.type] || "")}</b>${e.why ? ": " + esc(e.why) : ""}${e.model_goals ? " Expected goals: " + esc(e.model_goals) + "." : ""}</span>
+      ${e.steam ? `<span class="b2 pos" style="display:block">${esc(e.steam)}</span>` : ""}
     </span>
     <span style="text-align:right">
       <span class="v pos" style="display:block;font-size:1.25rem;font-weight:700">${pct(e.ev)}</span>

@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=e2e6a5450a">
-<link rel="modulepreload" href="/assets/js/app.js?v=e2e6a5450a">
+<link rel="stylesheet" href="/assets/css/main.css?v=7fe67dfe95">
+<link rel="modulepreload" href="/assets/js/app.js?v=7fe67dfe95">
 </head>
 <body data-page="errors">
 <a class="skip" href="#main">Skip to content</a>
@@ -60,7 +60,13 @@
   <div class="prose">
     <h2>How it works</h2>
     <p>Every 3 hours from 10 AM to 10 PM the finder pulls Stake's prices and Pinnacle's prices for the same games across soccer, basketball, hockey, baseball, tennis and football, including smaller leagues. Pinnacle is the sharpest sportsbook, so its price with the margin removed is treated as the fair price. When Stake pays at least 3% more than fair, it's listed here. On the free data plan each scan covers 5 leagues, so it rotates through them and focuses on the leagues where Stake has been wrong before.</p>
-    <p>Stake's niche lines move slower than its main ones, which is where most errors show up. They also get corrected, so an error can be gone by the time you look. The suggested size is a quarter of the Kelly stake, capped at 1 unit.</p>
+    <p>It looks for three kinds of error:</p>
+    <ul>
+      <li><b>Same bet, Pinnacle cheaper:</b> Stake pays more than Pinnacle's fair price for the exact same bet.</li>
+      <li><b>Line Pinnacle doesn't offer:</b> Stake has an alternate total, handicap, team total or similar that Pinnacle doesn't. Its fair price comes from a goals model fitted to Pinnacle's main markets for that game (soccer).</li>
+      <li><b>Stake disagrees with itself:</b> when Pinnacle has no price at all, Stake's other markets are checked against its own result and main total. This is what catches errors in the most obscure leagues.</li>
+    </ul>
+    <p>A green note means Pinnacle's price moved since the last scan and Stake hasn't caught up yet. Anything showing more than a 25% edge is treated as a typo Stake would void and left off. Errors get corrected, so one can be gone by the time you look. The suggested size is a quarter of the Kelly stake, capped at 1 unit.</p>
   </div>
 </section>
 
@@ -80,6 +86,6 @@
   <a href="/method/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 
-<script type="module" src="/assets/js/app.js?v=e2e6a5450a"></script>
+<script type="module" src="/assets/js/app.js?v=7fe67dfe95"></script>
 </body>
 </html>

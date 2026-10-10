@@ -32,5 +32,10 @@
   "max_listed": 60,
   "fetch_team_names": true,
   "tournaments_per_scan": 5,
-  "tournament_list_days": 10
+  "tournament_list_days": 10,
+  "min_ev_offline": 0.04,
+  "min_ev_self": 0.05,
+  "max_ev": 0.25,
+  "steam_move": 0.03,
+  "max_fit_error": 0.02
 }

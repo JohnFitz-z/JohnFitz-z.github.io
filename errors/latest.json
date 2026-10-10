@@ -1,20 +1,20 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-10T17:01:41Z",
+ "scanned_at": "2026-10-10T17:02:24Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Antofagasta, Chile Men Singles",
-  "ITF Women · Heraklion",
-  "ITF Women · Wagga Wagga",
-  "ITF Men · Luan",
-  "International · Int. Friendly Games"
+  "England Amateur · Northern Premier League Premier",
+  "International · UEFA Nations League",
+  "Challenger · ATP Challenger Braga, Portugal Men Singles",
+  "ITF Men · Kigali",
+  "ITF Women · Maanshan"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 11,
+ "both_books": 11,
  "markets_compared": 0,
  "min_ev": 0.03,
- "requests_left_this_month": 235,
+ "requests_left_this_month": 233,
  "errors": [],
  "month": {
   "flagged": 0,

@@ -1,7 +1,7 @@
 // Views for a single pick: the ticket, how the number was built, the write-up, and list rows.
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
-        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=29a99fe9e6";
-import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=29a99fe9e6";
+        STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js?v=e2e6a5450a";
+import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js?v=e2e6a5450a";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);

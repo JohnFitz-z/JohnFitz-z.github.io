@@ -2,12 +2,13 @@ name: Error finder
 
 # Compares Stake's prices with Pinnacle's margin-free prices (OddsPapi) and saves any
 # Stake price above fair to the `feed` branch (errors/latest.json), which the site's
-# Error finder page reads. Three scans a day fit OddsPapi's free plan (250 requests/month).
+# Error finder page reads. Five scans a day (every 3 hours) fit OddsPapi's free plan (250 requests a
+# month) because a scan skips the Pinnacle request when Stake has no games in that scan's leagues;
+# errors.py stops scanning if the month's budget runs low.
 on:
   schedule:
-    - cron: "5 13 * * *"    # 10:05 AM Atlantic (summer)
-    - cron: "5 18 * * *"    # 3:05 PM
-    - cron: "5 22 * * *"    # 7:05 PM
+    - cron: "5 13,16,19,22 * * *"   # every 3 hours, 10:05 AM to 7:05 PM Atlantic (summer)
+    - cron: "5 1 * * *"             # 10:05 PM
   workflow_dispatch:
   push:
     branches: [main]

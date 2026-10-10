@@ -1,5 +1,5 @@
 // Error finder page: reads the scanner output from the feed branch (refreshed three times a day).
-import {$, esc, fmtTime, fmtStamp} from "./core.js?v=29a99fe9e6";
+import {$, esc, fmtTime, fmtStamp} from "./core.js?v=e2e6a5450a";
 
 const FEED = "https://raw.githubusercontent.com/JohnFitz-z/JohnFitz-z.github.io/feed/errors/";
 const err = {data: null, log: null, failed: false};

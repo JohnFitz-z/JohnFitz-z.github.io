@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T21:04:33Z",
+  "updated_at": "2026-10-10T02:09:51Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -932,6 +932,8 @@
           "ev": 0.027,
           "event": "Rangers @ Capitals",
           "fair_prob": 0.4654,
+          "final_score": "Capitals 3, Rangers 1",
+          "graded_at": "2026-10-10T02:10:00Z",
           "home": "Capitals",
           "implied_prob": 0.4878,
           "input": {
@@ -1021,9 +1023,10 @@
           "no_edge": false,
           "odds_american": 105,
           "odds_decimal": 2.05,
+          "result_units": 0.79,
           "sport": "NHL",
           "start_time": "2026-10-09T20:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 0.75
         }
       ],

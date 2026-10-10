@@ -1,20 +1,20 @@
 {
- "status": "error: odds-by-tournaments: HTTP 404: {\"error\":{\"message\":\"No fixtures found for the specified tournament IDs and bookmaker.\",\"code\":\"FIXTURE_NOT_FOUND\",\"details\":\"Ple",
- "scanned_at": "2026-10-10T16:59:27Z",
+ "status": "ok",
+ "scanned_at": "2026-10-10T17:01:41Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
-  "International Youth · U21 UEFA European Championship, Qualification",
-  "England · EFL Trophy",
-  "ITF Women · Seville",
-  "France · Coupe de France"
+  "Challenger · ATP Challenger Antofagasta, Chile Men Singles",
+  "ITF Women · Heraklion",
+  "ITF Women · Wagga Wagga",
+  "ITF Men · Luan",
+  "International · Int. Friendly Games"
  ],
- "stake_fixtures": 6,
- "both_books": 6,
+ "stake_fixtures": 0,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
- "requests_left_this_month": 237,
+ "requests_left_this_month": 235,
  "errors": [],
  "month": {
   "flagged": 0,
@@ -22,6 +22,5 @@
   "avg_ev": null,
   "avg_clv": null,
   "beat_close": 0
- },
- "checked_at": "2026-10-10T17:00:49Z"
+ }
 }

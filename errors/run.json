@@ -1,7 +1,13 @@
 {
- "started_at": "2026-10-10T17:00:49Z",
- "errors": [
-  "odds-by-tournaments: HTTP 404: {\"error\":{\"message\":\"No fixtures found for the specified tournament IDs and bookmaker.\",\"code\":\"FIXTURE_NOT_FOUND\",\"details\":\"Please check the provided tournament IDs and try again.\"}}"
- ],
- "finished_at": "2026-10-10T17:00:49Z"
+ "started_at": "2026-10-10T17:01:41Z",
+ "errors": [],
+ "tournaments": 5,
+ "stake_fixtures": 0,
+ "pinnacle_fixtures": 0,
+ "compared": 0,
+ "errors_found": 0,
+ "new": 0,
+ "alerts": 0,
+ "requests_left": 235,
+ "finished_at": "2026-10-10T17:01:42Z"
 }

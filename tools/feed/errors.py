@@ -159,6 +159,8 @@ def pick_tournaments(client, cfg, state, t0, must=()):
             hours = (t0 - last).total_seconds() / 3600 if last else 96
             hit_rate = (st.get("hits", 0) + 1) / (st.get("scans", 0) + 2)
             score = 3 * hit_rate + min(hours, 96) / 24 + 0.5 * math.log1p(t.get("upcomingFixtures") or 0)
+            if st.get("empty", 0) and not st.get("stake_seen", 0):
+                score -= 5 * st["empty"]  # Stake hasn't offered this league when checked
             if t["tournamentId"] in must:
                 score += 100  # re-check leagues with a flagged error kicking off soon, to get its closing line
             cands.append((score, slug, sid, t))
@@ -202,7 +204,13 @@ def odds_for(client, bookmaker, tournament_ids, chunk):
     fixtures = {}
     for i in range(0, len(tournament_ids), chunk):
         ids = ",".join(str(t) for t in tournament_ids[i:i + chunk])
-        for fx in as_list(client.get("odds-by-tournaments", bookmaker=bookmaker, tournamentIds=ids, oddsFormat="decimal")):
+        try:
+            got = client.get("odds-by-tournaments", bookmaker=bookmaker, tournamentIds=ids, oddsFormat="decimal")
+        except RuntimeError as e:
+            if "HTTP 404" in str(e):  # the bookmaker has no games in these leagues
+                continue
+            raise
+        for fx in as_list(got):
             if isinstance(fx, dict) and fx.get("fixtureId"):
                 fixtures[fx["fixtureId"]] = fx
     return fixtures
@@ -354,13 +362,18 @@ def main(argv=None):
         ids = [t["tournamentId"] for t in tours]
         mnames = market_names(client)
         stake = odds_for(client, "stake", ids, cfg["tournaments_per_request"])
-        pin = odds_for(client, "pinnacle", ids, cfg["tournaments_per_request"])
+        stake_tours = {fx.get("tournamentId") for fx in stake.values()}
+        pin_ids = [t for t in ids if t in stake_tours]  # don't spend a request on leagues Stake doesn't offer
+        pin = odds_for(client, "pinnacle", pin_ids, cfg["tournaments_per_request"]) if pin_ids else {}
         sport_ids = {fx.get("sportId") for fx in stake.values() if fx.get("sportId") is not None}
         pnames = participant_names(client, sorted(sport_ids)) if cfg.get("fetch_team_names", True) else {}
         errs, compared = find_errors(stake, pin, cfg, mnames, pnames, tour_info, t0)
         hit_tours = {stake[e["fixture_id"]].get("tournamentId") for e in errs if e["fixture_id"] in stake}
         for tid in ids:
             st = rotation.setdefault(str(tid), {"scans": 0, "hits": 0})
+            n_stake = sum(1 for fx in stake.values() if fx.get("tournamentId") == tid)
+            st["stake_seen"] = st.get("stake_seen", 0) + n_stake
+            st["empty"] = st.get("empty", 0) + (0 if n_stake else 1)
             st.update(last=iso(t0), scans=st["scans"] + 1, hits=st["hits"] + (1 if tid in hit_tours else 0),
                       name=tour_info[tid]["name"], country=tour_info[tid]["category"])
         save(rot_path, rotation)

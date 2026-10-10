@@ -78,6 +78,8 @@ class Client:
     def left(self):
         return self.cfg["monthly_requests"] - self.usage["requests"]
 
+    _last_call = 0.0
+
     def get(self, path, **params):
         if self.left() <= 0:
             raise RuntimeError("monthly request budget used up")
@@ -86,7 +88,11 @@ class Client:
         self.usage["requests"] += 1
         save(self.usage_path, self.usage)
         last = None
-        for i in range(2):
+        for i in range(4):
+            wait = 1.5 - (time.time() - Client._last_call)  # OddsPapi allows about one request a second
+            if wait > 0:
+                time.sleep(wait)
+            Client._last_call = time.time()
             try:
                 req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
                 with urllib.request.urlopen(req, timeout=60) as r:
@@ -94,7 +100,14 @@ class Client:
             except urllib.error.HTTPError as e:
                 body = e.read().decode("utf-8", "replace")[:300]
                 last = f"HTTP {e.code}: {body}"
-                if e.code in (400, 401, 403, 404, 422, 429):
+                if e.code == 429:
+                    try:
+                        ms = json.loads(body).get("error", {}).get("retryMs") or 1500
+                    except ValueError:
+                        ms = 1500
+                    time.sleep(ms / 1000 + 0.5)
+                    continue
+                if e.code in (400, 401, 403, 404, 422):
                     break
             except Exception as e:
                 last = str(e)

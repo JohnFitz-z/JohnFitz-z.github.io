@@ -369,20 +369,27 @@ def nhl_stats(out, log):
         try:
             rows = moneypuck(season, "teams")
             t = {}
+            for r in rows:  # all situations first, so the 5on5 entry below can carry both
+                if r.get("situation") == "all" and f(r.get("iceTime")) > 0:
+                    ice = f(r.get("iceTime"))
+                    t.setdefault(r["team"], {}).update({
+                        "xgf60_all": round(f(r.get("scoreVenueAdjustedxGoalsFor") or r.get("xGoalsFor")) / ice * 3600, 3),
+                        "xga60_all": round(f(r.get("scoreVenueAdjustedxGoalsAgainst") or r.get("xGoalsAgainst")) / ice * 3600, 3)})
             for r in rows:
                 if r.get("situation") != "5on5":
                     continue
                 ice = f(r.get("iceTime"))
                 if ice <= 0:
                     continue
-                t[r["team"]] = {
+                t.setdefault(r["team"], {}).update({
                     "gp": int(f(r.get("games_played"))),
                     "toi_min": round(ice / 60, 1),
                     "xgf60": round(f(r.get("scoreVenueAdjustedxGoalsFor") or r.get("xGoalsFor")) / ice * 3600, 3),
                     "xga60": round(f(r.get("scoreVenueAdjustedxGoalsAgainst") or r.get("xGoalsAgainst")) / ice * 3600, 3),
                     "gf60": round(f(r.get("goalsFor")) / ice * 3600, 3),
                     "ga60": round(f(r.get("goalsAgainst")) / ice * 3600, 3),
-                }
+                })
+            t = {k: v for k, v in t.items() if "xgf60" in v}
             teams[str(season)] = t
         except Exception as e:
             log["errors"].append(f"moneypuck teams {season}: {e}")

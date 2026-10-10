@@ -107,14 +107,27 @@ def nhl_inputs_factory(stats, cfg, goalies):
     cur = str(stats.get("current_season"))
     prev = str(int(cur) - 1)
     tc, tp = stats["teams"].get(cur, {}), stats["teams"].get(prev, {})
+    # Backtest 2022-26 (tools/backtest/nhl.py): all-situation expected goals predict better than 5v5,
+    # last season should be regressed 40% toward the league average, and this season takes over at 25 games.
+    def rate(team, k):
+        return team.get(f"{k}_all", team[k])
+
+    def lg_mean(teams):
+        vals = [rate(t, k) for t in teams.values() for k in ("xgf60", "xga60")]
+        return sum(vals) / len(vals) if vals else None
+
+    mp = lg_mean(tp)
     blended = {}
     for code in set(tc) | set(tp):
         c, p = tc.get(code), tp.get(code)
-        if c and p:
+        prior = {k: mp + 0.6 * (rate(p, k) - mp) for k in ("xgf60", "xga60")} if p and mp else None
+        if c and prior:
             w = c["gp"] / (c["gp"] + 25.0)
-            blended[code] = {k: w * c[k] + (1 - w) * p[k] for k in ("xgf60", "xga60")}
-        elif c or p:
-            blended[code] = {k: (c or p)[k] for k in ("xgf60", "xga60")}
+            blended[code] = {k: w * rate(c, k) + (1 - w) * prior[k] for k in ("xgf60", "xga60")}
+        elif prior:
+            blended[code] = prior
+        elif c:
+            blended[code] = {k: rate(c, k) for k in ("xgf60", "xga60")}
     if not blended:
         return None
     mean = sum(v["xgf60"] + v["xga60"] for v in blended.values()) / (2 * len(blended))

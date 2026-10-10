@@ -777,7 +777,8 @@ def price_candidate(c, cfg):
         warnings.append(f"{dist.label} can't price this market with the inputs given, so it's market only.")
     q_model = breakeven_prob(model_out) if model_out else None
 
-    bw = cfg["blend"]
+    bw = dict(cfg["blend"])
+    bw.update({k: v for k, v in (cfg.get("blend_overrides", {}).get(f"{sport}:{kind}") or {}).items() if k.endswith("_weight")})
     steps = []
     if mv:
         steps.append({"key": "market", "label": "Sharp market, margin removed" if mv["source"] == "sharp" else "Market, margin removed",

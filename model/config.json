@@ -12,6 +12,10 @@
     "model_weight": 0.5
   },
 
+  "blend_overrides": {
+    "NHL:total": { "market_weight": 0.85, "model_weight": 0.15, "why": "Backtest 2022-26: the goals model barely beats a flat over/under rate on totals" }
+  },
+
   "adjustments": {
     "logit_size": { "small": 0.04, "medium": 0.08, "large": 0.12 },
     "max_total_logit": 0.2,
@@ -50,7 +54,7 @@
   "nhl": {
     "league_reg_goals": 3.03,
     "league_xg60": 2.48,
-    "gsax_weight": 1.0,
+    "gsax_weight": 0.25,
     "home_mult": 1.04,
     "away_mult": 0.975,
     "ot_home_win": 0.52,

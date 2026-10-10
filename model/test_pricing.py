@@ -342,10 +342,22 @@ class Sharp(unittest.TestCase):
                                  "away": {"xgf60": 2.46, "xga60": 2.53, "goalie_gsax60": -0.44}})
         sane = dict(self.cand(books, {"home": {"xgf60": 2.5, "xga60": 2.45, "goalie_gsax60": 0.05},
                                       "away": {"xgf60": 2.5, "xga60": 2.5, "goalie_gsax60": 0.0}}), id="t", event="Other game")
-        priced, _ = P.price_all([wild, sane], CFG)
+        cfg = copy.deepcopy(CFG)
+        cfg["nhl"]["gsax_weight"] = 1.0  # the old full goalie weight is what pushed this one 9 points off
+        cfg["blend_overrides"] = {}
+        priced, _ = P.price_all([wild, sane], cfg)
         self.assertTrue(priced[0]["suspect"])
-        pick = P.rank_and_pick(priced, CFG)
+        pick = P.rank_and_pick(priced, cfg)
         self.assertEqual(pick["input"]["id"], "t")
+        # with the tuned goalie weight it's no longer flagged
+        self.assertFalse(P.price_candidate(wild, CFG)["suspect"])
+
+    def test_blend_override_for_nhl_totals(self):
+        books = [{"book": "Pinnacle", "prices": {"over": 1.87, "under": 2.03}}]
+        c = self.cand(books, {"home": {"xgf60": 2.8, "xga60": 2.7, "goalie_gsax60": 0},
+                              "away": {"xgf60": 2.8, "xga60": 2.7, "goalie_gsax60": 0}})
+        steps = {s["key"]: s for s in P.price_candidate(c, CFG)["doc"]["model"]["steps"]}
+        self.assertIn("85% market", steps["blend"]["label"])
 
     def test_slate_bet_price_ignores_sharp_books(self):
         data = {"games": [{"id": "g", "sport": "NHL", "home": "A", "away": "B", "markets": [

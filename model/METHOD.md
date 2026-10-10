@@ -98,6 +98,23 @@ python3 model/pricing.py recheck pick.json --fresh fresh.json --out update.json
 
 `fresh.json` holds the new prices per bet: `{"main": {"price": 1.85, "market_odds": [...]}, "b1": {...}, "b2": {...}}`. Use the same side keys as the bet's original `market_odds` (home/away, over/under, home/draw/away). If `price` is left out, the median of the books for the bet's selection is used. If `price` is more than 12% off that median, the bet gets a `warning` (usually a home/away mix-up) and is never recommended; fix the file and rerun. The output is a `price_check` block to merge into the pick: the current odds, EV and take-at price for each bet, and `recommend`: the first of main, backup 1, backup 2 that still has at least +1% EV at the current price, or `none`. The recorded odds of the pick don't change; the price check only says which bet to place now.
 
+## Backtests
+
+Settings are tuned on past seasons, not guessed. The "Backtest data" GitHub workflow downloads history to `backtest/` on the feed branch; `python3 tools/backtest/nhl.py <feed> --tune` replays every game using only what was known that morning and searches the settings.
+
+NHL, October 2026 run (2022-23 to 2025-26, 5,248 games; log loss, lower is better):
+
+| | Model | No-skill baseline |
+|---|---|---|
+| Moneyline (incl. OT/shootout) | 0.6685 | 0.6904 |
+| Over/under 5.5 | 0.6819 | 0.6832 |
+| Over/under 6.5 | 0.6889 | 0.6898 |
+
+- The moneyline model has real skill and is well calibrated after tuning. Totals barely beat a flat rate, so NHL totals use 85% market / 15% model (`blend_overrides` in `config.json`).
+- Tuned settings, now live: all-situation expected goals (better than 5v5 only), last season regressed 40% toward the league average, this season takes over at about 25 games, goalie GSAx weight 0.25 (was 1.0), home ice 1.04 / 0.975, league regulation goals 3.03.
+- Tuned on 2022-25 and tested on 2025-26 alone, the new settings also beat the old ones, so this isn't overfitting.
+- Next: with historical Pinnacle prices, fit the model-vs-market weight per sport and the minimum edge to bet.
+
 ## How a probability is built
 
 | Step | What happens |

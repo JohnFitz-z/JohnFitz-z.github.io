@@ -1,6 +1,6 @@
 // My bankroll: the viewer's own bets, kept privately in this browser.
-import {$, esc, num, decOf, unitsOf, GRADED, STATUS, isW, isL, cls, spct, fmtDay, byDateAsc, state, todayPick, pickUrl} from "./core.js?v=7fe67dfe95";
-import {lineChart} from "./charts.js?v=7fe67dfe95";
+import {$, esc, num, decOf, unitsOf, GRADED, STATUS, isW, isL, cls, spct, fmtDay, byDateAsc, state, todayPick, pickUrl} from "./core.js?v=95b2cd7a35";
+import {lineChart} from "./charts.js?v=95b2cd7a35";
 
 const KEY = "ml-bank";
 export const Store = {
@@ -14,11 +14,23 @@ export const Store = {
   async save(st){ try { localStorage.setItem(KEY, JSON.stringify(st)); return true; } catch(e){ return false; } }
 };
 
-export const bankState = {bank: {v: 1, start: 100, bets: {}}, loaded: false, dirty: false};
+export const bankState = {bank: {v: 1, start: 100, bets: {}, extras: [], money: {risk: "standard"}}, loaded: false, dirty: false};
+export const RESULTS = {pending: "Pending", won: "Won", lost: "Lost", push: "Push", void: "Void"};
 
 export function normBank(st){
-  const out = {v: 1, start: 100, bets: {}};
+  const out = {v: 1, start: 100, bets: {}, extras: [], money: {risk: "standard"}};
   if(!st || typeof st !== "object") return out;
+  const m = st.money && typeof st.money === "object" ? st.money : {};
+  out.money.risk = ["steady", "standard", "aggressive"].includes(m.risk) ? m.risk : "standard";
+  const cap = num(m.cap); if(cap !== null && cap > 0 && cap <= 0.5) out.money.cap = cap;
+  const goal = num(m.goal); if(goal !== null && goal > 0) out.money.goal = Math.round(goal * 100) / 100;
+  for(const x of Array.isArray(st.extras) ? st.extras : []){
+    if(!x || typeof x !== "object" || !x.id) continue;
+    const stake = num(x.stake), odds = num(x.odds);
+    out.extras.push({id: String(x.id), date: String(x.date || "").slice(0, 10), label: String(x.label || "Bet").slice(0, 160),
+      stake: stake !== null && stake > 0 ? Math.round(stake * 100) / 100 : 0, odds: odds !== null && odds > 1 ? Math.round(odds * 1000) / 1000 : 0,
+      result: RESULTS[x.result] ? x.result : "pending"});
+  }
   const s = num(st.start); if(s !== null && s >= 0) out.start = s;
   const b = st.bets && typeof st.bets === "object" ? st.bets : {};
   for(const k of Object.keys(b)){
@@ -51,20 +63,30 @@ export const myProfit = p => {
 };
 const settledBet = p => { const st = betFor(p).status; return GRADED.has(st) || st === "void"; };
 
+// Other bets (error finder or anything else) the viewer logged by hand, with a result they set.
+export const extraProfit = x => !x.stake ? 0 : x.result === "won" ? x.stake * ((x.odds || 2) - 1) : x.result === "lost" ? -x.stake : 0;
+
 export function bankStats(){
-  const bank = bankState.bank;
+  const bank = bankState.bank, extras = (bank.extras || []).filter(x => x.stake > 0);
   const placed = state.picks.filter(p => stakeOf(p) > 0);
   const settled = placed.filter(settledBet);
   const open = placed.filter(p => !settledBet(p));
-  const profit = settled.reduce((a, p) => a + myProfit(p), 0);
-  const inPlay = open.reduce((a, p) => a + stakeOf(p), 0);
-  const staked = settled.filter(p => betFor(p).status !== "void").reduce((a, p) => a + stakeOf(p), 0);
-  const W = settled.filter(p => isW(betFor(p).status)).length, L = settled.filter(p => isL(betFor(p).status)).length;
-  return {placed, settled, open, profit, inPlay, staked, W, L, balance: bank.start + profit - inPlay};
+  const xSettled = extras.filter(x => x.result !== "pending"), xOpen = extras.filter(x => x.result === "pending");
+  const profit = settled.reduce((a, p) => a + myProfit(p), 0) + xSettled.reduce((a, x) => a + extraProfit(x), 0);
+  const inPlay = open.reduce((a, p) => a + stakeOf(p), 0) + xOpen.reduce((a, x) => a + x.stake, 0);
+  const staked = settled.filter(p => betFor(p).status !== "void").reduce((a, p) => a + stakeOf(p), 0)
+               + xSettled.filter(x => x.result !== "void").reduce((a, x) => a + x.stake, 0);
+  const W = settled.filter(p => isW(betFor(p).status)).length + xSettled.filter(x => x.result === "won").length;
+  const L = settled.filter(p => isL(betFor(p).status)).length + xSettled.filter(x => x.result === "lost").length;
+  return {placed, settled, open, extras, xSettled, xOpen, profit, inPlay, staked, W, L, nPlaced: placed.length + extras.length,
+          balance: bank.start + profit - inPlay};
 }
 
 // Model stake in dollars: units are percent of the bankroll before open bets.
-export const suggested = p => { if(!bankState.loaded) return 0; const s = bankStats(); const base = s.balance + s.inPlay; return base > 0 ? unitsOf(p) / 100 * base : 0; };
+const RISK_MULT = {steady: 0.5, standard: 1, aggressive: 2};
+export const riskMult = () => RISK_MULT[(bankState.bank.money || {}).risk] || 1;
+const round$ = v => v <= 0 ? 0 : v < 10 ? Math.max(0.1, Math.round(v * 10) / 10) : Math.round(v * 2) / 2;
+export const suggested = p => { if(!bankState.loaded) return 0; const s = bankStats(); const base = s.balance + s.inPlay; return base > 0 ? round$(unitsOf(p) / 100 * base * riskMult()) : 0; };
 
 let saveTimer = null;
 function saveBank(){ clearTimeout(saveTimer); saveTimer = setTimeout(() => { Store.save(bankState.bank); }, 350); }
@@ -107,6 +129,40 @@ function renderMoneyList(){
   const rows = state.picks.slice().sort(byDateAsc).reverse();
   if(!rows.length){ el.innerHTML = `<p class="empty" style="padding-top:12px">Your bets show here once picks are posted.</p>`; return; }
   el.innerHTML = `<div class="mrow head"><span class="m-date">Date</span><span class="m-pick">Pick</span><span class="m-res">Result</span><span class="m-stake">Your stake</span><span class="m-odds">Odds you got</span><span class="m-pl">Profit</span></div>` + rows.map(rowHTML).join("");
+  renderExtras();
+}
+
+function extraRow(x, i){
+  const opts = Object.entries(RESULTS).map(([k, v]) => `<option value="${k}"${x.result === k ? " selected" : ""}>${v}</option>`).join("");
+  const v = extraProfit(x);
+  return `<div class="mrow">
+    <div class="m-date">${esc(fmtDay(x.date || "", {weekday: undefined}))}</div>
+    <div class="m-pick"><div class="b1">${esc(x.label)}</div><button type="button" class="linkbtn" data-xdel="${i}">Remove</button></div>
+    <div class="m-res"><select class="inp choice" data-x="${i}" data-xf="result" aria-label="Result">${opts}</select></div>
+    <label class="m-stake"><span class="lbl">Your stake</span><span class="bin">$<input class="inp" data-x="${i}" data-xf="stake" type="number" min="0" step="0.01" inputmode="decimal" value="${x.stake || ""}"></span></label>
+    <label class="m-odds"><span class="lbl">Odds you got</span><input class="inp" data-x="${i}" data-xf="odds" type="number" min="1.01" step="0.01" inputmode="decimal" value="${x.odds || ""}"></label>
+    <div class="m-pl ${x.result === "pending" ? "" : cls(v)}" id="xpl-${i}">${!x.stake ? "—" : x.result === "pending" ? "In play" : x.result === "void" ? "Refunded" : sfmt$(v)}</div>
+  </div>`;
+}
+
+function renderExtras(){
+  const el = $("#extraList"); if(!el) return;
+  if(el.contains(document.activeElement)) return;
+  const xs = bankState.bank.extras || [];
+  el.innerHTML = (xs.length ? xs.map(extraRow).join("") : `<p class="empty" style="padding-top:10px">Error finder bets and anything else you bet show here. Tap "Log it" on a bet in the money plan, or add one below.</p>`)
+    + `<div class="addx"><input class="inp" id="xLabel" placeholder="Bet (e.g. Over 2.5 · Colo-Colo vs U. de Chile)" aria-label="Bet">
+       <input class="inp" id="xOdds" type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="Odds" aria-label="Odds">
+       <input class="inp" id="xStake" type="number" min="0" step="0.01" inputmode="decimal" placeholder="$ stake" aria-label="Stake">
+       <button type="button" class="btn" id="xAdd">Add bet</button></div>`;
+}
+
+export function addExtra(x){
+  const bank = bankState.bank;
+  bank.extras = bank.extras || [];
+  const i = bank.extras.findIndex(e => e.id === x.id);
+  const rec = Object.assign({result: "pending"}, i >= 0 ? bank.extras[i] : {}, x);
+  if(i >= 0) bank.extras[i] = rec; else bank.extras.unshift(rec);
+  bankState.dirty = true; Store.save(bank);
 }
 
 function renderTodayBet(){
@@ -143,7 +199,7 @@ export function updateMoney(){
   const bal = $("#curBal");
   if(bal){
     bal.textContent = fmt$(s.balance);
-    $("#curSub").textContent = s.inPlay > 0 ? `${fmt$(s.inPlay)} in play · ${sfmt$(s.profit)} settled` : (s.placed.length ? `${sfmt$(s.profit)} since you started` : "Log a bet to start tracking");
+    $("#curSub").textContent = s.inPlay > 0 ? `${fmt$(s.inPlay)} in play · ${sfmt$(s.profit)} settled` : (s.nPlaced ? `${sfmt$(s.profit)} since you started` : "Log a bet to start tracking");
     $("#bankNote").textContent = Store.note || "";
   }
   const where = $("#bkWhere"); if(where) where.textContent = Store.where;
@@ -155,7 +211,7 @@ export function updateMoney(){
       tile("Balance", fmt$(s.balance), s.inPlay > 0 ? `${fmt$(s.inPlay)} in play` : `Started with ${fmt$(bank.start)}`, "") +
       tile("Profit", sfmt$(s.profit), "From settled bets", cls(s.profit)) +
       tile("Return", roi === null ? "—" : spct(roi), s.staked ? `On ${fmt$(s.staked)} bet` : "Profit per dollar bet", roi !== null ? cls(roi) : "") +
-      tile("Your record", `${s.W}-${s.L}`, `${s.placed.length} bet${s.placed.length === 1 ? "" : "s"} placed`, "");
+      tile("Your record", `${s.W}-${s.L}`, `${s.nPlaced} bet${s.nPlaced === 1 ? "" : "s"} placed`, "");
   }
   renderMoneyChart(s);
   for(const p of state.picks){
@@ -167,8 +223,8 @@ export function updateMoney(){
   const out = document.getElementById("tb-out"), cp = todayPick();
   if(out && cp){
     const st = stakeOf(cp), d = oddsTaken(cp) || 0, sug = suggested(cp);
-    out.textContent = st ? `Pays ${fmt$(st * d)} if it wins (${sfmt$(st * (d - 1))} profit). Model size ≈ ${fmt$(sug)}.`
-                         : `Model size ≈ ${fmt$(sug)}, which is ${unitsOf(cp)}% of your bankroll.`;
+    out.textContent = st ? `Pays ${fmt$(st * d)} if it wins (${sfmt$(st * (d - 1))} profit). Your money plan says bet ${fmt$(sug)}.`
+                         : `Your money plan says bet ${fmt$(sug)} on this one.`;
   }
 }
 
@@ -186,6 +242,16 @@ export function initBank(onChange){
       const v = num(t.value); bank.start = v !== null && v >= 0 ? Math.round(v * 100) / 100 : 0;
       bankState.dirty = true; saveBank(); updateMoney(); onChange(); return;
     }
+    if(t.dataset && t.dataset.x !== undefined && t.dataset.xf){
+      const x = (bank.extras || [])[Number(t.dataset.x)]; if(!x) return;
+      const v = num(t.value);
+      if(t.dataset.xf === "stake") x.stake = v !== null && v > 0 ? Math.round(v * 100) / 100 : 0;
+      if(t.dataset.xf === "odds") x.odds = v !== null && v > 1 ? Math.round(v * 1000) / 1000 : 0;
+      if(t.dataset.xf === "result") x.result = RESULTS[t.value] ? t.value : "pending";
+      const c = document.getElementById("xpl-" + t.dataset.x);
+      if(c){ const pv = extraProfit(x); c.textContent = !x.stake ? "—" : x.result === "pending" ? "In play" : x.result === "void" ? "Refunded" : sfmt$(pv); c.className = "m-pl " + (x.result === "pending" ? "" : cls(pv)); }
+      bankState.dirty = true; saveBank(); updateMoney(); onChange(); return;
+    }
     if(!t.dataset || !t.dataset.f || !t.dataset.id) return;
     const id = t.dataset.id, f = t.dataset.f, v = num(t.value);
     const entry = Object.assign({}, bank.bets[id] || {});
@@ -199,6 +265,24 @@ export function initBank(onChange){
       document.querySelectorAll(sel(id, "odds")).forEach(x => { x.placeholder = d ? d.toFixed(2) : ""; });
     }
     bankState.dirty = true; saveBank(); updateMoney(); onChange();
+  });
+
+  document.addEventListener("change", e => {
+    // selects fire "change"; route result changes for other bets through the same handler as typing
+    if(e.target && e.target.dataset && e.target.dataset.xf === "result") e.target.dispatchEvent(new Event("input", {bubbles: true}));
+  });
+  document.addEventListener("click", e => {
+    const t = e.target;
+    if(t && t.dataset && t.dataset.xdel !== undefined){
+      bankState.bank.extras.splice(Number(t.dataset.xdel), 1);
+      bankState.dirty = true; Store.save(bankState.bank); renderExtras(); updateMoney(); onChange();
+    }
+    if(t && t.id === "xAdd"){
+      const label = $("#xLabel").value.trim(), odds = num($("#xOdds").value), stake = num($("#xStake").value);
+      if(!label || !(odds > 1) || !(stake > 0)) return;
+      addExtra({id: "x" + Date.now(), date: new Date().toISOString().slice(0, 10), label, odds, stake});
+      renderExtras(); updateMoney(); onChange();
+    }
   });
 
   const copy = $("#bkCopy");

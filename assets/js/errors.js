@@ -1,5 +1,8 @@
 // Error finder page: reads the scanner output from the feed branch (refreshed three times a day).
-import {$, esc, fmtTime, fmtStamp} from "./core.js?v=7fe67dfe95";
+import {$, esc, fmtTime, fmtStamp} from "./core.js?v=95b2cd7a35";
+import {bankState, bankStats, riskMult, fmt$} from "./bank.js?v=95b2cd7a35";
+
+const stakeFor = units => { if(!bankState.loaded) return null; const s = bankStats(); const v = (units || 0) / 100 * Math.max(0, s.balance + s.inPlay) * riskMult(); return v <= 0 ? null : v < 10 ? Math.max(0.1, Math.round(v * 10) / 10) : Math.round(v * 2) / 2; };
 
 const FEED = "https://raw.githubusercontent.com/JohnFitz-z/JohnFitz-z.github.io/feed/errors/";
 const err = {data: null, log: null, failed: false};
@@ -13,6 +16,8 @@ async function getJSON(name){
   if(!r.ok) throw new Error("HTTP " + r.status);
   return r.json();
 }
+
+export const errorsData = () => err.data;
 
 export async function loadErrors(){
   try {
@@ -31,7 +36,7 @@ function card(e){
       <span class="b2" style="display:block">${league}</span>
       <span class="b1" style="display:block">${esc(e.outcome)} · ${esc(e.market)}</span>
       <span class="b2" style="display:block">${esc(e.home)} vs ${esc(e.away)} · ${esc(start)}</span>
-      <span class="b2" style="display:block">Stake <b>${Number(e.stake_price).toFixed(2)}</b> · fair ${Number(e.fair_odds).toFixed(2)}${e.pinnacle_price ? " · Pinnacle " + Number(e.pinnacle_price).toFixed(2) : ""} · take at <b>${Number(e.take_at).toFixed(2)}+</b> · ${e.units}u</span>
+      <span class="b2" style="display:block">Stake <b>${Number(e.stake_price).toFixed(2)}</b> · fair ${Number(e.fair_odds).toFixed(2)}${e.pinnacle_price ? " · Pinnacle " + Number(e.pinnacle_price).toFixed(2) : ""} · take at <b>${Number(e.take_at).toFixed(2)}+</b> · ${stakeFor(e.units) ? "bet <b>" + fmt$(stakeFor(e.units)) + "</b>" : e.units + "u"}</span>
       <span class="b2" style="display:block"><b>${esc(TYPE[e.type] || "")}</b>${e.why ? ": " + esc(e.why) : ""}${e.model_goals ? " Expected goals: " + esc(e.model_goals) + "." : ""}</span>
       ${e.steam ? `<span class="b2 pos" style="display:block">${esc(e.steam)}</span>` : ""}
     </span>

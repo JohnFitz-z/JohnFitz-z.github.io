@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=7fe67dfe95">
-<link rel="modulepreload" href="/assets/js/app.js?v=7fe67dfe95">
+<link rel="stylesheet" href="/assets/css/main.css?v=95b2cd7a35">
+<link rel="modulepreload" href="/assets/js/app.js?v=95b2cd7a35">
 </head>
 <body data-page="bankroll">
 <a class="skip" href="#main">Skip to content</a>
@@ -46,7 +46,11 @@
   <div class="subhead"><span id="todayLabel"></span><span><span class="offline" id="offline" hidden>Offline</span> <span id="updated"></span></span></div>
 
   <main id="main" class="wrap-main" style="display:flex;flex-direction:column;gap:22px">
-<div class="page-title"><div><h1>Bankroll</h1><p>Your real bets. Enter what you put on each pick and the odds you got. Results and your balance update by themselves.</p></div></div>
+<div class="page-title"><div><h1>Bankroll</h1><p>Your money plan and your real bets. The plan says how much to put on each bet; log what you bet and your balance updates by itself.</p></div></div>
+<section class="panel">
+  <div class="ph"><div><h2>Money plan</h2><p>How much to bet today, sized from your current bankroll.</p></div></div>
+  <div id="moneyPlan"><p class="empty">Loading…</p></div>
+</section>
 <section class="top">
   <div>
     <section class="panel" id="moneyPanel">
@@ -67,6 +71,8 @@
 <section class="panel">
   <div class="ph"><div><h2>Your bets</h2><p>Leave a pick blank if you didn't bet on it. If you don't enter odds, the pick's odds are used.</p></div></div>
   <div class="mlist" id="moneyList"></div>
+  <h3 class="subh">Other bets</h3>
+  <div class="mlist" id="extraList"></div>
   <details class="backup">
     <summary>Back up or move your bets</summary>
     <div class="bk">
@@ -96,6 +102,6 @@
   <a href="/method/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 
-<script type="module" src="/assets/js/app.js?v=7fe67dfe95"></script>
+<script type="module" src="/assets/js/app.js?v=95b2cd7a35"></script>
 </body>
 </html>

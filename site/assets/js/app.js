@@ -4,6 +4,7 @@ import {ticketHTML, rowHTML} from "./picks.js";
 import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js";
 import {initBank, renderBank} from "./bank.js";
 import {loadErrors, renderErrors} from "./errors.js";
+import {initMoney, renderMoney} from "./money.js";
 
 const page = document.body.dataset.page;
 
@@ -82,13 +83,14 @@ function render(){
   else if(page === "stats") renderStats();
   else if(page === "errors") renderErrors();
   if(document.getElementById("bank") || document.getElementById("moneyList")) renderBank();
+  if(document.getElementById("moneyPlan")) renderMoney();
 }
 
 // Money changes affect the suggested stake on tickets.
 const onMoneyChange = () => { if(page === "today" || page === "pick") { const a = document.activeElement; if(!(a && a.closest && a.closest("#ticket"))) render(); } };
 
 async function refresh(){
-  if(page === "errors"){ await loadErrors(); renderErrors(); }
+  if(page === "errors" || page === "bankroll"){ await loadErrors(); render(); }
   if(await loadPicks()) render();
 }
 
@@ -101,8 +103,9 @@ window.addEventListener("offline", () => { const o = $("#offline"); if(o) o.hidd
 
 render();
 const bankReady = initBank(onMoneyChange);
+initMoney(() => { if(page === "errors") renderErrors(); render(); });
 Promise.all([loadPicks(), bankReady]).then(render);
-if(page === "errors") loadErrors().then(renderErrors);
+if(page === "errors" || page === "bankroll") Promise.all([loadErrors(), bankReady]).then(render);
 
 if("serviceWorker" in navigator && location.protocol === "https:"){
   navigator.serviceWorker.register("/sw.js").catch(() => {});

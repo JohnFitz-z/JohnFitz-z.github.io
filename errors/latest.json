@@ -1,5 +1,5 @@
 {
- "status": "error: tournaments: HTTP 429: {\"error\":{\"message\":\"You are being rate limited. Please wait before making more requests to this endpoint.\",\"code\":\"RATE_LIMITED\",\"detail",
- "checked_at": "2026-10-10T16:56:42Z",
+ "status": "error: odds-by-tournaments: HTTP 400: {\"error\":{\"message\":\"Too many tournament IDs specified.\",\"code\":\"INVALID_PARAMETER\",\"details\":\"Please provide a maximum of 5 tour",
+ "checked_at": "2026-10-10T16:57:50Z",
  "errors": []
 }

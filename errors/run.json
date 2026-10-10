@@ -1,7 +1,7 @@
 {
- "started_at": "2026-10-10T16:56:42Z",
+ "started_at": "2026-10-10T16:57:50Z",
  "errors": [
-  "tournaments: HTTP 429: {\"error\":{\"message\":\"You are being rate limited. Please wait before making more requests to this endpoint.\",\"code\":\"RATE_LIMITED\",\"details\":\"Please wait 0.45 seconds before making another request to /v4/tournaments.\",\"retryAfter\":\"0.45 seconds\",\"retryMs\":447}}"
+  "odds-by-tournaments: HTTP 400: {\"error\":{\"message\":\"Too many tournament IDs specified.\",\"code\":\"INVALID_PARAMETER\",\"details\":\"Please provide a maximum of 5 tournament IDs using the 'tournamentIds' query parameter.\"}}"
  ],
- "finished_at": "2026-10-10T16:56:44Z"
+ "finished_at": "2026-10-10T16:58:00Z"
 }

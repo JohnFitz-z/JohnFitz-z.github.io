@@ -60,6 +60,8 @@ def book_prices(ev, inp):
     out = {}
     for key, b in ev["books"].items():
         if kind == "moneyline" and "h2h" in b:
+            if ev.get("sport") != "Soccer" and "draw" in b["h2h"]:
+                continue  # 60-minute 3-way price, not the moneyline
             out[key] = dict((k, v) for k, v in b["h2h"].items() if k in ("home", "away", "draw"))
         elif kind == "spread" and "spreads" in b and line is not None:
             home_line = float(line) if sel == "home" else -float(line)

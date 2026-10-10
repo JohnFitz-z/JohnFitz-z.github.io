@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "morning, afternoon, close or all"
+        description: "morning, afternoon, close, stats or all"
         default: all
   push:
     branches: [main]
@@ -40,7 +40,7 @@ jobs:
           case "${{ github.event.schedule }}" in
             "35 9 * * *") m=morning ;;
             "25 18 * * *") m=afternoon ;;
-            "") m="${{ github.event.inputs.mode || 'all' }}" ;;
+            "") if [ "${{ github.event_name }}" = "push" ]; then m=stats; else m="${{ github.event.inputs.mode || 'all' }}"; fi ;;
             *) m=close ;;
           esac
           echo "mode=$m" >> "$GITHUB_OUTPUT"

@@ -9,7 +9,8 @@ and writes into a checkout of the `feed` branch.
   afternoon  full odds snapshot (for the 3:53 PM price check)
   close      odds for sports with a game starting in the next 45 minutes, saved as
              that game's closing line (the last snapshot before it starts)
-  all        morning (used when the feed code changes)
+  stats      NHL and MLB stats only, no odds (used when the feed code changes)
+  all        morning
 
 Odds come from The Odds API (env ODDS_API_KEY), regions us + eu (eu has Pinnacle and
 Betfair Exchange), markets moneyline/spread/total, decimal odds. Without a key the odds
@@ -138,7 +139,10 @@ def compact_event(ev):
                     if side:
                         p[side] = o["price"]
                 if "home" in p and "away" in p:
-                    b["h2h"] = p
+                    # Outside soccer a quoted draw means a 60-minute (regulation) 3-way market, which is a
+                    # different bet from the moneyline including overtime; keep it apart.
+                    is_soccer = ev["sport_key"].startswith("soccer")
+                    b["h2h" if (is_soccer or "draw" not in p) else "h2h_3way"] = p
             elif m["key"] == "spreads":
                 h = next((o for o in outs if o["name"] == home), None)
                 a = next((o for o in outs if o["name"] == away), None)
@@ -495,14 +499,16 @@ def mlb_stats(out, log):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
-    ap.add_argument("--mode", default="morning", choices=["morning", "afternoon", "close", "all"])
+    ap.add_argument("--mode", default="morning", choices=["morning", "afternoon", "close", "stats", "all"])
     a = ap.parse_args(argv)
     mode = "morning" if a.mode == "all" else a.mode
     log = {"started_at": iso(now_utc()), "mode": mode, "errors": []}
     key = os.environ.get("ODDS_API_KEY", "").strip()
     odds = Odds(key, log) if key else None
     try:
-        if not odds:
+        if mode == "stats":
+            pass  # code changes re-run the stats only, so pushes don't spend odds credits
+        elif not odds:
             log["errors"].append("ODDS_API_KEY is not set, odds skipped")
         elif mode in ("morning", "afternoon"):
             snapshot(odds, a.out, mode, log)
@@ -510,7 +516,7 @@ def main(argv=None):
             closing(odds, a.out, log)
     except Exception as e:
         log["errors"].append(f"odds: {e}")
-    if mode == "morning":
+    if mode in ("morning", "stats"):
         for fn in (nhl_stats, mlb_stats):
             try:
                 fn(a.out, log)

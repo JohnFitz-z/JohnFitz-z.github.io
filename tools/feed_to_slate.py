@@ -78,7 +78,7 @@ def markets_for(ev):
         if name in seen:
             continue
         seen.add(name)
-        if "h2h" in b:
+        if "h2h" in b and (ev["sport"] == "Soccer" or "draw" not in b["h2h"]):
             ml.append({"book": name, "prices": b["h2h"]})
         if "spreads" in b:
             spreads.setdefault(float(b["spreads"]["line"]), []).append(

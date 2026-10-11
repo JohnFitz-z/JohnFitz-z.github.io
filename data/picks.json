@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T13:07:12Z",
+  "updated_at": "2026-10-11T19:00:08Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -3393,6 +3393,31 @@
       "no_edge": false,
       "odds_american": -121,
       "odds_decimal": 1.82,
+      "price_check": {
+        "at": "2026-10-11T18:59:53Z",
+        "b1": {
+          "bet": "Kraken +1.5",
+          "ev": 0.04,
+          "fair_prob": 0.5689,
+          "min_odds_decimal": 1.66,
+          "model_prob": 0.6117,
+          "odds_decimal": 1.7,
+          "value": true,
+          "was_odds_decimal": 1.71
+        },
+        "c1": {
+          "bet": "Kraken +1.5",
+          "ev": 0.04,
+          "fair_prob": 0.5689,
+          "min_odds_decimal": 1.66,
+          "model_prob": 0.6117,
+          "odds_decimal": 1.7,
+          "value": true,
+          "was_odds_decimal": 1.71
+        },
+        "note": "Bet backup 1.",
+        "recommend": "b1"
+      },
       "reasoning": [
         "Pinnacle no-vig fair on Titans +7.5 is 54.4% (fair 1.84); the points model makes it 62.3%, blended estimate 58.4% vs 54.8% needed at 1.82 = +6.6% EV.",
         "ESPN FPI: Texans +0.75, Titans -5.10 vs an average team; with 1.6 points of home field that projects Texans by 4.2, more than three points short of the line.",

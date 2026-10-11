@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-11T19:17:52Z",
+ "scanned_at": "2026-10-11T22:18:50Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "England · FA Cup",
-  "China · China League 1",
-  "Slovakia · U19 1. Liga",
-  "International · CONCACAF Nations League",
-  "Switzerland · Swiss League"
+  "ITF Men · Santa Margherita di Pula",
+  "Turkiye · Turkiye Kupasi",
+  "China · China League 2",
+  "Argentina · Primera C",
+  "England Amateur · U21 Professional Development League"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 221,
+ "requests_left_this_month": 220,
  "errors": [],
  "month": {
   "flagged": 0,

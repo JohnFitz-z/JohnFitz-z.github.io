@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-10T22:17:29Z",
+ "scanned_at": "2026-10-11T01:17:08Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "WTA 125K · WTA 125K Suzhou, China Women Singles",
-  "WTA 125K · WTA 125K Suzhou, China Women Doubles",
-  "UTR Men · UTR PTT San Diego Men 01",
-  "UTR Women · UTR PTT San Diego Women 01",
-  "WTA 125K · WTA 125K Samsun, Turkiye Women Singles"
+  "UTR Men · UTR PTT Cordoba Men 06",
+  "ITF Men · Quito",
+  "ITF Women · Villeneuve D'Ascq",
+  "ITF Men · Pontevedra",
+  "Mexico · LNBP"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 4,
+ "both_books": 4,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 228,
+ "requests_left_this_month": 225,
  "errors": [],
  "month": {
   "flagged": 0,

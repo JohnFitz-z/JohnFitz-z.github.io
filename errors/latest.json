@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-11T16:18:41Z",
+ "scanned_at": "2026-10-11T19:17:52Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "England Amateur · Isthmian League, Pr. Div",
-  "Argentina · Primera LPF, Reserves",
-  "ITF Women · Las Vegas",
-  "ITF Women · Cipolletti",
-  "ITF Women · Burgas"
+  "England · FA Cup",
+  "China · China League 1",
+  "Slovakia · U19 1. Liga",
+  "International · CONCACAF Nations League",
+  "Switzerland · Swiss League"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 222,
+ "requests_left_this_month": 221,
  "errors": [],
  "month": {
   "flagged": 0,

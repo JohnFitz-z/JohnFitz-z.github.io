@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T05:12:47Z",
+  "updated_at": "2026-10-11T13:07:12Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -2102,6 +2102,1345 @@
       "summary": "Florida is priced off its name, but with Barkov on LTIR and Brad Marchand newly out ~6 weeks, the Panthers' top six is thin; the goals model has Minnesota as the slightly better team on 5v5 xG with the better projected goalie, so +115 is too long.",
       "units": 1.25,
       "id": "2026-10-10"
+    },
+    {
+      "away": "Texans",
+      "backups": [
+        {
+          "away": "Kraken",
+          "bet": "Kraken +1.5",
+          "confidence": "High",
+          "ev": 0.0496,
+          "event": "Kraken @ Capitals",
+          "fair_prob": 0.5731,
+          "home": "Capitals",
+          "implied_prob": 0.5848,
+          "input": {
+            "adjustments": [],
+            "away": "Kraken",
+            "event": "Kraken @ Capitals",
+            "game_id": "nhl-kraken-capitals",
+            "home": "Capitals",
+            "id": "nhl-kraken-capitals:spread:away1.5",
+            "league": "NHL",
+            "line": 1.5,
+            "market": "spread",
+            "market_odds": [
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "1xBet",
+                "prices": {
+                  "away": 1.73,
+                  "home": 2.22
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 1.73,
+                  "home": 2.1
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 1.72,
+                  "home": 2.15
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 1.75,
+                  "home": 2.08
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 1.75,
+                  "home": 2.08
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.24
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 1.68,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": 0.142,
+                "xga60": 2.52,
+                "xgf60": 2.296
+              },
+              "home": {
+                "goalie_gsax60": 0.373,
+                "xga60": 2.58,
+                "xgf60": 2.602
+              }
+            },
+            "price": 1.71,
+            "selection": "away",
+            "sport": "NHL",
+            "start_time": "2026-10-11T18:10:00-03:00"
+          },
+          "key": "b1",
+          "league": "NHL",
+          "market": "Puck line",
+          "min_odds_american": -154,
+          "min_odds_decimal": 1.65,
+          "model_prob": 0.6138,
+          "no_edge": false,
+          "note": "Pinnacle fair 1.74, model 61.4%; Grubauer (.915) vs Thompson projected, neither confirmed. Re-check goalies before betting.",
+          "odds_american": -141,
+          "odds_decimal": 1.71,
+          "sport": "NHL",
+          "start_time": "2026-10-11T18:10:00-03:00",
+          "status": "pending",
+          "units": 1.75
+        },
+        {
+          "away": "Colts",
+          "bet": "Colts moneyline",
+          "confidence": "High",
+          "ev": 0.0532,
+          "event": "Colts @ Steelers",
+          "fair_prob": 0.419,
+          "home": "Steelers",
+          "implied_prob": 0.4444,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "+",
+                "factor": "Steelers secondary and WR injuries",
+                "note": "Pittman, CB Jamel Dean and S DeShon Elliott OUT; Jalen Ramsey questionable.",
+                "size": "small"
+              }
+            ],
+            "away": "Colts",
+            "event": "Colts @ Steelers",
+            "game_id": "nfl-colts-steelers",
+            "home": "Steelers",
+            "id": "nfl-colts-steelers:moneyline:away",
+            "league": "NFL",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 2.22,
+                  "home": 1.66
+                }
+              },
+              {
+                "book": "Betclic (FR)",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.62
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 2.26,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 2.33,
+                  "home": 1.65
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.7
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 2.23,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.7
+                }
+              },
+              {
+                "book": "PMU (FR)",
+                "prices": {
+                  "away": 2,
+                  "home": 1.51
+                }
+              },
+              {
+                "book": "Marathonbet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.63
+                }
+              },
+              {
+                "book": "888sport",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Codere (IT)",
+                "prices": {
+                  "away": 2.21,
+                  "home": 1.64
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 2.22,
+                  "home": 1.66
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 2.36,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 2.31,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Tipico",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.62
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Betfair Exchange",
+                "prices": {
+                  "away": 2.36,
+                  "home": 1.71
+                }
+              }
+            ],
+            "model_inputs": {
+              "away_rating": -0.46,
+              "home_rating": -1.99,
+              "total": 45.1
+            },
+            "price": 2.25,
+            "selection": "away",
+            "sport": "NFL",
+            "start_time": "2026-10-11T14:00:00-03:00"
+          },
+          "key": "b2",
+          "league": "NFL",
+          "market": "Moneyline",
+          "min_odds_american": 116,
+          "min_odds_decimal": 2.16,
+          "model_prob": 0.4682,
+          "no_edge": false,
+          "note": "Pinnacle fair 2.39; FPI Colts -0.5 vs Steelers -2.0, and Pittman, Dean and Elliott are OUT for Pittsburgh.",
+          "odds_american": 125,
+          "odds_decimal": 2.25,
+          "sport": "NFL",
+          "start_time": "2026-10-11T14:00:00-03:00",
+          "status": "pending",
+          "units": 1
+        }
+      ],
+      "bet": "Titans +7.5",
+      "candidates": [
+        {
+          "bet": "Commanders -3.5",
+          "event": "Giants @ Commanders",
+          "note": "EV +1.8% at 1.92, estimate 53.0% vs 52.1% needed. Passed over: Below +2% EV even with Daniels back."
+        },
+        {
+          "bet": "Under 45.5 points",
+          "event": "Raiders @ Patriots",
+          "note": "EV +0.6% at 1.88, estimate 53.5% vs 53.2% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Under 44 points",
+          "event": "Bengals @ Dolphins",
+          "note": "EV +0.6% at 1.93, estimate 52.2% vs 51.9% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Under 46.5 points",
+          "event": "49ers @ Seahawks",
+          "note": "EV +0.3% at 1.91, estimate 52.5% vs 52.4% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Over 41.5 points",
+          "event": "Broncos @ Chargers",
+          "note": "EV +0.2% at 1.88, estimate 53.3% vs 53.2% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Liverpool +0.25",
+          "event": "Liverpool vs Manchester City",
+          "note": "EV +0.0% at 1.98, estimate 50.5% vs 50.5% needed. Passed over: No edge; Isak/Gakpo doubts vs Foden suspension roughly offset."
+        },
+        {
+          "bet": "Over 6 goals",
+          "event": "Canucks @ Rangers",
+          "note": "EV -0.2% at 1.91, estimate 52.2% vs 52.4% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Under 3 goals",
+          "event": "Real Racing Club de Santander vs Valencia",
+          "note": "EV -1.0% at 1.75, estimate 56.4% vs 57.1% needed. Passed over: Edge under the +2% card threshold."
+        },
+        {
+          "bet": "Eagles +8",
+          "event": "Eagles @ Jaguars",
+          "note": "Screened at +2.7% EV, but FPI doesn't see Barkley, DeVonta Smith, Marquise Brown and C Drew Kendall all OUT; after a medium adjustment, -1.0% EV. Passed over."
+        }
+      ],
+      "card": [
+        {
+          "away": "Kraken",
+          "bet": "Kraken +1.5",
+          "confidence": "High",
+          "ev": 0.0496,
+          "event": "Kraken @ Capitals",
+          "fair_prob": 0.5731,
+          "home": "Capitals",
+          "implied_prob": 0.5848,
+          "input": {
+            "adjustments": [],
+            "away": "Kraken",
+            "event": "Kraken @ Capitals",
+            "game_id": "nhl-kraken-capitals",
+            "home": "Capitals",
+            "id": "nhl-kraken-capitals:spread:away1.5",
+            "league": "NHL",
+            "line": 1.5,
+            "market": "spread",
+            "market_odds": [
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "1xBet",
+                "prices": {
+                  "away": 1.73,
+                  "home": 2.22
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 1.73,
+                  "home": 2.1
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 1.72,
+                  "home": 2.15
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 1.75,
+                  "home": 2.08
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 1.75,
+                  "home": 2.08
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.24
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 1.71,
+                  "home": 2.14
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 1.68,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 1.69,
+                  "home": 2.25
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "goalie_gsax60": 0.142,
+                "xga60": 2.52,
+                "xgf60": 2.296
+              },
+              "home": {
+                "goalie_gsax60": 0.373,
+                "xga60": 2.58,
+                "xgf60": 2.602
+              }
+            },
+            "price": 1.71,
+            "selection": "away",
+            "sport": "NHL",
+            "start_time": "2026-10-11T18:10:00-03:00"
+          },
+          "key": "c1",
+          "league": "NHL",
+          "market": "Puck line",
+          "min_odds_american": -154,
+          "min_odds_decimal": 1.65,
+          "model_prob": 0.6138,
+          "no_edge": false,
+          "note": "Pinnacle fair 1.74, model 61.4%; Grubauer (.915) vs Thompson projected, neither confirmed. Re-check goalies before betting.",
+          "odds_american": -141,
+          "odds_decimal": 1.71,
+          "sport": "NHL",
+          "start_time": "2026-10-11T18:10:00-03:00",
+          "status": "pending",
+          "units": 1.75
+        },
+        {
+          "away": "Colts",
+          "bet": "Colts moneyline",
+          "confidence": "High",
+          "ev": 0.0532,
+          "event": "Colts @ Steelers",
+          "fair_prob": 0.419,
+          "home": "Steelers",
+          "implied_prob": 0.4444,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "+",
+                "factor": "Steelers secondary and WR injuries",
+                "note": "Pittman, CB Jamel Dean and S DeShon Elliott OUT; Jalen Ramsey questionable.",
+                "size": "small"
+              }
+            ],
+            "away": "Colts",
+            "event": "Colts @ Steelers",
+            "game_id": "nfl-colts-steelers",
+            "home": "Steelers",
+            "id": "nfl-colts-steelers:moneyline:away",
+            "league": "NFL",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 2.22,
+                  "home": 1.66
+                }
+              },
+              {
+                "book": "Betclic (FR)",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.62
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 2.26,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 2.33,
+                  "home": 1.65
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.7
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 2.23,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.7
+                }
+              },
+              {
+                "book": "PMU (FR)",
+                "prices": {
+                  "away": 2,
+                  "home": 1.51
+                }
+              },
+              {
+                "book": "Marathonbet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.63
+                }
+              },
+              {
+                "book": "888sport",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Codere (IT)",
+                "prices": {
+                  "away": 2.21,
+                  "home": 1.64
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 2.22,
+                  "home": 1.66
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 2.36,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 2.31,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Tipico",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.62
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 2.25,
+                  "home": 1.68
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 2.3,
+                  "home": 1.67
+                }
+              },
+              {
+                "book": "Betfair Exchange",
+                "prices": {
+                  "away": 2.36,
+                  "home": 1.71
+                }
+              }
+            ],
+            "model_inputs": {
+              "away_rating": -0.46,
+              "home_rating": -1.99,
+              "total": 45.1
+            },
+            "price": 2.25,
+            "selection": "away",
+            "sport": "NFL",
+            "start_time": "2026-10-11T14:00:00-03:00"
+          },
+          "key": "c2",
+          "league": "NFL",
+          "market": "Moneyline",
+          "min_odds_american": 116,
+          "min_odds_decimal": 2.16,
+          "model_prob": 0.4682,
+          "no_edge": false,
+          "note": "Pinnacle fair 2.39; FPI Colts -0.5 vs Steelers -2.0, and Pittman, Dean and Elliott are OUT for Pittsburgh.",
+          "odds_american": 125,
+          "odds_decimal": 2.25,
+          "sport": "NFL",
+          "start_time": "2026-10-11T14:00:00-03:00",
+          "status": "pending",
+          "units": 1
+        },
+        {
+          "away": "Bears",
+          "bet": "Under 47 points",
+          "confidence": "High",
+          "ev": 0.0411,
+          "event": "Bears @ Packers",
+          "fair_prob": 0.5042,
+          "home": "Packers",
+          "implied_prob": 0.5319,
+          "input": {
+            "adjustments": [
+              {
+                "direction": "+",
+                "factor": "Tyson Bagent starts for Caleb Williams",
+                "note": "Ben Johnson said Bagent starts; Williams hasn't practiced since Week 2 (hamstring).",
+                "size": "small"
+              }
+            ],
+            "away": "Bears",
+            "event": "Bears @ Packers",
+            "game_id": "nfl-bears-packers",
+            "home": "Packers",
+            "id": "nfl-bears-packers:total:under47.0",
+            "league": "NFL",
+            "line": 47,
+            "market": "total",
+            "market_odds": [
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "over": 1.91,
+                  "under": 1.91
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "over": 1.95,
+                  "under": 1.87
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "over": 1.96,
+                  "under": 1.88
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "over": 1.93,
+                  "under": 1.9
+                }
+              }
+            ],
+            "model_inputs": {
+              "away_rating": 2.15,
+              "home_rating": -0.95,
+              "total": 44.2
+            },
+            "price": 1.88,
+            "selection": "under",
+            "sport": "NFL",
+            "start_time": "2026-10-11T14:00:00-03:00"
+          },
+          "key": "c3",
+          "league": "NFL",
+          "market": "Total",
+          "min_odds_american": -120,
+          "min_odds_decimal": 1.83,
+          "model_prob": 0.5545,
+          "no_edge": false,
+          "note": "Pinnacle fair 1.98; Tyson Bagent starts for Caleb Williams, and Green Bay is down two guards.",
+          "odds_american": -114,
+          "odds_decimal": 1.88,
+          "sport": "NFL",
+          "start_time": "2026-10-11T14:00:00-03:00",
+          "status": "pending",
+          "units": 1.25
+        },
+        {
+          "away": "CA Osasuna",
+          "bet": "Draw",
+          "confidence": "High",
+          "ev": 0.0764,
+          "event": "Real Betis vs CA Osasuna",
+          "fair_prob": 0.2074,
+          "home": "Real Betis",
+          "implied_prob": 0.2198,
+          "input": {
+            "adjustments": [],
+            "away": "CA Osasuna",
+            "event": "Real Betis vs CA Osasuna",
+            "game_id": "soccer-caosasuna-realbetis",
+            "home": "Real Betis",
+            "id": "soccer-caosasuna-realbetis:moneyline:draw",
+            "league": "La Liga",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 6.39,
+                  "draw": 4.71,
+                  "home": 1.51
+                }
+              },
+              {
+                "book": "Winamax (DE)",
+                "prices": {
+                  "away": 5.8,
+                  "draw": 4.7,
+                  "home": 1.47
+                }
+              },
+              {
+                "book": "Unibet FR",
+                "prices": {
+                  "away": 5.8,
+                  "draw": 4.3,
+                  "home": 1.44
+                }
+              },
+              {
+                "book": "Betclic (FR)",
+                "prices": {
+                  "away": 6,
+                  "draw": 4.25,
+                  "home": 1.5
+                }
+              },
+              {
+                "book": "Winamax (FR)",
+                "prices": {
+                  "away": 5.6,
+                  "draw": 4.6,
+                  "home": 1.45
+                }
+              },
+              {
+                "book": "Codere (IT)",
+                "prices": {
+                  "away": 6.2,
+                  "draw": 4.6,
+                  "home": 1.49
+                }
+              },
+              {
+                "book": "1xBet",
+                "prices": {
+                  "away": 6.3,
+                  "draw": 4.67,
+                  "home": 1.56
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 6.1,
+                  "draw": 4.3,
+                  "home": 1.44
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 6.75,
+                  "draw": 4.6,
+                  "home": 1.49
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 7,
+                  "draw": 4.7,
+                  "home": 1.48
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 5.5,
+                  "draw": 4.2,
+                  "home": 1.5
+                }
+              },
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 6.4,
+                  "draw": 4.35,
+                  "home": 1.48
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 6.5,
+                  "draw": 4.4,
+                  "home": 1.48
+                }
+              },
+              {
+                "book": "Tipico",
+                "prices": {
+                  "away": 6.5,
+                  "draw": 4.6,
+                  "home": 1.45
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 6.25,
+                  "draw": 4.6,
+                  "home": 1.5
+                }
+              },
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 6.5,
+                  "draw": 4.45,
+                  "home": 1.53
+                }
+              },
+              {
+                "book": "Betfair Exchange",
+                "prices": {
+                  "away": 7.2,
+                  "draw": 4.7,
+                  "home": 1.53
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 7.2,
+                  "draw": 4.7,
+                  "home": 1.54
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 6.5,
+                  "draw": 4.5,
+                  "home": 1.52
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "xga": 1.3,
+                "xgf": 1.14
+              },
+              "home": {
+                "xga": 1.58,
+                "xgf": 1.54
+              },
+              "league_avg": 1.4
+            },
+            "price": 4.55,
+            "selection": "draw",
+            "sport": "Soccer",
+            "start_time": "2026-10-11T13:30:00-03:00"
+          },
+          "key": "c4",
+          "league": "La Liga",
+          "market": "Moneyline",
+          "min_odds_american": 327,
+          "min_odds_decimal": 4.27,
+          "model_prob": 0.2366,
+          "no_edge": false,
+          "note": "Pinnacle fair 4.82; Osasuna 1.20 xG/match, Betis 1.60 xG for and 1.64 against. The model draw rate is 23.7% vs 22.0% needed.",
+          "odds_american": 355,
+          "odds_decimal": 4.55,
+          "sport": "Soccer",
+          "start_time": "2026-10-11T13:30:00-03:00",
+          "status": "pending",
+          "units": 0.5
+        },
+        {
+          "away": "Dodgers",
+          "bet": "Over 5.5 runs",
+          "confidence": "Medium",
+          "ev": 0.0252,
+          "event": "Dodgers @ Brewers",
+          "fair_prob": 0.5475,
+          "home": "Brewers",
+          "implied_prob": 0.5714,
+          "input": {
+            "adjustments": [],
+            "away": "Dodgers",
+            "event": "Dodgers @ Brewers",
+            "game_id": "mlb-dodgers-brewers",
+            "home": "Brewers",
+            "id": "mlb-dodgers-brewers:total:over5.5",
+            "league": "MLB",
+            "line": 5.5,
+            "market": "total",
+            "market_odds": [
+              {
+                "book": "William Hill",
+                "prices": {
+                  "over": 1.73,
+                  "under": 2.1
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "over": 1.77,
+                  "under": 2.12
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "off": 112.2,
+                "opp_pen": 3.72,
+                "opp_sp": 2.71,
+                "opp_sp_ip": 5.8
+              },
+              "home": {
+                "off": 107.4,
+                "opp_pen": 3.7,
+                "opp_sp": 2.64,
+                "opp_sp_ip": 6.1
+              },
+              "park": 100
+            },
+            "price": 1.75,
+            "selection": "over",
+            "sport": "MLB",
+            "start_time": "2026-10-11T21:00:00-03:00"
+          },
+          "key": "c5",
+          "league": "MLB",
+          "market": "Total",
+          "min_odds_american": -137,
+          "min_odds_decimal": 1.73,
+          "model_prob": 0.5858,
+          "no_edge": false,
+          "note": "Pinnacle fair 1.83; Skubal vs Misiorowski in NLCS Game 1, but the model makes it 58.6% to clear 5.5 with the pens in play.",
+          "odds_american": -133,
+          "odds_decimal": 1.75,
+          "sport": "MLB",
+          "start_time": "2026-10-11T21:00:00-03:00",
+          "status": "pending",
+          "units": 0.75
+        }
+      ],
+      "confidence": "High",
+      "created_at": "2026-10-11T08:05:04-03:00",
+      "date": "2026-10-11",
+      "ev": 0.0656,
+      "event": "Texans @ Titans",
+      "fair_prob": 0.5441,
+      "home": "Titans",
+      "implied_prob": 0.5479,
+      "input": {
+        "adjustments": [],
+        "away": "Texans",
+        "event": "Texans @ Titans",
+        "game_id": "nfl-texans-titans",
+        "home": "Titans",
+        "id": "nfl-texans-titans:spread:home7.5",
+        "league": "NFL",
+        "line": 7.5,
+        "market": "spread",
+        "market_odds": [
+          {
+            "book": "NordicBet",
+            "prices": {
+              "away": 1.95,
+              "home": 1.85
+            }
+          },
+          {
+            "book": "Betsson",
+            "prices": {
+              "away": 1.95,
+              "home": 1.85
+            }
+          },
+          {
+            "book": "888sport",
+            "prices": {
+              "away": 2,
+              "home": 1.8
+            }
+          },
+          {
+            "book": "Pinnacle",
+            "prices": {
+              "away": 2.12,
+              "home": 1.79
+            }
+          },
+          {
+            "book": "Tipico",
+            "prices": {
+              "away": 2,
+              "home": 1.77
+            }
+          }
+        ],
+        "model_inputs": {
+          "away_rating": 0.75,
+          "home_rating": -5.1,
+          "total": 42.7
+        },
+        "price": 1.825,
+        "selection": "home",
+        "sport": "NFL",
+        "start_time": "2026-10-11T14:00:00-03:00"
+      },
+      "league": "NFL",
+      "market": "Spread",
+      "min_odds_american": -137,
+      "min_odds_decimal": 1.73,
+      "model": {
+        "books": [
+          {
+            "book": "NordicBet",
+            "decimal": 1.85,
+            "fair": 0.5142,
+            "margin": 0.0534,
+            "price": 1.85
+          },
+          {
+            "book": "Betsson",
+            "decimal": 1.85,
+            "fair": 0.5142,
+            "margin": 0.0534,
+            "price": 1.85
+          },
+          {
+            "book": "888sport",
+            "decimal": 1.8,
+            "fair": 0.5285,
+            "margin": 0.0556,
+            "price": 1.8
+          },
+          {
+            "book": "Pinnacle",
+            "decimal": 1.79,
+            "fair": 0.5441,
+            "margin": 0.0304,
+            "price": 1.79,
+            "sharp": true
+          },
+          {
+            "book": "Tipico",
+            "decimal": 1.77,
+            "fair": 0.5336,
+            "margin": 0.065,
+            "price": 1.77
+          }
+        ],
+        "engine": "1.0",
+        "ev": 0.0656,
+        "fair_odds_decimal": 1.71,
+        "growth_bp": 26.24,
+        "inputs": {
+          "margin": -4.2,
+          "total": 42.7
+        },
+        "inputs_text": "Projected margin: Texans by 4.2, projected total 42.7",
+        "kelly_fraction": 0.25,
+        "kelly_full": 0.0795,
+        "market_margin": 0.0515,
+        "market_source": "sharp",
+        "method": "points_normal_keynum",
+        "method_label": "Points model",
+        "min_ev": 0.01,
+        "min_odds_decimal": 1.73,
+        "no_edge": false,
+        "notes": [
+          "Projected margin from power ratings plus 1.6 points home field.",
+          "Margins reweighted for football key numbers (3, 7, 10, 14)."
+        ],
+        "outcomes": {
+          "loss": 0.4161,
+          "win": 0.5839
+        },
+        "steps": [
+          {
+            "detail": "Pinnacle (sharp), power method, margin 3.0%; 4 other books shown for comparison",
+            "key": "market",
+            "label": "Sharp market, margin removed",
+            "prob": 0.5441
+          },
+          {
+            "detail": "Projected margin: Texans by 4.2, projected total 42.7",
+            "key": "model",
+            "label": "Points model",
+            "prob": 0.6226
+          },
+          {
+            "key": "blend",
+            "label": "Blend: 50% market, 50% model",
+            "prob": 0.5839
+          },
+          {
+            "key": "final",
+            "label": "Final estimate",
+            "prob": 0.5839
+          }
+        ],
+        "suspect": false,
+        "warnings": []
+      },
+      "model_prob": 0.5839,
+      "no_edge": false,
+      "odds_american": -121,
+      "odds_decimal": 1.82,
+      "reasoning": [
+        "Pinnacle no-vig fair on Titans +7.5 is 54.4% (fair 1.84); the points model makes it 62.3%, blended estimate 58.4% vs 54.8% needed at 1.82 = +6.6% EV.",
+        "ESPN FPI: Texans +0.75, Titans -5.10 vs an average team; with 1.6 points of home field that projects Texans by 4.2, more than three points short of the line.",
+        "Low-scoring matchup: Titans 13.75 ppg, Texans 21.0 ppg; market total only 37.5-38.5. Fewer points mean fewer blowouts by 8+.",
+        "Houston is 0-4 with losses by 4, 2, 14 and 4 (34-30 Cowboys, 19-17 Colts, 20-6 Bengals): they haven't been beating anyone by margin.",
+        "+7.5 covers every 7-point Texans win, the most common NFL margin after 3; the model weights key numbers."
+      ],
+      "risks": [
+        "If the line drops to +7 at Stake, the edge shrinks a lot: take only at 1.73 or better at +7.5.",
+        "Cam Ward is struggling (726 yards, 3 TD, 2 INT in four games); a turnover-heavy day can turn this into a two-score game.",
+        "Late inactives: Titans already without S Amani Hooker and CB Joshua Williams; another secondary loss vs Stroud would hurt."
+      ],
+      "sources": [
+        {
+          "title": "ESPN FPI (power index API)",
+          "url": "https://www.espn.com/nfl/fpi"
+        },
+        {
+          "title": "Texans vs Titans prediction 10/11/2026 (Pickdawgz)",
+          "url": "https://pickdawgz.com/nfl-picks/texans-vs-titans-prediction-10-11-2026-todays-nfl-picks/"
+        },
+        {
+          "title": "NFL Week 5 injury report (NFL.com)",
+          "url": "https://www.nfl.com/news/nfl-week-5-injury-report-player-statuses-for-all-15-games"
+        },
+        {
+          "title": "Daily Faceoff starting goalies Oct 11",
+          "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-11"
+        },
+        {
+          "title": "NLCS Game 1: Misiorowski vs Skubal (MLB.com)",
+          "url": "https://www.mlb.com/news/nlcs-game-1-lines-up-for-jacob-misiorowski-tarik-skubal-showdown"
+        },
+        {
+          "title": "Betis vs Osasuna preview (Sports Mole)",
+          "url": "https://www.sportsmole.co.uk/football/betis/preview/betis-vs-osasuna-prediction-team-news-lineups_606591.html"
+        },
+        {
+          "title": "La Liga xG table (statz.ai)",
+          "url": "https://statz.ai/competitions/la-liga/xg"
+        }
+      ],
+      "sport": "NFL",
+      "start_time": "2026-10-11T14:00:00-03:00",
+      "status": "pending",
+      "summary": "Two 0-4 teams and a 37.5-38.5 total, yet the market has Houston laying 7.5 on the road. ESPN FPI makes the Texans only 4.2-point favourites with home field, so +7.5 through the key number of 7 is worth more than its price.",
+      "units": 2,
+      "id": "2026-10-11"
     }
   ]
 }

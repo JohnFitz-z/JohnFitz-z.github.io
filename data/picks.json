@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T19:00:08Z",
+  "updated_at": "2026-10-11T19:12:17Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -2960,6 +2960,8 @@
           "ev": 0.0764,
           "event": "Real Betis vs CA Osasuna",
           "fair_prob": 0.2074,
+          "final_score": "Real Betis 5, Osasuna 2",
+          "graded_at": "2026-10-11T19:15:00Z",
           "home": "Real Betis",
           "implied_prob": 0.2198,
           "input": {
@@ -3152,9 +3154,10 @@
           "note": "Pinnacle fair 4.82; Osasuna 1.20 xG/match, Betis 1.60 xG for and 1.64 against. The model draw rate is 23.7% vs 22.0% needed.",
           "odds_american": 355,
           "odds_decimal": 4.55,
+          "result_units": -0.5,
           "sport": "Soccer",
           "start_time": "2026-10-11T13:30:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 0.5
         },
         {

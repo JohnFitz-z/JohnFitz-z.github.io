@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T03:07:35Z",
+  "updated_at": "2026-10-11T05:12:47Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1496,6 +1496,8 @@
           "ev": 0.0487,
           "event": "Ducks @ Flames",
           "fair_prob": 0.4793,
+          "final_score": "Ducks 4, Flames 2",
+          "graded_at": "2026-10-11T05:12:00Z",
           "home": "Flames",
           "implied_prob": 0.5051,
           "input": {
@@ -1585,9 +1587,10 @@
           "no_edge": false,
           "odds_american": -102,
           "odds_decimal": 1.98,
+          "result_units": -1.25,
           "sport": "NHL",
           "start_time": "2026-10-10T23:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1.25
         }
       ],

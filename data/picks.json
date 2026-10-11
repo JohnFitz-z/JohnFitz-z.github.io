@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T01:07:16Z",
+  "updated_at": "2026-10-11T02:17:48Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1385,6 +1385,8 @@
           "ev": 0.0323,
           "event": "Hurricanes @ Blackhawks",
           "fair_prob": 0.6797,
+          "final_score": "Hurricanes 5, Blackhawks 2",
+          "graded_at": "2026-10-11T02:10:00Z",
           "home": "Blackhawks",
           "implied_prob": 0.6969,
           "input": {
@@ -1481,9 +1483,10 @@
           "no_edge": false,
           "odds_american": -230,
           "odds_decimal": 1.44,
+          "result_units": 0.77,
           "sport": "NHL",
           "start_time": "2026-10-10T20:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1.75
         },
         {

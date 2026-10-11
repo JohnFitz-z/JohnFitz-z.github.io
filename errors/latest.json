@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-11T01:17:08Z",
+ "scanned_at": "2026-10-11T13:19:33Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "UTR Men · UTR PTT Cordoba Men 06",
-  "ITF Men · Quito",
-  "ITF Women · Villeneuve D'Ascq",
-  "ITF Men · Pontevedra",
-  "Mexico · LNBP"
+  "International · Champions Hockey League",
+  "ITF Women · Lagos",
+  "ITF Men · Darwin",
+  "ITF Women · Islamabad",
+  "ITF Men · Burgas"
  ],
- "stake_fixtures": 4,
- "both_books": 4,
+ "stake_fixtures": 6,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 225,
+ "requests_left_this_month": 223,
  "errors": [],
  "month": {
   "flagged": 0,

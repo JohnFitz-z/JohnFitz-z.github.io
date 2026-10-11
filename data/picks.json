@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T20:00:41Z",
+  "updated_at": "2026-10-11T01:07:16Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1769,12 +1769,20 @@
           "units": 1.25
         }
       ],
+      "close": {
+        "clv": -0.0325,
+        "fair_prob": 0.45,
+        "odds_decimal": 2.16,
+        "source": "Pinnacle close (feed, 6:57 PM)"
+      },
       "confidence": "High",
       "created_at": "2026-10-10T11:13:38Z",
       "date": "2026-10-10",
       "ev": 0.0543,
       "event": "Wild @ Panthers",
       "fair_prob": 0.4395,
+      "final_score": "Wild 4, Panthers 1",
+      "graded_at": "2026-10-11T01:10:00Z",
       "home": "Panthers",
       "implied_prob": 0.4651,
       "input": {
@@ -2039,6 +2047,7 @@
         "Engine: 49.0% win estimate vs 46.5% needed at 2.15 = +5.4% EV, 1.25u (High). No Pinnacle/Betfair price was available today (the odds feed failed); 7-book consensus no-vig is 44.0% (fair 2.28), so this is a model-vs-market call, not a sharp-steam call.",
         "Best prices seen: DraftKings +120 (2.20), consensus 2.15; Fanatics shortest at +105 — shop it, take at 2.06 or better."
       ],
+      "result_units": 1.44,
       "risks": [
         "Goalie swap: if Gustavsson is activated or a backup starts for Minnesota, or Schmid replaces Markstrom, re-check the price.",
         "Model leans on early-season xG for both teams (4-5 games); the market (no-vig 44%) disagrees by ~5 points, so the edge depends on the Marchand/Barkov absences being under-priced.",
@@ -2080,7 +2089,7 @@
       ],
       "sport": "NHL",
       "start_time": "2026-10-10T19:00:00-03:00",
-      "status": "pending",
+      "status": "won",
       "summary": "Florida is priced off its name, but with Barkov on LTIR and Brad Marchand newly out ~6 weeks, the Panthers' top six is thin; the goals model has Minnesota as the slightly better team on 5v5 xG with the better projected goalie, so +115 is too long.",
       "units": 1.25,
       "id": "2026-10-10"

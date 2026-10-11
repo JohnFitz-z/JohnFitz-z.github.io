@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T02:17:48Z",
+  "updated_at": "2026-10-11T03:07:35Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -1627,6 +1627,8 @@
           "ev": 0.0203,
           "event": "Blue Jackets @ Blues",
           "fair_prob": 0.7013,
+          "final_score": "Blues 5, Blue Jackets 3",
+          "graded_at": "2026-10-11T03:12:00Z",
           "home": "Blues",
           "implied_prob": 0.7168,
           "input": {
@@ -1766,9 +1768,10 @@
           "note": "Priced at 3:20 PM odds: Pinnacle fair 70.1% (1.43) vs our 73.1%; Greaves and Binnington both confirmed. Blues by 2+ needed to lose it.",
           "odds_american": -253,
           "odds_decimal": 1.4,
+          "result_units": -1.25,
           "sport": "NHL",
           "start_time": "2026-10-10T20:10:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1.25
         }
       ],

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T19:12:17Z",
+  "updated_at": "2026-10-11T21:13:16Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -2271,6 +2271,8 @@
           "ev": 0.0532,
           "event": "Colts @ Steelers",
           "fair_prob": 0.419,
+          "final_score": "Steelers 34, Colts 22",
+          "graded_at": "2026-10-11T21:20:00Z",
           "home": "Steelers",
           "implied_prob": 0.4444,
           "input": {
@@ -2459,9 +2461,10 @@
           "note": "Pinnacle fair 2.39; FPI Colts -0.5 vs Steelers -2.0, and Pittman, Dean and Elliott are OUT for Pittsburgh.",
           "odds_american": 125,
           "odds_decimal": 2.25,
+          "result_units": -1,
           "sport": "NFL",
           "start_time": "2026-10-11T14:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1
         }
       ],
@@ -2679,6 +2682,8 @@
           "ev": 0.0532,
           "event": "Colts @ Steelers",
           "fair_prob": 0.419,
+          "final_score": "Steelers 34, Colts 22",
+          "graded_at": "2026-10-11T21:20:00Z",
           "home": "Steelers",
           "implied_prob": 0.4444,
           "input": {
@@ -2867,9 +2872,10 @@
           "note": "Pinnacle fair 2.39; FPI Colts -0.5 vs Steelers -2.0, and Pittman, Dean and Elliott are OUT for Pittsburgh.",
           "odds_american": 125,
           "odds_decimal": 2.25,
+          "result_units": -1,
           "sport": "NFL",
           "start_time": "2026-10-11T14:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1
         },
         {
@@ -2879,6 +2885,8 @@
           "ev": 0.0411,
           "event": "Bears @ Packers",
           "fair_prob": 0.5042,
+          "final_score": "Packers 31, Bears 7",
+          "graded_at": "2026-10-11T21:20:00Z",
           "home": "Packers",
           "implied_prob": 0.5319,
           "input": {
@@ -2948,9 +2956,10 @@
           "note": "Pinnacle fair 1.98; Tyson Bagent starts for Caleb Williams, and Green Bay is down two guards.",
           "odds_american": -114,
           "odds_decimal": 1.88,
+          "result_units": 1.1,
           "sport": "NFL",
           "start_time": "2026-10-11T14:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1.25
         },
         {
@@ -3237,6 +3246,8 @@
       "ev": 0.0656,
       "event": "Texans @ Titans",
       "fair_prob": 0.5441,
+      "final_score": "Texans 26, Titans 3",
+      "graded_at": "2026-10-11T21:20:00Z",
       "home": "Titans",
       "implied_prob": 0.5479,
       "input": {
@@ -3428,6 +3439,7 @@
         "Houston is 0-4 with losses by 4, 2, 14 and 4 (34-30 Cowboys, 19-17 Colts, 20-6 Bengals): they haven't been beating anyone by margin.",
         "+7.5 covers every 7-point Texans win, the most common NFL margin after 3; the model weights key numbers."
       ],
+      "result_units": -2,
       "risks": [
         "If the line drops to +7 at Stake, the edge shrinks a lot: take only at 1.73 or better at +7.5.",
         "Cam Ward is struggling (726 yards, 3 TD, 2 INT in four games); a turnover-heavy day can turn this into a two-score game.",
@@ -3465,7 +3477,7 @@
       ],
       "sport": "NFL",
       "start_time": "2026-10-11T14:00:00-03:00",
-      "status": "pending",
+      "status": "lost",
       "summary": "Two 0-4 teams and a 37.5-38.5 total, yet the market has Houston laying 7.5 on the road. ESPN FPI makes the Texans only 4.2-point favourites with home field, so +7.5 through the key number of 7 is worth more than its price.",
       "units": 2,
       "id": "2026-10-11"

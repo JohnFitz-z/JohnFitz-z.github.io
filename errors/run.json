@@ -1,8 +1,8 @@
 {
- "started_at": "2026-10-11T13:19:33Z",
+ "started_at": "2026-10-11T16:18:41Z",
  "errors": [],
  "tournaments": 5,
- "stake_fixtures": 6,
+ "stake_fixtures": 0,
  "pinnacle_fixtures": 0,
  "compared": 0,
  "detectors": {
@@ -16,6 +16,6 @@
  "errors_found": 0,
  "new": 0,
  "alerts": 0,
- "requests_left": 223,
- "finished_at": "2026-10-11T13:19:35Z"
+ "requests_left": 222,
+ "finished_at": "2026-10-11T16:18:42Z"
 }

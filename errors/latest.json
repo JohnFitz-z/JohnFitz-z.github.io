@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-11T13:19:33Z",
+ "scanned_at": "2026-10-11T16:18:41Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · Champions Hockey League",
-  "ITF Women · Lagos",
-  "ITF Men · Darwin",
-  "ITF Women · Islamabad",
-  "ITF Men · Burgas"
+  "England Amateur · Isthmian League, Pr. Div",
+  "Argentina · Primera LPF, Reserves",
+  "ITF Women · Las Vegas",
+  "ITF Women · Cipolletti",
+  "ITF Women · Burgas"
  ],
- "stake_fixtures": 6,
+ "stake_fixtures": 0,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 223,
+ "requests_left_this_month": 222,
  "errors": [],
  "month": {
   "flagged": 0,

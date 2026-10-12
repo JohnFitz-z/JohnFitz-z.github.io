@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-12T21:39:28Z",
+ "scanned_at": "2026-10-12T22:19:18Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Brazil · Brasileiro Serie B",
-  "Sweden Amateur · U21 Ligacupen Elit",
-  "Iceland · Urvalsdeild, Women",
-  "Colombia · LBP",
-  "Russia · KHL"
+  "Russia · VHL",
+  "Belarus · Extraliga",
+  "WTA · WTA Beijing, China Women Singles",
+  "ITF Women · Santa Margherita di Pula",
+  "Montenegro · 2. CFL"
  ],
- "stake_fixtures": 21,
- "both_books": 12,
- "markets_compared": 364,
+ "stake_fixtures": 7,
+ "both_books": 7,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 169,
-  "offline_priced": 80,
-  "self_priced": 115,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 212,
+ "requests_left_this_month": 210,
  "errors": [],
  "month": {
   "flagged": 1,
-  "closed": 0,
+  "closed": 1,
   "avg_ev": 0.0691,
-  "avg_clv": null,
-  "beat_close": 0
+  "avg_clv": 0.0598,
+  "beat_close": 1
  }
 }

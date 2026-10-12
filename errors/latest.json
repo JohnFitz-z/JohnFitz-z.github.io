@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-12T01:20:35Z",
+ "scanned_at": "2026-10-12T13:35:44Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Finland · Korisliiga",
-  "International · Club Friendly Games",
-  "USA · NBA Preseason",
-  "Slovenia · Pokal",
-  "Kazakhstan · Pro Hockey League"
+  "Challenger · ATP Challenger Wuning 3, China Men Singles",
+  "UTR Women · UTR PTT Le Cap d Agde Women 01",
+  "ITF Women · Monastir",
+  "ITF Women · Szekesfehervar",
+  "ITF Men · Monastir"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 219,
+ "requests_left_this_month": 218,
  "errors": [],
  "month": {
   "flagged": 0,

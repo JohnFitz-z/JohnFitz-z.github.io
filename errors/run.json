@@ -1,5 +1,5 @@
 {
- "started_at": "2026-10-12T01:20:35Z",
+ "started_at": "2026-10-12T13:35:44Z",
  "errors": [],
  "tournaments": 5,
  "stake_fixtures": 0,
@@ -16,6 +16,6 @@
  "errors_found": 0,
  "new": 0,
  "alerts": 0,
- "requests_left": 219,
- "finished_at": "2026-10-12T01:20:35Z"
+ "requests_left": 218,
+ "finished_at": "2026-10-12T13:35:44Z"
 }

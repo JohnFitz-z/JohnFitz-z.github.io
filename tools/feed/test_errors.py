@@ -97,6 +97,22 @@ class Detectors(unittest.TestCase):
         self.assertEqual(errs, [])
         self.assertEqual(stats["palpable_skipped"], 1)
 
+    def test_lopsided_fit_left_out(self):
+        # Oct 12: a Serie B game fitted to 3.6 vs 0.3 goals (a 93% favourite) flagged a clean sheet that wasn't real
+        lop = F._dist(3.57, 0.33, MCFG)
+        stake = book_prices(lop, 0.06, overrides={("104", "105"): 1.9})
+        errs, stats, _, _ = self.run_finder(stake, book_prices(lop, 0.03, only={"101", "1010"}))
+        self.assertEqual(errs, [])
+        self.assertEqual(stats["fit_implausible"], 1)
+
+    def test_books_disagree_left_out(self):
+        # Pinnacle's match odds say one game, Stake's say another: don't trust the fit
+        other = F._dist(1.0, 1.7, MCFG)
+        stake = book_prices(other, 0.06, overrides={("10176", "10176"): 3.4})
+        errs, stats, _, _ = self.run_finder(stake, book_prices(self.dist, 0.03, only={"101", "1010", "1068"}))
+        self.assertEqual([e for e in errs if e["type"] == "offline"], [])
+        self.assertEqual(stats["book_mismatch"], 1)
+
     def test_steam_note(self):
         pin_now = book_prices(self.dist, 0.03)
         stake = book_prices(self.dist, 0.06, overrides={("101", "103"): 4.6})

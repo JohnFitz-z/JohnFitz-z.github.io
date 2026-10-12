@@ -280,7 +280,8 @@ def find_errors(stake_fx, pin_fx, cfg, meta, pnames, tour_info, t0, last_prices)
     from pricing import load_config
     mcfg = load_config()
     errors, fair_now, prices_now = [], {}, {}
-    stats = {"stale_compared": 0, "offline_priced": 0, "self_priced": 0, "palpable_skipped": 0, "steam": 0, "fit_failed": 0}
+    stats = {"stale_compared": 0, "offline_priced": 0, "self_priced": 0, "palpable_skipped": 0, "steam": 0, "fit_failed": 0,
+             "fit_implausible": 0, "book_mismatch": 0}
     for fid, sfx in stake_fx.items():
         start = parse_t(sfx.get("startTime"))
         if not start or start <= t0 + dt.timedelta(minutes=cfg["min_minutes_to_start"]):
@@ -344,6 +345,20 @@ def find_errors(stake_fx, pin_fx, cfg, meta, pnames, tour_info, t0, last_prices)
         if rms > cfg["max_fit_error"]:
             stats["fit_failed"] += 1
             continue
+        # A fit is only as good as the prices behind it. Skip games where it lands somewhere real matches
+        # almost never go (one side scoring 3+ a game, a 90% favourite), and games where Pinnacle's and
+        # Stake's own match odds disagree badly: one of the two price sets is stale or for the wrong fixture.
+        lo, hi = cfg.get("goal_rate_range", [0.3, 3.0])
+        tlo, thi = cfg.get("total_goals_range", [1.4, 4.4])
+        if not (lo <= lh <= hi and lo <= la <= hi and tlo <= lh + la <= thi) or max(tg["p_home"], tg["p_away"]) > cfg.get("max_fav_prob", 0.82):
+            stats["fit_implausible"] += 1
+            continue
+        if anchor_book == "pinnacle":
+            stg = F.anchor_targets({m: {o: v[0] for o, v in outs.items()} for m, outs in smk.items()}, meta)
+            gap = cfg.get("max_book_gap", 0.08)
+            if stg and (abs(stg["p_home"] - tg["p_home"]) > gap or abs(stg["p_away"] - tg["p_away"]) > gap):
+                stats["book_mismatch"] += 1
+                continue
         kind = "offline" if anchor_book == "pinnacle" else "self"
         anchor_ids = set()
         if kind == "self":  # the markets the fit came from can't be judged against themselves

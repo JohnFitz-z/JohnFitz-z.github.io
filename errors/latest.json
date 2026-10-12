@@ -1,61 +1,36 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-12T19:19:08Z",
+ "scanned_at": "2026-10-12T21:39:28Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Brazil · Brasileiro Serie B",
-  "Peru · Liga 2",
-  "International Youth · U23 Africa Cup of Nations",
-  "Bolivia · Copa Bolivia",
-  "England · National League Cup"
+  "Sweden Amateur · U21 Ligacupen Elit",
+  "Iceland · Urvalsdeild, Women",
+  "Colombia · LBP",
+  "Russia · KHL"
  ],
- "stake_fixtures": 26,
- "both_books": 19,
- "markets_compared": 833,
+ "stake_fixtures": 21,
+ "both_books": 12,
+ "markets_compared": 364,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 333,
-  "offline_priced": 463,
-  "self_priced": 37,
+  "stale_compared": 169,
+  "offline_priced": 80,
+  "self_priced": 115,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 1
+  "fit_failed": 0,
+  "fit_implausible": 1,
+  "book_mismatch": 0
  },
  "by_type": {
   "stale": 0,
-  "offline": 1,
+  "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 214,
- "errors": [
-  {
-   "fixture_id": "id1000039068823368",
-   "tournament_id": 390,
-   "sport": "soccer",
-   "league": "Brasileiro Serie B",
-   "country": "Brazil",
-   "start_time": "2026-10-12T22:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/46928882-gremio-novorizontino-sp-aa-ponte-preta-sp",
-   "home": "Gremio Novorizontino SP",
-   "away": "AA Ponte Preta SP",
-   "id": "id1000039068823368:10312:10312",
-   "market_id": "10312",
-   "outcome_id": "10312",
-   "market": "Team 1 Clean Sheet",
-   "outcome": "Yes",
-   "stake_price": 1.49,
-   "type": "offline",
-   "why": "Pinnacle doesn't offer this line; its fair price is worked out from Pinnacle's main markets for the game.",
-   "ev": 0.0669,
-   "fair_prob": 0.7161,
-   "fair_odds": 1.397,
-   "take_at": 1.42,
-   "units": 1.0,
-   "model_goals": "Gremio Novorizontino SP 3.57, AA Ponte Preta SP 0.33",
-   "anchor": "pinnacle"
-  }
- ],
+ "requests_left_this_month": 212,
+ "errors": [],
  "month": {
   "flagged": 1,
   "closed": 0,

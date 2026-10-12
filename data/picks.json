@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T18:54:34Z",
+  "updated_at": "2026-10-12T21:06:58Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -3507,6 +3507,8 @@
           "ev": 0.0375,
           "event": "Coventry City vs Newcastle United",
           "fair_prob": 0.4854,
+          "final_score": "Coventry City 4, Newcastle United 1",
+          "graded_at": "2026-10-12T21:12:00Z",
           "home": "Coventry City",
           "implied_prob": 0.5038,
           "input": {
@@ -3561,9 +3563,10 @@
           "note": "Pinnacle fair 2.06 (48.5%); both teams under 1.0 npxG per match this season, Coventry scored 1 in 5 and Awoniyi is suspended; model 52.5%.",
           "odds_american": -102,
           "odds_decimal": 1.99,
+          "result_units": -1.25,
           "sport": "Soccer",
           "start_time": "2026-10-12T16:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1.25
         },
         {
@@ -3573,6 +3576,8 @@
           "ev": 0.0197,
           "event": "Panthers @ Sabres",
           "fair_prob": 0.7138,
+          "final_score": "Sabres 5, Panthers 3",
+          "graded_at": "2026-10-12T21:12:00Z",
           "home": "Sabres",
           "implied_prob": 0.7326,
           "input": {
@@ -3677,9 +3682,10 @@
           "note": "Pinnacle-sourced fair 1.40; Florida without Barkov and Marchand; model 74.7%.",
           "odds_american": -274,
           "odds_decimal": 1.36,
+          "result_units": 0.45,
           "sport": "NHL",
           "start_time": "2026-10-12T14:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1.25
         }
       ],
@@ -3744,6 +3750,8 @@
           "ev": 0.0375,
           "event": "Coventry City vs Newcastle United",
           "fair_prob": 0.4854,
+          "final_score": "Coventry City 4, Newcastle United 1",
+          "graded_at": "2026-10-12T21:12:00Z",
           "home": "Coventry City",
           "implied_prob": 0.5038,
           "input": {
@@ -3798,9 +3806,10 @@
           "note": "Pinnacle fair 2.06 (48.5%); both teams under 1.0 npxG per match this season, Coventry scored 1 in 5 and Awoniyi is suspended; model 52.5%.",
           "odds_american": -102,
           "odds_decimal": 1.99,
+          "result_units": -1.25,
           "sport": "Soccer",
           "start_time": "2026-10-12T16:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 1.25
         },
         {
@@ -3810,6 +3819,8 @@
           "ev": 0.0313,
           "event": "Panthers @ Sabres",
           "fair_prob": 0.5067,
+          "final_score": "Sabres 5, Panthers 3",
+          "graded_at": "2026-10-12T21:12:00Z",
           "home": "Sabres",
           "implied_prob": 0.5181,
           "input": {
@@ -3928,9 +3939,10 @@
           "note": "Pinnacle fair 1.97; Panthers without Barkov and Marchand (9 GF in 5 games); model 53.4%. Goalies unconfirmed on a back-to-back, so check that Ellis starts.",
           "odds_american": -108,
           "odds_decimal": 1.93,
+          "result_units": 0.7,
           "sport": "NHL",
           "start_time": "2026-10-12T14:00:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 0.75
         }
       ],

@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-12T13:35:44Z",
+ "scanned_at": "2026-10-12T16:21:15Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Wuning 3, China Men Singles",
-  "UTR Women · UTR PTT Le Cap d Agde Women 01",
-  "ITF Women · Monastir",
-  "ITF Women · Szekesfehervar",
-  "ITF Men · Monastir"
+  "ITF Men · Rodez",
+  "ITF Women · Lexington",
+  "England Amateur · National League South",
+  "Brazil · Brasileiro Serie B",
+  "Albania · Kupa e Shqiperise"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 5,
+ "both_books": 5,
+ "markets_compared": 277,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
+  "stale_compared": 174,
+  "offline_priced": 103,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -24,15 +24,42 @@
  },
  "by_type": {
   "stale": 0,
-  "offline": 0,
+  "offline": 1,
   "self": 0
  },
- "requests_left_this_month": 218,
- "errors": [],
+ "requests_left_this_month": 216,
+ "errors": [
+  {
+   "fixture_id": "id1000039068823368",
+   "tournament_id": 390,
+   "sport": "soccer",
+   "league": "Brasileiro Serie B",
+   "country": "Brazil",
+   "start_time": "2026-10-12T22:00:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46928882-gremio-novorizontino-sp-aa-ponte-preta-sp",
+   "home": "Gremio Novorizontino SP",
+   "away": "AA Ponte Preta SP",
+   "id": "id1000039068823368:10312:10312",
+   "market_id": "10312",
+   "outcome_id": "10312",
+   "market": "Team 1 Clean Sheet",
+   "outcome": "Yes",
+   "stake_price": 1.48,
+   "type": "offline",
+   "why": "Pinnacle doesn't offer this line; its fair price is worked out from Pinnacle's main markets for the game.",
+   "ev": 0.0691,
+   "fair_prob": 0.7223,
+   "fair_odds": 1.384,
+   "take_at": 1.41,
+   "units": 1.0,
+   "model_goals": "Gremio Novorizontino SP 3.59, AA Ponte Preta SP 0.33",
+   "anchor": "pinnacle"
+  }
+ ],
  "month": {
-  "flagged": 0,
+  "flagged": 1,
   "closed": 0,
-  "avg_ev": null,
+  "avg_ev": 0.0691,
   "avg_clv": null,
   "beat_close": 0
  }

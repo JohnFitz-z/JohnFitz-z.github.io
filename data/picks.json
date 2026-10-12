@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T03:08:11Z",
+  "updated_at": "2026-10-12T04:06:51Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -3182,6 +3182,8 @@
           "ev": 0.0252,
           "event": "Dodgers @ Brewers",
           "fair_prob": 0.5475,
+          "final_score": "Brewers 2, Dodgers 1",
+          "graded_at": "2026-10-12T04:10:00Z",
           "home": "Brewers",
           "implied_prob": 0.5714,
           "input": {
@@ -3240,9 +3242,10 @@
           "note": "Pinnacle fair 1.83; Skubal vs Misiorowski in NLCS Game 1, but the model makes it 58.6% to clear 5.5 with the pens in play.",
           "odds_american": -133,
           "odds_decimal": 1.75,
+          "result_units": -0.75,
           "sport": "MLB",
           "start_time": "2026-10-11T21:00:00-03:00",
-          "status": "pending",
+          "status": "lost",
           "units": 0.75
         }
       ],

@@ -1,7 +1,7 @@
 // Morning Line service worker: works offline, always tries for fresh picks first.
-const VERSION = "5dd2819881";
+const VERSION = "2c1dc196fa";
 const CACHE = "ml-" + VERSION;
-const CORE = ["/", "/results/", "/stats/", "/bankroll/", "/method/", "/404.html", "/manifest.webmanifest", "/favicon.png", "/icon-192.png", "/assets/css/main.css?v=5dd2819881", "/assets/js/app.js?v=5dd2819881", "/assets/js/bank.js?v=5dd2819881", "/assets/js/charts.js?v=5dd2819881", "/assets/js/core.js?v=5dd2819881", "/assets/js/errors.js?v=5dd2819881", "/assets/js/money.js?v=5dd2819881", "/assets/js/picks.js?v=5dd2819881", "/assets/js/stats.js?v=5dd2819881", "/assets/js/target.js?v=5dd2819881"];
+const CORE = ["/", "/results/", "/stats/", "/bankroll/", "/method/", "/404.html", "/manifest.webmanifest", "/favicon.png", "/icon-192.png", "/assets/css/main.css?v=2c1dc196fa", "/assets/js/app.js?v=2c1dc196fa", "/assets/js/bank.js?v=2c1dc196fa", "/assets/js/charts.js?v=2c1dc196fa", "/assets/js/core.js?v=2c1dc196fa", "/assets/js/errors.js?v=2c1dc196fa", "/assets/js/money.js?v=2c1dc196fa", "/assets/js/picks.js?v=2c1dc196fa", "/assets/js/stats.js?v=2c1dc196fa", "/assets/js/target.js?v=2c1dc196fa"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

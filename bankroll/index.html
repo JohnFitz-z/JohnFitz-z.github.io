@@ -26,14 +26,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=5dd2819881">
-<link rel="modulepreload" href="/assets/js/app.js?v=5dd2819881">
+<link rel="stylesheet" href="/assets/css/main.css?v=2c1dc196fa">
+<link rel="modulepreload" href="/assets/js/app.js?v=2c1dc196fa">
 </head>
 <body data-page="bankroll">
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="site-head">
-    <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">One researched bet a day, every reason shown, every result kept.</span></a>
+    <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">Up to 10 researched bets a day, every reason shown.</span></a>
     <nav class="topnav" aria-label="Main">
       <a href="/">Today</a>
       <a href="/results/">Results</a>
@@ -46,9 +46,9 @@
   <div class="subhead"><span id="todayLabel"></span><span><span class="offline" id="offline" hidden>Offline</span> <span id="updated"></span></span></div>
 
   <main id="main" class="wrap-main" style="display:flex;flex-direction:column;gap:22px">
-<div class="page-title"><div><h1>Bankroll</h1><p>Your money plan and your real bets. The plan says how much to put on each bet; log what you bet and your balance updates by itself.</p></div></div>
+<div class="page-title"><div><h1>Bankroll</h1><p>How much to bet today, and every bet you've placed. Log a bet when you place it and your balance updates by itself.</p></div></div>
 <section class="panel">
-  <div class="ph"><div><h2>Money plan</h2><p>How much to bet today, sized from your current bankroll.</p></div></div>
+  <div class="ph"><div><h2>Today's bets</h2><p>How much to put on each one, sized from your balance. Tap "Log it" once you've placed a bet.</p></div></div>
   <div id="moneyPlan"><p class="empty">Loading…</p></div>
 </section>
 <section class="top">
@@ -64,15 +64,12 @@
     <div class="bstat"><label class="k" for="startMoney">Starting money</label><div class="bin">$<input class="inp" id="startMoney" type="number" min="0" step="0.01" inputmode="decimal" value="100"></div></div>
     <div class="bstat"><div class="k">Current balance</div><div class="v" id="curBal">$100.00</div><div class="s" id="curSub">&nbsp;</div></div>
   </div>
-  <div class="todaybet" id="todayBet"></div>
 </div>
 </aside>
 </section>
 <section class="panel">
-  <div class="ph"><div><h2>Your bets</h2><p>Leave a pick blank if you didn't bet on it. If you don't enter odds, the pick's odds are used.</p></div></div>
+  <div class="ph"><div><h2>Your bets</h2><p>Only bets you placed. Fix the amount or odds if they differ from what you got on Stake.</p></div></div>
   <div class="mlist" id="moneyList"></div>
-  <h3 class="subh">Other bets</h3>
-  <div class="mlist" id="extraList"></div>
   <details class="backup">
     <summary>Back up or move your bets</summary>
     <div class="bk">
@@ -102,6 +99,6 @@
   <a href="/method/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 
-<script type="module" src="/assets/js/app.js?v=5dd2819881"></script>
+<script type="module" src="/assets/js/app.js?v=2c1dc196fa"></script>
 </body>
 </html>

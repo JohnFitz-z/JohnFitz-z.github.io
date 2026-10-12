@@ -2,6 +2,7 @@
 import {esc, num, prob, decOf, amOf, amFromDec, unitsOf, profitOf, evOf, sign, fmtU, pct, spct, cls, list, clvOf, pickUrl,
         STATUS, GRADED, fmtDay, fmtTime, todayISO} from "./core.js";
 import {stakeOf, myProfit, sfmt$, fmt$, suggested, choiceOf} from "./bank.js";
+import {planStakes} from "./money.js";
 
 function ladderHTML(p){
   const m = p.model || {}, d = decOf(p);
@@ -67,72 +68,68 @@ function legacyEdge(p){
     <div class="bar" role="img" aria-label="Odds imply ${pct(imp)}, estimate ${pct(mod)}"><div class="mkt" style="width:${(imp * 100).toFixed(2)}%"></div><div class="gap ${e < 0 ? "neg" : ""}" style="left:${(lo * 100).toFixed(2)}%;width:${(w * 100).toFixed(2)}%"></div></div></div>`;
 }
 
-const KEY_NAME = {main: "the main pick", b1: "backup 1", b2: "backup 2"};
+const KEY_NAME = {main: "the top pick", b1: "backup 1", b2: "backup 2"};
 
-function backupsHTML(p){
-  const bks = Array.isArray(p.backups) ? p.backups : [];
-  if(!bks.length) return "";
-  const pc = p.price_check || {};
-  const rows = bks.map((b, i) => {
-    const st = String(b.status || "pending").toLowerCase().replace("-", "_"), s = STATUS[st] ? st : "pending";
-    const d = num(b.odds_decimal), minD = num(b.min_odds_decimal), ev = num(b.ev), chk = pc[b.key];
-    const now = chk && num(chk.odds_decimal) ? ` · now ${num(chk.odds_decimal).toFixed(2)}` : "";
-    const res = GRADED.has(s) ? ` · ${esc(b.final_score || "")} ${num(b.result_units) !== null ? fmtU(num(b.result_units)) : ""}` : "";
-    return `<div class="bk-row${pc.recommend === b.key ? " rec" : ""}">
-      <div class="bk-key">Backup ${i + 1}</div>
-      <div class="bk-main"><div class="b1">${esc(b.bet || "")}</div>
-        <div class="b2">${esc([b.event, b.sport, fmtTime(b.start_time)].filter(Boolean).join(" · "))}</div>
-        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(b.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${b.no_edge ? " · no clear edge" : ""}${res}</div></div>
-      <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
-    </div>`;
-  }).join("");
-  return `<div><h3 class="sub">Backups if the price isn't there</h3><div class="bk-list">${rows}</div>
-    <p class="caveat" style="margin-top:8px">Only the main pick counts toward the record. If you bet a backup, mark it on the Bankroll page.</p></div>`;
+// Every bet on a day's list, best first: the top pick, then the rest of the card. Backups are not shown.
+export const betsOf = p => [Object.assign({}, p, {key: "main"})].concat((Array.isArray(p.card) ? p.card : []).map(c => Object.assign({}, c)));
+export const betId = (p, b) => b.key === "main" ? p.id : `${p.id}:${b.key}`;
+const norm = s => { const v = String(s || "pending").toLowerCase().replace("-", "_"); return STATUS[v] ? v : "pending"; };
+
+function betRow(p, b, i, stakes){
+  const st = norm(b.status), pc = (p.price_check || {})[b.key];
+  const d = num(b.odds_decimal), minD = num(b.min_odds_decimal);
+  const now = pc && num(pc.odds_decimal);
+  const gone = st === "pending" && pc && pc.value === false;
+  const amt = stakes ? stakes.get(betId(p, b)) : null;
+  const why = b.key === "main" ? (b.note || p.summary) : b.note;
+  const res = GRADED.has(st) || st === "void" ? esc(b.final_score || "") : "";
+  const meta = [b.sport, fmtTime(b.start_time), b.confidence ? b.confidence + " confidence" : ""].filter(Boolean).join(" · ");
+  return `<div class="bet-row${gone ? " skip" : ""}">
+    <div class="br-n">${i + 1}</div>
+    <div class="br-main">
+      <div class="b1">${b.key === "main" ? `<a href="${pickUrl(p)}">${esc(b.bet || "")}</a>` : esc(b.bet || "")}</div>
+      <div class="b2">${esc(b.event || "")}${meta ? " · " + esc(meta) : ""}</div>
+      ${why ? `<div class="br-why">${esc(why)}</div>` : ""}
+      ${gone ? `<div class="b2 neg">Price moved to ${now.toFixed(2)}. No longer worth it: skip.</div>` : ""}
+      ${res ? `<div class="b2">${res}</div>` : ""}
+    </div>
+    <div class="br-side">
+      <div class="br-odds">${d ? d.toFixed(2) : "—"}</div>
+      <div class="b2">${!gone && now && Math.abs(now - d) > 0.004 ? `now ${now.toFixed(2)} · ` : ""}take ${minD ? minD.toFixed(2) : "—"}+</div>
+      ${amt && st === "pending" && !gone ? `<div class="br-amt">Bet ${fmt$(amt)}</div>` : ""}
+      <span class="pill ${st}">${STATUS[st]}</span>
+    </div>
+  </div>`;
+}
+
+export function listHTML(p, stakes){
+  return `<div class="bet-list">${betsOf(p).map((b, i) => betRow(p, b, i, stakes)).join("")}</div>`;
 }
 
 function cardHTML(p){
   const cs = Array.isArray(p.card) ? p.card : [];
   if(!cs.length) return "";
-  const pc = p.price_check || {};
-  const rows = cs.map((c, i) => {
-    const st = String(c.status || "pending").toLowerCase().replace("-", "_"), s = STATUS[st] ? st : "pending";
-    const d = num(c.odds_decimal), minD = num(c.min_odds_decimal), ev = num(c.ev), chk = pc[c.key];
-    const now = chk && num(chk.odds_decimal) && s === "pending" ? ` · now ${num(chk.odds_decimal).toFixed(2)}${chk.value === false ? " (no edge now, skip)" : ""}` : "";
-    const res = GRADED.has(s) ? ` · ${esc(c.final_score || "")} ${num(c.result_units) !== null ? fmtU(num(c.result_units)) : ""}` : "";
-    return `<div class="bk-row">
-      <div class="bk-key">Bet ${i + 2}</div>
-      <div class="bk-main"><div class="b1">${esc(c.bet || "")}</div>
-        <div class="b2">${esc([c.event, c.sport, fmtTime(c.start_time)].filter(Boolean).join(" · "))}</div>
-        <div class="b2">${d ? d.toFixed(2) : "—"}${now} · take at <b>${minD ? minD.toFixed(2) : "—"}</b>+ · ${num(c.units) || 0.25}u${ev !== null ? " · EV " + spct(ev) : ""}${res}</div>${c.note ? `<div class="b2">${esc(c.note)}</div>` : ""}</div>
-      <div class="bk-st"><span class="pill ${s}">${STATUS[s]}</span></div>
-    </div>`;
-  }).join("");
-  return `<div><h3 class="sub">Today's card: ${cs.length + 1} bets with an edge</h3><div class="bk-list">${rows}</div>
-    <p class="caveat" style="margin-top:8px">Every bet here has a positive edge at the take-at price or better. <a href="/bankroll/"><b>See all of today's bets and how much to put on each →</b></a> Only the main pick counts toward the record.</p></div>`;
+  return `<div><h3 class="sub">The full list for this day: ${cs.length + 1} bets</h3>${listHTML(p)}</div>`;
 }
 
 function priceCheckHTML(p){
   const pc = p.price_check;
-  if(!pc || !pc.at) return "";
+  if(!pc || !pc.at || p.status !== "pending") return "";
   const when = new Date(pc.at);
   const t = isNaN(when) ? "" : new Intl.DateTimeFormat("en-US", {timeZone: "America/Halifax", hour: "numeric", minute: "2-digit"}).format(when);
   const m = pc.main || {};
-  let msg;
-  if(pc.recommend === "main") msg = `Still good. The main pick is ${num(m.odds_decimal) ? num(m.odds_decimal).toFixed(2) : "unchanged"} now; take it at ${num(m.min_odds_decimal) ? num(m.min_odds_decimal).toFixed(2) : "the take-at price"} or better.`;
-  else if(pc.recommend === "none") msg = "No bet has value at current prices. Skip today.";
-  else {
-    const b = pc[pc.recommend] || {};
-    msg = `The main pick's price dropped${num(m.odds_decimal) ? " to " + num(m.odds_decimal).toFixed(2) : ""}. Bet ${KEY_NAME[pc.recommend] || pc.recommend} instead: ${esc(b.bet || "")} at ${num(b.odds_decimal) ? num(b.odds_decimal).toFixed(2) : "?"} (take at ${num(b.min_odds_decimal) ? num(b.min_odds_decimal).toFixed(2) : "?"}+).`;
-  }
-  const cls2 = pc.recommend === "main" ? "ok" : pc.recommend === "none" ? "bad" : "";
-  return `<div class="pcheck ${cls2}"><b>Price check${t ? " · " + t : ""}</b><span>${msg}</span></div>`;
+  if(!num(m.odds_decimal)) return "";
+  const ok = m.value !== false;
+  const msg = ok ? `Still good at ${num(m.odds_decimal).toFixed(2)}. Take it at ${num(m.min_odds_decimal) ? num(m.min_odds_decimal).toFixed(2) : "the take-at price"} or better.`
+                 : `The price moved to ${num(m.odds_decimal).toFixed(2)}, so it's no longer worth betting. Skip it if you haven't placed it.`;
+  return `<div class="pcheck ${ok ? "ok" : "bad"}"><b>Price check${t ? " · " + t : ""}</b><span>${msg}</span></div>`;
 }
 
 function resultHTML(p){
   if(!(GRADED.has(p.status) || p.status === "void")) return "";
   const pl = profitOf(p), c = clvOf(p);
   const close = c !== null ? ` · Closed ${num(p.close.odds_decimal) ? num(p.close.odds_decimal).toFixed(2) : "?"}, CLV ${spct(c)}` : "";
-  const mine = stakeOf(p) > 0 ? ` · You${choiceOf(p) !== "main" ? " (" + KEY_NAME[choiceOf(p)] + ")" : ""} ${sfmt$(myProfit(p))}` : "";
+  const mine = stakeOf(p) > 0 && choiceOf(p) === "main" ? ` · You ${sfmt$(myProfit(p))}` : "";
   return `<div class="result ${esc(p.status)}"><span class="pill ${esc(p.status)}">${STATUS[p.status]}</span><span>${esc(p.final_score || "")}</span><span class="mono">${fmtU(pl)}${mine}${close}</span></div>`;
 }
 
@@ -144,22 +141,55 @@ export function detailHTML(p){
   if(p.summary) out.push(`<p class="thesis">${esc(p.summary)}</p>`);
   out.push(resultHTML(p));
   if(hasModel) out.push(priceGuideHTML(p));
-  out.push(cardHTML(p));
-  out.push(backupsHTML(p));
-  if(hasModel) out.push(ladderHTML(p));
   const why = list(p.reasoning);
   if(why.length) out.push(`<div><h3 class="sub">Why this bet</h3><ul class="pts">${why.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`);
   const risks = list(p.risks);
   if(risks.length) out.push(`<div><h3 class="sub">What could go wrong</h3><ul class="pts risks">${risks.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`);
-  const alts = Array.isArray(p.candidates) ? p.candidates : [];
-  if(alts.length) out.push(`<div><h3 class="sub">Also considered</h3><div class="alts">${alts.map(a => typeof a === "string" ? `<div class="alt"><span class="a2">${esc(a)}</span></div>` : `<div class="alt"><span class="a1">${esc(a.bet || "")}${a.event ? " · " + esc(a.event) : ""}</span><span class="a2">${esc(a.note || a.reason || "")}</span></div>`).join("")}</div></div>`);
+  out.push(cardHTML(p));
+  const alts = (Array.isArray(p.passed) ? p.passed.map(a => ({bet: a.bet, event: a.event, note: a.why})) : []).concat(Array.isArray(p.candidates) ? p.candidates : []);
+  const more = (hasModel ? ladderHTML(p) : "")
+    + (alts.length ? `<div><h3 class="sub">Also looked at</h3><div class="alts">${alts.map(a => typeof a === "string" ? `<div class="alt"><span class="a2">${esc(a)}</span></div>` : `<div class="alt"><span class="a1">${esc(a.bet || "")}${a.event ? " · " + esc(a.event) : ""}</span><span class="a2">${esc(a.note || a.reason || "")}</span></div>`).join("")}</div></div>` : "");
+  if(more) out.push(`<details class="more-detail"><summary>How the number was built</summary>${more}</details>`);
   const srcs = Array.isArray(p.sources) ? p.sources : [];
   const links = srcs.map(s => { const u = typeof s === "string" ? s : (s && s.url); const t = typeof s === "string" ? s.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] : (s.title || s.url); return /^https?:\/\//.test(u || "") ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>` : ""; }).filter(Boolean);
   if(links.length) out.push(`<div><h3 class="sub">Sources</h3><div class="srcs">${links.join("")}</div></div>`);
   return out.filter(Boolean).join("");
 }
 
-// mode "today": the home ticket; mode "detail": a pick's own page.
+// The home page: today's whole list in one place.
+function errorRow(e, i){
+  return `<div class="bet-row">
+    <div class="br-n">${i}</div>
+    <div class="br-main"><div class="b1">${esc(e.label)}</div><div class="b2">${esc(e.sub)} · Error finder</div>
+      <div class="br-why">Stake is paying more than the fair price here (edge ${(e.ev * 100).toFixed(1)}%). These get corrected fast.${e.link ? ` <a href="${esc(e.link)}" target="_blank" rel="noopener">Open on Stake →</a>` : ""}</div></div>
+    <div class="br-side"><div class="br-odds">${Number(e.odds).toFixed(2)}</div><div class="b2">take ${e.takeAt ? Number(e.takeAt).toFixed(2) : "—"}+</div>${e.stake ? `<div class="br-amt">Bet ${fmt$(e.stake)}</div>` : ""}</div>
+  </div>`;
+}
+
+export function todayHTML(p, stakes, errs){
+  const isToday = p.date === todayISO(), bets = betsOf(p);
+  const open = bets.filter(b => norm(b.status) === "pending").length;
+  const label = isToday ? "Today's bets" : "Latest list · " + esc(fmtDay(p.date));
+  const total = (stakes ? bets.filter(b => norm(b.status) === "pending").reduce((a, b) => a + (stakes.get(betId(p, b)) || 0), 0) : 0)
+    + (isToday && errs ? errs.reduce((a, e) => a + (e.stake || 0), 0) : 0);
+  return `
+    <div class="t-head">
+      <div class="t-eyebrow">
+        <div class="l"><span class="chip">${label}</span></div>
+        <div class="l"><span class="when">${bets.length} bet${bets.length === 1 ? "" : "s"}${open && open < bets.length ? ` · ${open} still to play` : ""}</span></div>
+      </div>
+      <h2 class="t-bet" style="margin-top:12px">${isToday ? (open ? `${bets.length} bet${bets.length === 1 ? "" : "s"} today` : "Today's bets are all in") : "Today's list posts by 10 AM"}</h2>
+      <div class="t-event">${isToday ? `Place them early, each at its take-at price or better.${total ? ` Total to bet: <b>${fmt$(total)}</b>.` : ""}` : "Here's the most recent list until then."}</div>
+    </div>
+    <div class="perf" aria-hidden="true"></div>
+    <div class="t-body">
+      ${listHTML(p, stakes)}
+      ${errs && errs.length && p.date === todayISO() ? `<h3 class="sub">Live now from the error finder</h3><div class="bet-list">${errs.map((e, i) => errorRow(e, betsOf(p).length + i + 1)).join("")}</div>` : ""}
+      <p class="caveat">Amounts come from your money plan on the <a href="/bankroll/">Bankroll</a> page. Tap a bet there to log it. <a href="${pickUrl(p)}">Full write-up →</a></p>
+    </div>`;
+}
+
+// mode "detail": a pick's own page.
 export function ticketHTML(p, mode){
   const today = todayISO(), isToday = p.date === today, dec = decOf(p), ev = evOf(p);
   const st = STATUS[p.status] ? p.status : "pending";
@@ -167,7 +197,7 @@ export function ticketHTML(p, mode){
   const take = minD ? `<div class="take ${dec && dec < minD ? "warn" : ""}">Take at <b>${minD.toFixed(2)}</b> or better</div>` : "";
   const label = mode === "detail" ? (isToday ? "Today's pick" : esc(fmtDay(p.date, {weekday: "long", month: "long", day: "numeric", year: "numeric"})))
                                    : (isToday ? "Today's pick" : "Latest pick · " + esc(fmtDay(p.date)));
-  const sug = suggested(p);
+  const ps = planStakes(), sug = ps && ps.get(p.id) ? ps.get(p.id) : 0;
   const notice = mode === "today" && !isToday ? `<div class="notice">Today's pick hasn't posted yet. It lands at 10:00 AM Atlantic.</div>` : "";
   return `
     <div class="t-head">

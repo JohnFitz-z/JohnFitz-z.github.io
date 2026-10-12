@@ -1,6 +1,7 @@
 """Tests for the pricing engine. Run: python3 -m unittest model/test_pricing.py -v"""
 
 import copy
+import math
 import os
 import sys
 import unittest
@@ -400,6 +401,65 @@ class Card(unittest.TestCase):
         upd = P.recheck(doc, fresh, CFG)["price_check"]
         self.assertTrue(upd["c1"]["value"])
         self.assertEqual(upd["recommend"], "none")
+
+
+class Analyst(unittest.TestCase):
+    def setUp(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("make_card", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tools", "make_card.py"))
+        self.M = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.M)
+
+    def bet(self, **kw):
+        b = {"sport": "NBA", "event": "Warriors @ Lakers", "home": "Lakers", "away": "Warriors", "market": "player_points",
+             "bet": "Stephen Curry over 27.5 points", "selection": "over", "line": 27.5, "player": "Stephen Curry",
+             "start_time": "2026-10-13T22:30:00-03:00", "odds": 1.87, "my_prob": 0.58, "sharp_prob": 0.53,
+             "confidence": "High", "angle": "role change", "reason": "Usage up with Klay out."}
+        b.update(kw)
+        return b
+
+    def test_builds_list_with_prices_and_stakes(self):
+        data = {"date": "2026-10-13", "summary": "s", "bets": [
+            self.bet(), self.bet(event="Celtics @ Knicks", bet="Knicks ML", market="moneyline", selection="home",
+                             odds=2.1, my_prob=0.52, sharp_prob=0.47, confidence="Medium")]}
+        pick, dropped = self.M.make(data, CFG)
+        self.assertEqual(dropped, [])
+        self.assertEqual(pick["bet"], "Stephen Curry over 27.5 points")   # High confidence first
+        self.assertEqual(pick["method"], "analyst")
+        self.assertAlmostEqual(pick["ev"], 0.58 * 1.87 - 1, places=3)
+        self.assertEqual(pick["min_odds_decimal"], math.ceil(1.03 / 0.58 * 100) / 100)
+        self.assertEqual([c["key"] for c in pick["card"]], ["c1"])
+        self.assertEqual(pick["card"][0]["note"], "Usage up with Klay out.")
+        self.assertEqual(pick["input"]["my_prob"], 0.58)
+        self.assertNotIn("backups", pick)
+
+    def test_rules_leave_out_bad_bets(self):
+        data = {"date": "2026-10-13", "bets": [
+            self.bet(bet="thin", my_prob=0.55),                                  # edge 2.9% < 3%
+            self.bet(bet="far", my_prob=0.65),                                   # 12 points from Pinnacle, no reason
+            self.bet(bet="too far", my_prob=0.70, edge_reason="x"),             # 17 points: over the cap
+            self.bet(bet="short", odds=1.2, my_prob=0.9, sharp_prob=0.85),       # below minimum odds
+            self.bet(bet="ok", my_prob=0.64, edge_reason="Starter ruled out after the line was set")]}
+        pick, dropped = self.M.make(data, CFG)
+        self.assertEqual(pick["bet"], "ok")
+        self.assertEqual(sorted(d["bet"] for d in dropped), ["far", "short", "thin", "too far"])
+
+    def test_two_per_game_and_ten_total(self):
+        bets = [self.bet(bet=f"b{i}", event=f"G{i // 3}") for i in range(15)]
+        pick, dropped = self.M.make({"date": "2026-10-13", "bets": bets}, CFG)
+        allb = [pick] + pick["card"]
+        self.assertEqual(len(allb), 10)
+        from collections import Counter
+        self.assertLessEqual(max(Counter(b["event"] for b in allb).values()), 2)
+
+    def test_price_check_keeps_the_read(self):
+        pick, _ = self.M.make({"date": "2026-10-13", "bets": [self.bet()]}, CFG)
+        upd = P.recheck(pick, {"main": {"price": 1.70}}, CFG)["price_check"]
+        self.assertAlmostEqual(upd["main"]["ev"], 0.58 * 1.70 - 1, places=3)
+        self.assertEqual(upd["main"]["model_prob"], 0.58)
+        self.assertEqual(upd["recommend"], "none")   # 1.70 is -1.4%: below the 1% floor
+        upd = P.recheck(pick, {"main": {"price": 1.95}}, CFG)["price_check"]
+        self.assertEqual(upd["recommend"], "main")
 
 
 if __name__ == "__main__":

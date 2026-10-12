@@ -2,10 +2,10 @@
 //  Normal mode  stakes from the bankroll and each bet's edge (engine units, 1u = 1% at quarter Kelly) x risk level.
 //  Target mode  stakes that give the best chance of reaching a target balance by a date (see target.js).
 // Either way, stakes never go up to chase a loss.
-import {$, esc, num, unitsOf, evOf, todayPick, todayISO, fmtTime, state} from "./core.js?v=5dd2819881";
-import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken, choiceOf} from "./bank.js?v=5dd2819881";
-import {errorsData} from "./errors.js?v=5dd2819881";
-import {dayDP, bestPortfolio} from "./target.js?v=5dd2819881";
+import {$, esc, num, unitsOf, evOf, todayPick, todayISO, fmtTime, state} from "./core.js?v=2c1dc196fa";
+import {bankState, bankStats, fmt$, sfmt$, addExtra, Store, myProfit, extraProfit, extraResult, stakeOf, oddsTaken, choiceOf} from "./bank.js?v=2c1dc196fa";
+import {errorsData} from "./errors.js?v=2c1dc196fa";
+import {dayDP, bestPortfolio} from "./target.js?v=2c1dc196fa";
 
 export const RISK = {
   steady: {label: "Steady", mult: 0.5, cap: 0.04, kelly: "1/8 Kelly", halve: "almost 0%"},
@@ -46,22 +46,12 @@ function candidates(){
     const fresh = (key, d) => { const c = pc[key]; return c && num(c.odds_decimal) ? {odds: num(c.odds_decimal), takeAt: num(c.min_odds_decimal), ev: num(c.ev) || 0, gone: c.value === false} : d; };
     const m = fresh("main", {odds: num(p.odds_decimal), takeAt: num(p.min_odds_decimal), ev: evOf(p) || 0});
     items.push({kind: "pick", gone: m.gone, id: p.id, key: "main", pickId: p.id, label: p.bet, sub: [p.event, fmtTime(p.start_time)].filter(Boolean).join(" · "),
-      odds: m.odds, takeAt: m.takeAt, units: unitsOf(p), ev: m.ev, note: "Daily pick", start: p.start_time, parlayable: true});
-    // Backups are bets from other games with their own edge: list them too, unless the card already has the same bet.
-    const onCard = new Set((p.card || []).map(c => `${c.event}|${c.bet}`));
-    for(const b of p.backups || []){
-      if(onCard.has(`${b.event}|${b.bet}`)) continue;
-      const q = fresh(b.key, {odds: num(b.odds_decimal), takeAt: num(b.min_odds_decimal), ev: num(b.ev) || 0});
-      const weak = !pc[b.key] && q.ev < 0.02;
-      items.push({kind: "card", gone: q.gone || weak, id: `${p.id}:${b.key}`, key: b.key, pickId: p.id, date: p.date, label: b.bet,
-        sub: [b.event, fmtTime(b.start_time)].filter(Boolean).join(" · "), odds: q.odds, takeAt: q.takeAt,
-        units: num(b.units) || 0.25, ev: q.ev, note: "Card", start: b.start_time, parlayable: true});
-    }
+      odds: m.odds, takeAt: m.takeAt, units: unitsOf(p), ev: m.ev, note: "Top pick", start: p.start_time, parlayable: true});
     for(const c of p.card || []){
       const q = fresh(c.key, {odds: num(c.odds_decimal), takeAt: num(c.min_odds_decimal), ev: num(c.ev) || 0});
       items.push({kind: "card", gone: q.gone, id: `${p.id}:${c.key}`, key: c.key, pickId: p.id, date: p.date, label: c.bet,
         sub: [c.event, fmtTime(c.start_time)].filter(Boolean).join(" · "), odds: q.odds, takeAt: q.takeAt,
-        units: num(c.units) || 0.25, ev: q.ev, note: "Card", start: c.start_time, parlayable: true});
+        units: num(c.units) || 0.25, ev: q.ev, note: "On the list", start: c.start_time, parlayable: true});
     }
   }
   const ed = errorsData();
@@ -138,6 +128,20 @@ export function todaysPlan(){
           expected: list.reduce((a, i) => a + i.stake * i.ev, 0), target, chance, scaled, parlayUsed: !!parlay, skipped: items.filter(i => !i.stake).length};
 }
 
+// Dollar amount for each of today's bets, keyed like the Today page (pick id, or pick id:card key).
+export function planStakes(){
+  if(!bankState.loaded || !state.loaded) return null;
+  const m = new Map();
+  for(const i of todaysPlan().items) if(i.stake > 0) m.set(i.id, i.stake);
+  return m;
+}
+
+// Error finder bets in today's plan (live now), for the home page.
+export function liveErrorBets(){
+  if(!bankState.loaded || !state.loaded) return [];
+  return todaysPlan().items.filter(i => i.kind === "error" && i.stake > 0);
+}
+
 function monthProfit(){
   const s = bankStats(), m = todayISO().slice(0, 7);
   let v = 0;
@@ -171,6 +175,7 @@ export function renderMoney(force){
     else tLine = `<p class="callout"><b>Target: ${fmt$(st.target || 0)} by ${esc(shortDate(deadline()))}</b> (${daysLeft()} day${daysLeft() === 1 ? "" : "s"} left, including today). Chance of getting there from here: <b>${plan.chance !== null ? Math.round(plan.chance * 100) + "%" : "—"}</b>. These stakes are the ones that make that chance as high as it can be${plan.parlayUsed ? "; today that includes a 2-leg parlay" : ""}${plan.skipped ? `. ${plan.skipped} smaller-edge bet${plan.skipped === 1 ? " is" : "s are"} left out today` : ""}.</p>`;
   }
   el.innerHTML = `
+    <details class="mm-details" id="mmDetails"${settingsOpen ? " open" : ""}><summary>${tmode ? `Target ${fmt$(st.target || 0)} by ${esc(shortDate(deadline()))} · ${perDay()} bets a day` : `${esc(r.label)} sizing`} · change</summary>
     <div class="mm-set">
       <label><span class="k">Mode</span><select class="inp" id="mmMode"><option value="normal"${!tmode ? " selected" : ""}>Normal (steady growth)</option><option value="target"${tmode ? " selected" : ""}>Target (hit a number by a date)</option></select></label>
       ${tmode ? `
@@ -181,12 +186,16 @@ export function renderMoney(force){
       <label><span class="k">Daily limit (% of bankroll)</span><input class="inp" id="mmCap" type="number" min="1" max="50" step="1" inputmode="decimal" value="${Math.round((st.cap || r.cap) * 100)}"></label>
       <label><span class="k">Monthly goal ($)</span><input class="inp" id="mmGoal" type="number" min="0" step="1" inputmode="decimal" placeholder="e.g. 50" value="${st.goal || ""}"></label>`}
     </div>
-    ${tmode ? tLine : `<p class="b2 mm-note">${esc(r.label)} bets ${r.kelly}: each bet is sized from your bankroll and its edge. If the edges are real, the chance of ever dropping to half your bankroll is ${r.halve}.</p>`}
-    <div class="ph" style="margin-top:14px"><div><h2>Today's bets</h2><p>${head}</p></div></div>
+    </details>
+    ${tmode ? tLine : `<p class="b2 mm-note">${esc(r.label)} bets ${r.kelly}: each bet is sized from your bankroll and its edge.</p>`}
+    <p class="b2 mm-head">${head}</p>
     ${rows}
     ${!tmode ? `<div class="ph" style="margin-top:14px"><div><h2>Monthly goal</h2><p>${goal ? `${sfmt$(mp)} of ${fmt$(goal)} this month` : "Set a goal to track it here."}</p></div></div>
     ${goal ? `<div class="goalbar"><span style="width:${Math.max(0, Math.min(100, mp / goal * 100)).toFixed(1)}%"></span></div>` : ""}` : ""}`;
 }
+
+let settingsOpen = false;
+document.addEventListener("toggle", e => { if(e.target && e.target.id === "mmDetails") settingsOpen = e.target.open; }, true);
 
 export function initMoney(onChange){
   const changed = e => {

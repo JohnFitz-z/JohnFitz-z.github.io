@@ -1123,7 +1123,16 @@ def recheck(doc, fresh, cfg, now_iso=None):
             c["market_odds"] = f["market_odds"]
         if f.get("adjustments") is not None:
             c["adjustments"] = f["adjustments"]
-        r = price_candidate(c, cfg)["doc"]
+        if inp.get("my_prob") is not None:
+            # A bet from the analyst's read: the probability stays the analyst's; only the price is new.
+            pm = float(inp["my_prob"])
+            dd = round(to_decimal(price), 4)
+            mv = market_view(c, cfg) if c.get("market_odds") and c.get("market") in ("moneyline", "spread", "total", "team_total") else None
+            r = {"odds_decimal": dd, "ev": round(pm * dd - 1, 4), "model_prob": pm,
+                 "min_odds_decimal": math.ceil((1 + st["min_ev"]) / pm * 100 - 1e-9) / 100,
+                 "fair_prob": round(mv["fair_prob"], 4) if mv else None}
+        else:
+            r = price_candidate(c, cfg)["doc"]
         value = r["ev"] >= st["min_ev"] - 1e-9 and warn is None
         out[key] = {"bet": orig.get("bet"), "odds_decimal": r["odds_decimal"], "ev": r["ev"], "min_odds_decimal": r["min_odds_decimal"],
                     "model_prob": r["model_prob"], "fair_prob": r["fair_prob"], "value": value,

@@ -36,6 +36,20 @@
     "min_ev": 0.02
   },
 
+  "analyst": {
+    "why": "Rules for the daily list built by judgment (model/ANALYST.md, tools/make_card.py)",
+    "min_ev": 0.03,
+    "max_bets": 10,
+    "max_per_game": 2,
+    "min_odds": 1.3,
+    "kelly_fraction": 0.25,
+    "max_units": 2.0,
+    "confidence_mult": { "High": 1.0, "Medium": 0.7 },
+    "gap_needs_reason": 0.08,
+    "max_gap": 0.15,
+    "max_edge_no_sharp": 0.1
+  },
+
   "ranking": {
     "modeled_first": true,
     "max_model_logit_gap": 0.35

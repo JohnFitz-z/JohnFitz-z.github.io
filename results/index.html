@@ -26,14 +26,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=5dd2819881">
-<link rel="modulepreload" href="/assets/js/app.js?v=5dd2819881">
+<link rel="stylesheet" href="/assets/css/main.css?v=2c1dc196fa">
+<link rel="modulepreload" href="/assets/js/app.js?v=2c1dc196fa">
 </head>
 <body data-page="results">
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="site-head">
-    <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">One researched bet a day, every reason shown, every result kept.</span></a>
+    <a class="brand" href="/"><div class="mark">Morning Line</div><span class="tag">Up to 10 researched bets a day, every reason shown.</span></a>
     <nav class="topnav" aria-label="Main">
       <a href="/">Today</a>
       <a href="/results/" aria-current="page">Results</a>
@@ -46,16 +46,17 @@
   <div class="subhead"><span id="todayLabel"></span><span><span class="offline" id="offline" hidden>Offline</span> <span id="updated"></span></span></div>
 
   <main id="main" class="wrap-main" style="display:flex;flex-direction:column;gap:22px">
-<div class="page-title"><div><h1>Results</h1><p>Every pick, newest first. Each one has its own page with the full breakdown.</p></div></div>
+<div class="page-title"><div><h1>Results</h1><p>Every bet you placed, newest first.</p></div></div>
 <section class="panel">
-  <div class="ph"><div><h2>Units over time</h2><p>Running profit after each graded pick. One unit is 1% of a bankroll.</p></div></div>
+  <div class="ph"><div><h2>Your balance</h2><p>Your balance after each bet you placed was settled.</p></div></div>
   <div id="chart"><p class="empty">Loading…</p></div>
 </section>
 <section class="panel">
   <div class="ph">
-    <div><h2>All picks</h2></div>
+    <div><h2 id="logTitle">Your bets</h2></div>
     <div class="filters">
-      <select id="fSport" aria-label="Filter by sport"><option value="">All sports</option></select>
+      <label class="k showall"><input type="checkbox" id="fAll"> Show every pick posted</label>
+      <select id="fSport" aria-label="Filter by sport" hidden><option value="">All sports</option></select>
       <select id="fStatus" aria-label="Filter by result">
         <option value="">All results</option><option value="pending">Pending</option><option value="won">Won</option>
         <option value="lost">Lost</option><option value="push">Push</option><option value="void">Void</option>
@@ -81,6 +82,6 @@
   <a href="/method/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>Method</a>
 </nav>
 
-<script type="module" src="/assets/js/app.js?v=5dd2819881"></script>
+<script type="module" src="/assets/js/app.js?v=2c1dc196fa"></script>
 </body>
 </html>

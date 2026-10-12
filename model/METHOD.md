@@ -1,5 +1,7 @@
 # Morning Line pricing method
 
+> **The daily list is built by the analyst process in [ANALYST.md](ANALYST.md)** (handicap first, then price, then `tools/make_card.py`). This file documents the pricing engine and data tools that process uses: the slate, Pinnacle's no-vig prices, the stats models, the price check and the closing line. The engine's screen is a map of where to look; it no longer picks bets on its own.
+
 This is the playbook the daily run follows. The research finds the facts; `pricing.py` turns them into probabilities, expected value, a stake and a minimum price using the same math every day. All tunable numbers live in `config.json`.
 
 ## Daily flow: screen wide, then dig deep

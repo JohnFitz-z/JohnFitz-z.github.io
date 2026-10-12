@@ -1,10 +1,10 @@
 // Boots whichever page is open: loads the data, renders that page's views, keeps them fresh.
 import {$, esc, state, loadPicks, todayISO, fmtDay, fmtStamp, newestFirst, pickById, latestPick, pickUrl} from "./core.js";
-import {ticketHTML, rowHTML} from "./picks.js";
+import {ticketHTML, todayHTML, rowHTML} from "./picks.js";
 import {tilesHTML, gradedCountText, renderUnitsChart, renderClv, renderMvm, renderBreakdowns} from "./stats.js";
-import {initBank, renderBank} from "./bank.js";
+import {initBank, renderBank, bankState, bankStats, myBets, myBetRowHTML, renderMoneyChart, fmt$, sfmt$} from "./bank.js";
 import {loadErrors, renderErrors} from "./errors.js";
-import {initMoney, renderMoney} from "./money.js";
+import {initMoney, renderMoney, planStakes, liveErrorBets} from "./money.js";
 
 const page = document.body.dataset.page;
 
@@ -23,27 +23,52 @@ function renderChrome(){
   const gc = $("#gradedCount"); if(gc && state.loaded) gc.textContent = gradedCountText();
 }
 
+const tile = (k, v, sub, c) => `<div class="tile"><div class="k">${k}</div><div class="v ${c || ""}">${v}</div><div class="s">${sub || "&nbsp;"}</div></div>`;
+const cls$ = n => n > 0.004 ? "pos" : n < -0.004 ? "neg" : "";
+
+function myTiles(){
+  if(!bankState.loaded) return "";
+  const s = bankStats(), roi = s.staked ? s.profit / s.staked : null;
+  return tile("Profit", sfmt$(s.profit), "From settled bets", cls$(s.profit))
+    + tile("In play", fmt$(s.inPlay), s.xOpen.length + s.open.length ? `${s.xOpen.length + s.open.length} open bet${s.xOpen.length + s.open.length === 1 ? "" : "s"}` : "Nothing open")
+    + tile("Record", `${s.W}-${s.L}`, `${s.nPlaced} bet${s.nPlaced === 1 ? "" : "s"} placed`)
+    + tile("Return", roi === null ? "—" : (roi >= 0 ? "+" : "−") + Math.abs(roi * 100).toFixed(1) + "%", "Profit per dollar bet", roi !== null ? cls$(roi) : "");
+}
+
 function renderToday(){
   const el = $("#ticket");
   if(!state.loaded){ el.innerHTML = loadingTicket(); return; }
   const p = latestPick();
-  el.innerHTML = p ? ticketHTML(p, "today")
-    : `<div class="t-head"><div class="t-eyebrow"><span class="chip">Today's pick</span></div><div class="t-empty"><div class="t-bet" style="margin-top:16px">First pick lands at 10:00 AM</div><p>Each morning the research runs across the full slate, settles on one bet, and posts it here.</p></div></div>`;
-  $("#tiles").innerHTML = tilesHTML(true);
-  const recent = newestFirst().filter(x => !p || x.id !== p.id).slice(0, 5);
-  $("#recent").innerHTML = recent.length ? recent.map(rowHTML).join("") : `<p class="empty" style="padding-top:12px">Past picks show here.</p>`;
+  if(!(el.contains(document.activeElement) && document.activeElement.tagName === "INPUT"))
+    el.innerHTML = p ? todayHTML(p, planStakes(), liveErrorBets())
+      : `<div class="t-head"><div class="t-eyebrow"><span class="chip">Today's bets</span></div><div class="t-empty"><div class="t-bet" style="margin-top:16px">The first list lands at 10:00 AM</div></div></div>`;
+  $("#tiles").innerHTML = myTiles();
+  const mine = bankState.loaded ? myBets().slice(0, 6) : [];
+  $("#recent").innerHTML = mine.length ? mine.map(myBetRowHTML).join("") : `<p class="empty" style="padding-top:12px">Bets you place show here once you log them on the Bankroll page.</p>`;
 }
 
 function renderResults(){
-  const fs = $("#fSport"), fst = $("#fStatus"), cur = fs.value;
-  const sports = Array.from(new Set(state.picks.map(p => p.sport).filter(Boolean))).sort();
-  fs.innerHTML = `<option value="">All sports</option>` + sports.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
-  fs.value = sports.includes(cur) ? cur : "";
-  renderUnitsChart($("#chart"));
+  const all = $("#fAll"), fs = $("#fSport"), fst = $("#fStatus");
+  const showAll = all && all.checked;
+  fs.hidden = !showAll;
+  $("#logTitle").textContent = showAll ? "Every pick posted" : "Your bets";
   const el = $("#log");
   if(!state.loaded){ el.innerHTML = `<p class="empty" style="padding-top:12px">${state.failed ? esc(state.failed) : "Loading…"}</p>`; return; }
-  const rows = newestFirst().filter(p => (!fs.value || p.sport === fs.value) && (!fst.value || (p.status || "pending").replace("half_", "") === fst.value));
-  el.innerHTML = rows.length ? rows.map(rowHTML).join("") : `<p class="empty" style="padding-top:12px">${state.picks.length ? "No picks match these filters." : "No picks yet."}</p>`;
+  const want = st => !fst.value || String(st || "pending").replace("half_", "") === fst.value;
+  if(showAll){
+    const cur = fs.value, sports = Array.from(new Set(state.picks.map(p => p.sport).filter(Boolean))).sort();
+    fs.innerHTML = `<option value="">All sports</option>` + sports.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
+    fs.value = sports.includes(cur) ? cur : "";
+    renderUnitsChart($("#chart"));
+    const rows = newestFirst().filter(p => (!fs.value || p.sport === fs.value) && want(p.status));
+    el.innerHTML = rows.length ? rows.map(rowHTML).join("") : `<p class="empty" style="padding-top:12px">No picks match these filters.</p>`;
+    return;
+  }
+  if(!bankState.loaded) return;
+  renderMoneyChart(null, $("#chart"));
+  const rows = myBets().filter(b => want(b.status));
+  el.innerHTML = rows.length ? rows.map(myBetRowHTML).join("")
+    : `<p class="empty" style="padding-top:12px">${myBets().length ? "No bets match this filter." : "No bets logged yet. Tap \"Log it\" on the Bankroll page when you place a bet."}</p>`;
 }
 
 function renderPick(){
@@ -90,11 +115,11 @@ function render(){
 const onMoneyChange = () => { if(page === "today" || page === "pick") { const a = document.activeElement; if(!(a && a.closest && a.closest("#ticket"))) render(); } };
 
 async function refresh(){
-  if(page === "errors" || page === "bankroll"){ await loadErrors(); render(); }
+  if(page === "errors" || page === "bankroll" || page === "today"){ await loadErrors(); render(); }
   if(await loadPicks()) render();
 }
 
-document.addEventListener("change", e => { if(e.target.id === "fSport" || e.target.id === "fStatus") renderResults(); });
+document.addEventListener("change", e => { if(e.target.id === "fSport" || e.target.id === "fStatus" || e.target.id === "fAll") renderResults(); });
 let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 150); });
 document.addEventListener("visibilitychange", () => { if(document.visibilityState === "visible") refresh(); });
 setInterval(() => { if(document.visibilityState === "visible") refresh(); }, 5 * 60 * 1000);
@@ -105,7 +130,7 @@ render();
 const bankReady = initBank(onMoneyChange);
 initMoney(() => { if(page === "errors") renderErrors(); render(); });
 Promise.all([loadPicks(), bankReady]).then(render);
-if(page === "errors" || page === "bankroll") Promise.all([loadErrors(), bankReady]).then(render);
+if(page === "errors" || page === "bankroll" || page === "today") Promise.all([loadErrors(), bankReady]).then(render);
 
 if("serviceWorker" in navigator && location.protocol === "https:"){
   navigator.serviceWorker.register("/sw.js").catch(() => {});

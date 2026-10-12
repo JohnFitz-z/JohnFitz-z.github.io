@@ -1,53 +1,37 @@
-<div class="page-title"><div><h1>How it works</h1><p>What happens every day between the slate opening and a pick landing on your phone.</p></div></div>
+<div class="page-title"><div><h1>How it works</h1><p>How the daily list gets made, and how the system learns from every result.</p></div></div>
 <section class="panel">
 <div class="prose">
-  <div class="callout">Every morning at 7:54 a scheduled run prices the whole slate, researches the best spots, and posts a pick with two backups by 10:00. At 3:53 PM it rechecks the prices for that night. Every hour from 1 PM to 2 AM another run grades finished games, records the closing line, and updates this site.</div>
+  <div class="callout">Every morning at 7:54 the analyst run handicaps the day's games and posts up to 10 bets by 10:00. At 3:53 PM it rechecks the prices. Every hour from 10 AM to 2 AM another run grades finished games, writes a short review of each bet, and updates this site. Every Sunday night a review run studies the week and updates the rules the analyst follows.</div>
 
-  <h2>1. Screen every game</h2>
-  <p>The run prices every market it can find (moneylines, totals, spreads, team totals and first-five-innings bets) for every game in the sports the model covers, using quick team stats and odds from at least two sportsbooks. That's usually dozens of games and well over a hundred bets.</p>
+  <h2>1. Read the record first</h2>
+  <p>Before looking at a single game, the analyst reads its own scorecard (how every bet type, sport and angle has done) and the reviews of recent bets. It leans into what's been working and stops doing what hasn't.</p>
 
-  <h2>2. Research the best spots</h2>
-  <p>The top eight or so from the screen get proper research: confirmed starters and goalies, injuries, fresh team numbers, more sportsbooks, and adjustments for news the numbers miss. Then they're priced again.</p>
+  <h2>2. Find the games worth studying</h2>
+  <p>It pulls every game on the slate with odds from every book, including Pinnacle, the sharpest sportsbook, and gathers the day's news: injuries, confirmed starters, goalies and pitchers, weather. It then picks the 8 to 15 games where something has changed or the price looks off.</p>
 
-  <h2>3. The market's view</h2>
-  <p>Sportsbook odds include a cut, so the probabilities they imply add up to more than 100%. The model removes that cut (the "power" method, which takes a bit more off long shots). The fair price comes from the sharpest books, Pinnacle and the Betfair Exchange, whose prices are the most accurate forecasts available. If neither has the game, it uses the middle value across all books. Odds for every game, and each game's closing line, are downloaded automatically through the day.</p>
+  <h2>3. Handicap each game like a pro</h2>
+  <p>For each game it works out who's actually playing, how the matchup plays out, the situation (rest, travel, motivation, weather) and how much of recent form is luck. It writes a short game script and its own probability for the bet <b>before</b> looking at Stake's odds, then argues the other side. If the case against is better, it passes.</p>
 
-  <h2>4. The model's view</h2>
-  <p>Each sport has its own score model that prices the exact bet, including pushes and overtime rules:</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Sport</th><th>Model</th><th>Main inputs</th></tr></thead>
-    <tbody>
-      <tr><td>MLB</td><td>Runs for each team (negative binomial)</td><td>Offense (wRC+), opposing starter and bullpen quality, expected innings, park</td></tr>
-      <tr><td>NHL</td><td>Goals for each team (Poisson), with overtime and shootouts</td><td>5-on-5 expected goals for and against, starting goalies</td></tr>
-      <tr><td>Soccer</td><td>Goals (Poisson with the Dixon-Coles draw correction)</td><td>Expected goals for and against per match</td></tr>
-      <tr><td>NFL, CFL, college football</td><td>Points margin, weighted toward 3, 7, 10 and 14</td><td>Power ratings, home field, projected total</td></tr>
-      <tr><td>NBA, WNBA, college basketball</td><td>Points margin and total</td><td>Power or net ratings, home court, projected total</td></tr>
-      <tr><td>Tennis, MMA</td><td>No score model</td><td>Market price plus adjustments</td></tr>
-    </tbody>
-  </table></div>
-
-  <h2>5. Blend and adjust</h2>
-  <p>The market and the model each get half the say. Then up to four adjustments cover things the inputs can't see, like a tired bullpen or a late scratch. Each one is small, medium or large (about 1, 2 or 3 percentage points), and together they can't move the number more than about 5 points.</p>
-
-  <h2>6. Pick and backups</h2>
+  <h2>4. Where the edges are</h2>
   <ul>
-    <li><b>Expected value</b>: the final probability against the actual price. Positive means the price pays more than the risk deserves.</li>
-    <li><b>Ranking</b>: the pick is the candidate with the best edge for its risk, so a solid edge at short odds beats the same edge on a long shot.</li>
-    <li><b>Size</b>: a quarter of the Kelly stake, between 0.25 and 2 units. One unit is 1% of your bankroll.</li>
-    <li><b>Take at</b>: the lowest price that still gives at least +1% expected value. Below that, skip the bet.</li>
-    <li><b>Confidence</b>: High at +4% expected value or more, Medium at +2% to +4%, Low below that.</li>
+    <li><b>News the market is slow on</b>: a confirmed backup goalie, a scratched pitcher, a player ruled out after the line was set.</li>
+    <li><b>Knock-on effects</b>: when a star sits, his teammates get more minutes and shots, and their prop lines lag behind.</li>
+    <li><b>Situations</b>: back-to-backs, long road trips, travel, teams resting starters, letdown and lookahead spots.</li>
+    <li><b>Weather</b>: strong wind pushes football and baseball scoring down.</li>
+    <li><b>Overreaction</b>: the public overrates the last game it saw and the most popular teams.</li>
+    <li><b>Stake's own mistakes</b>: prices Stake hasn't updated yet, caught by the error finder.</li>
   </ul>
-  <p>A stat model has to back the pick. Bets priced only from the odds can't show an edge (you'd just be paying the bookmaker's cut), so they rank last. If the model is far from the sharp price (about 9 points or more), that's almost always a bad input like the wrong goalie, so those bets rank below everything else too.</p>
-  <p>The next two best bets from <b>different games</b> become backups, each with its own "take at" price. If Stake's price on the main pick is too low, take backup 1, then backup 2. Only the main pick counts toward the record.</p>
-  <p>There's always a pick. If nothing has a positive edge, it's the closest call at the minimum size, marked "No clear edge".</p>
 
-  <h2>7. Afternoon price check</h2>
-  <p>Odds move during the day. At 3:53 PM the run gets fresh prices for the main pick and both backups, reprices them, and posts which one to bet, or to skip if none still has value.</p>
+  <h2>5. Check the price</h2>
+  <p>Being right only pays if the odds are good enough. Each bet needs at least a 3% edge at Stake's price and odds of 1.30 or more. Its "take at" price is the lowest odds that still clear that bar: below it, skip the bet. The analyst's read is checked against Pinnacle, and if it differs by a lot it has to name the specific fact the market hasn't priced.</p>
 
-  <h2>8. Grading and the closing line</h2>
-  <p>Once the game ends, the result is graded and the closing odds are recorded. Beating the closing price means the market moved toward the pick after it was made. Over many picks, that's the earliest reliable sign the edge is real, long before the win-loss record means much.</p>
+  <h2>6. The list</h2>
+  <p>Up to 10 bets, best first, each with a one-line reason and a confidence level (High or Medium). At most two bets per game, and never two bets that win or lose together. The Bankroll page turns each one into a dollar amount from your balance and your money plan.</p>
+
+  <h2>7. Learning from every bet</h2>
+  <p>When a bet is graded, the results run writes what happened and whether the reasoning held up. The closing price is recorded too: when the market moves toward our bet before the game, that's the clearest sign the read was right, win or lose. Every Sunday the weekly review turns those notes into updated rules.</p>
 
   <h2>Under the hood</h2>
-  <p>The pricing code and its settings are in the <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/tree/main/model" target="_blank" rel="noopener">model folder</a> on GitHub, and the full playbook the daily run follows is in <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/blob/main/model/METHOD.md" target="_blank" rel="noopener">METHOD.md</a>.</p>
+  <p>The analyst's playbook is <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/blob/main/model/ANALYST.md" target="_blank" rel="noopener">ANALYST.md</a>. Its scorecard, lessons and bet reviews are in the <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/tree/main/notes" target="_blank" rel="noopener">notes folder</a>. The pricing engine and data tools are in the <a href="https://github.com/JohnFitz-z/JohnFitz-z.github.io/tree/main/model" target="_blank" rel="noopener">model folder</a>.</p>
 </div>
 </section>

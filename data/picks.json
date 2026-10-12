@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T21:13:16Z",
+  "updated_at": "2026-10-12T00:07:31Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -2113,6 +2113,8 @@
           "ev": 0.0496,
           "event": "Kraken @ Capitals",
           "fair_prob": 0.5731,
+          "final_score": "Kraken 5, Capitals 3",
+          "graded_at": "2026-10-12T00:10:00Z",
           "home": "Capitals",
           "implied_prob": 0.5848,
           "input": {
@@ -2259,9 +2261,10 @@
           "note": "Pinnacle fair 1.74, model 61.4%; Grubauer (.915) vs Thompson projected, neither confirmed. Re-check goalies before betting.",
           "odds_american": -141,
           "odds_decimal": 1.71,
+          "result_units": 1.24,
           "sport": "NHL",
           "start_time": "2026-10-11T18:10:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1.75
         },
         {
@@ -2524,6 +2527,8 @@
           "ev": 0.0496,
           "event": "Kraken @ Capitals",
           "fair_prob": 0.5731,
+          "final_score": "Kraken 5, Capitals 3",
+          "graded_at": "2026-10-12T00:10:00Z",
           "home": "Capitals",
           "implied_prob": 0.5848,
           "input": {
@@ -2670,9 +2675,10 @@
           "note": "Pinnacle fair 1.74, model 61.4%; Grubauer (.915) vs Thompson projected, neither confirmed. Re-check goalies before betting.",
           "odds_american": -141,
           "odds_decimal": 1.71,
+          "result_units": 1.24,
           "sport": "NHL",
           "start_time": "2026-10-11T18:10:00-03:00",
-          "status": "pending",
+          "status": "won",
           "units": 1.75
         },
         {

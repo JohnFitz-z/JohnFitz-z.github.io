@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T00:07:31Z",
+  "updated_at": "2026-10-12T03:08:11Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -3246,6 +3246,12 @@
           "units": 0.75
         }
       ],
+      "close": {
+        "clv": -0.0289,
+        "fair_prob": 0.5336,
+        "odds_decimal": 1.77,
+        "source": "Tipico close at +7.5 (feed, 1:58 PM); Pinnacle closed +6.5"
+      },
       "confidence": "High",
       "created_at": "2026-10-11T08:05:04-03:00",
       "date": "2026-10-11",

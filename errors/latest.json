@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-11T22:18:50Z",
+ "scanned_at": "2026-10-12T01:20:35Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "ITF Men · Santa Margherita di Pula",
-  "Turkiye · Turkiye Kupasi",
-  "China · China League 2",
-  "Argentina · Primera C",
-  "England Amateur · U21 Professional Development League"
+  "Finland · Korisliiga",
+  "International · Club Friendly Games",
+  "USA · NBA Preseason",
+  "Slovenia · Pokal",
+  "Kazakhstan · Pro Hockey League"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -27,7 +27,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 220,
+ "requests_left_this_month": 219,
  "errors": [],
  "month": {
   "flagged": 0,

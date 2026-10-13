@@ -116,7 +116,15 @@ def main(argv=None):
         picks.append(clean(body, problems))
     picks.sort(key=lambda p: (p.get("date", ""), str(p.get("id", ""))))
 
-    out = {"updated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "picks": picks}
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:  # keep the old timestamp when nothing changed, so a no-op publish doesn't make a commit
+        with open(a.out) as fh:
+            prev = json.load(fh)
+        if json.dumps(prev.get("picks"), sort_keys=True) == json.dumps(picks, sort_keys=True):
+            stamp = prev.get("updated_at") or stamp
+    except (OSError, ValueError):
+        pass
+    out = {"updated_at": stamp, "picks": picks}
     with open(a.out, "w") as fh:
         json.dump(out, fh, indent=2, ensure_ascii=False)
 

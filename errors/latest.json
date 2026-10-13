@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-13T13:27:27Z",
+ "scanned_at": "2026-10-13T16:22:39Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Portugal · U23 Liga Next Gen",
-  "Paraguay · Division de Honor",
-  "Bangladesh · Federation Cup",
-  "Uruguay · Tercera Division, Reserves",
-  "Brazil · Carioca, Serie B2"
+  "Kazakhstan · Vtoraya Liga",
+  "El Salvador · Liga Mayor de Baloncesto",
+  "International · BNXT League",
+  "International · European North Basketball League",
+  "Canada · WHL"
  ],
- "stake_fixtures": 6,
- "both_books": 6,
- "markets_compared": 58,
+ "stake_fixtures": 1,
+ "both_books": 1,
+ "markets_compared": 5,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 34,
-  "offline_priced": 24,
+  "stale_compared": 5,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 207,
+ "requests_left_this_month": 205,
  "errors": [],
  "month": {
   "flagged": 1,

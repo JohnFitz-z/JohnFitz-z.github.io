@@ -1,0 +1,841 @@
+{
+ "away": "Dodgers",
+ "backups": [
+  {
+   "away": "Newcastle United",
+   "bet": "Under 2.75 goals",
+   "confidence": "Medium",
+   "ev": 0.0375,
+   "event": "Coventry City vs Newcastle United",
+   "fair_prob": 0.4854,
+   "final_score": "Coventry City 4, Newcastle United 1",
+   "graded_at": "2026-10-12T21:12:00Z",
+   "home": "Coventry City",
+   "implied_prob": 0.5038,
+   "input": {
+    "adjustments": [],
+    "away": "Newcastle United",
+    "event": "Coventry City vs Newcastle United",
+    "game_id": "soccer-newcastleuni-coventrycity",
+    "home": "Coventry City",
+    "id": "soccer-newcastleuni-coventrycity:total:under2.75",
+    "league": "Premier League",
+    "line": 2.75,
+    "market": "total",
+    "market_odds": [
+     {
+      "book": "Pinnacle",
+      "prices": {
+       "over": 1.9,
+       "under": 2.01
+      }
+     },
+     {
+      "book": "BetAnySports",
+      "prices": {
+       "over": 1.86,
+       "under": 1.96
+      }
+     }
+    ],
+    "model_inputs": {
+     "away": {
+      "xga": 1.4,
+      "xgf": 1.35
+     },
+     "home": {
+      "xga": 1.7,
+      "xgf": 1.05
+     },
+     "league_avg": 1.4
+    },
+    "price": 1.985,
+    "selection": "under",
+    "sport": "Soccer",
+    "start_time": "2026-10-12T16:00:00-03:00"
+   },
+   "key": "b1",
+   "league": "Premier League",
+   "market": "Total",
+   "min_odds_american": -108,
+   "min_odds_decimal": 1.93,
+   "model_prob": 0.5252,
+   "no_edge": false,
+   "note": "Pinnacle fair 2.06 (48.5%); both teams under 1.0 npxG per match this season, Coventry scored 1 in 5 and Awoniyi is suspended; model 52.5%.",
+   "odds_american": -102,
+   "odds_decimal": 1.99,
+   "result_units": -1.25,
+   "sport": "Soccer",
+   "start_time": "2026-10-12T16:00:00-03:00",
+   "status": "lost",
+   "units": 1.25
+  },
+  {
+   "away": "Panthers",
+   "bet": "Sabres +1.5",
+   "confidence": "Low",
+   "ev": 0.0197,
+   "event": "Panthers @ Sabres",
+   "fair_prob": 0.7138,
+   "final_score": "Sabres 5, Panthers 3",
+   "graded_at": "2026-10-12T21:12:00Z",
+   "home": "Sabres",
+   "implied_prob": 0.7326,
+   "input": {
+    "adjustments": [
+     {
+      "direction": "+",
+      "factor": "Panthers without Barkov (LTIR) and Marchand (out ~6 weeks)",
+      "note": "Marchand played ~50 games last season, so the blended xG still carries him; Florida 9 GF in 5 games.",
+      "size": "small"
+     }
+    ],
+    "away": "Panthers",
+    "event": "Panthers @ Sabres",
+    "game_id": "nhl-panthers-sabres",
+    "home": "Sabres",
+    "id": "nhl-panthers-sabres:spread:home1.5",
+    "league": "NHL",
+    "line": 1.5,
+    "market": "spread",
+    "market_odds": [
+     {
+      "book": "Betsson",
+      "prices": {
+       "away": 2.95,
+       "home": 1.4
+      }
+     },
+     {
+      "book": "NordicBet",
+      "prices": {
+       "away": 2.95,
+       "home": 1.4
+      }
+     },
+     {
+      "book": "William Hill",
+      "prices": {
+       "away": 3.1,
+       "home": 1.36
+      }
+     },
+     {
+      "book": "LeoVegas (SE)",
+      "prices": {
+       "away": 3.25,
+       "home": 1.35
+      }
+     },
+     {
+      "book": "Unibet NL",
+      "prices": {
+       "away": 3.25,
+       "home": 1.34
+      }
+     },
+     {
+      "book": "Unibet",
+      "prices": {
+       "away": 3.25,
+       "home": 1.34
+      }
+     },
+     {
+      "book": "Coolbet",
+      "prices": {
+       "away": 3.25,
+       "home": 1.37
+      }
+     },
+     {
+      "book": "MyBookie",
+      "prices": {
+       "away": 3.1,
+       "home": 1.38
+      }
+     }
+    ],
+    "model_inputs": {
+     "away": {
+      "goalie_gsax60": -0.091,
+      "xga60": 2.519,
+      "xgf60": 2.51
+     },
+     "home": {
+      "goalie_gsax60": 0.045,
+      "xga60": 2.485,
+      "xgf60": 2.487
+     }
+    },
+    "price": 1.365,
+    "selection": "home",
+    "sport": "NHL",
+    "start_time": "2026-10-12T14:00:00-03:00"
+   },
+   "key": "b2",
+   "league": "NHL",
+   "market": "Puck line",
+   "min_odds_american": -278,
+   "min_odds_decimal": 1.36,
+   "model_prob": 0.747,
+   "no_edge": false,
+   "note": "Pinnacle-sourced fair 1.40; Florida without Barkov and Marchand; model 74.7%.",
+   "odds_american": -274,
+   "odds_decimal": 1.36,
+   "result_units": 0.45,
+   "sport": "NHL",
+   "start_time": "2026-10-12T14:00:00-03:00",
+   "status": "won",
+   "units": 1.25
+  }
+ ],
+ "bet": "Brewers +1.5",
+ "candidates": [
+  {
+   "bet": "Brewers moneyline",
+   "event": "Dodgers @ Brewers",
+   "note": "EV +3.2% at 2.17, estimate 47.6% vs 46.1% needed. Passed: Same game as the main pick; +1.5 has the better growth rate."
+  },
+  {
+   "bet": "Over 6.5 runs",
+   "event": "Guardians @ Rays",
+   "note": "EV +1.4% at 1.82, estimate 55.7% vs 54.9% needed. Passed: +1.4% EV, under the 2% card bar. Rasmussen on full rest offsets Griffin's short leash."
+  },
+  {
+   "bet": "Under 54.5 points",
+   "event": "Bills @ Rams",
+   "note": "EV +0.7% at 1.91, estimate 52.7% vs 52.4% needed. Passed: +0.7% EV; the 53.0 projection is too close to the 54.5 line."
+  },
+  {
+   "bet": "Under 2.5 goals",
+   "event": "Coventry City vs Newcastle United",
+   "note": "EV +0.8% at 2.16, estimate 46.7% vs 46.3% needed. Passed: Same game as backup 1; the 2.75 line has more EV."
+  },
+  {
+   "bet": "Golden Knights +1.5",
+   "event": "Golden Knights @ Wild",
+   "note": "EV +0.3% at 1.37, estimate 73.2% vs 73.0% needed. Passed: +0.4% EV; Wallstedt vs Pickard is undecided on a back-to-back."
+  },
+  {
+   "bet": "Senators +1.5",
+   "event": "Senators @ Devils",
+   "note": "EV -0.0% at 1.43, estimate 69.9% vs 69.9% needed. Passed: Negative EV once Sanderson's absence is priced in."
+  },
+  {
+   "bet": "Senators -0",
+   "event": "Senators @ Devils",
+   "note": "EV -0.6% at 2.19, estimate 45.4% vs 45.7% needed. Passed: Negative EV once Sanderson's absence is priced in."
+  },
+  {
+   "bet": "Wild +1.5",
+   "event": "Golden Knights @ Wild",
+   "note": "EV -1.7% at 1.35, estimate 72.6% vs 73.8% needed. Passed: Negative EV; Wallstedt may sit on the back-to-back."
+  },
+  {
+   "bet": "Over 57.5 points",
+   "event": "Roughriders @ Alouettes",
+   "note": "CFL odds were only available from Oct 7 (stale), and EV was -1.2% anyway. Dropped."
+  },
+  {
+   "bet": "Rams -3",
+   "event": "Bills @ Rams",
+   "note": "Model (Rams +6.0, Bills +4.3 nfelo-based) makes Rams -3.2, which matches the market. -1.9% EV. Passed."
+  }
+ ],
+ "card": [
+  {
+   "away": "Newcastle United",
+   "bet": "Under 2.75 goals",
+   "confidence": "Medium",
+   "ev": 0.0375,
+   "event": "Coventry City vs Newcastle United",
+   "fair_prob": 0.4854,
+   "final_score": "Coventry City 4, Newcastle United 1",
+   "graded_at": "2026-10-12T21:12:00Z",
+   "home": "Coventry City",
+   "implied_prob": 0.5038,
+   "input": {
+    "adjustments": [],
+    "away": "Newcastle United",
+    "event": "Coventry City vs Newcastle United",
+    "game_id": "soccer-newcastleuni-coventrycity",
+    "home": "Coventry City",
+    "id": "soccer-newcastleuni-coventrycity:total:under2.75",
+    "league": "Premier League",
+    "line": 2.75,
+    "market": "total",
+    "market_odds": [
+     {
+      "book": "Pinnacle",
+      "prices": {
+       "over": 1.9,
+       "under": 2.01
+      }
+     },
+     {
+      "book": "BetAnySports",
+      "prices": {
+       "over": 1.86,
+       "under": 1.96
+      }
+     }
+    ],
+    "model_inputs": {
+     "away": {
+      "xga": 1.4,
+      "xgf": 1.35
+     },
+     "home": {
+      "xga": 1.7,
+      "xgf": 1.05
+     },
+     "league_avg": 1.4
+    },
+    "price": 1.985,
+    "selection": "under",
+    "sport": "Soccer",
+    "start_time": "2026-10-12T16:00:00-03:00"
+   },
+   "key": "c1",
+   "league": "Premier League",
+   "market": "Total",
+   "min_odds_american": -108,
+   "min_odds_decimal": 1.93,
+   "model_prob": 0.5252,
+   "no_edge": false,
+   "note": "Pinnacle fair 2.06 (48.5%); both teams under 1.0 npxG per match this season, Coventry scored 1 in 5 and Awoniyi is suspended; model 52.5%.",
+   "odds_american": -102,
+   "odds_decimal": 1.99,
+   "result_units": -1.25,
+   "sport": "Soccer",
+   "start_time": "2026-10-12T16:00:00-03:00",
+   "status": "lost",
+   "units": 1.25
+  },
+  {
+   "away": "Panthers",
+   "bet": "Sabres moneyline",
+   "confidence": "Medium",
+   "ev": 0.0313,
+   "event": "Panthers @ Sabres",
+   "fair_prob": 0.5067,
+   "final_score": "Sabres 5, Panthers 3",
+   "graded_at": "2026-10-12T21:12:00Z",
+   "home": "Sabres",
+   "implied_prob": 0.5181,
+   "input": {
+    "adjustments": [
+     {
+      "direction": "+",
+      "factor": "Panthers without Barkov (LTIR) and Marchand (out ~6 weeks)",
+      "note": "Marchand played ~50 games last season, so the blended xG still carries him; Florida 9 GF in 5 games.",
+      "size": "small"
+     }
+    ],
+    "away": "Panthers",
+    "event": "Panthers @ Sabres",
+    "game_id": "nhl-panthers-sabres",
+    "home": "Sabres",
+    "id": "nhl-panthers-sabres:moneyline:home",
+    "league": "NHL",
+    "line": null,
+    "market": "moneyline",
+    "market_odds": [
+     {
+      "book": "Betsson",
+      "prices": {
+       "away": 1.86,
+       "home": 1.94
+      }
+     },
+     {
+      "book": "NordicBet",
+      "prices": {
+       "away": 1.86,
+       "home": 1.94
+      }
+     },
+     {
+      "book": "William Hill",
+      "prices": {
+       "away": 1.91,
+       "home": 1.91
+      }
+     },
+     {
+      "book": "Matchbook",
+      "prices": {
+       "away": 2.02,
+       "home": 1.95
+      }
+     },
+     {
+      "book": "GTbets",
+      "prices": {
+       "away": 1.91,
+       "home": 1.91
+      }
+     },
+     {
+      "book": "BetOnline",
+      "prices": {
+       "away": 1.93,
+       "home": 1.93
+      }
+     },
+     {
+      "book": "Pinnacle",
+      "prices": {
+       "away": 1.96,
+       "home": 1.92
+      }
+     },
+     {
+      "book": "BetAnySports",
+      "prices": {
+       "away": 1.91,
+       "home": 1.91
+      }
+     },
+     {
+      "book": "MyBookie",
+      "prices": {
+       "away": 1.88,
+       "home": 1.93
+      }
+     },
+     {
+      "book": "Everygame",
+      "prices": {
+       "away": 1.89,
+       "home": 1.93
+      }
+     }
+    ],
+    "model_inputs": {
+     "away": {
+      "goalie_gsax60": -0.091,
+      "xga60": 2.519,
+      "xgf60": 2.51
+     },
+     "home": {
+      "goalie_gsax60": 0.045,
+      "xga60": 2.485,
+      "xgf60": 2.487
+     }
+    },
+    "price": 1.93,
+    "selection": "home",
+    "sport": "NHL",
+    "start_time": "2026-10-12T14:00:00-03:00"
+   },
+   "key": "c2",
+   "league": "NHL",
+   "market": "Moneyline",
+   "min_odds_american": -111,
+   "min_odds_decimal": 1.9,
+   "model_prob": 0.5344,
+   "no_edge": false,
+   "note": "Pinnacle fair 1.97; Panthers without Barkov and Marchand (9 GF in 5 games); model 53.4%. Goalies unconfirmed on a back-to-back, so check that Ellis starts.",
+   "odds_american": -108,
+   "odds_decimal": 1.93,
+   "result_units": 0.7,
+   "sport": "NHL",
+   "start_time": "2026-10-12T14:00:00-03:00",
+   "status": "won",
+   "units": 0.75
+  }
+ ],
+ "close": {
+  "clv": -0.0065,
+  "fair_prob": 0.5949,
+  "odds_decimal": 1.65,
+  "source": "Pinnacle close (feed, 6:01 PM)"
+ },
+ "confidence": "High",
+ "created_at": "2026-10-12T08:10:00-03:00",
+ "date": "2026-10-12",
+ "ev": 0.0537,
+ "event": "Dodgers @ Brewers",
+ "fair_prob": 0.59,
+ "final_score": "Brewers 7, Dodgers 4",
+ "graded_at": "2026-10-13T01:10:00Z",
+ "home": "Brewers",
+ "implied_prob": 0.5988,
+ "input": {
+  "adjustments": [],
+  "away": "Dodgers",
+  "event": "Dodgers @ Brewers",
+  "game_id": "mlb-dodgers-brewers",
+  "home": "Brewers",
+  "id": "mlb-dodgers-brewers:spread:home1.5",
+  "league": "MLB",
+  "line": 1.5,
+  "market": "spread",
+  "market_odds": [
+   {
+    "book": "Coolbet",
+    "prices": {
+     "away": 2.25,
+     "home": 1.65
+    }
+   },
+   {
+    "book": "BetOnline",
+    "prices": {
+     "away": 2.3,
+     "home": 1.67
+    }
+   },
+   {
+    "book": "NordicBet",
+    "prices": {
+     "away": 2.22,
+     "home": 1.63
+    }
+   },
+   {
+    "book": "Betsson",
+    "prices": {
+     "away": 2.22,
+     "home": 1.63
+    }
+   },
+   {
+    "book": "GTbets",
+    "prices": {
+     "away": 2.3,
+     "home": 1.67
+    }
+   },
+   {
+    "book": "1xBet",
+    "prices": {
+     "away": 2.33,
+     "home": 1.69
+    }
+   },
+   {
+    "book": "William Hill",
+    "prices": {
+     "away": 2.2,
+     "home": 1.67
+    }
+   },
+   {
+    "book": "Matchbook",
+    "prices": {
+     "away": 2.38,
+     "home": 1.66
+    }
+   },
+   {
+    "book": "Pinnacle",
+    "prices": {
+     "away": 2.34,
+     "home": 1.66
+    }
+   },
+   {
+    "book": "BetAnySports",
+    "prices": {
+     "away": 2.3,
+     "home": 1.67
+    }
+   },
+   {
+    "book": "Marathonbet",
+    "prices": {
+     "away": 2.25,
+     "home": 1.63
+    }
+   },
+   {
+    "book": "Unibet NL",
+    "prices": {
+     "away": 2.2,
+     "home": 1.68
+    }
+   },
+   {
+    "book": "Unibet",
+    "prices": {
+     "away": 2.2,
+     "home": 1.68
+    }
+   },
+   {
+    "book": "LeoVegas (SE)",
+    "prices": {
+     "away": 2.18,
+     "home": 1.67
+    }
+   },
+   {
+    "book": "MyBookie",
+    "prices": {
+     "away": 2.25,
+     "home": 1.69
+    }
+   }
+  ],
+  "model_inputs": {
+   "away": {
+    "off": 110,
+    "opp_pen": 3.8,
+    "opp_sp": 3.33,
+    "opp_sp_ip": 5
+   },
+   "home": {
+    "off": 107.4,
+    "opp_pen": 3.7,
+    "opp_sp": 3.32,
+    "opp_sp_ip": 6.5
+   },
+   "park": 100
+  },
+  "price": 1.67,
+  "selection": "home",
+  "sport": "MLB",
+  "start_time": "2026-10-12T18:10:00-03:00"
+ },
+ "league": "MLB",
+ "market": "Run line",
+ "min_odds_american": -164,
+ "min_odds_decimal": 1.61,
+ "model": {
+  "books": [
+   {
+    "book": "Coolbet",
+    "decimal": 1.65,
+    "fair": 0.5828,
+    "margin": 0.0505,
+    "price": 1.65
+   },
+   {
+    "book": "BetOnline",
+    "decimal": 1.67,
+    "fair": 0.5833,
+    "margin": 0.0336,
+    "price": 1.67
+   },
+   {
+    "book": "NordicBet",
+    "decimal": 1.63,
+    "fair": 0.5842,
+    "margin": 0.0639,
+    "price": 1.63
+   },
+   {
+    "book": "Betsson",
+    "decimal": 1.63,
+    "fair": 0.5842,
+    "margin": 0.0639,
+    "price": 1.63
+   },
+   {
+    "book": "GTbets",
+    "decimal": 1.67,
+    "fair": 0.5833,
+    "margin": 0.0336,
+    "price": 1.67
+   },
+   {
+    "book": "1xBet",
+    "decimal": 1.69,
+    "fair": 0.5821,
+    "margin": 0.0209,
+    "price": 1.69
+   },
+   {
+    "book": "William Hill",
+    "decimal": 1.67,
+    "fair": 0.574,
+    "margin": 0.0533,
+    "price": 1.67
+   },
+   {
+    "book": "Matchbook",
+    "decimal": 1.66,
+    "fair": 0.5921,
+    "margin": 0.0226,
+    "price": 1.66,
+    "sharp": true
+   },
+   {
+    "book": "Pinnacle",
+    "decimal": 1.66,
+    "fair": 0.5888,
+    "margin": 0.0298,
+    "price": 1.66,
+    "sharp": true
+   },
+   {
+    "book": "BetAnySports",
+    "decimal": 1.67,
+    "fair": 0.5833,
+    "margin": 0.0336,
+    "price": 1.67
+   },
+   {
+    "book": "Marathonbet",
+    "decimal": 1.63,
+    "fair": 0.587,
+    "margin": 0.0579,
+    "price": 1.63
+   },
+   {
+    "book": "Unibet NL",
+    "decimal": 1.68,
+    "fair": 0.5721,
+    "margin": 0.0498,
+    "price": 1.68
+   },
+   {
+    "book": "Unibet",
+    "decimal": 1.68,
+    "fair": 0.5721,
+    "margin": 0.0498,
+    "price": 1.68
+   },
+   {
+    "book": "LeoVegas (SE)",
+    "decimal": 1.67,
+    "fair": 0.5721,
+    "margin": 0.0575,
+    "price": 1.67
+   },
+   {
+    "book": "MyBookie",
+    "decimal": 1.69,
+    "fair": 0.5749,
+    "margin": 0.0362,
+    "price": 1.69
+   }
+  ],
+  "engine": "1.0",
+  "ev": 0.0537,
+  "fair_odds_decimal": 1.58,
+  "growth_bp": 21.72,
+  "inputs": {
+   "away_runs": 3.96,
+   "home_runs": 4.05
+  },
+  "inputs_text": "Expected runs: Brewers 4.0, Dodgers 4.0",
+  "kelly_fraction": 0.25,
+  "kelly_full": 0.0801,
+  "market_margin": 0.0438,
+  "market_source": "sharp",
+  "method": "mlb_negbin",
+  "method_label": "Runs model",
+  "min_ev": 0.01,
+  "min_odds_decimal": 1.61,
+  "no_edge": false,
+  "notes": [
+   "Expected runs built from offense, opposing starter and bullpen, and park."
+  ],
+  "outcomes": {
+   "loss": 0.3691,
+   "win": 0.6309
+  },
+  "steps": [
+   {
+    "detail": "Matchbook, Pinnacle (sharp), power method, margin 2.6%; 13 other books shown for comparison",
+    "key": "market",
+    "label": "Sharp market, margin removed",
+    "prob": 0.59
+   },
+   {
+    "detail": "Expected runs: Brewers 4.0, Dodgers 4.0",
+    "key": "model",
+    "label": "Runs model",
+    "prob": 0.6701
+   },
+   {
+    "key": "blend",
+    "label": "Blend: 50% market, 50% model",
+    "prob": 0.6309
+   },
+   {
+    "key": "final",
+    "label": "Final estimate",
+    "prob": 0.6309
+   }
+  ],
+  "suspect": false,
+  "warnings": []
+ },
+ "model_prob": 0.6309,
+ "no_edge": false,
+ "odds_american": -149,
+ "odds_decimal": 1.67,
+ "price_check": {
+  "at": "2026-10-12T18:54:18Z",
+  "main": {
+   "bet": "Brewers +1.5",
+   "ev": 0.0315,
+   "fair_prob": 0.5939,
+   "min_odds_decimal": 1.6,
+   "model_prob": 0.6328,
+   "odds_decimal": 1.63,
+   "value": true,
+   "was_odds_decimal": 1.67
+  },
+  "note": "Bet the main pick.",
+  "recommend": "main"
+ },
+ "reasoning": [
+  "Pinnacle 1.66/2.34 on the run line strips to a fair 59.0% (1.69) for Brewers +1.5; the model says 63.1%, so 1.67 is +5.4% EV and good down to 1.61.",
+  "Starter gap is small: Yamamoto 3.33 FIP vs Henderson 3.32 FIP with a 24.5% K-BB; Henderson held LA to 1 ER in 12 IP this season.",
+  "Dodgers offense trimmed from 112 to 110 wRC+: Ohtani DH-only through biceps/knee issues (no HR since Aug 18), Freeman's knee, Will Smith 1-for-19 with 7 K.",
+  "Milwaukee's 107 wRC+ leads MLB in walk rate (10.6%) and is 9-1 in its last 10; Brewers won Game 1 2-1 at home.",
+  "Brewers pen inputs raised to 3.80 for fatigue (Uribe in all 5 postseason games, Ashby 2 IP last night) and Henderson's leash cut to 5 IP; the bet still clears +5%.",
+  "Low-total game (6.5) makes the extra 1.5 runs worth more: a one-run Dodgers win still cashes."
+ ],
+ "result_units": 1.34,
+ "risks": [
+  "An early Henderson exit or a blowup from a short-handed Brewers pen (Uribe/Ashby unavailable) exposes the middle innings.",
+  "If Ohtani and Freeman look healthy, the 110 wRC+ input is too low.",
+  "Price: below 1.61 the edge is gone."
+ ],
+ "sources": [
+  {
+   "title": "MLB.com: Yamamoto to start NLCS Game 2",
+   "url": "https://www.mlb.com/dodgers/news/yoshinobu-yamamoto-to-start-nlcs-game-2-2026-vs-brewers"
+  },
+  {
+   "title": "MLB.com: Brewers win NLCS Game 1",
+   "url": "https://www.mlb.com/dodgers/news/brewers-win-nlcs-game-1-2026"
+  },
+  {
+   "title": "Yahoo: Ohtani injuries",
+   "url": "https://sports.yahoo.com/articles/shohei-ohtani-hurt-injuries-dodgers-022704356.html"
+  },
+  {
+   "title": "FFS: Coventry half-term xG report",
+   "url": "https://www.fantasyfootballscout.co.uk/2026/10/05/the-fpl-half-term-report-coventry"
+  },
+  {
+   "title": "FFS: Newcastle half-term xG report",
+   "url": "https://www.fantasyfootballscout.co.uk/2026/10/07/the-fpl-half-term-report-newcastle"
+  },
+  {
+   "title": "Daily Faceoff starting goalies Oct 12",
+   "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-12"
+  },
+  {
+   "title": "NHL.com: Marchand injury update",
+   "url": "https://www.nhl.com/news/florida-panthers-brad-marchand-injury-status-update-october-9-2026"
+  },
+  {
+   "title": "nfelo NFL power ratings",
+   "url": "https://www.nfeloapp.com/nfl-power-ratings/"
+  }
+ ],
+ "sport": "MLB",
+ "start_time": "2026-10-12T18:10:00-03:00",
+ "status": "won",
+ "summary": "Henderson (2.47 ERA, 3.32 FIP, 1 ER in 12 IP vs LA this year) is priced like a big underdog to Yamamoto, but the run model has Milwaukee covering +1.5 63% of the time against a Pinnacle fair of 59%. The Dodgers bats are banged up (Ohtani DH-only, Freeman's knee, Smith 1-for-19) and LA is 2-for-22 with runners in scoring position this postseason.",
+ "units": 2
+}

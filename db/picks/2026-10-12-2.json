@@ -1,0 +1,227 @@
+{
+ "angle": "pitcher",
+ "away": "Guardians",
+ "bet": "Rays -1.5",
+ "card": [],
+ "close": {
+  "clv": -0.0451,
+  "fair_prob": 0.4152,
+  "odds_decimal": 2.34,
+  "source": "Pinnacle close (feed, 8:59 PM)"
+ },
+ "confidence": "Medium",
+ "created_at": "2026-10-12T21:37:03Z",
+ "date": "2026-10-12",
+ "ev": 0.0465,
+ "event": "Guardians @ Rays",
+ "fair_prob": 0.4165,
+ "final_score": "Guardians 7, Rays 3",
+ "graded_at": "2026-10-13T03:12:00Z",
+ "home": "Rays",
+ "implied_prob": 0.4348,
+ "input": {
+  "adjustments": [],
+  "away": "Guardians",
+  "event": "Guardians @ Rays",
+  "game_id": "mlb-guardians-rays",
+  "home": "Rays",
+  "id": "mlb-guardians-rays:spread:home-1.5",
+  "league": "MLB",
+  "line": -1.5,
+  "market": "spread",
+  "market_odds": [
+   {
+    "book": "William Hill",
+    "prices": {
+     "away": 1.62,
+     "home": 2.3
+    }
+   },
+   {
+    "book": "BetOnline",
+    "prices": {
+     "away": 1.66,
+     "home": 2.31
+    }
+   },
+   {
+    "book": "Coolbet",
+    "prices": {
+     "away": 1.65,
+     "home": 2.25
+    }
+   },
+   {
+    "book": "Pinnacle",
+    "prices": {
+     "away": 1.68,
+     "home": 2.33
+    }
+   },
+   {
+    "book": "Unibet",
+    "prices": {
+     "away": 1.64,
+     "home": 2.28
+    }
+   },
+   {
+    "book": "LeoVegas (SE)",
+    "prices": {
+     "away": 1.62,
+     "home": 2.28
+    }
+   },
+   {
+    "book": "Unibet NL",
+    "prices": {
+     "away": 1.64,
+     "home": 2.28
+    }
+   },
+   {
+    "book": "1xBet",
+    "prices": {
+     "away": 1.63,
+     "home": 2.46
+    }
+   },
+   {
+    "book": "GTbets",
+    "prices": {
+     "away": 1.66,
+     "home": 2.31
+    }
+   },
+   {
+    "book": "Everygame",
+    "prices": {
+     "away": 1.67,
+     "home": 2.3
+    }
+   },
+   {
+    "book": "Betsson",
+    "prices": {
+     "away": 1.63,
+     "home": 2.22
+    }
+   },
+   {
+    "book": "NordicBet",
+    "prices": {
+     "away": 1.63,
+     "home": 2.22
+    }
+   },
+   {
+    "book": "BetAnySports",
+    "prices": {
+     "away": 1.67,
+     "home": 2.3
+    }
+   },
+   {
+    "book": "MyBookie",
+    "prices": {
+     "away": 1.67,
+     "home": 2.3
+    }
+   },
+   {
+    "book": "Marathonbet",
+    "prices": {
+     "away": 1.57,
+     "home": 2.38
+    }
+   },
+   {
+    "book": "Matchbook",
+    "prices": {
+     "away": 1.7,
+     "home": 2.36
+    }
+   }
+  ],
+  "model_inputs": {
+   "away": {
+    "off": 93,
+    "opp_pen": 4.03,
+    "opp_sp": 3.15,
+    "opp_sp_ip": 5.7
+   },
+   "home": {
+    "off": 102.2,
+    "opp_pen": 3.81,
+    "opp_sp": 3.97,
+    "opp_sp_ip": 5.6
+   },
+   "park": 98
+  },
+  "my_prob": 0.455,
+  "price": 2.3,
+  "selection": "home",
+  "sport": "MLB",
+  "start_time": "2026-10-12T21:00:00-03:00"
+ },
+ "league": "MLB",
+ "line": -1.5,
+ "market": "Spread",
+ "market_key": "spread",
+ "method": "analyst",
+ "min_odds_american": 127,
+ "min_odds_decimal": 2.27,
+ "model": {
+  "fair_odds_decimal": 2.198,
+  "method": "analyst",
+  "min_odds_decimal": 2.27,
+  "steps": [
+   {
+    "key": "market",
+    "label": "Pinnacle, margin removed",
+    "prob": 0.4165
+   },
+   {
+    "detail": "Cleveland starts Griffin (5.19 ERA) with a bullpen that just pitched a five-game ALDS; rested Rays start Rasmussen off eight no-hit innings.",
+    "key": "final",
+    "label": "Our read",
+    "prob": 0.455
+   }
+  ]
+ },
+ "model_prob": 0.455,
+ "no_edge": false,
+ "note": "Cleveland starts Griffin (5.19 ERA) with a bullpen that just pitched a five-game ALDS; rested Rays start Rasmussen off eight no-hit innings.",
+ "odds_american": 130,
+ "odds_decimal": 2.3,
+ "price_source": "books median",
+ "reasoning": [
+  "Pinnacle has Rays -1.5 at 2.33, a fair 41.7%; our read is 45.5%, worth +4.7% at 2.30.",
+  "Griffin: 5.19 ERA in 9 starts for Cleveland; Cleveland says it wants length from him, which usually means a short leash and early bullpen.",
+  "Cleveland's ALDS went five games and ended Saturday; closer Cade Smith pitched in all five. Tampa Bay swept and has been off since Wednesday.",
+  "Rasmussen threw eight no-hit innings with 10 strikeouts in ALDS Game 1 and seven scoreless innings against Cleveland in July.",
+  "Cleveland's offense (93 wRC+) is the weaker of the two; a Rays win is more likely to be by two or more than by one when the losing side's pitching is stretched."
+ ],
+ "result_units": -0.75,
+ "risks": [
+  "Griffin goes deep (5+ innings) and Cleveland's top relievers are fresh enough for a one-run game.",
+  "Rays win by exactly one: the most common winning margin in a low-scoring playoff game.",
+  "Price: below 2.27 the edge is gone."
+ ],
+ "selection": "home",
+ "sources": [
+  {
+   "title": "Yahoo: Probable starters for ALCS Game 1",
+   "url": "https://sports.yahoo.com/articles/probable-starting-pitchers-rays-guardians-024706880.html"
+  },
+  {
+   "title": "Daily Faceoff: Starting goalies Oct 12",
+   "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-12"
+  }
+ ],
+ "sport": "MLB",
+ "start_time": "2026-10-12T21:00:00-03:00",
+ "status": "lost",
+ "summary": "Cleveland has to cover Game 1 with Foster Griffin (5.19 ERA in nine starts since the trade) and a bullpen that just pitched a full five-game ALDS, against a rested Rays team starting Drew Rasmussen off eight no-hit innings. That gap shows up late, which is what the run line pays for.",
+ "units": 0.75
+}

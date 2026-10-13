@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-13T19:31:15Z",
+ "scanned_at": "2026-10-13T22:28:08Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Norway · U20 Elite",
-  "USA · MLB",
-  "USA · Arizona Fall League",
-  "USA · NCAA, Regular Season",
-  "Norway · NM Cup"
+  "Germany Amateur · Regionalliga North",
+  "Sweden · Svenska Cup",
+  "USA · MLS",
+  "Ukraine · Ukraine Cup",
+  "North Macedonia · Macedonia Cup"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
- "markets_compared": 39,
+ "stake_fixtures": 30,
+ "both_books": 15,
+ "markets_compared": 1463,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 39,
-  "offline_priced": 0,
-  "self_priced": 0,
+  "stale_compared": 526,
+  "offline_priced": 592,
+  "self_priced": 345,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 202,
+ "requests_left_this_month": 200,
  "errors": [],
  "month": {
   "flagged": 1,

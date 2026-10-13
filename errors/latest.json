@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-12T22:19:18Z",
+ "scanned_at": "2026-10-13T01:20:17Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Russia · VHL",
-  "Belarus · Extraliga",
-  "WTA · WTA Beijing, China Women Singles",
-  "ITF Women · Santa Margherita di Pula",
-  "Montenegro · 2. CFL"
+  "Algeria · Ligue 1",
+  "International Clubs · Club Friendly Games",
+  "International Youth · U19 Friendly Games",
+  "Paraguay · Division Intermedia",
+  "Vietnam · Vietnam Cup"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
+ "stake_fixtures": 0,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 210,
+ "requests_left_this_month": 209,
  "errors": [],
  "month": {
   "flagged": 1,

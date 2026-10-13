@@ -1,0 +1,44 @@
+name: Probe score APIs
+
+# One-off helper: saves sample responses from the free score APIs the grader uses to the feed
+# branch (debug/scores/), so the parsers can be checked against real data.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feed
+          path: feed
+      - name: Fetch samples
+        run: |
+          mkdir -p feed/debug/scores && cd feed/debug/scores
+          get(){ curl -sS --max-time 20 -A "Mozilla/5.0" "$2" -o "$1" || echo "fail $1"; echo "$1 $(wc -c < $1 2>/dev/null)"; }
+          get nhl_score.json "https://api-web.nhle.com/v1/score/2026-10-12"
+          get mlb_schedule.json "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2026-10-12&hydrate=linescore"
+          get espn_nfl.json "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20261012"
+          get espn_ncaaf.json "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261010&groups=80&limit=300"
+          get espn_epl.json "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?dates=20261004"
+          get espn_ucl.json "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard?dates=20261013"
+          get espn_wnba.json "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard?dates=20261009"
+          get espn_nba.json "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261012"
+          get espn_eng2.json "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.2/scoreboard?dates=20261012"
+          get espn_esp1.json "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard?dates=20261011"
+          NHLID=$(python3 -c "import json;d=json.load(open('nhl_score.json'));print(d['games'][0]['id'])" 2>/dev/null || echo "")
+          [ -n "$NHLID" ] && get nhl_box.json "https://api-web.nhle.com/v1/gamecenter/$NHLID/boxscore"
+          PK=$(python3 -c "import json;d=json.load(open('mlb_schedule.json'));print(d['dates'][0]['games'][0]['gamePk'])" 2>/dev/null || echo "")
+          [ -n "$PK" ] && get mlb_box.json "https://statsapi.mlb.com/api/v1/game/$PK/boxscore"
+          EID=$(python3 -c "import json;d=json.load(open('espn_nfl.json'));print(d['events'][0]['id'])" 2>/dev/null || echo "")
+          [ -n "$EID" ] && get espn_nfl_summary.json "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=$EID"
+          ls -la
+      - name: Save
+        run: |
+          cd feed
+          git config user.name "Morning Line" && git config user.email "noreply@anthropic.com"
+          git add debug && git commit -m "Score API samples" && git push || echo "nothing"

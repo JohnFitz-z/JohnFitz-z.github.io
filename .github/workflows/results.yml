@@ -1,0 +1,55 @@
+name: Results
+
+# Every hour from 10 AM to 3 AM Atlantic: grade finished bets from the official score feeds (no AI),
+# record closing lines, update the scorecard and journal, rebuild the site. Runs on GitHub alone.
+on:
+  schedule:
+    - cron: "5 13-23 * * *"
+    - cron: "5 0-6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: db-writer
+  cancel-in-progress: false
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+          fetch-depth: 2
+      - uses: actions/checkout@v4
+        with:
+          ref: feed
+          path: feed
+      - name: Grade
+        working-directory: code
+        env:
+          FEED_DIR: ${{ github.workspace }}/feed
+        run: |
+          python3 tools/grade.py | tee /tmp/grade.txt
+          python3 tools/scorecard.py db --out notes/scorecard.md > /dev/null
+      - name: Publish
+        working-directory: code
+        run: |
+          n=$(grep -c '^GRADED' /tmp/grade.txt || true)
+          bash tools/ci_push.sh "Grade: $n bet(s)"
+      - name: Rebuild Pages
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" > /dev/null 2>&1 || true
+      - name: Notify
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ -n "${NTFY_TOPIC}" ] && grep -q '^GRADED' /tmp/grade.txt; then
+            grep '^GRADED' /tmp/grade.txt | sed 's/^GRADED [^ ]* //' | head -c 1500 | curl -s -H "Title: Morning Line results" -d @- "https://ntfy.sh/${NTFY_TOPIC}" > /dev/null
+          fi

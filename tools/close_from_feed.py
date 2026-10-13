@@ -106,13 +106,14 @@ def main(argv=None):
 
     if a.fresh:
         snap = None
-        for name in ("latest_afternoon.json", "latest.json"):
+        for name in ("latest_afternoon.json", "latest.json"):  # whichever was fetched most recently
             try:
                 with open(os.path.join(a.feed, "odds", name)) as f:
-                    snap = json.load(f)
-                break
-            except OSError:
+                    s = json.load(f)
+            except (OSError, ValueError):
                 continue
+            if snap is None or str(s.get("fetched_at", "")) > str(snap.get("fetched_at", "")):
+                snap = s
         if not snap:
             print("ERROR: no odds snapshot in the feed")
             return 1

@@ -217,7 +217,7 @@ class Odds:
 
 
 def todays_pick_sports(t0):
-    """Odds API sport keys and start times of today's pick(s) and backups, from the site's picks.json."""
+    """Odds API sport keys and start times of every bet on today's list(s), from the site's picks.json."""
     try:
         with open(os.path.join(CODE_ROOT, "data", "picks.json")) as f:
             picks = json.load(f).get("picks", [])
@@ -228,7 +228,7 @@ def todays_pick_sports(t0):
     for p in picks:
         if str(p.get("date")) != day or p.get("excluded"):
             continue
-        for bet in [p] + list(p.get("backups") or []):
+        for bet in [p] + list(p.get("backups") or []) + list(p.get("card") or []):
             keys = ENGINE_TO_KEYS.get(str(bet.get("sport", "")).upper())
             if not keys and str(bet.get("sport", "")).lower() == "soccer":
                 lg = str(bet.get("league", "")).lower()

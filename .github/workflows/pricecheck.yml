@@ -1,0 +1,50 @@
+name: Price check
+
+# 3:50 PM Atlantic, after the afternoon odds snapshot: reprice today's list (no AI) and mark any bet
+# whose edge has gone, so the site drops it from the money plan.
+on:
+  schedule:
+    - cron: "50 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: db-writer
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+          fetch-depth: 2
+      - uses: actions/checkout@v4
+        with:
+          ref: feed
+          path: feed
+      - name: Reprice
+        working-directory: code
+        env:
+          FEED_DIR: ${{ github.workspace }}/feed
+        run: python3 tools/price_check.py | tee /tmp/pc.txt
+      - name: Publish
+        working-directory: code
+        run: bash tools/ci_push.sh "Price check $(TZ=America/Halifax date +%F)"
+      - name: Rebuild Pages
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" > /dev/null 2>&1 || true
+      - name: Notify
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ -n "${NTFY_TOPIC}" ] && grep -q 'NO LONGER WORTH IT' /tmp/pc.txt; then
+            grep 'NO LONGER WORTH IT' /tmp/pc.txt | head -c 1000 | curl -s -H "Title: Price check: skip these" -d @- "https://ntfy.sh/${NTFY_TOPIC}" > /dev/null
+          fi

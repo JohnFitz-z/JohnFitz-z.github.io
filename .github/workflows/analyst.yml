@@ -1,0 +1,100 @@
+name: Analyst
+
+# 7:40 AM Atlantic: the analyst (Claude, through the Anthropic API) handicaps today's games and writes the
+# list to db/picks/, then this workflow publishes it and sends it to John's phone. Sundays at 10 PM the same
+# analyst reviews the week and updates notes/lessons.md. Needs the ANTHROPIC_API_KEY secret (billed to the
+# API account, separate from any Claude plan); without it these runs skip and the Claude task is the backup.
+on:
+  schedule:
+    - cron: "40 10 * * *"   # daily list, 7:40 AM ADT (6:40 AM AST in winter)
+    - cron: "0 1 * * 1"     # weekly review, Sunday 10 PM ADT
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "daily or weekly"
+        default: daily
+      force:
+        description: "Build a new list even if today's exists (true/false)"
+        default: "false"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: db-writer
+  cancel-in-progress: false
+
+jobs:
+  analyst:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      JOB: ${{ github.event.schedule == '0 1 * * 1' && 'weekly' || (inputs.job || 'daily') }}
+      FORCE: ${{ inputs.force || 'false' }}
+      MODEL: ${{ vars.ANALYST_MODEL || 'claude-opus-5-5' }}
+    steps:
+      - name: Key check
+        id: key
+        run: |
+          if [ -z "${ANTHROPIC_API_KEY}" ]; then echo "No ANTHROPIC_API_KEY secret yet: skipping."; echo "go=no" >> "$GITHUB_OUTPUT"; else echo "go=yes" >> "$GITHUB_OUTPUT"; fi
+          echo "today=$(TZ=America/Halifax date +%F)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.go == 'yes'
+        with:
+          path: code
+          fetch-depth: 2
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.go == 'yes'
+        with:
+          ref: feed
+          path: feed
+      - name: Already posted?
+        id: chk
+        if: steps.key.outputs.go == 'yes'
+        working-directory: code
+        run: |
+          f="db/picks/${{ steps.key.outputs.today }}.json"
+          if [ "$JOB" = "daily" ] && [ "$FORCE" != "true" ] && [ -f "$f" ] && grep -q '"method": "analyst"' "$f"; then
+            echo "Today's list is already posted."; echo "go=no" >> "$GITHUB_OUTPUT"
+          else echo "go=yes" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-node@v4
+        if: steps.chk.outputs.go == 'yes'
+        with:
+          node-version: 20
+      - name: Install Claude Code
+        if: steps.chk.outputs.go == 'yes'
+        run: npm install -g @anthropic-ai/claude-code > /dev/null && claude --version
+      - name: Run the analyst
+        if: steps.chk.outputs.go == 'yes'
+        working-directory: code
+        env:
+          FEED_DIR: ${{ github.workspace }}/feed
+        run: |
+          mkdir -p /tmp/ml
+          sed "s/{{TODAY}}/${{ steps.key.outputs.today }}/g" ".github/analyst/${JOB}.md" > /tmp/ml/prompt.md
+          claude -p "$(cat /tmp/ml/prompt.md)" --model "$MODEL" --max-turns 250 \
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,TodoWrite" \
+            --output-format text | tee /tmp/ml/analyst_out.txt
+      - name: Publish
+        if: steps.chk.outputs.go == 'yes'
+        working-directory: code
+        run: |
+          python3 tools/scorecard.py db --out notes/scorecard.md > /dev/null
+          if [ "$JOB" = "daily" ]; then msg="List for ${{ steps.key.outputs.today }}"; else msg="Weekly review ${{ steps.key.outputs.today }}"; fi
+          bash tools/ci_push.sh "$msg"
+      - name: Rebuild Pages
+        if: steps.chk.outputs.go == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" > /dev/null 2>&1 || true
+      - name: Notify
+        if: steps.chk.outputs.go == 'yes'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ -n "${NTFY_TOPIC}" ] && [ -s /tmp/ml/summary.txt ]; then
+            title="Morning Line: today's bets"; [ "$JOB" = "weekly" ] && title="Morning Line: weekly review"
+            head -c 1800 /tmp/ml/summary.txt | curl -s -H "Title: $title" -H "Click: https://johnfitz-z.github.io" -d @- "https://ntfy.sh/${NTFY_TOPIC}" > /dev/null
+          fi

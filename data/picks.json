@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T03:13:16Z",
+  "updated_at": "2026-10-13T17:45:06Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -4566,6 +4566,403 @@
       "summary": "Cleveland has to cover Game 1 with Foster Griffin (5.19 ERA in nine starts since the trade) and a bullpen that just pitched a full five-game ALDS, against a rested Rays team starting Drew Rasmussen off eight no-hit innings. That gap shows up late, which is what the run line pays for.",
       "units": 0.75,
       "id": "2026-10-12-2"
+    },
+    {
+      "angle": "rest",
+      "away": "Wild",
+      "bet": "Jets moneyline",
+      "card": [
+        {
+          "angle": "pitcher",
+          "away": "Guardians",
+          "bet": "Guardians moneyline",
+          "confidence": "Medium",
+          "ev": 0.0307,
+          "event": "Guardians @ Rays",
+          "fair_prob": 0.4447,
+          "home": "Rays",
+          "implied_prob": 0.4608,
+          "input": {
+            "adjustments": [],
+            "away": "Guardians",
+            "event": "Guardians @ Rays",
+            "game_id": "mlb-guardians-rays",
+            "home": "Rays",
+            "id": "mlb-guardians-rays:moneyline:away",
+            "league": "MLB",
+            "line": null,
+            "market": "moneyline",
+            "market_odds": [
+              {
+                "book": "Coolbet",
+                "prices": {
+                  "away": 2.12,
+                  "home": 1.73
+                }
+              },
+              {
+                "book": "Unibet FR",
+                "prices": {
+                  "away": 1.92,
+                  "home": 1.61
+                }
+              },
+              {
+                "book": "William Hill",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.73
+                }
+              },
+              {
+                "book": "Betclic (FR)",
+                "prices": {
+                  "away": 2.09,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "NordicBet",
+                "prices": {
+                  "away": 2.12,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "Betsson",
+                "prices": {
+                  "away": 2.12,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "MyBookie",
+                "prices": {
+                  "away": 2.13,
+                  "home": 1.75
+                }
+              },
+              {
+                "book": "BetOnline",
+                "prices": {
+                  "away": 2.18,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Betfair Exchange",
+                "prices": {
+                  "away": 2.22,
+                  "home": 1.79
+                }
+              },
+              {
+                "book": "BetAnySports",
+                "prices": {
+                  "away": 2.15,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Everygame",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Marathonbet",
+                "prices": {
+                  "away": 2.11,
+                  "home": 1.73
+                }
+              },
+              {
+                "book": "Winamax (DE)",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "Winamax (FR)",
+                "prices": {
+                  "away": 2.05,
+                  "home": 1.72
+                }
+              },
+              {
+                "book": "Matchbook",
+                "prices": {
+                  "away": 2.24,
+                  "home": 1.79
+                }
+              },
+              {
+                "book": "LeoVegas (SE)",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.76
+                }
+              },
+              {
+                "book": "Unibet",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Unibet NL",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "GTbets",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Pinnacle",
+                "prices": {
+                  "away": 2.2,
+                  "home": 1.77
+                }
+              },
+              {
+                "book": "Tipico",
+                "prices": {
+                  "away": 2.1,
+                  "home": 1.72
+                }
+              }
+            ],
+            "model_inputs": {
+              "away": {
+                "off": 93,
+                "opp_pen": 4.03,
+                "opp_sp": 4.12,
+                "opp_sp_ip": 5.3
+              },
+              "home": {
+                "off": 102.2,
+                "opp_pen": 3.81,
+                "opp_sp": 3.2,
+                "opp_sp_ip": 5.8
+              },
+              "park": 98
+            },
+            "my_prob": 0.475,
+            "price": 2.17,
+            "selection": "away",
+            "sport": "MLB",
+            "start_time": "2026-10-13T21:00:00-03:00"
+          },
+          "key": "c1",
+          "league": "MLB",
+          "market": "Moneyline",
+          "market_key": "moneyline",
+          "min_odds_american": 117,
+          "min_odds_decimal": 2.17,
+          "model": {
+            "fair_odds_decimal": 2.105,
+            "method": "analyst",
+            "min_odds_decimal": 2.17,
+            "steps": [
+              {
+                "key": "market",
+                "label": "Pinnacle, margin removed",
+                "prob": 0.4447
+              },
+              {
+                "detail": "Only at 2.17+. Rookie Messick (3.20 FIP) is the better pitcher on paper than Peralta (4.12), but the market prices Tampa Bay as if it's the other way round.",
+                "key": "final",
+                "label": "Our read",
+                "prob": 0.475
+              }
+            ]
+          },
+          "model_prob": 0.475,
+          "note": "Only at 2.17+. Rookie Messick (3.20 FIP) is the better pitcher on paper than Peralta (4.12), but the market prices Tampa Bay as if it's the other way round.",
+          "odds_american": 117,
+          "odds_decimal": 2.17,
+          "price_source": "minimum Stake price: bet only at 2.17 or better",
+          "selection": "away",
+          "sport": "MLB",
+          "start_time": "2026-10-13T21:00:00-03:00",
+          "status": "pending",
+          "units": 0.5
+        }
+      ],
+      "confidence": "Medium",
+      "created_at": "2026-10-13T17:44:45Z",
+      "date": "2026-10-13",
+      "ev": 0.0343,
+      "event": "Wild @ Jets",
+      "fair_prob": 0.5057,
+      "home": "Jets",
+      "implied_prob": 0.5076,
+      "input": {
+        "adjustments": [],
+        "away": "Wild",
+        "event": "Wild @ Jets",
+        "game_id": "nhl-wild-jets",
+        "home": "Jets",
+        "id": "nhl-wild-jets:moneyline:home",
+        "league": "NHL",
+        "line": null,
+        "market": "moneyline",
+        "market_odds": [
+          {
+            "book": "William Hill",
+            "prices": {
+              "away": 1.91,
+              "home": 1.91
+            }
+          },
+          {
+            "book": "Betsson",
+            "prices": {
+              "away": 1.9,
+              "home": 1.9
+            }
+          },
+          {
+            "book": "NordicBet",
+            "prices": {
+              "away": 1.9,
+              "home": 1.9
+            }
+          },
+          {
+            "book": "GTbets",
+            "prices": {
+              "away": 1.91,
+              "home": 1.91
+            }
+          },
+          {
+            "book": "BetOnline",
+            "prices": {
+              "away": 1.94,
+              "home": 1.93
+            }
+          },
+          {
+            "book": "Matchbook",
+            "prices": {
+              "away": 2.02,
+              "home": 1.97
+            }
+          },
+          {
+            "book": "MyBookie",
+            "prices": {
+              "away": 1.89,
+              "home": 1.92
+            }
+          },
+          {
+            "book": "BetAnySports",
+            "prices": {
+              "away": 1.91,
+              "home": 1.91
+            }
+          },
+          {
+            "book": "Everygame",
+            "prices": {
+              "away": 1.91,
+              "home": 1.91
+            }
+          },
+          {
+            "book": "Pinnacle",
+            "prices": {
+              "away": 1.97,
+              "home": 1.93
+            }
+          }
+        ],
+        "model_inputs": {
+          "away": {
+            "goalie_gsax60": -0.071,
+            "xga60": 2.371,
+            "xgf60": 2.583
+          },
+          "home": {
+            "goalie_gsax60": 0.139,
+            "xga60": 2.557,
+            "xgf60": 2.413
+          }
+        },
+        "my_prob": 0.525,
+        "price": 1.97,
+        "selection": "home",
+        "sport": "NHL",
+        "start_time": "2026-10-13T21:25:00-03:00"
+      },
+      "league": "NHL",
+      "market": "Moneyline",
+      "market_key": "moneyline",
+      "method": "analyst",
+      "min_odds_american": -103,
+      "min_odds_decimal": 1.97,
+      "model": {
+        "fair_odds_decimal": 1.905,
+        "method": "analyst",
+        "min_odds_decimal": 1.97,
+        "steps": [
+          {
+            "key": "market",
+            "label": "Pinnacle, margin removed",
+            "prob": 0.5057
+          },
+          {
+            "detail": "Only at 1.97+. Minnesota played last night, flew in overnight and starts backup Pickard; Winnipeg is rested with Skinner in net.",
+            "key": "final",
+            "label": "Our read",
+            "prob": 0.525
+          }
+        ]
+      },
+      "model_prob": 0.525,
+      "no_edge": false,
+      "note": "Only at 1.97+. Minnesota played last night, flew in overnight and starts backup Pickard; Winnipeg is rested with Skinner in net.",
+      "odds_american": -103,
+      "odds_decimal": 1.97,
+      "price_source": "minimum Stake price: bet only at 1.97 or better",
+      "reasoning": [
+        "Guardians: rookie Parker Messick (3.20 FIP) starts against Freddy Peralta (4.12 FIP), yet the market has Tampa Bay at 55.5%. We have Cleveland at 47.5%, worth +3% at 2.17.",
+        "Jets: Minnesota played at home last night, flew in overnight and starts Calvin Pickard on the second night of a back-to-back, against a rested Winnipeg with Skinner confirmed. We have Winnipeg at 52.5%, worth +3% at 1.97.",
+        "Passed: Panthers @ Blue Jackets, Devils @ Red Wings, Blues @ Senators and Sabres @ Canadiens are back-to-back spots too, but the odds already reflect the backup goalies and fatigue."
+      ],
+      "risks": [
+        "Most books are below the take-at price on both; if Stake is too, there is no bet today.",
+        "Messick is a rookie in his first ALCS start; nerves are real.",
+        "Pickard has been solid in relief; one hot goalie erases a fatigue edge."
+      ],
+      "selection": "home",
+      "sources": [
+        {
+          "title": "Daily Faceoff: starting goalies Oct 13",
+          "url": "https://www.dailyfaceoff.com/starting-goalies/2026-10-13"
+        },
+        {
+          "title": "MLB Stats API probables (feed)",
+          "url": "https://github.com/JohnFitz-z/JohnFitz-z.github.io/tree/feed/stats/mlb"
+        }
+      ],
+      "sport": "NHL",
+      "start_time": "2026-10-13T21:25:00-03:00",
+      "status": "pending",
+      "summary": "A thin day: the market has already priced tonight's back-to-back and goalie spots. Two bets are worth it, but only at a price slightly better than most books show. Check Stake: if it has the take-at price or better, bet it; if not, skip.",
+      "units": 0.5,
+      "id": "2026-10-13"
     }
   ]
 }

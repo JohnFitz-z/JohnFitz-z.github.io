@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T01:07:25Z",
+  "updated_at": "2026-10-13T03:13:16Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -4344,12 +4344,20 @@
       "away": "Guardians",
       "bet": "Rays -1.5",
       "card": [],
+      "close": {
+        "clv": -0.0451,
+        "fair_prob": 0.4152,
+        "odds_decimal": 2.34,
+        "source": "Pinnacle close (feed, 8:59 PM)"
+      },
       "confidence": "Medium",
       "created_at": "2026-10-12T21:37:03Z",
       "date": "2026-10-12",
       "ev": 0.0465,
       "event": "Guardians @ Rays",
       "fair_prob": 0.4165,
+      "final_score": "Guardians 7, Rays 3",
+      "graded_at": "2026-10-13T03:12:00Z",
       "home": "Rays",
       "implied_prob": 0.4348,
       "input": {
@@ -4535,6 +4543,7 @@
         "Rasmussen threw eight no-hit innings with 10 strikeouts in ALDS Game 1 and seven scoreless innings against Cleveland in July.",
         "Cleveland's offense (93 wRC+) is the weaker of the two; a Rays win is more likely to be by two or more than by one when the losing side's pitching is stretched."
       ],
+      "result_units": -0.75,
       "risks": [
         "Griffin goes deep (5+ innings) and Cleveland's top relievers are fresh enough for a one-run game.",
         "Rays win by exactly one: the most common winning margin in a low-scoring playoff game.",
@@ -4553,7 +4562,7 @@
       ],
       "sport": "MLB",
       "start_time": "2026-10-12T21:00:00-03:00",
-      "status": "pending",
+      "status": "lost",
       "summary": "Cleveland has to cover Game 1 with Foster Griffin (5.19 ERA in nine starts since the trade) and a bullpen that just pitched a full five-game ALDS, against a rested Rays team starting Drew Rasmussen off eight no-hit innings. That gap shows up late, which is what the run line pays for.",
       "units": 0.75,
       "id": "2026-10-12-2"

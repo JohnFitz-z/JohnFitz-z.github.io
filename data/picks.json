@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T18:55:13Z",
+  "updated_at": "2026-10-13T19:15:36Z",
   "picks": [
     {
       "bet": "Padres moneyline",
@@ -4935,21 +4935,6 @@
       "note": "Only at 1.97+. Minnesota played last night, flew in overnight and starts backup Pickard; Winnipeg is rested with Skinner in net.",
       "odds_american": -103,
       "odds_decimal": 1.97,
-      "price_check": {
-        "at": "2026-10-13T18:54:41Z",
-        "main": {
-          "bet": "Jets moneyline",
-          "ev": 0.0028,
-          "fair_prob": 0.5048,
-          "min_odds_decimal": 1.93,
-          "model_prob": 0.525,
-          "odds_decimal": 1.91,
-          "value": false,
-          "was_odds_decimal": 1.97
-        },
-        "note": "No bet still has value at current prices. Skip today.",
-        "recommend": "none"
-      },
       "price_source": "minimum Stake price: bet only at 1.97 or better",
       "reasoning": [
         "Guardians: rookie Parker Messick (3.20 FIP) starts against Freddy Peralta (4.12 FIP), yet the market has Tampa Bay at 55.5%. We have Cleveland at 47.5%, worth +3% at 2.17.",

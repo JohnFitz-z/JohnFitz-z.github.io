@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-13T01:20:17Z",
+ "scanned_at": "2026-10-13T13:27:27Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Algeria · Ligue 1",
-  "International Clubs · Club Friendly Games",
-  "International Youth · U19 Friendly Games",
-  "Paraguay · Division Intermedia",
-  "Vietnam · Vietnam Cup"
+  "Portugal · U23 Liga Next Gen",
+  "Paraguay · Division de Honor",
+  "Bangladesh · Federation Cup",
+  "Uruguay · Tercera Division, Reserves",
+  "Brazil · Carioca, Serie B2"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 6,
+ "both_books": 6,
+ "markets_compared": 58,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
+  "stale_compared": 34,
+  "offline_priced": 24,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 209,
+ "requests_left_this_month": 207,
  "errors": [],
  "month": {
   "flagged": 1,

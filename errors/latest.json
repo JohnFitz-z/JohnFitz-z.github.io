@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-14T19:34:06Z",
+ "scanned_at": "2026-10-14T22:28:50Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · Africa Cup of Nations Qualification",
-  "International Youth · U19 Friendly Games, Women",
-  "Israel · Liga Alef",
-  "Israel · Liga Bet South A",
-  "Nicaragua · Primera Division"
+  "Mexico · LNBP",
+  "Venezuela · Copa Venezuela",
+  "Norway · 3. Division, Group 5",
+  "USA · NCAA Regular Season, Women",
+  "Paraguay · Primera Division Reserve, Clausura"
  ],
  "stake_fixtures": 3,
  "both_books": 3,
- "markets_compared": 31,
+ "markets_compared": 7,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 5,
-  "offline_priced": 26,
+  "stale_compared": 2,
+  "offline_priced": 5,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 194,
+ "requests_left_this_month": 192,
  "errors": [],
  "month": {
   "flagged": 1,

@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-14T16:33:38Z",
+ "scanned_at": "2026-10-14T19:34:06Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Ivory Coast · Ligue 1",
-  "Chile · Copa Chile",
-  "Ukraine · U19",
-  "Kenya · Premier League",
-  "India · Calcutta 1st Division"
+  "International · Africa Cup of Nations Qualification",
+  "International Youth · U19 Friendly Games, Women",
+  "Israel · Liga Alef",
+  "Israel · Liga Bet South A",
+  "Nicaragua · Primera Division"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 3,
+ "both_books": 3,
+ "markets_compared": 31,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
+  "stale_compared": 5,
+  "offline_priced": 26,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 196,
+ "requests_left_this_month": 194,
  "errors": [],
  "month": {
   "flagged": 1,

@@ -225,8 +225,17 @@
    "selection": "away",
    "sport": "MLB",
    "start_time": "2026-10-13T21:00:00-03:00",
-   "status": "pending",
-   "units": 0.5
+   "status": "lost",
+   "units": 0.5,
+   "final_score": "Cleveland Guardians 1, Tampa Bay Rays 3",
+   "result_units": -0.5,
+   "graded_at": "2026-10-14T03:26:24Z",
+   "close": {
+    "odds_decimal": 2.19,
+    "fair_prob": 0.447,
+    "clv": -0.0301,
+    "source": "Pinnacle close (feed, 8:43 PM)"
+   }
   }
  ],
  "confidence": "Medium",
@@ -390,7 +399,16 @@
  ],
  "sport": "NHL",
  "start_time": "2026-10-13T21:25:00-03:00",
- "status": "pending",
+ "status": "won",
  "summary": "A thin day: the market has already priced tonight's back-to-back and goalie spots. Two bets are worth it, but only at a price slightly better than most books show. Check Stake: if it has the take-at price or better, bet it; if not, skip.",
- "units": 0.5
+ "units": 0.5,
+ "final_score": "Wild 2, Jets 5",
+ "result_units": 0.48,
+ "graded_at": "2026-10-14T03:26:24Z",
+ "close": {
+  "odds_decimal": 1.98,
+  "fair_prob": 0.4934,
+  "clv": -0.028,
+  "source": "Pinnacle close (feed, 9:05 PM)"
+ }
 }

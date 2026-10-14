@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-14T01:30:16Z",
+ "scanned_at": "2026-10-14T13:37:14Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International Youth · U21 UEFA European Championship, Qualification",
-  "England · EFL Trophy",
-  "Slovenia · 2. Liga",
-  "International · Gulf Cup",
-  "International Youth · U19 European Championship, Women, Qualification"
+  "ITF Women · Seville",
+  "France · Coupe de France",
+  "England Amateur · Northern Premier League Premier",
+  "USA · NHL",
+  "International Youth · U20 Friendly Games"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 2,
+ "both_books": 2,
+ "markets_compared": 45,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 45,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 199,
+ "requests_left_this_month": 197,
  "errors": [],
  "month": {
   "flagged": 1,

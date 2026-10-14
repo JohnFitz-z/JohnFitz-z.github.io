@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-13T22:28:08Z",
+ "scanned_at": "2026-10-14T01:30:16Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Germany Amateur · Regionalliga North",
-  "Sweden · Svenska Cup",
-  "USA · MLS",
-  "Ukraine · Ukraine Cup",
-  "North Macedonia · Macedonia Cup"
+  "International Youth · U21 UEFA European Championship, Qualification",
+  "England · EFL Trophy",
+  "Slovenia · 2. Liga",
+  "International · Gulf Cup",
+  "International Youth · U19 European Championship, Women, Qualification"
  ],
- "stake_fixtures": 30,
- "both_books": 15,
- "markets_compared": 1463,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 526,
-  "offline_priced": 592,
-  "self_priced": 345,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 200,
+ "requests_left_this_month": 199,
  "errors": [],
  "month": {
   "flagged": 1,

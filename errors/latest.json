@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-14T13:37:14Z",
+ "scanned_at": "2026-10-14T16:33:38Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "ITF Women · Seville",
-  "France · Coupe de France",
-  "England Amateur · Northern Premier League Premier",
-  "USA · NHL",
-  "International Youth · U20 Friendly Games"
+  "Ivory Coast · Ligue 1",
+  "Chile · Copa Chile",
+  "Ukraine · U19",
+  "Kenya · Premier League",
+  "India · Calcutta 1st Division"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
- "markets_compared": 45,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 45,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 197,
+ "requests_left_this_month": 196,
  "errors": [],
  "month": {
   "flagged": 1,

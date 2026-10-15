@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-15T01:30:18Z",
+ "scanned_at": "2026-10-15T13:41:41Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Wales · Cymru Championship South",
-  "Peru · Copa de la Liga",
-  "Ireland · National League",
-  "Serbia · KLS",
-  "Slovakia · Extraliga"
+  "International · Champions Hockey League",
+  "International · United League",
+  "Argentina · LNB",
+  "Romania · Liga Nationala",
+  "Lithuania · King Mindaugas Cup"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 3,
+ "both_books": 3,
+ "markets_compared": 28,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 28,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 191,
+ "requests_left_this_month": 189,
  "errors": [],
  "month": {
   "flagged": 1,

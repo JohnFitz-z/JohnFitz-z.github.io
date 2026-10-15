@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-15T16:32:57Z",
+ "scanned_at": "2026-10-15T19:31:00Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Lithuania · NKL",
-  "El Salvador · Liga Mayor de Baloncesto Femenino",
-  "Latvia · NBL",
-  "Romania · Cup, Women",
-  "Switzerland · SB League, Women"
+  "Belarus · Championship",
+  "International · United Youth League",
+  "Ecuador · LBP",
+  "Poland · Polska Hokej Liga",
+  "Slovakia · SHL"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 11,
+ "both_books": 10,
+ "markets_compared": 11,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 11,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 188,
+ "requests_left_this_month": 186,
  "errors": [],
  "month": {
   "flagged": 1,

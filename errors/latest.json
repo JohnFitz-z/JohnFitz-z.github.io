@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-15T13:41:41Z",
+ "scanned_at": "2026-10-15T16:32:57Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · Champions Hockey League",
-  "International · United League",
-  "Argentina · LNB",
-  "Romania · Liga Nationala",
-  "Lithuania · King Mindaugas Cup"
+  "Lithuania · NKL",
+  "El Salvador · Liga Mayor de Baloncesto Femenino",
+  "Latvia · NBL",
+  "Romania · Cup, Women",
+  "Switzerland · SB League, Women"
  ],
- "stake_fixtures": 3,
- "both_books": 3,
- "markets_compared": 28,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 28,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 189,
+ "requests_left_this_month": 188,
  "errors": [],
  "month": {
   "flagged": 1,

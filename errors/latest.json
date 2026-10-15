@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-14T22:28:50Z",
+ "scanned_at": "2026-10-15T01:30:18Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Mexico · LNBP",
-  "Venezuela · Copa Venezuela",
-  "Norway · 3. Division, Group 5",
-  "USA · NCAA Regular Season, Women",
-  "Paraguay · Primera Division Reserve, Clausura"
+  "Wales · Cymru Championship South",
+  "Peru · Copa de la Liga",
+  "Ireland · National League",
+  "Serbia · KLS",
+  "Slovakia · Extraliga"
  ],
- "stake_fixtures": 3,
- "both_books": 3,
- "markets_compared": 7,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 2,
-  "offline_priced": 5,
+  "stale_compared": 0,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 192,
+ "requests_left_this_month": 191,
  "errors": [],
  "month": {
   "flagged": 1,

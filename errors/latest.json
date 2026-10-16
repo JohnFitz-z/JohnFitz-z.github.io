@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-16T16:30:12Z",
+ "scanned_at": "2026-10-16T19:28:53Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "USA · NCAA, Regular Season",
-  "Russia · VHL",
-  "Portugal · U23 Liga Next Gen",
-  "International · European North Basketball League",
-  "USA · MLB"
+  "USA · MLS",
+  "England Amateur · Northern Premier League Premier",
+  "USA · NHL",
+  "Mexico · LNBP"
  ],
- "stake_fixtures": 40,
- "both_books": 30,
- "markets_compared": 321,
+ "stake_fixtures": 67,
+ "both_books": 48,
+ "markets_compared": 1502,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 321,
-  "offline_priced": 0,
+  "stale_compared": 923,
+  "offline_priced": 579,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -25,11 +25,11 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 2,
+  "stale": 3,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 178,
+ "requests_left_this_month": 176,
  "errors": [
   {
    "fixture_id": "id1402765370898844",
@@ -46,10 +46,10 @@
    "outcome_id": "142140",
    "market": "First Quarter Winner",
    "outcome": "1",
-   "stake_price": 1.47,
+   "stake_price": 1.49,
    "type": "stale",
    "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.049,
+   "ev": 0.0632,
    "fair_prob": 0.7136,
    "fair_odds": 1.401,
    "take_at": 1.43,
@@ -57,6 +57,33 @@
    "pinnacle_price": 1.363,
    "pinnacle_margin": 0.0511,
    "pinnacle_limit": 688.0
+  },
+  {
+   "fixture_id": "id1402765370918918",
+   "tournament_id": 27653,
+   "sport": "american-football",
+   "league": "NCAA, Regular Season",
+   "country": "USA",
+   "start_time": "2026-10-17T16:00:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46974419-lsu-tigers-mississippi-state-bulldogs",
+   "home": "LSU Tigers",
+   "away": "Mississippi State Bulldogs",
+   "id": "id1402765370918918:14214:14215",
+   "market_id": "14214",
+   "outcome_id": "14215",
+   "market": "Handicap (incl. overtime)",
+   "outcome": "2",
+   "stake_price": 1.77,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0368,
+   "fair_prob": 0.5858,
+   "fair_odds": 1.707,
+   "take_at": 1.74,
+   "units": 1.0,
+   "pinnacle_price": 1.649,
+   "pinnacle_margin": 0.045,
+   "pinnacle_limit": 3081.0
   },
   {
    "fixture_id": "id1402765370898856",
@@ -87,9 +114,9 @@
   }
  ],
  "month": {
-  "flagged": 3,
+  "flagged": 4,
   "closed": 1,
-  "avg_ev": 0.0455,
+  "avg_ev": 0.0433,
   "avg_clv": 0.0598,
   "beat_close": 1
  }

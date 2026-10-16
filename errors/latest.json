@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-16T19:28:53Z",
+ "scanned_at": "2026-10-16T22:27:44Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "USA · NCAA, Regular Season",
-  "USA · MLS",
-  "England Amateur · Northern Premier League Premier",
-  "USA · NHL",
-  "Mexico · LNBP"
+  "Nicaragua · Primera Division",
+  "Venezuela · Copa Venezuela",
+  "International · Champions Hockey League",
+  "Argentina · LNB"
  ],
- "stake_fixtures": 67,
- "both_books": 48,
- "markets_compared": 1502,
+ "stake_fixtures": 66,
+ "both_books": 32,
+ "markets_compared": 376,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 923,
-  "offline_priced": 579,
+  "stale_compared": 376,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -25,11 +25,11 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 3,
+  "stale": 2,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 176,
+ "requests_left_this_month": 174,
  "errors": [
   {
    "fixture_id": "id1402765370898844",
@@ -49,14 +49,14 @@
    "stake_price": 1.49,
    "type": "stale",
    "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0632,
-   "fair_prob": 0.7136,
-   "fair_odds": 1.401,
+   "ev": 0.059,
+   "fair_prob": 0.7107,
+   "fair_odds": 1.407,
    "take_at": 1.43,
    "units": 1.0,
-   "pinnacle_price": 1.363,
-   "pinnacle_margin": 0.0511,
-   "pinnacle_limit": 688.0
+   "pinnacle_price": 1.369,
+   "pinnacle_margin": 0.0499,
+   "pinnacle_limit": 677.0
   },
   {
    "fixture_id": "id1402765370918918",
@@ -73,10 +73,10 @@
    "outcome_id": "14215",
    "market": "Handicap (incl. overtime)",
    "outcome": "2",
-   "stake_price": 1.77,
+   "stake_price": 1.76,
    "type": "stale",
    "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0368,
+   "ev": 0.0309,
    "fair_prob": 0.5858,
    "fair_odds": 1.707,
    "take_at": 1.74,
@@ -84,33 +84,6 @@
    "pinnacle_price": 1.649,
    "pinnacle_margin": 0.045,
    "pinnacle_limit": 3081.0
-  },
-  {
-   "fixture_id": "id1402765370898856",
-   "tournament_id": 27653,
-   "sport": "american-football",
-   "league": "NCAA, Regular Season",
-   "country": "USA",
-   "start_time": "2026-10-17T16:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/46641280-indiana-hoosiers-ohio-state-buckeyes",
-   "home": "Indiana Hoosiers",
-   "away": "Ohio State Buckeyes",
-   "id": "id1402765370898856:14805:14805",
-   "market_id": "14805",
-   "outcome_id": "14805",
-   "market": "Handicap First Half",
-   "outcome": "1",
-   "stake_price": 2.55,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0308,
-   "fair_prob": 0.4042,
-   "fair_odds": 2.474,
-   "take_at": 2.52,
-   "units": 0.5,
-   "pinnacle_price": 2.29,
-   "pinnacle_margin": 0.0593,
-   "pinnacle_limit": 375.0
   }
  ],
  "month": {

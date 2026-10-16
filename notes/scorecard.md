@@ -1,4 +1,4 @@
-# Scorecard (updated 2026-10-15)
+# Scorecard (updated 2026-10-16)
 
 Every bet the system posted, whether or not John placed it. "Wins vs odds" is actual wins minus the wins the odds implied: positive means the picks beat the price. CLV is how the closing price compared with ours (positive = the market moved our way), the best early sign of a real edge.
 

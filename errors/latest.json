@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-16T01:29:43Z",
+ "scanned_at": "2026-10-16T13:39:35Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "WTA · WTA Beijing, China Women Doubles",
-  "Challenger · ATP Challenger Villena, Spain Men Doubles",
-  "Challenger · ATP Challenger Braga, Portugal Men Doubles",
-  "WTA 125K · WTA 125K Samsun, Turkiye Women Doubles",
-  "USA · NCAA, Regular Season"
+  "USA · NCAA, Regular Season",
+  "Brazil · Brasileiro Serie B",
+  "Peru · Liga 2",
+  "England · National League Cup",
+  "Russia · KHL"
  ],
- "stake_fixtures": 19,
- "both_books": 16,
- "markets_compared": 231,
+ "stake_fixtures": 44,
+ "both_books": 35,
+ "markets_compared": 714,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 231,
-  "offline_priced": 0,
+  "stale_compared": 538,
+  "offline_priced": 176,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 182,
+ "requests_left_this_month": 180,
  "errors": [
   {
    "fixture_id": "id1402765370898844",
@@ -46,17 +46,17 @@
    "outcome_id": "142140",
    "market": "First Quarter Winner",
    "outcome": "1",
-   "stake_price": 1.46,
+   "stake_price": 1.47,
    "type": "stale",
    "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0366,
-   "fair_prob": 0.71,
-   "fair_odds": 1.408,
-   "take_at": 1.43,
+   "ev": 0.0532,
+   "fair_prob": 0.7165,
+   "fair_odds": 1.396,
+   "take_at": 1.42,
    "units": 1.0,
-   "pinnacle_price": 1.37,
-   "pinnacle_margin": 0.0504,
-   "pinnacle_limit": 675.0
+   "pinnacle_price": 1.358,
+   "pinnacle_margin": 0.0508,
+   "pinnacle_limit": 698.0
   }
  ],
  "month": {

@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-15T22:28:50Z",
+ "scanned_at": "2026-10-16T01:29:43Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "International · Asia League",
-  "USA · NCAA Women, Regular Season",
-  "Czechia · University League",
-  "Nicaragua · Campeonato GPO",
-  "ATP · ATP Beijing, China Men Singles"
+  "WTA · WTA Beijing, China Women Doubles",
+  "Challenger · ATP Challenger Villena, Spain Men Doubles",
+  "Challenger · ATP Challenger Braga, Portugal Men Doubles",
+  "WTA 125K · WTA 125K Samsun, Turkiye Women Doubles",
+  "USA · NCAA, Regular Season"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 19,
+ "both_books": 16,
+ "markets_compared": 231,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 231,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -25,16 +25,44 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 185,
- "errors": [],
+ "requests_left_this_month": 182,
+ "errors": [
+  {
+   "fixture_id": "id1402765370898844",
+   "tournament_id": 27653,
+   "sport": "american-football",
+   "league": "NCAA, Regular Season",
+   "country": "USA",
+   "start_time": "2026-10-17T16:00:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46958121-smu-mustangs-virginia-cavaliers",
+   "home": "SMU Mustangs",
+   "away": "Virginia Cavaliers",
+   "id": "id1402765370898844:142140:142140",
+   "market_id": "142140",
+   "outcome_id": "142140",
+   "market": "First Quarter Winner",
+   "outcome": "1",
+   "stake_price": 1.46,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0366,
+   "fair_prob": 0.71,
+   "fair_odds": 1.408,
+   "take_at": 1.43,
+   "units": 1.0,
+   "pinnacle_price": 1.37,
+   "pinnacle_margin": 0.0504,
+   "pinnacle_limit": 675.0
+  }
+ ],
  "month": {
-  "flagged": 1,
+  "flagged": 2,
   "closed": 1,
-  "avg_ev": 0.0691,
+  "avg_ev": 0.0528,
   "avg_clv": 0.0598,
   "beat_close": 1
  }

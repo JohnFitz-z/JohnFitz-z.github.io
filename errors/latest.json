@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-17T16:25:53Z",
+ "scanned_at": "2026-10-17T19:23:28Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "Russia · KHL",
-  "Mexico · LNBP",
-  "USA · NCAA, Regular Season",
-  "Russia · VHL",
-  "International · Champions Hockey League"
+  "England Amateur · Northern Premier League Premier",
+  "Portugal · U23 Liga Next Gen",
+  "International · European North Basketball League",
+  "USA · MLB",
+  "USA · NCAA, Regular Season"
  ],
- "stake_fixtures": 78,
- "both_books": 55,
- "markets_compared": 301,
+ "stake_fixtures": 74,
+ "both_books": 42,
+ "markets_compared": 170,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 301,
+  "stale_compared": 170,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -25,16 +25,44 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 168,
- "errors": [],
+ "requests_left_this_month": 166,
+ "errors": [
+  {
+   "fixture_id": "id1402765370898858",
+   "tournament_id": 27653,
+   "sport": "american-football",
+   "league": "NCAA, Regular Season",
+   "country": "USA",
+   "start_time": "2026-10-17T23:30:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46958148-ucla-bruins-wisconsin-badgers",
+   "home": "UCLA Bruins",
+   "away": "Wisconsin Badgers",
+   "id": "id1402765370898858:14821:14822",
+   "market_id": "14821",
+   "outcome_id": "14822",
+   "market": "Handicap First Half",
+   "outcome": "2",
+   "stake_price": 2.47,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0393,
+   "fair_prob": 0.4208,
+   "fair_odds": 2.377,
+   "take_at": 2.42,
+   "units": 0.75,
+   "pinnacle_price": 2.21,
+   "pinnacle_margin": 0.0589,
+   "pinnacle_limit": 750.0
+  }
+ ],
  "month": {
-  "flagged": 4,
+  "flagged": 5,
   "closed": 4,
-  "avg_ev": 0.0433,
+  "avg_ev": 0.0425,
   "avg_clv": 0.0035,
   "beat_close": 2
  }

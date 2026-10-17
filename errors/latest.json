@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-17T19:23:28Z",
+ "scanned_at": "2026-10-17T22:24:14Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "England Amateur · Northern Premier League Premier",
-  "Portugal · U23 Liga Next Gen",
-  "International · European North Basketball League",
-  "USA · MLB",
-  "USA · NCAA, Regular Season"
+  "USA · NCAA, Regular Season",
+  "USA · MLS",
+  "Brazil · Brasileiro Serie B",
+  "Nicaragua · Primera Division",
+  "Venezuela · Copa Venezuela"
  ],
- "stake_fixtures": 74,
- "both_books": 42,
- "markets_compared": 170,
+ "stake_fixtures": 65,
+ "both_books": 56,
+ "markets_compared": 1603,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 170,
-  "offline_priced": 0,
+  "stale_compared": 998,
+  "offline_priced": 605,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 166,
+ "requests_left_this_month": 163,
  "errors": [
   {
    "fixture_id": "id1402765370898858",

@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-18T19:23:16Z",
+ "scanned_at": "2026-10-18T22:24:36Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Russia · KHL",
   "USA · NCAA, Regular Season",
-  "Portugal · U23 Liga Next Gen",
-  "International · European North Basketball League",
-  "USA · MLB"
+  "Brazil · Brasileiro Serie B",
+  "USA · MLS",
+  "Nicaragua · Primera Division"
  ],
- "stake_fixtures": 13,
- "both_books": 9,
- "markets_compared": 44,
+ "stake_fixtures": 35,
+ "both_books": 30,
+ "markets_compared": 125,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 44,
-  "offline_priced": 0,
-  "self_priced": 0,
+  "stale_compared": 72,
+  "offline_priced": 42,
+  "self_priced": 11,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 153,
+ "requests_left_this_month": 151,
  "errors": [
   {
    "fixture_id": "id1500026872166420",

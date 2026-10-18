@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-18T13:29:00Z",
+ "scanned_at": "2026-10-18T16:26:47Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
-  "Mexico · LNBP",
-  "International · Champions Hockey League",
-  "England Amateur · Northern Premier League Premier",
-  "Brazil · Brasileiro Serie B"
+  "Peru · Liga 2",
+  "England · National League Cup",
+  "Russia · KHL",
+  "Russia · VHL",
+  "USA · NHL"
  ],
- "stake_fixtures": 11,
- "both_books": 11,
- "markets_compared": 318,
+ "stake_fixtures": 18,
+ "both_books": 16,
+ "markets_compared": 103,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 204,
-  "offline_priced": 114,
+  "stale_compared": 67,
+  "offline_priced": 36,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -25,16 +25,44 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 157,
- "errors": [],
+ "requests_left_this_month": 155,
+ "errors": [
+  {
+   "fixture_id": "id1500026872166406",
+   "tournament_id": 268,
+   "sport": "ice-hockey",
+   "league": "KHL",
+   "country": "Russia",
+   "start_time": "2026-10-19T09:00:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46882767-amur-khabarovsk-hc-barys",
+   "home": "Amur Khabarovsk",
+   "away": "HC Barys",
+   "id": "id1500026872166406:153:154",
+   "market_id": "153",
+   "outcome_id": "154",
+   "market": "Regular Time Result",
+   "outcome": "X",
+   "stake_price": 4.0,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0466,
+   "fair_prob": 0.2617,
+   "fair_odds": 3.822,
+   "take_at": 3.88,
+   "units": 0.5,
+   "pinnacle_price": 3.51,
+   "pinnacle_margin": 0.0712,
+   "pinnacle_limit": 300.0
+  }
+ ],
  "month": {
-  "flagged": 5,
+  "flagged": 6,
   "closed": 5,
-  "avg_ev": 0.0425,
+  "avg_ev": 0.0432,
   "avg_clv": 0.0107,
   "beat_close": 3
  }

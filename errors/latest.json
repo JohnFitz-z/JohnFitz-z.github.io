@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-18T22:24:36Z",
+ "scanned_at": "2026-10-19T01:33:12Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Russia · KHL",
+  "Venezuela · Copa Venezuela",
+  "England Amateur · Northern Premier League Premier",
   "USA · NCAA, Regular Season",
-  "Brazil · Brasileiro Serie B",
-  "USA · MLS",
-  "Nicaragua · Primera Division"
+  "Mexico · LNBP"
  ],
- "stake_fixtures": 35,
- "both_books": 30,
- "markets_compared": 125,
+ "stake_fixtures": 15,
+ "both_books": 11,
+ "markets_compared": 20,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 72,
-  "offline_priced": 42,
-  "self_priced": 11,
+  "stale_compared": 20,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 151,
+ "requests_left_this_month": 149,
  "errors": [
   {
    "fixture_id": "id1500026872166420",

@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-19T13:46:28Z",
+ "scanned_at": "2026-10-19T16:34:24Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Russia · KHL",
-  "International · Champions Hockey League",
-  "Argentina · LNB",
-  "Poland · Polska Hokej Liga",
-  "Slovakia · SHL"
+  "USA · NHL",
+  "USA · NCAA, Regular Season",
+  "Brazil · Brasileiro Serie B",
+  "Peru · Liga 2"
  ],
- "stake_fixtures": 13,
- "both_books": 11,
- "markets_compared": 52,
+ "stake_fixtures": 21,
+ "both_books": 18,
+ "markets_compared": 262,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 52,
-  "offline_priced": 0,
+  "stale_compared": 188,
+  "offline_priced": 74,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -25,40 +25,12 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 1,
+  "stale": 0,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 147,
- "errors": [
-  {
-   "fixture_id": "id1500026872166422",
-   "tournament_id": 268,
-   "sport": "ice-hockey",
-   "league": "KHL",
-   "country": "Russia",
-   "start_time": "2026-10-21T14:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/46935853-metallurg-magnitogorsk-salavat-yulaev-ufa",
-   "home": "Metallurg Magnitogorsk",
-   "away": "Salavat Yulaev UFA",
-   "id": "id1500026872166422:151:151",
-   "market_id": "151",
-   "outcome_id": "151",
-   "market": "Winner (incl. overtime and penalties)",
-   "outcome": "1",
-   "stake_price": 1.45,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0318,
-   "fair_prob": 0.7116,
-   "fair_odds": 1.405,
-   "take_at": 1.43,
-   "units": 1.0,
-   "pinnacle_price": 1.363,
-   "pinnacle_margin": 0.0563,
-   "pinnacle_limit": 826.0
-  }
- ],
+ "requests_left_this_month": 145,
+ "errors": [],
  "month": {
   "flagged": 8,
   "closed": 6,

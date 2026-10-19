@@ -1,26 +1,26 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-19T19:33:00Z",
+ "scanned_at": "2026-10-19T22:29:08Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Russia · KHL",
-  "England · National League Cup",
-  "Russia · VHL",
-  "England Amateur · Northern Premier League Premier",
-  "Mexico · LNBP"
+  "Portugal · U23 Liga Next Gen",
+  "International · European North Basketball League",
+  "USA · MLB",
+  "USA · NCAA, Regular Season"
  ],
- "stake_fixtures": 21,
- "both_books": 19,
- "markets_compared": 88,
+ "stake_fixtures": 12,
+ "both_books": 10,
+ "markets_compared": 45,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 56,
-  "offline_priced": 32,
+  "stale_compared": 45,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 1,
+  "fit_failed": 0,
   "fit_implausible": 0,
   "book_mismatch": 0
  },
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 143,
+ "requests_left_this_month": 141,
  "errors": [],
  "month": {
   "flagged": 8,

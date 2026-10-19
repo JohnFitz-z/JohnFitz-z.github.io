@@ -1,23 +1,23 @@
 {
- "started_at": "2026-10-19T16:34:24Z",
+ "started_at": "2026-10-19T19:33:00Z",
  "errors": [],
  "tournaments": 5,
  "stake_fixtures": 21,
- "pinnacle_fixtures": 18,
- "compared": 262,
+ "pinnacle_fixtures": 23,
+ "compared": 88,
  "detectors": {
-  "stale_compared": 188,
-  "offline_priced": 74,
+  "stale_compared": 56,
+  "offline_priced": 32,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 0,
+  "fit_failed": 1,
   "fit_implausible": 0,
   "book_mismatch": 0
  },
  "errors_found": 0,
  "new": 0,
  "alerts": 0,
- "requests_left": 145,
- "finished_at": "2026-10-19T16:34:26Z"
+ "requests_left": 143,
+ "finished_at": "2026-10-19T19:33:03Z"
 }

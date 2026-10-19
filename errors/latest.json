@@ -1,26 +1,26 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-19T16:34:24Z",
+ "scanned_at": "2026-10-19T19:33:00Z",
  "tournaments": 5,
  "leagues_available": 154,
  "leagues_scanned": [
   "Russia · KHL",
-  "USA · NHL",
-  "USA · NCAA, Regular Season",
-  "Brazil · Brasileiro Serie B",
-  "Peru · Liga 2"
+  "England · National League Cup",
+  "Russia · VHL",
+  "England Amateur · Northern Premier League Premier",
+  "Mexico · LNBP"
  ],
  "stake_fixtures": 21,
- "both_books": 18,
- "markets_compared": 262,
+ "both_books": 19,
+ "markets_compared": 88,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 188,
-  "offline_priced": 74,
+  "stale_compared": 56,
+  "offline_priced": 32,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 0,
+  "fit_failed": 1,
   "fit_implausible": 0,
   "book_mismatch": 0
  },
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 145,
+ "requests_left_this_month": 143,
  "errors": [],
  "month": {
   "flagged": 8,

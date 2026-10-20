@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-20T16:32:48Z",
+ "scanned_at": "2026-10-20T19:33:44Z",
  "tournaments": 5,
- "leagues_available": 154,
+ "leagues_available": 177,
  "leagues_scanned": [
   "Russia · KHL",
-  "Mexico · LNBP",
-  "Peru · Liga 2",
-  "USA · NHL",
-  "International · Champions Hockey League"
+  "Challenger · ATP Challenger Fort Worth, USA Men Singles",
+  "Challenger · ATP Challenger Cali, Colombia Men Singles",
+  "UTR Men · UTR PTT Lubbock Men 01",
+  "UTR Men · UTR PTT Newport Beach Men 25"
  ],
- "stake_fixtures": 22,
+ "stake_fixtures": 24,
  "both_books": 17,
- "markets_compared": 266,
+ "markets_compared": 56,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 266,
+  "stale_compared": 56,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 135,
+ "requests_left_this_month": 126,
  "errors": [],
  "month": {
   "flagged": 8,

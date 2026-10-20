@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-20T19:33:44Z",
+ "scanned_at": "2026-10-20T22:29:39Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Russia · KHL",
-  "Challenger · ATP Challenger Fort Worth, USA Men Singles",
-  "Challenger · ATP Challenger Cali, Colombia Men Singles",
-  "UTR Men · UTR PTT Lubbock Men 01",
-  "UTR Men · UTR PTT Newport Beach Men 25"
+  "UTR Women · UTR PTT Saitama Women 06",
+  "UTR Women · UTR PTT Lubbock Women 01",
+  "UTR Women · UTR PTT Newport Beach Women 25",
+  "Tunisia · Ligue 2"
  ],
- "stake_fixtures": 24,
- "both_books": 17,
- "markets_compared": 56,
+ "stake_fixtures": 13,
+ "both_books": 9,
+ "markets_compared": 23,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 56,
+  "stale_compared": 23,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 126,
+ "requests_left_this_month": 124,
  "errors": [],
  "month": {
   "flagged": 8,

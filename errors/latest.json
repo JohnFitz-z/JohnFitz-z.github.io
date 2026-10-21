@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-21T16:32:01Z",
+ "scanned_at": "2026-10-21T19:33:00Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Iran · Azadegan League",
-  "Italy · Serie C, Group A",
-  "Saudi Arabia · U21 Elite League",
-  "Israel · WBL, Women",
-  "Challenger · ATP Challenger Lisbon, Portugal Men Singles"
+  "ITF Women · Austin",
+  "ITF Women · Sydney",
+  "ITF Men · Mumbai",
+  "ITF Women · Qian Daohu",
+  "ITF Women · Karlovy Vary"
  ],
- "stake_fixtures": 10,
+ "stake_fixtures": 0,
  "both_books": 0,
- "markets_compared": 6,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
   "stale_compared": 0,
   "offline_priced": 0,
-  "self_priced": 6,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 118,
+ "requests_left_this_month": 117,
  "errors": [],
  "month": {
   "flagged": 8,

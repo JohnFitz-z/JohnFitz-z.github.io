@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-20T22:29:39Z",
+ "scanned_at": "2026-10-21T01:33:54Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Russia · KHL",
-  "UTR Women · UTR PTT Saitama Women 06",
-  "UTR Women · UTR PTT Lubbock Women 01",
-  "UTR Women · UTR PTT Newport Beach Women 25",
-  "Tunisia · Ligue 2"
+  "UTR Men · UTR PTT Carvoeiro Men 07",
+  "Algeria · Ligue 2",
+  "WTA · WTA Osaka, Japan Women Singles",
+  "ITF Men · Tanagura"
  ],
  "stake_fixtures": 13,
  "both_books": 9,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 124,
+ "requests_left_this_month": 122,
  "errors": [],
  "month": {
   "flagged": 8,

@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-21T13:40:02Z",
+ "scanned_at": "2026-10-21T16:32:01Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Russia · KHL",
-  "Turkiye · 1. Lig",
-  "International Youth · U17 FIFA World Cup, Women",
-  "Colombia · Torneo DIMAYOR",
-  "International Clubs · CONMEBOL Libertadores, Women"
+  "Iran · Azadegan League",
+  "Italy · Serie C, Group A",
+  "Saudi Arabia · U21 Elite League",
+  "Israel · WBL, Women",
+  "Challenger · ATP Challenger Lisbon, Portugal Men Singles"
  ],
- "stake_fixtures": 17,
- "both_books": 12,
- "markets_compared": 24,
+ "stake_fixtures": 10,
+ "both_books": 0,
+ "markets_compared": 6,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 18,
-  "offline_priced": 6,
-  "self_priced": 0,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 6,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 120,
+ "requests_left_this_month": 118,
  "errors": [],
  "month": {
   "flagged": 8,
-  "closed": 6,
+  "closed": 8,
   "avg_ev": 0.0409,
-  "avg_clv": 0.0172,
-  "beat_close": 4
+  "avg_clv": 0.0213,
+  "beat_close": 6
  }
 }

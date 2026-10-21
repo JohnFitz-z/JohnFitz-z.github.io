@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-21T19:33:00Z",
+ "scanned_at": "2026-10-21T22:30:23Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "ITF Women · Austin",
-  "ITF Women · Sydney",
-  "ITF Men · Mumbai",
-  "ITF Women · Qian Daohu",
-  "ITF Women · Karlovy Vary"
+  "Netherlands · Eerste Divisie",
+  "Argentina · Primera LPF",
+  "Israel · National League",
+  "Egypt · Premier League",
+  "Iran · Pro League"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 26,
+ "both_books": 25,
+ "markets_compared": 805,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
-  "self_priced": 0,
+  "stale_compared": 410,
+  "offline_priced": 366,
+  "self_priced": 29,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 117,
+ "requests_left_this_month": 115,
  "errors": [],
  "month": {
   "flagged": 8,

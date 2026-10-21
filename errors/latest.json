@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-21T01:33:54Z",
+ "scanned_at": "2026-10-21T13:40:02Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Russia · KHL",
-  "UTR Men · UTR PTT Carvoeiro Men 07",
-  "Algeria · Ligue 2",
-  "WTA · WTA Osaka, Japan Women Singles",
-  "ITF Men · Tanagura"
+  "Turkiye · 1. Lig",
+  "International Youth · U17 FIFA World Cup, Women",
+  "Colombia · Torneo DIMAYOR",
+  "International Clubs · CONMEBOL Libertadores, Women"
  ],
- "stake_fixtures": 13,
- "both_books": 9,
- "markets_compared": 23,
+ "stake_fixtures": 17,
+ "both_books": 12,
+ "markets_compared": 24,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 23,
-  "offline_priced": 0,
+  "stale_compared": 18,
+  "offline_priced": 6,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 122,
+ "requests_left_this_month": 120,
  "errors": [],
  "month": {
   "flagged": 8,

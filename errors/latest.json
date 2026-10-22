@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-22T19:33:22Z",
+ "scanned_at": "2026-10-22T22:28:44Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Montenegro · 1. CFL",
-  "Belarus · Vysshaya Liga",
-  "Cyprus · 1st Division",
-  "Ireland · Premier Division",
-  "Latvia · Virsliga"
+  "Bulgaria · Bulgarian Cup",
+  "Armenia · First League",
+  "Estonia · Esiliiga",
+  "Oman · Omani League",
+  "Kuwait · Premier League"
  ],
- "stake_fixtures": 15,
- "both_books": 14,
- "markets_compared": 162,
+ "stake_fixtures": 6,
+ "both_books": 6,
+ "markets_compared": 37,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 115,
-  "offline_priced": 43,
-  "self_priced": 4,
+  "stale_compared": 12,
+  "offline_priced": 25,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 107,
+ "requests_left_this_month": 105,
  "errors": [],
  "month": {
   "flagged": 10,

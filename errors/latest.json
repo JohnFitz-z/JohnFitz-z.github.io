@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-21T22:30:23Z",
+ "scanned_at": "2026-10-22T01:33:06Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Netherlands · Eerste Divisie",
-  "Argentina · Primera LPF",
-  "Israel · National League",
-  "Egypt · Premier League",
-  "Iran · Pro League"
+  "Saudi Arabia · Saudi Pro League",
+  "Saudi Arabia · Division 1",
+  "Bahrain · First Division",
+  "Norway · 3. Division, Group 3",
+  "United Arab Emirates · U23 Pro League"
  ],
- "stake_fixtures": 26,
- "both_books": 25,
- "markets_compared": 805,
+ "stake_fixtures": 10,
+ "both_books": 9,
+ "markets_compared": 430,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 410,
-  "offline_priced": 366,
-  "self_priced": 29,
+  "stale_compared": 238,
+  "offline_priced": 192,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 115,
+ "requests_left_this_month": 113,
  "errors": [],
  "month": {
   "flagged": 8,

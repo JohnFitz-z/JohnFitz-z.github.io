@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-22T01:33:06Z",
+ "scanned_at": "2026-10-22T13:43:21Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Saudi Arabia · Saudi Pro League",
-  "Saudi Arabia · Division 1",
-  "Bahrain · First Division",
-  "Norway · 3. Division, Group 3",
-  "United Arab Emirates · U23 Pro League"
+  "Israel · Super League",
+  "Brazil · NBB",
+  "Argentina · Liga Argentina",
+  "Argentina · Liga Femenina, Women",
+  "ATP · ATP Lyon, France Men Singles"
  ],
- "stake_fixtures": 10,
- "both_books": 9,
- "markets_compared": 430,
+ "stake_fixtures": 3,
+ "both_books": 3,
+ "markets_compared": 6,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 238,
-  "offline_priced": 192,
+  "stale_compared": 6,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 113,
+ "requests_left_this_month": 111,
  "errors": [],
  "month": {
   "flagged": 8,

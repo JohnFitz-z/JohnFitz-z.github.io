@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-22T22:28:44Z",
+ "scanned_at": "2026-10-23T01:36:52Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Bulgaria · Bulgarian Cup",
-  "Armenia · First League",
-  "Estonia · Esiliiga",
-  "Oman · Omani League",
-  "Kuwait · Premier League"
+  "England Amateur · U21 Premier League 2",
+  "Jamaica · Premier League",
+  "International Youth · U20 Africa Cup of Nations NIU",
+  "Norway · 3. Division, Group 2",
+  "Norway · 3. Division, Group 6"
  ],
- "stake_fixtures": 6,
- "both_books": 6,
- "markets_compared": 37,
+ "stake_fixtures": 1,
+ "both_books": 1,
+ "markets_compared": 1,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 12,
-  "offline_priced": 25,
+  "stale_compared": 1,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 105,
+ "requests_left_this_month": 103,
  "errors": [],
  "month": {
   "flagged": 10,

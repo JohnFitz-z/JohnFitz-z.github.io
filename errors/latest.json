@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-23T16:34:58Z",
+ "scanned_at": "2026-10-23T19:32:34Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "Brazil · Piauiense, Women",
-  "Uruguay · LUB",
-  "Puerto Rico · BSNF, Women",
-  "Turkiye · TKBL, Women"
+  "Denmark · Superisligaen",
+  "Russia · WHL, Women",
+  "Czechia · U20 Extraliga Junioru",
+  "Belarus · Vysshaya Liga"
  ],
- "stake_fixtures": 22,
- "both_books": 21,
- "markets_compared": 712,
+ "stake_fixtures": 19,
+ "both_books": 18,
+ "markets_compared": 782,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 523,
-  "offline_priced": 189,
-  "self_priced": 0,
+  "stale_compared": 541,
+  "offline_priced": 194,
+  "self_priced": 47,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 99,
+ "requests_left_this_month": 97,
  "errors": [],
  "month": {
   "flagged": 13,
-  "closed": 8,
+  "closed": 11,
   "avg_ev": 0.0392,
-  "avg_clv": 0.0213,
+  "avg_clv": 0.0087,
   "beat_close": 6
  }
 }

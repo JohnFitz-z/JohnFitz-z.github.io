@@ -1,41 +1,69 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-24T01:38:01Z",
+ "scanned_at": "2026-10-24T13:30:41Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "England · Premier League",
-  "Denmark · Superliga",
-  "Sweden · Allsvenskan",
-  "Sweden · Superettan"
+  "Challenger · ATP Challenger Fort Worth, USA Men Singles",
+  "Challenger · ATP Challenger Cali, Colombia Men Singles",
+  "Turkiye · Super Lig",
+  "Spain · LaLiga 2"
  ],
- "stake_fixtures": 62,
- "both_books": 56,
- "markets_compared": 1851,
+ "stake_fixtures": 32,
+ "both_books": 31,
+ "markets_compared": 1578,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 1342,
-  "offline_priced": 462,
-  "self_priced": 47,
+  "stale_compared": 1098,
+  "offline_priced": 415,
+  "self_priced": 65,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 93,
- "errors": [],
+ "requests_left_this_month": 91,
+ "errors": [
+  {
+   "fixture_id": "id1000005472477528",
+   "tournament_id": 54,
+   "sport": "soccer",
+   "league": "LaLiga 2",
+   "country": "Spain",
+   "start_time": "2026-10-24T16:30:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46778198-girona-rc-celta-fortuna",
+   "home": "Girona FC",
+   "away": "RC Celta Fortuna",
+   "id": "id1000005472477528:10934:10935",
+   "market_id": "10934",
+   "outcome_id": "10935",
+   "market": "Bookings - Over Under Full Time",
+   "outcome": "Under",
+   "stake_price": 1.62,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0409,
+   "fair_prob": 0.6425,
+   "fair_odds": 1.556,
+   "take_at": 1.58,
+   "units": 1.0,
+   "pinnacle_price": 1.483,
+   "pinnacle_margin": 0.0743,
+   "pinnacle_limit": 517.0
+  }
+ ],
  "month": {
-  "flagged": 13,
-  "closed": 11,
-  "avg_ev": 0.0392,
-  "avg_clv": 0.0087,
-  "beat_close": 6
+  "flagged": 14,
+  "closed": 12,
+  "avg_ev": 0.0393,
+  "avg_clv": 0.0081,
+  "beat_close": 7
  }
 }

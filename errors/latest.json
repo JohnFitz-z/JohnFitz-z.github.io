@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-23T22:29:01Z",
+ "scanned_at": "2026-10-24T01:38:01Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "Challenger · ATP Challenger Guangzhou, China Men Singles",
-  "ATP · ATP Brussels, Belgium Doubles",
-  "UTR Women · UTR PTT Carvoeiro Women 07",
-  "Spain · LaLiga"
+  "England · Premier League",
+  "Denmark · Superliga",
+  "Sweden · Allsvenskan",
+  "Sweden · Superettan"
  ],
- "stake_fixtures": 38,
- "both_books": 36,
- "markets_compared": 1326,
+ "stake_fixtures": 62,
+ "both_books": 56,
+ "markets_compared": 1851,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 958,
-  "offline_priced": 321,
+  "stale_compared": 1342,
+  "offline_priced": 462,
   "self_priced": 47,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 95,
+ "requests_left_this_month": 93,
  "errors": [],
  "month": {
   "flagged": 13,

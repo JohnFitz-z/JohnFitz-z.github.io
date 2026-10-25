@@ -1,26 +1,26 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-25T19:26:00Z",
+ "scanned_at": "2026-10-25T22:23:01Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "China · Chinese Super League, Women",
-  "Panama · Liga Prom",
-  "Mozambique · Mocambola",
-  "Uzbekistan · Pro Liga",
-  "Norway · 3. Division, Group 1"
+  "Norway · 3. Division, Group 4",
+  "England Amateur · Southern League Premier Central",
+  "Italy · Serie C, Group C",
+  "Kyrgyzstan · Premier League",
+  "Syria · Premier League"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 2,
+ "both_books": 2,
+ "markets_compared": 32,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
+  "stale_compared": 16,
+  "offline_priced": 16,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 0,
+  "fit_failed": 1,
   "fit_implausible": 0,
   "book_mismatch": 0
  },
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 77,
+ "requests_left_this_month": 75,
  "errors": [],
  "month": {
   "flagged": 17,

@@ -1,14 +1,14 @@
 {
- "started_at": "2026-10-25T16:27:23Z",
+ "started_at": "2026-10-25T19:26:00Z",
  "errors": [],
  "tournaments": 5,
- "stake_fixtures": 14,
- "pinnacle_fixtures": 13,
- "compared": 748,
+ "stake_fixtures": 0,
+ "pinnacle_fixtures": 0,
+ "compared": 0,
  "detectors": {
-  "stale_compared": 485,
-  "offline_priced": 198,
-  "self_priced": 65,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -18,6 +18,6 @@
  "errors_found": 0,
  "new": 0,
  "alerts": 0,
- "requests_left": 78,
- "finished_at": "2026-10-25T16:27:26Z"
+ "requests_left": 77,
+ "finished_at": "2026-10-25T19:26:01Z"
 }

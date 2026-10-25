@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-25T13:30:52Z",
+ "scanned_at": "2026-10-25T16:27:23Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "Serbia · Prva Liga",
-  "Ukraine · U21 Premier Liga 2",
-  "Chile · Primera B",
-  "Hungary · NB II"
+  "India · Indian Super League",
+  "Kosovo · Superliga",
+  "Iceland · Besta deild, Women",
+  "Cambodia · Cambodian Premier League"
  ],
- "stake_fixtures": 17,
- "both_books": 16,
- "markets_compared": 924,
+ "stake_fixtures": 14,
+ "both_books": 13,
+ "markets_compared": 748,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 543,
-  "offline_priced": 316,
+  "stale_compared": 485,
+  "offline_priced": 198,
   "self_priced": 65,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 80,
+ "requests_left_this_month": 78,
  "errors": [],
  "month": {
   "flagged": 17,
-  "closed": 13,
+  "closed": 14,
   "avg_ev": 0.04,
-  "avg_clv": 0.0106,
+  "avg_clv": 0.0058,
   "beat_close": 8
  }
 }

@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-24T22:24:35Z",
+ "scanned_at": "2026-10-25T01:29:18Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "Germany Amateur · Women Bundesliga",
-  "Portugal · Liga Portugal",
-  "Ecuador · LigaPro Primera A",
-  "Israel · Premier League"
+  "Uruguay · Primera Division",
+  "Brazil · Brasileiro Serie A",
+  "Argentina · Primera Nacional",
+  "Georgia · Erovnuli Liga"
  ],
- "stake_fixtures": 32,
- "both_books": 29,
- "markets_compared": 1294,
+ "stake_fixtures": 43,
+ "both_books": 37,
+ "markets_compared": 1613,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 796,
-  "offline_priced": 433,
-  "self_priced": 65,
+  "stale_compared": 953,
+  "offline_priced": 485,
+  "self_priced": 175,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -25,11 +25,11 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 1,
+  "stale": 2,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 84,
+ "requests_left_this_month": 82,
  "errors": [
   {
    "fixture_id": "id1000002371945338",
@@ -57,12 +57,39 @@
    "pinnacle_price": 4.17,
    "pinnacle_margin": 0.0376,
    "pinnacle_limit": 3750.0
+  },
+  {
+   "fixture_id": "id1000032566887134",
+   "tournament_id": 325,
+   "sport": "soccer",
+   "league": "Brasileiro Serie A",
+   "country": "Brazil",
+   "start_time": "2026-10-29T00:30:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/46974770-bahia-sao-paulo",
+   "home": "EC Bahia BA",
+   "away": "Sao Paulo FC SP",
+   "id": "id1000032566887134:101:103",
+   "market_id": "101",
+   "outcome_id": "103",
+   "market": "Full Time Result",
+   "outcome": "2",
+   "stake_price": 3.8,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0344,
+   "fair_prob": 0.2722,
+   "fair_odds": 3.674,
+   "take_at": 3.73,
+   "units": 0.25,
+   "pinnacle_price": 3.48,
+   "pinnacle_margin": 0.0454,
+   "pinnacle_limit": 150.0
   }
  ],
  "month": {
-  "flagged": 16,
+  "flagged": 17,
   "closed": 13,
-  "avg_ev": 0.0404,
+  "avg_ev": 0.04,
   "avg_clv": 0.0106,
   "beat_close": 8
  }

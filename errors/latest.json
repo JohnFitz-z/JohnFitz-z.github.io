@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-26T15:10:21Z",
+ "scanned_at": "2026-10-26T16:44:52Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Brazil · U20 Alagoano, Serie A1",
-  "Serbia · U19 League",
-  "Saudi Arabia · Second Division",
-  "Singapore · Premier League 2",
-  "Mexico · Liga Primera Premier"
+  "Brazil · Paraibano, 2. Divisao",
+  "International · Liga ABA",
+  "Poland · PLK",
+  "Sweden · SBL",
+  "Germany · BBL Pokal"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 1,
+ "both_books": 1,
+ "markets_compared": 5,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 5,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 72,
+ "requests_left_this_month": 69,
  "errors": [],
  "month": {
   "flagged": 17,

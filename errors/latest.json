@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-26T01:41:50Z",
+ "scanned_at": "2026-10-26T15:10:21Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Colombia · Liga DIMAYOR",
-  "Panama · Liga Panamena",
-  "Guatemala · Liga Nacional",
-  "Costa Rica · Liga de Ascenso",
-  "Brazil · U20 Mineiro, 1. Divisao"
+  "Brazil · U20 Alagoano, Serie A1",
+  "Serbia · U19 League",
+  "Saudi Arabia · Second Division",
+  "Singapore · Premier League 2",
+  "Mexico · Liga Primera Premier"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
- "markets_compared": 91,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 55,
-  "offline_priced": 36,
+  "stale_compared": 0,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 73,
+ "requests_left_this_month": 72,
  "errors": [],
  "month": {
   "flagged": 17,

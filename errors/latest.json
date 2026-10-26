@@ -1,26 +1,26 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-25T22:23:01Z",
+ "scanned_at": "2026-10-26T01:41:50Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Norway · 3. Division, Group 4",
-  "England Amateur · Southern League Premier Central",
-  "Italy · Serie C, Group C",
-  "Kyrgyzstan · Premier League",
-  "Syria · Premier League"
+  "Colombia · Liga DIMAYOR",
+  "Panama · Liga Panamena",
+  "Guatemala · Liga Nacional",
+  "Costa Rica · Liga de Ascenso",
+  "Brazil · U20 Mineiro, 1. Divisao"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
- "markets_compared": 32,
+ "stake_fixtures": 7,
+ "both_books": 7,
+ "markets_compared": 91,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 16,
-  "offline_priced": 16,
+  "stale_compared": 55,
+  "offline_priced": 36,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
-  "fit_failed": 1,
+  "fit_failed": 0,
   "fit_implausible": 0,
   "book_mismatch": 0
  },
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 75,
+ "requests_left_this_month": 73,
  "errors": [],
  "month": {
   "flagged": 17,

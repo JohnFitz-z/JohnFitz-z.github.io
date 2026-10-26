@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-26T16:44:52Z",
+ "scanned_at": "2026-10-26T19:40:15Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Brazil · Paraibano, 2. Divisao",
-  "International · Liga ABA",
-  "Poland · PLK",
-  "Sweden · SBL",
-  "Germany · BBL Pokal"
+  "USA · WNBA",
+  "Turkiye · Super Lig",
+  "Denmark · Basketligaen",
+  "Cyprus · Division A",
+  "Greece · Elite League"
  ],
  "stake_fixtures": 1,
  "both_books": 1,
- "markets_compared": 5,
+ "markets_compared": 8,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 5,
+  "stale_compared": 8,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 69,
+ "requests_left_this_month": 67,
  "errors": [],
  "month": {
   "flagged": 17,

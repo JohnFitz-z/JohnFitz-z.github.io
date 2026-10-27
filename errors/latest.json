@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-26T22:33:27Z",
+ "scanned_at": "2026-10-27T01:39:53Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Sweden · SBL, Women",
-  "Bosnia and Herzegovina · 1st Division",
-  "Serbia · 1. ZLS, Women",
-  "Georgia · Superleague",
-  "Azerbaijan · Azerbaijan Basketball League (ABL)"
+  "Albania · National Championship",
+  "Portugal · 1. Divisao",
+  "Venezuela · LVBP",
+  "Challenger · ATP Challenger Guangzhou, China Men Doubles",
+  "ATP · ATP Almaty, Kazakhstan Men Singles"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 66,
+ "requests_left_this_month": 65,
  "errors": [],
  "month": {
   "flagged": 17,

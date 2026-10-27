@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-27T16:45:08Z",
+ "scanned_at": "2026-10-27T19:39:17Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
+  "Brazil · Brasileiro Serie A",
   "Italy · Serie A",
-  "Italy · Serie C, Group A",
-  "Netherlands · Eerste Divisie",
-  "Argentina · Primera LPF",
-  "Iran · Pro League"
+  "Saudi Arabia · Saudi Pro League",
+  "Israel · Super League",
+  "Argentina · Liga Femenina, Women"
  ],
- "stake_fixtures": 36,
- "both_books": 33,
- "markets_compared": 1270,
+ "stake_fixtures": 39,
+ "both_books": 36,
+ "markets_compared": 1329,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 788,
-  "offline_priced": 433,
-  "self_priced": 49,
+  "stale_compared": 914,
+  "offline_priced": 327,
+  "self_priced": 88,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 2,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 60,
+ "requests_left_this_month": 58,
  "errors": [],
  "month": {
   "flagged": 17,

@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-27T13:49:41Z",
+ "scanned_at": "2026-10-27T16:45:08Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
-  "ATP · ATP Brussels, Belgium Singles",
-  "ITF Women · Saguenay",
-  "USA · NFL",
-  "International Clubs · CONMEBOL Libertadores, Women"
+  "Italy · Serie C, Group A",
+  "Netherlands · Eerste Divisie",
+  "Argentina · Primera LPF",
+  "Iran · Pro League"
  ],
- "stake_fixtures": 41,
- "both_books": 29,
- "markets_compared": 838,
+ "stake_fixtures": 36,
+ "both_books": 33,
+ "markets_compared": 1270,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 582,
-  "offline_priced": 207,
+  "stale_compared": 788,
+  "offline_priced": 433,
   "self_priced": 49,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 62,
+ "requests_left_this_month": 60,
  "errors": [],
  "month": {
   "flagged": 17,

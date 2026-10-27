@@ -1,11 +1,11 @@
-# Scorecard (updated 2026-10-26)
+# Scorecard (updated 2026-10-27)
 
 Every bet the system posted, whether or not John placed it. "Wins vs odds" is actual wins minus the wins the odds implied: positive means the picks beat the price. CLV is how the closing price compared with ours (positive = the market moved our way), the best early sign of a real edge.
 
 | Group | Bets | Record | Units | ROI | Flat units | Wins vs odds | Avg CLV |
 |---|---|---|---|---|---|---|---|
 | All bets | 25 | 14-11 | -0.15 | -0.5% | +0.19 | +0.7 | -2.9% (6) |
-| Last 14 days | 7 | 4-3 | +0.47 | +6.7% | -0.07 | +0.2 | -2.7% (4) |
+| Last 14 days | 2 | 1-1 | -0.02 | -1.5% | -0.03 | +0.0 | -2.9% (2) |
 
 ### By method
 

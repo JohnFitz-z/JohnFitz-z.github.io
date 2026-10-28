@@ -1,69 +1,41 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-28T19:45:49Z",
+ "scanned_at": "2026-10-28T22:37:52Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Brazil · Brasileiro Serie A",
-  "Uruguay · LUB",
-  "Russia · KHL",
-  "Spain · LaLiga",
-  "England · Premier League"
+  "Denmark · Superliga",
+  "Sweden · Allsvenskan",
+  "Sweden · Superettan",
+  "Turkiye · Super Lig"
  ],
- "stake_fixtures": 54,
- "both_books": 49,
- "markets_compared": 1495,
+ "stake_fixtures": 40,
+ "both_books": 33,
+ "markets_compared": 719,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 1119,
-  "offline_priced": 376,
-  "self_priced": 0,
+  "stale_compared": 516,
+  "offline_priced": 195,
+  "self_priced": 8,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 2,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 1,
+  "stale": 0,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 47,
- "errors": [
-  {
-   "fixture_id": "id1000032566887126",
-   "tournament_id": 325,
-   "sport": "soccer",
-   "league": "Brasileiro Serie A",
-   "country": "Brazil",
-   "start_time": "2026-10-28T22:30:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/46974768-rb-bragantino-chapecoense",
-   "home": "Red Bull Bragantino SP",
-   "away": "Chapecoense SC",
-   "id": "id1000032566887126:101609:101609",
-   "market_id": "101609",
-   "outcome_id": "101609",
-   "market": "Corners - Handicap First Half",
-   "outcome": "1",
-   "stake_price": 1.77,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0353,
-   "fair_prob": 0.5849,
-   "fair_odds": 1.71,
-   "take_at": 1.74,
-   "units": 1.0,
-   "pinnacle_price": 1.613,
-   "pinnacle_margin": 0.0766,
-   "pinnacle_limit": 81.0
-  }
- ],
+ "requests_left_this_month": 45,
+ "errors": [],
  "month": {
   "flagged": 20,
-  "closed": 17,
+  "closed": 19,
   "avg_ev": 0.0407,
-  "avg_clv": 0.0008,
-  "beat_close": 10
+  "avg_clv": 0.0071,
+  "beat_close": 12
  }
 }

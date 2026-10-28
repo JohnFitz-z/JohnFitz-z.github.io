@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-28T01:51:36Z",
+ "scanned_at": "2026-10-28T13:56:09Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
   "Italy · Serie A",
   "Brazil · Brasileiro Serie A",
-  "Ireland · Premier Division",
-  "Oman · Omani League",
-  "Kuwait · Premier League"
+  "Challenger · ATP Challenger Fort Worth, USA Men Singles",
+  "Challenger · ATP Challenger Cali, Colombia Men Singles",
+  "Spain · LaLiga 2"
  ],
- "stake_fixtures": 37,
- "both_books": 33,
- "markets_compared": 1280,
+ "stake_fixtures": 41,
+ "both_books": 36,
+ "markets_compared": 1441,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 907,
-  "offline_priced": 324,
-  "self_priced": 49,
+  "stale_compared": 992,
+  "offline_priced": 377,
+  "self_priced": 72,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 54,
+ "requests_left_this_month": 52,
  "errors": [],
  "month": {
   "flagged": 17,

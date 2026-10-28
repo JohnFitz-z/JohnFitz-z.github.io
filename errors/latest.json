@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-27T22:35:31Z",
+ "scanned_at": "2026-10-28T01:51:36Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Brazil · Brasileiro Serie A",
   "Italy · Serie A",
-  "Romania · Superliga",
-  "Belarus · Vysshaya Liga",
-  "Cyprus · 1st Division"
+  "Brazil · Brasileiro Serie A",
+  "Ireland · Premier Division",
+  "Oman · Omani League",
+  "Kuwait · Premier League"
  ],
- "stake_fixtures": 32,
- "both_books": 29,
- "markets_compared": 1186,
+ "stake_fixtures": 37,
+ "both_books": 33,
+ "markets_compared": 1280,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 847,
-  "offline_priced": 288,
-  "self_priced": 51,
+  "stale_compared": 907,
+  "offline_priced": 324,
+  "self_priced": 49,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 56,
+ "requests_left_this_month": 54,
  "errors": [],
  "month": {
   "flagged": 17,

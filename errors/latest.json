@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-28T22:37:52Z",
+ "scanned_at": "2026-10-29T01:52:43Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Brazil · Brasileiro Serie A",
-  "Denmark · Superliga",
-  "Sweden · Allsvenskan",
-  "Sweden · Superettan",
-  "Turkiye · Super Lig"
+  "France · Ligue 2",
+  "Iceland · Besta deild",
+  "Lithuania · TOPLYGA",
+  "Poland · Ekstraklasa",
+  "Russia · Premier League"
  ],
- "stake_fixtures": 40,
- "both_books": 33,
- "markets_compared": 719,
+ "stake_fixtures": 22,
+ "both_books": 20,
+ "markets_compared": 289,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 516,
-  "offline_priced": 195,
+  "stale_compared": 212,
+  "offline_priced": 69,
   "self_priced": 8,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 45,
+ "requests_left_this_month": 43,
  "errors": [],
  "month": {
   "flagged": 20,
-  "closed": 19,
+  "closed": 20,
   "avg_ev": 0.0407,
-  "avg_clv": 0.0071,
+  "avg_clv": 0.001,
   "beat_close": 12
  }
 }

@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-29T13:58:12Z",
+ "scanned_at": "2026-10-29T16:51:19Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Poland · 1. Liga",
-  "Germany Amateur · Women Bundesliga",
-  "Portugal · Liga Portugal",
-  "Ecuador · LigaPro Primera A",
-  "Israel · Premier League"
+  "Uruguay · Primera Division",
+  "Argentina · Primera Nacional",
+  "Chile · Primera B",
+  "Hungary · NB II",
+  "India · Indian Super League"
  ],
- "stake_fixtures": 17,
- "both_books": 17,
- "markets_compared": 268,
+ "stake_fixtures": 25,
+ "both_books": 25,
+ "markets_compared": 235,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 158,
-  "offline_priced": 110,
+  "stale_compared": 121,
+  "offline_priced": 114,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 41,
+ "requests_left_this_month": 39,
  "errors": [],
  "month": {
   "flagged": 20,

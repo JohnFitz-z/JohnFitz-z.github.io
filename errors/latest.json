@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-29T01:52:43Z",
+ "scanned_at": "2026-10-29T13:58:12Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "France · Ligue 2",
-  "Iceland · Besta deild",
-  "Lithuania · TOPLYGA",
-  "Poland · Ekstraklasa",
-  "Russia · Premier League"
+  "Poland · 1. Liga",
+  "Germany Amateur · Women Bundesliga",
+  "Portugal · Liga Portugal",
+  "Ecuador · LigaPro Primera A",
+  "Israel · Premier League"
  ],
- "stake_fixtures": 22,
- "both_books": 20,
- "markets_compared": 289,
+ "stake_fixtures": 17,
+ "both_books": 17,
+ "markets_compared": 268,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 212,
-  "offline_priced": 69,
-  "self_priced": 8,
+  "stale_compared": 158,
+  "offline_priced": 110,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 43,
+ "requests_left_this_month": 41,
  "errors": [],
  "month": {
   "flagged": 20,

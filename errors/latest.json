@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-29T22:39:44Z",
+ "scanned_at": "2026-10-30T01:53:25Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "USA · NHL",
-  "Brazil · Brasileiro Serie B",
-  "Argentina · LNB",
-  "USA · MLB",
-  "Sweden · SBL"
+  "USA · WNBA",
+  "International Clubs · CONMEBOL Libertadores, Women",
+  "Italy · Serie C, Group A",
+  "USA · NFL",
+  "Netherlands · Eerste Divisie"
  ],
- "stake_fixtures": 23,
+ "stake_fixtures": 51,
  "both_books": 23,
- "markets_compared": 446,
+ "markets_compared": 406,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 392,
-  "offline_priced": 54,
-  "self_priced": 0,
+  "stale_compared": 322,
+  "offline_priced": 44,
+  "self_priced": 40,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 35,
+ "requests_left_this_month": 33,
  "errors": [],
  "month": {
   "flagged": 21,

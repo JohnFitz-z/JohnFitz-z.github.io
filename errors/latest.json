@@ -1,35 +1,35 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-30T13:57:10Z",
+ "scanned_at": "2026-10-30T16:45:01Z",
  "tournaments": 5,
  "leagues_available": 177,
  "leagues_scanned": [
-  "Italy · Serie C, Group C",
   "Argentina · Primera LPF",
-  "Iran · Pro League",
-  "Saudi Arabia · Saudi Pro League",
-  "Israel · Super League"
+  "Italy · Serie C, Group C",
+  "Argentina · Liga Femenina, Women",
+  "Romania · Superliga",
+  "Belarus · Vysshaya Liga"
  ],
  "stake_fixtures": 34,
- "both_books": 30,
- "markets_compared": 1179,
+ "both_books": 33,
+ "markets_compared": 1044,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 646,
-  "offline_priced": 442,
-  "self_priced": 91,
+  "stale_compared": 545,
+  "offline_priced": 435,
+  "self_priced": 64,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 3,
+  "stale": 2,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 31,
+ "requests_left_this_month": 29,
  "errors": [
   {
    "fixture_id": "id1000015573265478",
@@ -84,33 +84,6 @@
    "pinnacle_price": 1.699,
    "pinnacle_margin": 0.0603,
    "pinnacle_limit": 71.0
-  },
-  {
-   "fixture_id": "id1000015573265490",
-   "tournament_id": 155,
-   "sport": "soccer",
-   "league": "Primera LPF",
-   "country": "Argentina",
-   "start_time": "2026-10-30T22:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/46797920-huracan-tigre",
-   "home": "CA Huracan",
-   "away": "CA Tigre",
-   "id": "id1000015573265490:10803:10803",
-   "market_id": "10803",
-   "outcome_id": "10803",
-   "market": "Corners - Over Under Full Time",
-   "outcome": "Over",
-   "stake_price": 2.34,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0339,
-   "fair_prob": 0.4418,
-   "fair_odds": 2.263,
-   "take_at": 2.3,
-   "units": 0.75,
-   "pinnacle_price": 2.11,
-   "pinnacle_margin": 0.0608,
-   "pinnacle_limit": 50.0
   }
  ],
  "month": {

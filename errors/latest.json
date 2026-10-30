@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-30T19:45:01Z",
+ "scanned_at": "2026-10-30T22:37:47Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Spain · Copa del Rey",
-  "International Youth · UEFA Youth League",
-  "Italy · Coppa Italia Serie D",
-  "ITF Women · Malta",
-  "ITF Men · Malta"
+  "International · Eurocup, Women",
+  "ITF Women · Sumter",
+  "Hungary · Magyar Kupa",
+  "Slovenia · 3. SNL",
+  "USA · NBA"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 14,
+ "both_books": 10,
+ "markets_compared": 401,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 401,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -25,17 +25,45 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 22,
- "errors": [],
+ "requests_left_this_month": 20,
+ "errors": [
+  {
+   "fixture_id": "id1100013273696954",
+   "tournament_id": 132,
+   "sport": "basketball",
+   "league": "NBA",
+   "country": "USA",
+   "start_time": "2026-10-30T23:30:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/47014891-boston-celtics-chicago-bulls",
+   "home": "Boston Celtics",
+   "away": "Chicago Bulls",
+   "id": "id1100013273696954:11390:11391",
+   "market_id": "11390",
+   "outcome_id": "11391",
+   "market": "Handicap (incl. overtime)",
+   "outcome": "2",
+   "stake_price": 1.74,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0416,
+   "fair_prob": 0.5986,
+   "fair_odds": 1.671,
+   "take_at": 1.7,
+   "units": 1.0,
+   "pinnacle_price": 1.632,
+   "pinnacle_margin": 0.0312,
+   "pinnacle_limit": 29667.0
+  }
+ ],
  "month": {
-  "flagged": 24,
-  "closed": 20,
-  "avg_ev": 0.0399,
-  "avg_clv": 0.001,
+  "flagged": 25,
+  "closed": 21,
+  "avg_ev": 0.04,
+  "avg_clv": 0.0008,
   "beat_close": 12
  }
 }

@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-31T01:52:43Z",
+ "scanned_at": "2026-10-31T13:43:25Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Czechia · 2. Liga",
-  "ITF Women · Norman",
-  "ITF Men · Norman",
-  "ITF Men · Las Vegas",
-  "ITF Men · Yanagawa"
+  "ITF Women · Taby",
+  "ITF Men · Fergana",
+  "ITF Women · New Braunfels",
+  "ITF Men · Pembroke",
+  "Serbia · Serbian Cup"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 1,
+ "both_books": 1,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 19,
+ "requests_left_this_month": 16,
  "errors": [],
  "month": {
   "flagged": 25,
-  "closed": 22,
+  "closed": 23,
   "avg_ev": 0.04,
-  "avg_clv": 0.0027,
-  "beat_close": 13
+  "avg_clv": 0.0039,
+  "beat_close": 14
  }
 }

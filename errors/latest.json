@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-31T19:35:57Z",
+ "scanned_at": "2026-10-31T22:33:20Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "ITF Women · Toronto",
-  "Netherlands · KNVB beker",
-  "Israel · State Cup",
-  "Brazil · Pernambucano",
-  "ITF Women · Poitiers"
+  "ITF Women · Glasgow",
+  "ITF Men · Tamworth",
+  "ITF Men · Joao Pessoa",
+  "Germany · DFB Pokal",
+  "International Clubs · AFC Champions League Two"
  ],
- "stake_fixtures": 3,
- "both_books": 3,
+ "stake_fixtures": 0,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 12,
+ "requests_left_this_month": 11,
  "errors": [],
  "month": {
   "flagged": 25,

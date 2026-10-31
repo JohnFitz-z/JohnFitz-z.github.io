@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-31T16:35:30Z",
+ "scanned_at": "2026-10-31T19:35:57Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Bosnia & Herzegovina · Kup BiH",
-  "Italy · Coppa Italia Primavera",
-  "ITF Men · Singapore",
-  "Spain · U19 Division de Honor Juvenil",
-  "Challenger · ATP Challenger Guayaquil, Ecuador Men Singles"
+  "ITF Women · Toronto",
+  "Netherlands · KNVB beker",
+  "Israel · State Cup",
+  "Brazil · Pernambucano",
+  "ITF Women · Poitiers"
  ],
- "stake_fixtures": 12,
- "both_books": 2,
- "markets_compared": 41,
+ "stake_fixtures": 3,
+ "both_books": 3,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 3,
-  "offline_priced": 18,
-  "self_priced": 20,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 14,
+ "requests_left_this_month": 12,
  "errors": [],
  "month": {
   "flagged": 25,

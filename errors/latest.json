@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-01T01:56:47Z",
+ "scanned_at": "2026-11-01T13:45:23Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Bulgaria · Treta Liga",
-  "Challenger · ATP Challenger Sioux Falls, USA Men Doubles",
-  "UTR Women · UTR PTT Knoxville Women 04",
-  "UTR Men · UTR PTT Knoxville Men 05",
-  "WTA 125K · WTA 125K Courmayeur, Italy Women Singles"
+  "UTR Men · UTR PTT Bengaluru Men 03",
+  "UTR Men · UTR PTT Philadelphia Men 03",
+  "UTR Women · UTR PTT Columbia Women 01",
+  "ITF Men · Selva Gardena",
+  "ITF Men · Sheffield"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 249,
+ "requests_left_this_month": 248,
  "errors": [],
  "month": {
   "flagged": 0,

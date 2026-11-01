@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-10-31T22:33:20Z",
+ "scanned_at": "2026-11-01T01:56:47Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "ITF Women · Glasgow",
-  "ITF Men · Tamworth",
-  "ITF Men · Joao Pessoa",
-  "Germany · DFB Pokal",
-  "International Clubs · AFC Champions League Two"
+  "Bulgaria · Treta Liga",
+  "Challenger · ATP Challenger Sioux Falls, USA Men Doubles",
+  "UTR Women · UTR PTT Knoxville Women 04",
+  "UTR Men · UTR PTT Knoxville Men 05",
+  "WTA 125K · WTA 125K Courmayeur, Italy Women Singles"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 11,
+ "requests_left_this_month": 249,
  "errors": [],
  "month": {
-  "flagged": 25,
-  "closed": 23,
-  "avg_ev": 0.04,
-  "avg_clv": 0.0039,
-  "beat_close": 14
+  "flagged": 0,
+  "closed": 0,
+  "avg_ev": null,
+  "avg_clv": null,
+  "beat_close": 0
  }
 }

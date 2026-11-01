@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-01T16:36:01Z",
+ "scanned_at": "2026-11-01T19:37:13Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "ITF Women · Kunshan",
-  "ITF Women · Essen",
-  "ITF Women · Istanbul",
-  "ITF Men · Mazatlan",
-  "Poland · Puchar Polski"
+  "England Amateur · FA Womens League Cup",
+  "Turkiye · Super Lig, Women",
+  "Turkiye · U19 Gelisim Ligi",
+  "Serbia · 2. MLS",
+  "Finland · Liiga"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 1,
+ "both_books": 1,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 247,
+ "requests_left_this_month": 244,
  "errors": [],
  "month": {
   "flagged": 0,

@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-01T13:45:23Z",
+ "scanned_at": "2026-11-01T16:36:01Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "UTR Men · UTR PTT Bengaluru Men 03",
-  "UTR Men · UTR PTT Philadelphia Men 03",
-  "UTR Women · UTR PTT Columbia Women 01",
-  "ITF Men · Selva Gardena",
-  "ITF Men · Sheffield"
+  "ITF Women · Kunshan",
+  "ITF Women · Essen",
+  "ITF Women · Istanbul",
+  "ITF Men · Mazatlan",
+  "Poland · Puchar Polski"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 248,
+ "requests_left_this_month": 247,
  "errors": [],
  "month": {
   "flagged": 0,

@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-02T19:51:10Z",
+ "scanned_at": "2026-11-02T22:39:09Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Greece · Greece Cup",
-  "International Clubs · UEFA Champions League Women",
-  "Albania · Kategoria e Pare",
-  "Azerbaijan · Azerbaijan Cup",
-  "Italy · Coppa Italia Serie C"
+  "Ecuador · Serie B",
+  "Brazil · U20 Carioca, Serie A2",
+  "Czech Republic · NBL",
+  "International · Euroleague Women",
+  "Austria · ICE Hockey League"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 237,
+ "requests_left_this_month": 236,
  "errors": [],
  "month": {
   "flagged": 0,

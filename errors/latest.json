@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-02T14:12:51Z",
+ "scanned_at": "2026-11-02T16:59:12Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Tunisia · Pro A",
-  "USA · AHL",
-  "Switzerland · U21 Elit",
-  "ATP · ATP Basel, Switzerland Men Singles",
-  "ATP · ATP Vienna, Austria Men Singles"
+  "UTR Men · UTR PTT Trnava Men 04",
+  "UTR Women · UTR PTT Trnava Women 05",
+  "England · EFL Cup",
+  "Czechia · Czech Cup",
+  "Romania · Romania Cup"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
- "markets_compared": 24,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 24,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 239,
+ "requests_left_this_month": 238,
  "errors": [],
  "month": {
   "flagged": 0,

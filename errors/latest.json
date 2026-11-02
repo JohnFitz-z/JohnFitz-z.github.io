@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-02T16:59:12Z",
+ "scanned_at": "2026-11-02T19:51:10Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "UTR Men · UTR PTT Trnava Men 04",
-  "UTR Women · UTR PTT Trnava Women 05",
-  "England · EFL Cup",
-  "Czechia · Czech Cup",
-  "Romania · Romania Cup"
+  "Greece · Greece Cup",
+  "International Clubs · UEFA Champions League Women",
+  "Albania · Kategoria e Pare",
+  "Azerbaijan · Azerbaijan Cup",
+  "Italy · Coppa Italia Serie C"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 238,
+ "requests_left_this_month": 237,
  "errors": [],
  "month": {
   "flagged": 0,

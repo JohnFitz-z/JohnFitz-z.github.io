@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-01T22:35:07Z",
+ "scanned_at": "2026-11-02T01:57:55Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Sweden · Allsvenskan",
-  "Czech Republic · 1. Liga",
-  "Challenger · ATP Challenger Guayaquil, Ecuador Men Doubles",
-  "Challenger · ATP Challenger Ningbo, China Men Doubles",
-  "Challenger · ATP Challenger Brest, France Men Singles"
+  "ITF Men · Heraklion",
+  "ITF Women · Neuquen",
+  "Scotland · Premiership",
+  "International Clubs · UEFA Europa Cup, Women",
+  "Hungary · NB I. A"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 6,
+ "both_books": 5,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 243,
+ "requests_left_this_month": 241,
  "errors": [],
  "month": {
   "flagged": 0,

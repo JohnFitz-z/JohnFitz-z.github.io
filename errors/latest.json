@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-04T14:12:15Z",
+ "scanned_at": "2026-11-04T16:55:04Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
   "Peru · Liga 1",
-  "ITF Women · Taby",
-  "Botswana · Premier League",
-  "Japan · WE League, Women",
-  "Brazil · Carioca, Women"
+  "Spain · U19 Division de Honor Juvenil",
+  "El Salvador · Liga de Ascenso",
+  "Guatemala · Primera Division",
+  "Brazil · Sergipano, Serie A2"
  ],
- "stake_fixtures": 10,
- "both_books": 8,
- "markets_compared": 242,
+ "stake_fixtures": 11,
+ "both_books": 10,
+ "markets_compared": 264,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 75,
-  "offline_priced": 131,
-  "self_priced": 36,
+  "stale_compared": 74,
+  "offline_priced": 165,
+  "self_priced": 25,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 221,
+ "requests_left_this_month": 219,
  "errors": [],
  "month": {
   "flagged": 2,

@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-03T22:40:17Z",
+ "scanned_at": "2026-11-04T01:54:51Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
   "Peru · Liga 1",
-  "Austria · OFB Cup",
-  "Albania · Kategoria Superiore",
-  "Vietnam · V-League 2",
-  "Republic of Korea · WK-League"
+  "Czechia · CFL",
+  "Uganda · Premier League",
+  "Qatar · 2. Division",
+  "Rwanda · Premier League"
  ],
- "stake_fixtures": 10,
- "both_books": 7,
- "markets_compared": 249,
+ "stake_fixtures": 12,
+ "both_books": 8,
+ "markets_compared": 233,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 74,
-  "offline_priced": 104,
-  "self_priced": 71,
+  "stale_compared": 72,
+  "offline_priced": 122,
+  "self_priced": 39,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -25,12 +25,40 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 225,
- "errors": [],
+ "requests_left_this_month": 223,
+ "errors": [
+  {
+   "fixture_id": "id1000040675831042",
+   "tournament_id": 406,
+   "sport": "soccer",
+   "league": "Liga 1",
+   "country": "Peru",
+   "start_time": "2026-11-05T01:30:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/47014906-universitario-de-deportes-sport-boys-association",
+   "home": "Universitario de Deportes",
+   "away": "Sport Boys Association",
+   "id": "id1000040675831042:1056:1057",
+   "market_id": "1056",
+   "outcome_id": "1057",
+   "market": "Asian Handicap",
+   "outcome": "2",
+   "stake_price": 1.5,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0311,
+   "fair_prob": 0.6874,
+   "fair_odds": 1.455,
+   "take_at": 1.48,
+   "units": 1.0,
+   "pinnacle_price": 1.4,
+   "pinnacle_margin": 0.0664,
+   "pinnacle_limit": 375.0
+  }
+ ],
  "month": {
   "flagged": 2,
   "closed": 0,

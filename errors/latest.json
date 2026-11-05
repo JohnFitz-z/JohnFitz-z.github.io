@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-05T14:19:15Z",
+ "scanned_at": "2026-11-05T17:08:36Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Estonia · Premium Liiga",
-  "Serbia · Superliga",
-  "Slovakia · Superliga",
-  "Slovenia · PrvaLiga",
-  "Venezuela · Primera Division"
+  "Cyprus · Cyprus Cup",
+  "International Clubs · AFC Champions League Elite",
+  "International Youth · U17 European Championship, Women, Qualification",
+  "Armenia · Armenian Cup",
+  "Germany Amateur · Oberliga Niedersachsen"
  ],
- "stake_fixtures": 21,
- "both_books": 20,
- "markets_compared": 286,
+ "stake_fixtures": 1,
+ "both_books": 1,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 142,
-  "offline_priced": 129,
-  "self_priced": 15,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 209,
+ "requests_left_this_month": 207,
  "errors": [],
  "month": {
   "flagged": 4,

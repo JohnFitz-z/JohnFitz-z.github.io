@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-05T02:04:06Z",
+ "scanned_at": "2026-11-05T14:19:15Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Brest, France Men Doubles",
-  "WTA 125K · WTA 125K Queretaro, Mexico Women Singles",
-  "WTA 125K · WTA 125K Queretaro, Mexico Women Doubles",
-  "ITF Women · Poitiers",
-  "Brazil · Brasileiro Serie A"
+  "Estonia · Premium Liiga",
+  "Serbia · Superliga",
+  "Slovakia · Superliga",
+  "Slovenia · PrvaLiga",
+  "Venezuela · Primera Division"
  ],
- "stake_fixtures": 3,
- "both_books": 3,
- "markets_compared": 137,
+ "stake_fixtures": 21,
+ "both_books": 20,
+ "markets_compared": 286,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 102,
-  "offline_priced": 35,
-  "self_priced": 0,
+  "stale_compared": 142,
+  "offline_priced": 129,
+  "self_priced": 15,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 211,
+ "requests_left_this_month": 209,
  "errors": [],
  "month": {
   "flagged": 4,

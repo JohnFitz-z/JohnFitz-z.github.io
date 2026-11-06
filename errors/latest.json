@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-06T02:13:10Z",
+ "scanned_at": "2026-11-06T19:55:35Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Latvia · LSBL 2. Division, Women",
-  "Philippines · MPBL",
-  "Indonesia · IBL All Indonesian",
-  "England · Elite League",
-  "Latvia · Latvian Hockey League"
+  "Peru · Liga 1",
+  "USA · NBA",
+  "International · Euro Hockey Tour, Women",
+  "Sweden · U20 Nationell",
+  "Slovakia · U20 Extraliga Juniorov"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
- "markets_compared": 1,
+ "stake_fixtures": 22,
+ "both_books": 18,
+ "markets_compared": 636,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 1,
-  "offline_priced": 0,
+  "stale_compared": 483,
+  "offline_priced": 153,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 0,
+  "fit_implausible": 1,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 202,
+ "requests_left_this_month": 200,
  "errors": [],
  "month": {
   "flagged": 4,

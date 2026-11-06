@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-06T02:05:29Z",
+ "scanned_at": "2026-11-06T02:13:10Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Brazil · Potiguar, 2. Divisao",
-  "Philippines · PBA, Governors Cup",
-  "International · ABA Liga 2",
-  "Italy · Serie B",
-  "International · East Asia Super League"
+  "Latvia · LSBL 2. Division, Women",
+  "Philippines · MPBL",
+  "Indonesia · IBL All Indonesian",
+  "England · Elite League",
+  "Latvia · Latvian Hockey League"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 2,
+ "both_books": 2,
+ "markets_compared": 1,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 1,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 204,
+ "requests_left_this_month": 202,
  "errors": [],
  "month": {
   "flagged": 4,

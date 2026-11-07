@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-07T01:46:34Z",
+ "scanned_at": "2026-11-07T06:58:16Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
   "Peru · Liga 1",
-  "WTA · WTA Guangzhou, China Women Doubles",
-  "WTA · WTA Tokyo, Japan Women Doubles",
-  "Challenger · ATP Challenger Seoul, Korea Republic Men Doubles",
-  "WTA 125K · WTA 125K Curitiba, Brazil Women Doubles"
+  "WTA 125K · WTA 125K Courmayeur, Italy Women Doubles",
+  "ITF Women · Morelia",
+  "England Amateur · FA Womens League Cup",
+  "Italy · Serie A"
  ],
- "stake_fixtures": 8,
- "both_books": 8,
- "markets_compared": 277,
+ "stake_fixtures": 17,
+ "both_books": 17,
+ "markets_compared": 808,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 130,
-  "offline_priced": 147,
+  "stale_compared": 531,
+  "offline_priced": 277,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 198,
+ "requests_left_this_month": 196,
  "errors": [],
  "month": {
   "flagged": 4,

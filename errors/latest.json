@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-06T19:55:35Z",
+ "scanned_at": "2026-11-07T01:46:34Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
   "Peru · Liga 1",
-  "USA · NBA",
-  "International · Euro Hockey Tour, Women",
-  "Sweden · U20 Nationell",
-  "Slovakia · U20 Extraliga Juniorov"
+  "WTA · WTA Guangzhou, China Women Doubles",
+  "WTA · WTA Tokyo, Japan Women Doubles",
+  "Challenger · ATP Challenger Seoul, Korea Republic Men Doubles",
+  "WTA 125K · WTA 125K Curitiba, Brazil Women Doubles"
  ],
- "stake_fixtures": 22,
- "both_books": 18,
- "markets_compared": 636,
+ "stake_fixtures": 8,
+ "both_books": 8,
+ "markets_compared": 277,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 483,
-  "offline_priced": 153,
+  "stale_compared": 130,
+  "offline_priced": 147,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 200,
+ "requests_left_this_month": 198,
  "errors": [],
  "month": {
   "flagged": 4,

@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-08T18:18:33Z",
+ "scanned_at": "2026-11-08T22:45:36Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "ITF Women · Taby",
-  "Spain · U19 Division de Honor Juvenil",
-  "ITF Women · Toronto",
-  "Italy · Serie D, Group A",
-  "Italy · Serie D, Group B"
+  "Brazil · Brasileiro Serie A",
+  "Italy · Serie D, Group I",
+  "Gibraltar · National League",
+  "Israel · Liga Bet South B",
+  "Oman · Sultan Cup"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 2,
+ "both_books": 2,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 189,
+ "requests_left_this_month": 186,
  "errors": [],
  "month": {
   "flagged": 6,

@@ -1,27 +1,27 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-07T22:38:35Z",
+ "scanned_at": "2026-11-08T07:06:19Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "USA · AHL",
-  "Peru · Liga 1",
-  "Portugal · League Cup",
-  "Georgia · Cup",
-  "Liechtenstein · Liechtensteiner Cup"
+  "Argentina · Copa Argentina",
+  "Switzerland · Promotion League",
+  "Germany Amateur · Mittelrheinliga",
+  "Bulgaria · Vtora Liga",
+  "South Africa · Knockout Cup"
  ],
- "stake_fixtures": 21,
- "both_books": 20,
- "markets_compared": 297,
+ "stake_fixtures": 3,
+ "both_books": 3,
+ "markets_compared": 47,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 147,
-  "offline_priced": 150,
+  "stale_compared": 11,
+  "offline_priced": 36,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
-  "fit_implausible": 1,
+  "fit_implausible": 0,
   "book_mismatch": 0
  },
  "by_type": {
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 192,
+ "requests_left_this_month": 190,
  "errors": [],
  "month": {
   "flagged": 6,
-  "closed": 2,
+  "closed": 6,
   "avg_ev": 0.0466,
-  "avg_clv": 0.1477,
-  "beat_close": 2
+  "avg_clv": 0.0651,
+  "beat_close": 5
  }
 }

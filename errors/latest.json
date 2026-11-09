@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-08T22:45:36Z",
+ "scanned_at": "2026-11-09T07:48:49Z",
  "tournaments": 5,
  "leagues_available": 294,
  "leagues_scanned": [
-  "Brazil · Brasileiro Serie A",
-  "Italy · Serie D, Group I",
-  "Gibraltar · National League",
-  "Israel · Liga Bet South B",
-  "Oman · Sultan Cup"
+  "ITF Women · Poitiers",
+  "Zambia · Super League",
+  "Angola · Girabola",
+  "Venezuela · Segunda Division",
+  "Spain Amateur · Tercera Federacion, Group 6"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
+ "stake_fixtures": 0,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 186,
+ "requests_left_this_month": 185,
  "errors": [],
  "month": {
   "flagged": 6,

@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-10T08:10:57Z",
+ "scanned_at": "2026-11-10T20:24:41Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "UTR Men · UTR PTT Fayetteville Men 01",
-  "UTR Women · UTR PTT Fayetteville Women 01",
-  "UTR Men · UTR PTT Newport Beach Men 26",
-  "UTR Women · UTR PTT Chapel Hill Women 01",
-  "UTR Women · UTR PTT Newport Beach Women 26"
+  "ITF Women · Orlando",
+  "ITF Women · Petange",
+  "ITF Men · Harlingen",
+  "ITF Men · Valencia",
+  "ITF Men · San Gregorio di Catania"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 174,
+ "requests_left_this_month": 173,
  "errors": [],
  "month": {
   "flagged": 10,

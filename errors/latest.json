@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-11T07:38:58Z",
+ "scanned_at": "2026-11-11T20:07:45Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "ITF Women · Szabolcsveresmart",
-  "Iran · Super League",
-  "International · European Cup of Nations",
-  "ITF Women · Hilton Head Island",
-  "ITF Men · Maanshan"
+  "ITF Men · Guadalajara",
+  "United Arab Emirates · U21 League",
+  "Russia · Super League",
+  "ATP · ATP Paris, France Men Singles",
+  "Israel · Liga Al, Women"
  ],
- "stake_fixtures": 4,
- "both_books": 4,
+ "stake_fixtures": 0,
+ "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 169,
+ "requests_left_this_month": 168,
  "errors": [],
  "month": {
   "flagged": 10,

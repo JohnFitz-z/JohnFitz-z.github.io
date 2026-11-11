@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-10T20:24:41Z",
+ "scanned_at": "2026-11-11T01:50:10Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "ITF Women · Orlando",
-  "ITF Women · Petange",
-  "ITF Men · Harlingen",
-  "ITF Men · Valencia",
-  "ITF Men · San Gregorio di Catania"
+  "ITF Women · Huamantla",
+  "ITF Women · Incheon",
+  "ITF Men · Salvador",
+  "ITF Men · Trois-Rivieres",
+  "ITF Women · Liberec"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 173,
+ "requests_left_this_month": 172,
  "errors": [],
  "month": {
   "flagged": 10,

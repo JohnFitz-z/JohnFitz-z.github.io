@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-11T20:07:45Z",
+ "scanned_at": "2026-11-12T02:49:38Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "ITF Men · Guadalajara",
-  "United Arab Emirates · U21 League",
-  "Russia · Super League",
-  "ATP · ATP Paris, France Men Singles",
-  "Israel · Liga Al, Women"
+  "Russia · Premier League Women",
+  "Iceland · Urvalsdeild",
+  "Ukraine · Persha Liga",
+  "USA · NCAA, Regular Season",
+  "International · U20 Friendly Games"
  ],
- "stake_fixtures": 0,
+ "stake_fixtures": 2,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 168,
+ "requests_left_this_month": 165,
  "errors": [],
  "month": {
   "flagged": 10,

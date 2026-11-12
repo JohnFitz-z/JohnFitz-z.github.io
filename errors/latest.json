@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-12T08:08:24Z",
+ "scanned_at": "2026-11-12T20:44:56Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
-  "Challenger · ATP Challenger Charlottesville, USA Men Doubles",
-  "Challenger · ATP Challenger Charlottesville, USA Men Singles",
-  "WTA 125K · WTA 125K Cali, Colombia Women Singles",
-  "Challenger · ATP Challenger Villa Maria, Argentina Men Singles"
+  "Challenger · ATP Challenger Villa Maria, Argentina Men Doubles",
+  "Challenger · ATP Challenger Costa do Sauipe, Brazil Men Singles",
+  "Challenger · ATP Challenger Costa do Sauipe, Brazil Men Doubles",
+  "Challenger · ATP Challenger Taranto, Italy Men Doubles",
+  "ITF Women · Hamamatsu"
  ],
- "stake_fixtures": 24,
- "both_books": 14,
- "markets_compared": 145,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 145,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 162,
+ "requests_left_this_month": 161,
  "errors": [],
  "month": {
   "flagged": 10,

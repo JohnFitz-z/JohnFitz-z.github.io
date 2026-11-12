@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-12T02:49:38Z",
+ "scanned_at": "2026-11-12T08:08:24Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Russia · Premier League Women",
-  "Iceland · Urvalsdeild",
-  "Ukraine · Persha Liga",
   "USA · NCAA, Regular Season",
-  "International · U20 Friendly Games"
+  "Challenger · ATP Challenger Charlottesville, USA Men Doubles",
+  "Challenger · ATP Challenger Charlottesville, USA Men Singles",
+  "WTA 125K · WTA 125K Cali, Colombia Women Singles",
+  "Challenger · ATP Challenger Villa Maria, Argentina Men Singles"
  ],
- "stake_fixtures": 2,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 24,
+ "both_books": 14,
+ "markets_compared": 145,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 145,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 165,
+ "requests_left_this_month": 162,
  "errors": [],
  "month": {
   "flagged": 10,

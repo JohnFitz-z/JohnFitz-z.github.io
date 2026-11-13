@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-13T07:43:58Z",
+ "scanned_at": "2026-11-13T20:26:39Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Canada · QMJHL",
-  "Puerto Rico · La Pro",
-  "Challenger · ATP Challenger Taipei, Chinese Taipei Men Singles",
-  "Challenger · ATP Challenger Bratislava II, Slovakia Men Singles",
-  "WTA · WTA Chennai, India, Women Doubles"
+  "UTR Men · UTR PTT Saitama Men 12",
+  "Argentina · Primera LPF",
+  "Egypt · Egypt Cup",
+  "Brazil · U20 Copa do Brasil",
+  "Argentina · Primera Division, Women"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 158,
+ "requests_left_this_month": 157,
  "errors": [],
  "month": {
   "flagged": 10,

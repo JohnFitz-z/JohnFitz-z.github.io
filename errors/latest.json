@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-12T20:44:56Z",
+ "scanned_at": "2026-11-13T02:31:32Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Villa Maria, Argentina Men Doubles",
-  "Challenger · ATP Challenger Costa do Sauipe, Brazil Men Singles",
-  "Challenger · ATP Challenger Costa do Sauipe, Brazil Men Doubles",
-  "Challenger · ATP Challenger Taranto, Italy Men Doubles",
-  "ITF Women · Hamamatsu"
+  "USA · NCAA Women, Regular Season",
+  "Jordan · First Division",
+  "Iraq · Stars League",
+  "Honduras · Liga Nacional",
+  "International · Alps Hockey League"
  ],
- "stake_fixtures": 0,
+ "stake_fixtures": 6,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 161,
+ "requests_left_this_month": 159,
  "errors": [],
  "month": {
   "flagged": 10,

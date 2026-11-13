@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-13T02:31:32Z",
+ "scanned_at": "2026-11-13T07:43:58Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "USA · NCAA Women, Regular Season",
-  "Jordan · First Division",
-  "Iraq · Stars League",
-  "Honduras · Liga Nacional",
-  "International · Alps Hockey League"
+  "Canada · QMJHL",
+  "Puerto Rico · La Pro",
+  "Challenger · ATP Challenger Taipei, Chinese Taipei Men Singles",
+  "Challenger · ATP Challenger Bratislava II, Slovakia Men Singles",
+  "WTA · WTA Chennai, India, Women Doubles"
  ],
- "stake_fixtures": 6,
+ "stake_fixtures": 0,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 159,
+ "requests_left_this_month": 158,
  "errors": [],
  "month": {
   "flagged": 10,

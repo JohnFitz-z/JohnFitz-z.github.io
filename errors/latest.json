@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-13T20:26:39Z",
+ "scanned_at": "2026-11-14T02:12:54Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "UTR Men · UTR PTT Saitama Men 12",
-  "Argentina · Primera LPF",
-  "Egypt · Egypt Cup",
-  "Brazil · U20 Copa do Brasil",
-  "Argentina · Primera Division, Women"
+  "Mexico · Liga de Expansion MX",
+  "Uganda · Big League",
+  "Slovenia · Slovenian Cup, Women",
+  "Qatar · QBL",
+  "Portugal · 2. Divisao"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 2,
+ "both_books": 2,
+ "markets_compared": 39,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
-  "offline_priced": 0,
+  "stale_compared": 17,
+  "offline_priced": 22,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 157,
+ "requests_left_this_month": 155,
  "errors": [],
  "month": {
   "flagged": 10,

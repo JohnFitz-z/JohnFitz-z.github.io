@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-14T18:42:02Z",
+ "scanned_at": "2026-11-14T22:55:08Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Bratislava II, Slovakia Men Doubles",
-  "WTA 125K · WTA 125K Luanda, Angola Women Doubles",
-  "Challenger · ATP Challenger Taranto, Italy Men Singles",
-  "UTR Women · UTR PTT Trnava Women 06",
-  "USA · NCAA, Regular Season"
+  "USA · NCAA, Regular Season",
+  "International · Euroleague",
+  "USA · NCAA, Regular Season",
+  "France · Ligue 3",
+  "Romania · Liga 2"
  ],
- "stake_fixtures": 48,
- "both_books": 47,
- "markets_compared": 519,
+ "stake_fixtures": 82,
+ "both_books": 55,
+ "markets_compared": 368,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 519,
+  "stale_compared": 368,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -25,11 +25,11 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 3,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 152,
+ "requests_left_this_month": 149,
  "errors": [
   {
    "fixture_id": "id1100064874101528",
@@ -56,61 +56,7 @@
    "units": 1.0,
    "pinnacle_price": 2.1,
    "pinnacle_margin": 0.0613,
-   "pinnacle_limit": 375.0
-  },
-  {
-   "fixture_id": "id1100064873692736",
-   "tournament_id": 648,
-   "sport": "basketball",
-   "league": "NCAA, Regular Season",
-   "country": "USA",
-   "start_time": "2026-11-15T01:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/1794704400000-grand-canyon-lopes-louisiana-monroe-warhawks",
-   "home": "Grand Canyon Lopes",
-   "away": "Louisiana Monroe Warhawks",
-   "id": "id1100064873692736:111544:111545",
-   "market_id": "111544",
-   "outcome_id": "111545",
-   "market": "Over Under Team 2 (incl. overtime)",
-   "outcome": "Under",
-   "stake_price": 2.29,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0475,
-   "fair_prob": 0.4574,
-   "fair_odds": 2.186,
-   "take_at": 2.22,
-   "units": 1.0,
-   "pinnacle_price": 2.04,
-   "pinnacle_margin": 0.0629,
-   "pinnacle_limit": 375.0
-  },
-  {
-   "fixture_id": "id1100064873048688",
-   "tournament_id": 648,
-   "sport": "basketball",
-   "league": "NCAA, Regular Season",
-   "country": "USA",
-   "start_time": "2026-11-14T23:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/1794697200000-providence-friars-colorado-buffaloes",
-   "home": "Providence Friars",
-   "away": "Colorado Buffaloes",
-   "id": "id1100064873048688:111402:111403",
-   "market_id": "111402",
-   "outcome_id": "111403",
-   "market": "Over Under Team 1 (incl. overtime)",
-   "outcome": "Under",
-   "stake_price": 2.09,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0308,
-   "fair_prob": 0.4932,
-   "fair_odds": 2.028,
-   "take_at": 2.06,
-   "units": 0.75,
-   "pinnacle_price": 1.909,
-   "pinnacle_margin": 0.0609,
-   "pinnacle_limit": 825.0
+   "pinnacle_limit": 750.0
   }
  ],
  "month": {

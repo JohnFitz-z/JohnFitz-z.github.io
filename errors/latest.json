@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-15T07:42:41Z",
+ "scanned_at": "2026-11-15T19:19:26Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "ITF Men · Maanshan",
-  "Uzbekistan · Superliga",
-  "India · I-League",
-  "Senegal · Ligue 1",
-  "International · SAFF Championship"
+  "Ecuador · Copa Ecuador",
+  "International Clubs · CAF Champions League, Women",
+  "Estonia · II Liiga",
+  "Croatia · U19 Prva NL Juniori",
+  "Seychelles · Premier League"
  ],
- "stake_fixtures": 4,
- "both_books": 2,
- "markets_compared": 37,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 6,
-  "offline_priced": 9,
-  "self_priced": 22,
+  "stale_compared": 0,
+  "offline_priced": 0,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 147,
+ "requests_left_this_month": 146,
  "errors": [],
  "month": {
   "flagged": 13,

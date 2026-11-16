@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-16T01:49:36Z",
+ "scanned_at": "2026-11-16T07:49:39Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "USA · NCAA Women, Regular Season",
-  "Brazil · U20 Paraense",
-  "South Africa · SAFA Second Division",
-  "Brazil · Paraense, Women",
-  "Lithuania · LKL"
+  "Ukraine · FBU Superleague",
+  "Chile · LNB",
+  "Poland · 1. Liga",
+  "International · Estonian-Latvian League",
+  "Lebanon · First Division"
  ],
- "stake_fixtures": 1,
+ "stake_fixtures": 0,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 144,
+ "requests_left_this_month": 143,
  "errors": [],
  "month": {
   "flagged": 13,

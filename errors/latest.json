@@ -1,16 +1,16 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-15T19:19:26Z",
+ "scanned_at": "2026-11-16T01:49:36Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Ecuador · Copa Ecuador",
-  "International Clubs · CAF Champions League, Women",
-  "Estonia · II Liiga",
-  "Croatia · U19 Prva NL Juniori",
-  "Seychelles · Premier League"
+  "USA · NCAA Women, Regular Season",
+  "Brazil · U20 Paraense",
+  "South Africa · SAFA Second Division",
+  "Brazil · Paraense, Women",
+  "Lithuania · LKL"
  ],
- "stake_fixtures": 0,
+ "stake_fixtures": 1,
  "both_books": 0,
  "markets_compared": 0,
  "min_ev": 0.03,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 146,
+ "requests_left_this_month": 144,
  "errors": [],
  "month": {
   "flagged": 13,

@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-18T03:36:32Z",
+ "scanned_at": "2026-11-18T08:23:32Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
   "USA · NBA",
-  "Qatar · 2. Division",
-  "Russia · KHL",
-  "Mexico · Liga MX, Women"
+  "Brazil · Brasileiro Serie A",
+  "Mexico · Liga de Expansion MX",
+  "Uruguay · Copa Uruguay",
+  "Canada · OHL"
  ],
- "stake_fixtures": 30,
- "both_books": 20,
- "markets_compared": 258,
+ "stake_fixtures": 29,
+ "both_books": 24,
+ "markets_compared": 676,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 254,
-  "offline_priced": 0,
-  "self_priced": 4,
+  "stale_compared": 524,
+  "offline_priced": 152,
+  "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -25,40 +25,12 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 1,
+  "stale": 0,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 135,
- "errors": [
-  {
-   "fixture_id": "id1100013273719690",
-   "tournament_id": 132,
-   "sport": "basketball",
-   "league": "NBA",
-   "country": "USA",
-   "start_time": "2026-11-19T00:00:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/1795046400000-indiana-pacers-houston-rockets",
-   "home": "Indiana Pacers",
-   "away": "Houston Rockets",
-   "id": "id1100013273719690:11258:11259",
-   "market_id": "11258",
-   "outcome_id": "11259",
-   "market": "Over Under (incl. overtime)",
-   "outcome": "Under",
-   "stake_price": 1.84,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0302,
-   "fair_prob": 0.5599,
-   "fair_odds": 1.786,
-   "take_at": 1.82,
-   "units": 1.0,
-   "pinnacle_price": 1.729,
-   "pinnacle_margin": 0.0392,
-   "pinnacle_limit": 2057.0
-  }
- ],
+ "requests_left_this_month": 133,
+ "errors": [],
  "month": {
   "flagged": 14,
   "closed": 13,

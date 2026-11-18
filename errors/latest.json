@@ -1,23 +1,23 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-17T21:39:58Z",
+ "scanned_at": "2026-11-18T03:36:32Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "WTA · WTA Hong Kong, Hong Kong Women Singles",
-  "Challenger · ATP Challenger Taipei, Chinese Taipei Men Doubles",
-  "WTA · WTA Chennai, India, Women Singles",
-  "WTA 125K · WTA 125K Luanda, Angola Women Singles",
-  "Argentina · Primera LPF"
+  "USA · NCAA, Regular Season",
+  "USA · NBA",
+  "Qatar · 2. Division",
+  "Russia · KHL",
+  "Mexico · Liga MX, Women"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
- "markets_compared": 174,
+ "stake_fixtures": 30,
+ "both_books": 20,
+ "markets_compared": 258,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 70,
-  "offline_priced": 104,
-  "self_priced": 0,
+  "stale_compared": 254,
+  "offline_priced": 0,
+  "self_priced": 4,
   "palpable_skipped": 0,
   "steam": 0,
   "fit_failed": 0,
@@ -25,16 +25,44 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 0,
+  "stale": 1,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 137,
- "errors": [],
+ "requests_left_this_month": 135,
+ "errors": [
+  {
+   "fixture_id": "id1100013273719690",
+   "tournament_id": 132,
+   "sport": "basketball",
+   "league": "NBA",
+   "country": "USA",
+   "start_time": "2026-11-19T00:00:00Z",
+   "stake_link": "https://stake.com/sports/e/e/e-e/1795046400000-indiana-pacers-houston-rockets",
+   "home": "Indiana Pacers",
+   "away": "Houston Rockets",
+   "id": "id1100013273719690:11258:11259",
+   "market_id": "11258",
+   "outcome_id": "11259",
+   "market": "Over Under (incl. overtime)",
+   "outcome": "Under",
+   "stake_price": 1.84,
+   "type": "stale",
+   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
+   "ev": 0.0302,
+   "fair_prob": 0.5599,
+   "fair_odds": 1.786,
+   "take_at": 1.82,
+   "units": 1.0,
+   "pinnacle_price": 1.729,
+   "pinnacle_margin": 0.0392,
+   "pinnacle_limit": 2057.0
+  }
+ ],
  "month": {
-  "flagged": 13,
+  "flagged": 14,
   "closed": 13,
-  "avg_ev": 0.0497,
+  "avg_ev": 0.0483,
   "avg_clv": 0.0582,
   "beat_close": 12
  }

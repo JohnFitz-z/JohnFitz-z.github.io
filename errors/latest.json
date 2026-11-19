@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-19T08:34:28Z",
+ "scanned_at": "2026-11-19T21:21:52Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "Cyprus · Cyprus Cup",
-  "India · I-League",
-  "Senegal · Ligue 1",
-  "Botswana · Premier League",
-  "Guatemala · Primera Division"
+  "Oman · Omani League",
+  "Costa Rica · Primera Division",
+  "Russia · VHL",
+  "India · Indian Super League",
+  "Uruguay · LUB"
  ],
- "stake_fixtures": 2,
- "both_books": 2,
- "markets_compared": 13,
+ "stake_fixtures": 7,
+ "both_books": 7,
+ "markets_compared": 75,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 7,
-  "offline_priced": 6,
+  "stale_compared": 49,
+  "offline_priced": 26,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 126,
+ "requests_left_this_month": 123,
  "errors": [],
  "month": {
   "flagged": 23,

@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-19T03:09:54Z",
+ "scanned_at": "2026-11-19T08:34:28Z",
  "tournaments": 5,
  "leagues_available": 182,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
-  "USA · AHL",
-  "ITF Men · Maanshan",
-  "Argentina · Liga Femenina, Women",
-  "USA · NHL"
+  "Cyprus · Cyprus Cup",
+  "India · I-League",
+  "Senegal · Ligue 1",
+  "Botswana · Premier League",
+  "Guatemala · Primera Division"
  ],
- "stake_fixtures": 55,
- "both_books": 19,
- "markets_compared": 167,
+ "stake_fixtures": 2,
+ "both_books": 2,
+ "markets_compared": 13,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 167,
-  "offline_priced": 0,
+  "stale_compared": 7,
+  "offline_priced": 6,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -25,45 +25,17 @@
   "book_mismatch": 0
  },
  "by_type": {
-  "stale": 1,
+  "stale": 0,
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 128,
- "errors": [
-  {
-   "fixture_id": "id1100064874777156",
-   "tournament_id": 648,
-   "sport": "basketball",
-   "league": "NCAA, Regular Season",
-   "country": "USA",
-   "start_time": "2026-11-19T03:30:00Z",
-   "stake_link": "https://stake.com/sports/e/e/e-e/1795059000000-ucla-bruins-cal-state-fullerton-titans",
-   "home": "UCLA Bruins",
-   "away": "Cal State Fullerton Titans",
-   "id": "id1100064874777156:111548:111549",
-   "market_id": "111548",
-   "outcome_id": "111549",
-   "market": "Over Under Team 2 (incl. overtime)",
-   "outcome": "Under",
-   "stake_price": 2.34,
-   "type": "stale",
-   "why": "Stake pays more than Pinnacle's fair price for the same bet.",
-   "ev": 0.0953,
-   "fair_prob": 0.4681,
-   "fair_odds": 2.136,
-   "take_at": 2.17,
-   "units": 1.0,
-   "pinnacle_price": 2.01,
-   "pinnacle_margin": 0.0571,
-   "pinnacle_limit": 750.0
-  }
- ],
+ "requests_left_this_month": 126,
+ "errors": [],
  "month": {
   "flagged": 23,
-  "closed": 22,
+  "closed": 23,
   "avg_ev": 0.0499,
-  "avg_clv": 0.0522,
-  "beat_close": 20
+  "avg_clv": 0.052,
+  "beat_close": 21
  }
 }

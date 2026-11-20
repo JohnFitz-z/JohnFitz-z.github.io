@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-19T21:21:52Z",
+ "scanned_at": "2026-11-20T02:58:17Z",
  "tournaments": 5,
- "leagues_available": 182,
+ "leagues_available": 172,
  "leagues_scanned": [
-  "Oman · Omani League",
-  "Costa Rica · Primera Division",
-  "Russia · VHL",
-  "India · Indian Super League",
-  "Uruguay · LUB"
+  "USA · NCAA Division I National Championship",
+  "UTR Women · UTR PTT Miami Women 02",
+  "ITF Men · Orlando",
+  "UTR Men · UTR PTT Carvoeiro Men 09",
+  "UTR Women · UTR PTT Carvoeiro Women 09"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
- "markets_compared": 75,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 49,
-  "offline_priced": 26,
+  "stale_compared": 0,
+  "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 123,
+ "requests_left_this_month": 116,
  "errors": [],
  "month": {
   "flagged": 23,

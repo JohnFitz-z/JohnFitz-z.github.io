@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-20T02:58:17Z",
+ "scanned_at": "2026-11-20T08:18:04Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "USA · NCAA Division I National Championship",
-  "UTR Women · UTR PTT Miami Women 02",
-  "ITF Men · Orlando",
-  "UTR Men · UTR PTT Carvoeiro Men 09",
-  "UTR Women · UTR PTT Carvoeiro Women 09"
+  "ITF Women · Alcala de Henares",
+  "ITF Men · Alcala de Henares",
+  "International Youth · U17 FIFA World Cup",
+  "UTR Men · UTR PTT Tuscaloosa Men 02",
+  "UTR Men · UTR PTT College Station Men 02"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 116,
+ "requests_left_this_month": 115,
  "errors": [],
  "month": {
   "flagged": 23,

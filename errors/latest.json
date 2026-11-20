@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-20T08:18:04Z",
+ "scanned_at": "2026-11-20T20:59:42Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "ITF Women · Alcala de Henares",
-  "ITF Men · Alcala de Henares",
-  "International Youth · U17 FIFA World Cup",
-  "UTR Men · UTR PTT Tuscaloosa Men 02",
-  "UTR Men · UTR PTT College Station Men 02"
+  "UTR Women · UTR PTT Yokohama Women 05",
+  "UTR Men · UTR PTT Yokohama Men 06",
+  "UTR Women · UTR PTT College Station Women 02",
+  "UTR Men · UTR PTT Miami Men 02",
+  "ITF Women · Funchal"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 1,
+ "both_books": 1,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 115,
+ "requests_left_this_month": 112,
  "errors": [],
  "month": {
   "flagged": 23,

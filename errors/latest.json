@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-21T08:09:52Z",
+ "scanned_at": "2026-11-21T20:01:08Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "ITF Women · Paris",
-  "Sweden · SHL",
-  "ITF Men · Vale Do Lobo",
-  "ITF Men · Bradenton",
-  "Challenger · ATP Challenger Drummondville, Canada Men Singles"
+  "USA · NCAA, Regular Season",
+  "Egypt · 2. Division A",
+  "Challenger · ATP Challenger Metz, France Men Singles",
+  "USA · NBA G League Tip-Off Tournament",
+  "China · CBA Club Cup"
  ],
- "stake_fixtures": 7,
- "both_books": 7,
- "markets_compared": 21,
+ "stake_fixtures": 78,
+ "both_books": 34,
+ "markets_compared": 361,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 21,
+  "stale_compared": 361,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 109,
+ "requests_left_this_month": 107,
  "errors": [],
  "month": {
   "flagged": 23,

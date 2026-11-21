@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-21T03:05:40Z",
+ "scanned_at": "2026-11-21T08:09:52Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "ITF Men · Santa Cruz",
-  "ITF Men · Lajeado",
-  "ITF Men · Olavarria",
-  "ITF Men · Bhubaneswar",
-  "ITF Women · Trnava"
+  "ITF Women · Paris",
+  "Sweden · SHL",
+  "ITF Men · Vale Do Lobo",
+  "ITF Men · Bradenton",
+  "Challenger · ATP Challenger Drummondville, Canada Men Singles"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 7,
+ "both_books": 7,
+ "markets_compared": 21,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 21,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 111,
+ "requests_left_this_month": 109,
  "errors": [],
  "month": {
   "flagged": 23,

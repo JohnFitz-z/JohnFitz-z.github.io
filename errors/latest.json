@@ -1,17 +1,17 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-22T07:54:19Z",
+ "scanned_at": "2026-11-22T20:16:33Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Helsinki, Finland Men Doubles",
-  "Challenger · ATP Challenger Sydney, Australia Men Singles",
-  "Challenger · ATP Challenger Kobe, Japan Men Singles",
-  "WTA 125K · WTA 125K Colina, Chile Women Singles",
-  "UTR Men · UTR PTT Newport Beach Men 27"
+  "USA · NCAA Women, Regular Season",
+  "UTR Women · UTR PTT Newport Beach Women 27",
+  "ITF Men · Hua Hin",
+  "ITF Men · Monastir 2",
+  "ITF Women · Sao Paulo"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
+ "stake_fixtures": 10,
+ "both_books": 1,
  "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 105,
+ "requests_left_this_month": 103,
  "errors": [],
  "month": {
   "flagged": 23,

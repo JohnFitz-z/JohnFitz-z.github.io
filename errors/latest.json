@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-22T02:03:47Z",
+ "scanned_at": "2026-11-22T07:54:19Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "Challenger · ATP Challenger Montevideo, Uruguay Men Singles",
-  "Challenger · ATP Challenger Montevideo, Uruguay Men Doubles",
-  "Challenger · ATP Challenger Champaign, USA Men Singles",
-  "Challenger · ATP Challenger Champaign, USA Men Doubles",
-  "Challenger · ATP Challenger Helsinki, Finland Men Singles"
+  "Challenger · ATP Challenger Helsinki, Finland Men Doubles",
+  "Challenger · ATP Challenger Sydney, Australia Men Singles",
+  "Challenger · ATP Challenger Kobe, Japan Men Singles",
+  "WTA 125K · WTA 125K Colina, Chile Women Singles",
+  "UTR Men · UTR PTT Newport Beach Men 27"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 106,
+ "requests_left_this_month": 105,
  "errors": [],
  "month": {
   "flagged": 23,

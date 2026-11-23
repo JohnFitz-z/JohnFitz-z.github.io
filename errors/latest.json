@@ -1,14 +1,14 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-23T02:29:41Z",
+ "scanned_at": "2026-11-23T08:49:37Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "ITF Men · Chihuahua",
-  "International Clubs · ASEAN Club Championship",
-  "Challenger · ATP Challenger Drummondville, Canada Men Doubles",
-  "Slovenia · Slovenia Cup",
-  "Azerbaijan · First Division"
+  "United Arab Emirates · Arabian Gulf League",
+  "Jordan · Jordan Cup",
+  "Spain · Copa de SM La Reina",
+  "Ethiopia · Higher League",
+  "Norway · BLNO"
  ],
  "stake_fixtures": 0,
  "both_books": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 102,
+ "requests_left_this_month": 101,
  "errors": [],
  "month": {
   "flagged": 23,

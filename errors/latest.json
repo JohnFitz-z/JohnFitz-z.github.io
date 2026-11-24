@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-24T10:47:17Z",
+ "scanned_at": "2026-11-24T22:58:32Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "USA · NBA",
-  "Denmark · 1. Division",
-  "Sweden · Damallsvenskan",
-  "Slovakia · Slovensky Pohar",
-  "Lithuania · 1 Lyga"
+  "ITF Women · Funchal",
+  "Bosnia & Herzegovina · Prva Liga, Rep of Srpska",
+  "Qatar · Stars League",
+  "Cameroon · Elite One",
+  "Hungary · NB I, Women"
  ],
- "stake_fixtures": 12,
- "both_books": 4,
- "markets_compared": 57,
+ "stake_fixtures": 1,
+ "both_books": 1,
+ "markets_compared": 3,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 57,
+  "stale_compared": 3,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 97,
+ "requests_left_this_month": 94,
  "errors": [],
  "month": {
   "flagged": 23,

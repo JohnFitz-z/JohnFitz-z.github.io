@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-23T08:49:37Z",
+ "scanned_at": "2026-11-24T00:43:31Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "United Arab Emirates · Arabian Gulf League",
-  "Jordan · Jordan Cup",
-  "Spain · Copa de SM La Reina",
-  "Ethiopia · Higher League",
-  "Norway · BLNO"
+  "USA · NCAA, Regular Season",
+  "Finland · Mestis",
+  "Challenger · ATP Challenger Sydney, Australia Men Doubles",
+  "ATP · ATP World Tour Finals Men Singles",
+  "Challenger · ATP Challenger Metz, France Men Doubles"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 59,
+ "both_books": 11,
+ "markets_compared": 89,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 89,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 101,
+ "requests_left_this_month": 99,
  "errors": [],
  "month": {
   "flagged": 23,

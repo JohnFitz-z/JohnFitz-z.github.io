@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-25T09:42:38Z",
+ "scanned_at": "2026-11-25T22:22:58Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "Sweden · SHL",
-  "Cambodia · Hun Sen Cup",
-  "Brazil · U20 Carioca, Serie A",
-  "Brazil · Taca Fares Lopes",
-  "Suriname · Major League"
+  "Brazil · U20 Copa Santa Catarina",
+  "India · U21 Development League",
+  "International · Int. Friendly Games",
+  "Bolivia · Libobasquet",
+  "Russia · Russian Cup"
  ],
- "stake_fixtures": 6,
- "both_books": 6,
- "markets_compared": 6,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 6,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 92,
+ "requests_left_this_month": 91,
  "errors": [],
  "month": {
   "flagged": 23,

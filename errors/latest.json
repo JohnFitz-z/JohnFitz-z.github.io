@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-24T22:58:32Z",
+ "scanned_at": "2026-11-25T09:42:38Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "ITF Women · Funchal",
-  "Bosnia & Herzegovina · Prva Liga, Rep of Srpska",
-  "Qatar · Stars League",
-  "Cameroon · Elite One",
-  "Hungary · NB I, Women"
+  "Sweden · SHL",
+  "Cambodia · Hun Sen Cup",
+  "Brazil · U20 Carioca, Serie A",
+  "Brazil · Taca Fares Lopes",
+  "Suriname · Major League"
  ],
- "stake_fixtures": 1,
- "both_books": 1,
- "markets_compared": 3,
+ "stake_fixtures": 6,
+ "both_books": 6,
+ "markets_compared": 6,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 3,
+  "stale_compared": 6,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 94,
+ "requests_left_this_month": 92,
  "errors": [],
  "month": {
   "flagged": 23,

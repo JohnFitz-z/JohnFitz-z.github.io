@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-26T09:19:32Z",
+ "scanned_at": "2026-11-26T22:13:50Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "USA · NCAA, Regular Season",
-  "USA · NCAA Women, Regular Season",
-  "Finland · 1. Division, Women",
-  "El Salvador · U21 League",
-  "England · SLB"
+  "Spain · Copa Espana",
+  "Switzerland · National League",
+  "Germany · DEL",
+  "Czech Republic · Extraliga",
+  "Sweden · SDHL"
  ],
- "stake_fixtures": 21,
- "both_books": 12,
- "markets_compared": 133,
+ "stake_fixtures": 27,
+ "both_books": 21,
+ "markets_compared": 55,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 133,
+  "stale_compared": 55,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 89,
+ "requests_left_this_month": 86,
  "errors": [],
  "month": {
   "flagged": 23,

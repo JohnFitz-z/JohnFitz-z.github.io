@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-25T22:22:58Z",
+ "scanned_at": "2026-11-26T09:19:32Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "Brazil · U20 Copa Santa Catarina",
-  "India · U21 Development League",
-  "International · Int. Friendly Games",
-  "Bolivia · Libobasquet",
-  "Russia · Russian Cup"
+  "USA · NCAA, Regular Season",
+  "USA · NCAA Women, Regular Season",
+  "Finland · 1. Division, Women",
+  "El Salvador · U21 League",
+  "England · SLB"
  ],
- "stake_fixtures": 0,
- "both_books": 0,
- "markets_compared": 0,
+ "stake_fixtures": 21,
+ "both_books": 12,
+ "markets_compared": 133,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 0,
+  "stale_compared": 133,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 91,
+ "requests_left_this_month": 89,
  "errors": [],
  "month": {
   "flagged": 23,

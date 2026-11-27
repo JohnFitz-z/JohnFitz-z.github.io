@@ -1,21 +1,21 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-26T22:13:50Z",
+ "scanned_at": "2026-11-27T09:33:54Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
-  "Spain · Copa Espana",
-  "Switzerland · National League",
-  "Germany · DEL",
-  "Czech Republic · Extraliga",
-  "Sweden · SDHL"
+  "Ukraine · UHL",
+  "Norway · Eliteserien, Women",
+  "ATP · ATP World Tour Finals Men Doubles",
+  "WTA 125K · WTA 125K Colina, Chile Women Doubles",
+  "ITF Women · Sao Paulo"
  ],
- "stake_fixtures": 27,
- "both_books": 21,
- "markets_compared": 55,
+ "stake_fixtures": 0,
+ "both_books": 0,
+ "markets_compared": 0,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 55,
+  "stale_compared": 0,
   "offline_priced": 0,
   "self_priced": 0,
   "palpable_skipped": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 86,
+ "requests_left_this_month": 85,
  "errors": [],
  "month": {
   "flagged": 23,

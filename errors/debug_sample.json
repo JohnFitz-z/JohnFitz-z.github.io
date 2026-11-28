@@ -1,119 +1,77 @@
 {
  "stake_fixture": {
-  "fixtureId": "id1500114173708616",
-  "participant1Id": 392426,
-  "participant2Id": 1372996,
-  "sportId": 15,
-  "tournamentId": 1141,
-  "seasonId": 145442,
+  "fixtureId": "id1402765370894890",
+  "participant1Id": 281695,
+  "participant2Id": 281697,
+  "sportId": 14,
+  "tournamentId": 27653,
+  "seasonId": 138636,
   "statusId": 0,
   "hasOdds": true,
-  "startTime": "2026-11-28T10:00:00.000Z",
+  "startTime": "2026-11-28T19:00:00.000Z",
   "trueStartTime": null,
   "trueEndTime": null,
-  "updatedAt": "2026-11-26T14:56:09.543Z",
+  "updatedAt": "2026-11-28T13:49:39.636Z",
   "bookmakerOdds": {
    "stake": {
     "bookmakerIsActive": true,
-    "bookmakerFixtureId": "47005991-dinamo-altai-barnaul-hc-kaluga",
-    "fixturePath": "https://stake.com/sports/e/e/e-e/47005991-dinamo-altai-barnaul-hc-kaluga",
-    "suspended": false,
+    "bookmakerFixtureId": "1795892400000-southern-jaguars-grambling-state-tigers",
+    "fixturePath": "https://stake.com/sports/e/e/e-e/1795892400000-southern-jaguars-grambling-state-tigers",
+    "suspended": true,
     "markets": {
-     "15172": {
-      "bookmakerMarketId": "33192937-04ba-4a50-890f-eac62529d758",
+     "143": {
+      "bookmakerMarketId": "adcb8f41-b90a-46d4-8129-19e9642e8db1",
       "marketActive": true,
       "outcomes": {
-       "15173": {
+       "144": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "3553b6ee-836a-433e-a9ca-006a72ee968e",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
+          "bookmakerOutcomeId": "410e2e81-d805-4340-9a30-dfe2408eb305",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.55,
-          "priceAmerican": "-182",
-          "priceFractional": "11/20",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "15172": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "dc1bb1b0-9e86-429f-ae11-a8055a4eb4f4",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
-          "limit": null,
-          "playerName": null,
-          "price": 2.31,
-          "priceAmerican": "131",
-          "priceFractional": "131/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "153": {
-      "bookmakerMarketId": "10b6d54f-fe6b-43e4-977a-96446ad69538",
-      "marketActive": true,
-      "outcomes": {
-       "155": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "d3e2a375-be39-4440-946e-265a61d76584",
-          "bookmakerChangedAt": "2026-11-28T08:01:27.154Z",
-          "changedAt": "2026-11-28T08:01:50.017Z",
-          "limit": null,
-          "playerName": null,
-          "price": 2.32,
-          "priceAmerican": "132",
-          "priceFractional": "33/25",
+          "price": 19.0,
+          "priceAmerican": "1800",
+          "priceFractional": "18/1",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "154": {
+       "143": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "f7807bde-b37b-4014-9089-8779ddd8fdf1",
-          "bookmakerChangedAt": "2026-11-28T08:01:27.154Z",
-          "changedAt": "2026-11-28T08:01:50.017Z",
+          "bookmakerOutcomeId": "a62f6547-705a-47cd-b827-0d2bfb51aab4",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 3.7,
-          "priceAmerican": "270",
-          "priceFractional": "27/10",
+          "price": 1.73,
+          "priceAmerican": "-137",
+          "priceFractional": "73/100",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "153": {
+       "145": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "4aa70780-1883-4878-a3cd-2c32c22db39a",
-          "bookmakerChangedAt": "2026-11-28T08:01:27.154Z",
-          "changedAt": "2026-11-28T08:01:50.017Z",
+          "bookmakerOutcomeId": "c60bb60b-1d31-41b3-91ca-9f64e3e88693",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 2.55,
-          "priceAmerican": "155",
-          "priceFractional": "31/20",
+          "price": 2.13,
+          "priceAmerican": "113",
+          "priceFractional": "113/100",
           "mainLine": true,
           "exchangeMeta": null
          }
@@ -121,83 +79,41 @@
        }
       }
      },
-     "151242": {
-      "bookmakerMarketId": "2e7afe2f-919b-461a-851a-602cb2b7b00f",
+     "14124": {
+      "bookmakerMarketId": "929f3acd-76cc-4c4e-9474-6eaf184eed88",
       "marketActive": true,
       "outcomes": {
-       "151243": {
+       "14124": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "44031044-98ea-41f0-987c-ed3ce920195b",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
+          "bookmakerOutcomeId": "9106e237-7183-4e8c-82fc-bf77024f940c",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 4.0,
-          "priceAmerican": "300",
-          "priceFractional": "3/1",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151242": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "e3a8c7fd-04b8-4703-b1df-031515651e2c",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
-          "limit": null,
-          "playerName": null,
-          "price": 1.19,
-          "priceAmerican": "-526",
-          "priceFractional": "19/100",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151254": {
-      "bookmakerMarketId": "617737a3-a28e-453f-b83d-0556eb37f437",
-      "marketActive": true,
-      "outcomes": {
-       "151255": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "fd38fcb6-d005-4a03-8367-c253484119fe",
-          "bookmakerChangedAt": "2026-11-27T10:01:25.113Z",
-          "changedAt": "2026-11-27T10:22:28.833Z",
-          "limit": null,
-          "playerName": null,
-          "price": 3.0,
-          "priceAmerican": "200",
-          "priceFractional": "2/1",
+          "price": 1.78,
+          "priceAmerican": "-128",
+          "priceFractional": "39/50",
           "mainLine": false,
           "exchangeMeta": null
          }
         }
        },
-       "151254": {
+       "14125": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "aac20584-0f1a-4f06-8988-130916cac8b0",
-          "bookmakerChangedAt": "2026-11-27T10:01:25.113Z",
-          "changedAt": "2026-11-27T10:22:28.833Z",
+          "bookmakerOutcomeId": "db198488-21cb-4a0d-8ecd-5105aafb02ec",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.34,
-          "priceAmerican": "-294",
-          "priceFractional": "17/50",
+          "price": 1.85,
+          "priceAmerican": "-118",
+          "priceFractional": "17/20",
           "mainLine": false,
           "exchangeMeta": null
          }
@@ -205,125 +121,59 @@
        }
       }
      },
-     "151287": {
-      "bookmakerMarketId": "02e047e4-8b54-4204-ab01-e4e9df07771e",
+     "14448": {
+      "bookmakerMarketId": "851687fe-da6f-4ea3-8c68-20c776a9312d",
       "marketActive": true,
       "outcomes": {
-       "151287": {
+       "14449": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "a6d6d9b7-589b-4826-a575-bcab292bca6e",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
+          "bookmakerOutcomeId": "48c82ead-3fe0-4856-bf04-4112c275766f",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 2.37,
-          "priceAmerican": "137",
-          "priceFractional": "137/100",
+          "price": 9.4,
+          "priceAmerican": "840",
+          "priceFractional": "42/5",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "151288": {
+       "14448": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "27ec7f8c-72c2-44a1-b724-716532b90668",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
+          "bookmakerOutcomeId": "a58b8531-4feb-470a-8833-16ff71dd5601",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.5,
-          "priceAmerican": "-200",
-          "priceFractional": "1/2",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "15248": {
-      "bookmakerMarketId": "9a472b2f-d4ea-4f4e-8fc7-e5816629b24b",
-      "marketActive": true,
-      "outcomes": {
-       "15248": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "066f35a7-1eb8-4756-8b63-44ab432cd142",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
-          "limit": null,
-          "playerName": null,
-          "price": 1.02,
-          "priceAmerican": "-5000",
-          "priceFractional": "1/50",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "15249": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "898103e0-e764-4564-a4af-9c620ec65ccf",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
-          "limit": null,
-          "playerName": null,
-          "price": 9.6,
-          "priceAmerican": "860",
-          "priceFractional": "43/5",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "15170": {
-      "bookmakerMarketId": "11fd9801-4837-4e36-9c0d-c777ffd741d0",
-      "marketActive": true,
-      "outcomes": {
-       "15171": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "5067bbbd-43da-411c-b6f7-cd90ade9a4d9",
-          "bookmakerChangedAt": "2026-11-27T18:37:14.986Z",
-          "changedAt": "2026-11-27T18:37:57.055Z",
-          "limit": null,
-          "playerName": null,
-          "price": 2.02,
-          "priceAmerican": "102",
-          "priceFractional": "51/50",
+          "price": 1.79,
+          "priceAmerican": "-127",
+          "priceFractional": "79/100",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "15170": {
+       "14450": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "7a7c2e19-590f-4423-b47f-09cc81cf04c0",
-          "bookmakerChangedAt": "2026-11-27T18:37:14.986Z",
-          "changedAt": "2026-11-27T18:37:57.055Z",
+          "bookmakerOutcomeId": "a888ddde-2e91-4256-9535-eeb000c5d5fb",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.71,
-          "priceAmerican": "-141",
-          "priceFractional": "71/100",
+          "price": 2.19,
+          "priceAmerican": "119",
+          "priceFractional": "119/100",
           "mainLine": true,
           "exchangeMeta": null
          }
@@ -331,41 +181,41 @@
        }
       }
      },
-     "15168": {
-      "bookmakerMarketId": "b26478f3-7773-46b2-a6d1-99dc586ea425",
+     "14280": {
+      "bookmakerMarketId": "d9dc5e02-b07e-4201-aa29-ce0221fa3556",
       "marketActive": true,
       "outcomes": {
-       "15168": {
+       "14281": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "2e700178-e9db-490a-92b6-a428be4660a7",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
+          "bookmakerOutcomeId": "1fc07360-2651-4664-a4ee-9dfb5124d87d",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.53,
-          "priceAmerican": "-189",
-          "priceFractional": "53/100",
+          "price": 1.92,
+          "priceAmerican": "-109",
+          "priceFractional": "23/25",
           "mainLine": false,
           "exchangeMeta": null
          }
         }
        },
-       "15169": {
+       "14280": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "2abf8b64-238c-4245-b1b6-f33d780735de",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
+          "bookmakerOutcomeId": "953cb23e-90cc-4fd2-9650-483b65b0cf91",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 2.35,
-          "priceAmerican": "135",
-          "priceFractional": "27/20",
+          "price": 1.73,
+          "priceAmerican": "-137",
+          "priceFractional": "73/100",
           "mainLine": false,
           "exchangeMeta": null
          }
@@ -373,143 +223,41 @@
        }
       }
      },
-     "151630": {
-      "bookmakerMarketId": "adb3174b-e7af-4152-9cb2-95fef7761bc3",
+     "14132": {
+      "bookmakerMarketId": "6ec2e3b1-d1e3-40a4-888e-51cc11279017",
       "marketActive": true,
       "outcomes": {
-       "151631": {
+       "14133": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "3670858b-fb65-4378-b92b-910ad4f81a62",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
+          "bookmakerOutcomeId": "9f4ed3d4-cb3a-4b75-bf4c-107e4590edd4",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.75,
-          "priceAmerican": "-133",
-          "priceFractional": "3/4",
+          "price": 1.73,
+          "priceAmerican": "-137",
+          "priceFractional": "73/100",
           "mainLine": false,
           "exchangeMeta": null
          }
         }
        },
-       "151630": {
+       "14132": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "d6d1d510-55a3-402c-bd4f-7a55d9ea105b",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
+          "bookmakerOutcomeId": "9669e7f4-5cbd-4e28-b5db-24aac7611a11",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.97,
-          "priceAmerican": "-103",
-          "priceFractional": "97/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151278": {
-      "bookmakerMarketId": "c6bf2202-d962-46db-b79b-ab65c2cdafd5",
-      "marketActive": true,
-      "outcomes": {
-       "151279": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "247fee6d-1dd7-4f6a-a78a-ad6f68d4ad7e",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
-          "limit": null,
-          "playerName": null,
-          "price": 2.3,
-          "priceAmerican": "130",
-          "priceFractional": "13/10",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151280": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "5a16c711-b98e-4e3b-b551-a8537c4e01dd",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
-          "limit": null,
-          "playerName": null,
-          "price": 2.85,
-          "priceAmerican": "185",
-          "priceFractional": "37/20",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151278": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "ddbb3b08-e53c-44ca-8f88-ab461ce54004",
-          "bookmakerChangedAt": "2026-11-27T22:01:14.986Z",
-          "changedAt": "2026-11-27T22:01:51.630Z",
-          "limit": null,
-          "playerName": null,
-          "price": 3.05,
-          "priceAmerican": "205",
-          "priceFractional": "41/20",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "15244": {
-      "bookmakerMarketId": "886da3c2-5262-4554-a83b-4d480567c77d",
-      "marketActive": true,
-      "outcomes": {
-       "15244": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "3eee32db-3e3b-4144-84da-e6d866a12a60",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
-          "limit": null,
-          "playerName": null,
-          "price": 1.11,
-          "priceAmerican": "-909",
-          "priceFractional": "11/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "15245": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "ed884fb5-563e-460d-9376-c247821fc3d3",
-          "bookmakerChangedAt": "2026-11-28T04:03:48.021Z",
-          "changedAt": "2026-11-28T04:04:38.093Z",
-          "limit": null,
-          "playerName": null,
-          "price": 5.4,
-          "priceAmerican": "440",
-          "priceFractional": "22/5",
+          "price": 1.92,
+          "priceAmerican": "-109",
+          "priceFractional": "23/25",
           "mainLine": false,
           "exchangeMeta": null
          }
@@ -517,18 +265,18 @@
        }
       }
      },
-     "151": {
-      "bookmakerMarketId": "8c73cf59-2a5b-4966-a18a-d72fefe10e71",
+     "14276": {
+      "bookmakerMarketId": "a88fd58e-a9f6-4c94-97e7-50e71e95e91a",
       "marketActive": true,
       "outcomes": {
-       "152": {
+       "14276": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "7e91ae7a-c9fc-435f-9580-0554d79e08e8",
-          "bookmakerChangedAt": "2026-11-28T08:01:27.154Z",
-          "changedAt": "2026-11-28T08:01:50.017Z",
+          "bookmakerOutcomeId": "381571b9-b5b3-48f5-b526-8f356a702000",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
           "price": 1.8,
@@ -539,19 +287,19 @@
          }
         }
        },
-       "151": {
+       "14277": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "8ce9742c-813e-43d4-9527-d5c2bb1ac94d",
-          "bookmakerChangedAt": "2026-11-28T08:01:27.154Z",
-          "changedAt": "2026-11-28T08:01:50.017Z",
+          "bookmakerOutcomeId": "fda347c4-37ea-4414-a5b3-f80aab5c9cc4",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.95,
-          "priceAmerican": "-105",
-          "priceFractional": "19/20",
+          "price": 1.84,
+          "priceAmerican": "-119",
+          "priceFractional": "21/25",
           "mainLine": true,
           "exchangeMeta": null
          }
@@ -559,41 +307,125 @@
        }
       }
      },
-     "15240": {
-      "bookmakerMarketId": "e8117d18-40c6-4ccd-afce-43c56189988f",
+     "14272": {
+      "bookmakerMarketId": "820e0c8c-7a0c-4683-b51b-63b425d085fb",
       "marketActive": true,
       "outcomes": {
-       "15241": {
+       "14273": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "c5bdc36c-25e6-4d53-8cce-ecb7601230e3",
-          "bookmakerChangedAt": "2026-11-27T10:01:25.113Z",
-          "changedAt": "2026-11-27T10:22:28.833Z",
+          "bookmakerOutcomeId": "95e01279-b761-496a-b0ee-09842eba83a7",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 3.35,
-          "priceAmerican": "235",
-          "priceFractional": "47/20",
+          "price": 1.64,
+          "priceAmerican": "-156",
+          "priceFractional": "16/25",
+          "mainLine": false,
+          "exchangeMeta": null
+         }
+        }
+       },
+       "14272": {
+        "players": {
+         "0": {
+          "active": false,
+          "betslip": null,
+          "bookmakerOutcomeId": "7dd51555-c2ab-439e-acd4-4d954f4c5cba",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
+          "limit": null,
+          "playerName": null,
+          "price": 2.04,
+          "priceAmerican": "104",
+          "priceFractional": "26/25",
+          "mainLine": false,
+          "exchangeMeta": null
+         }
+        }
+       }
+      }
+     },
+     "14128": {
+      "bookmakerMarketId": "0f5ab69e-e7ff-4b7d-bfde-5dc14cad6b1e",
+      "marketActive": true,
+      "outcomes": {
+       "14128": {
+        "players": {
+         "0": {
+          "active": false,
+          "betslip": null,
+          "bookmakerOutcomeId": "492bd6dc-769a-4e14-b199-2ac3130ff11b",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
+          "limit": null,
+          "playerName": null,
+          "price": 1.82,
+          "priceAmerican": "-122",
+          "priceFractional": "41/50",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "15240": {
+       "14129": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "14a04b5e-dcdd-419a-85bb-da5723a7148b",
-          "bookmakerChangedAt": "2026-11-27T10:01:25.113Z",
-          "changedAt": "2026-11-27T10:22:28.833Z",
+          "bookmakerOutcomeId": "76d04b8e-7a46-422a-8b72-832da07a9478",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
           "limit": null,
           "playerName": null,
-          "price": 1.28,
-          "priceAmerican": "-357",
-          "priceFractional": "7/25",
+          "price": 1.81,
+          "priceAmerican": "-123",
+          "priceFractional": "81/100",
+          "mainLine": true,
+          "exchangeMeta": null
+         }
+        }
+       }
+      }
+     },
+     "141": {
+      "bookmakerMarketId": "f881f06c-b561-45cb-8387-e87b1f42980f",
+      "marketActive": true,
+      "outcomes": {
+       "142": {
+        "players": {
+         "0": {
+          "active": false,
+          "betslip": null,
+          "bookmakerOutcomeId": "703e39cf-e8b6-43bb-aedd-4dfd25303bee",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
+          "limit": null,
+          "playerName": null,
+          "price": 2.02,
+          "priceAmerican": "102",
+          "priceFractional": "51/50",
+          "mainLine": true,
+          "exchangeMeta": null
+         }
+        }
+       },
+       "141": {
+        "players": {
+         "0": {
+          "active": false,
+          "betslip": null,
+          "bookmakerOutcomeId": "3b1c8f02-132b-4774-8a39-85aeecb9c703",
+          "bookmakerChangedAt": "2026-11-28T18:01:01.181Z",
+          "changedAt": "2026-11-28T19:00:10.673Z",
+          "limit": null,
+          "playerName": null,
+          "price": 1.65,
+          "priceAmerican": "-154",
+          "priceFractional": "13/20",
           "mainLine": true,
           "exchangeMeta": null
          }
@@ -606,60 +438,60 @@
   }
  },
  "pinnacle_fixture": {
-  "fixtureId": "id1500114173708616",
-  "participant1Id": 392426,
-  "participant2Id": 1372996,
-  "sportId": 15,
-  "tournamentId": 1141,
-  "seasonId": 145442,
+  "fixtureId": "id1402765370894890",
+  "participant1Id": 281695,
+  "participant2Id": 281697,
+  "sportId": 14,
+  "tournamentId": 27653,
+  "seasonId": 138636,
   "statusId": 0,
   "hasOdds": true,
-  "startTime": "2026-11-28T10:00:00.000Z",
+  "startTime": "2026-11-28T19:00:00.000Z",
   "trueStartTime": null,
   "trueEndTime": null,
-  "updatedAt": "2026-11-26T14:56:09.543Z",
+  "updatedAt": "2026-11-28T13:49:39.636Z",
   "bookmakerOdds": {
    "pinnacle": {
     "bookmakerIsActive": true,
-    "bookmakerFixtureId": "1641144203",
-    "fixturePath": "https://www.pinnacle.com/en/e/e/e/1641144203",
+    "bookmakerFixtureId": "1641007734",
+    "fixturePath": "https://www.pinnacle.com/en/e/e/e/1641007734",
     "suspended": false,
     "markets": {
-     "1522": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678736/6/totals",
-      "marketActive": true,
+     "14128": {
+      "bookmakerMarketId": "line/15/202331/1641007734/3820618256/0/totals",
+      "marketActive": false,
       "outcomes": {
-       "1522": {
+       "14128": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "4.5/over",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 103.0,
+          "bookmakerOutcomeId": "60.5/over",
+          "bookmakerChangedAt": "2026-11-28T19:00:00.000Z",
+          "changedAt": "2026-11-28T19:00:00.341Z",
+          "limit": 287.0,
           "playerName": null,
-          "price": 1.97,
-          "priceAmerican": "-103",
-          "priceFractional": "97/100",
+          "price": 1.869,
+          "priceAmerican": "-115",
+          "priceFractional": "73/84",
           "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "1523": {
+       "14129": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "4.5/under",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 141.0,
+          "bookmakerOutcomeId": "60.5/under",
+          "bookmakerChangedAt": "2026-11-28T19:00:00.000Z",
+          "changedAt": "2026-11-28T19:00:00.341Z",
+          "limit": 287.0,
           "playerName": null,
-          "price": 1.709,
-          "priceAmerican": "-141",
-          "priceFractional": "39/55",
+          "price": 1.869,
+          "priceAmerican": "-115",
+          "priceFractional": "73/84",
           "mainLine": true,
           "exchangeMeta": null
          }
@@ -667,690 +499,42 @@
        }
       }
      },
-     "151343": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678738/57709735143/1/spreads",
-      "marketActive": true,
+     "14276": {
+      "bookmakerMarketId": "line/15/202331/1641007734/3820697827/0/spreads",
+      "marketActive": false,
       "outcomes": {
-       "151344": {
+       "14276": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "-0.5/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 266.0,
+          "bookmakerOutcomeId": "-2.5/home",
+          "bookmakerChangedAt": "2026-11-28T19:00:00.000Z",
+          "changedAt": "2026-11-28T19:00:00.341Z",
+          "limit": 297.0,
           "playerName": null,
-          "price": 1.3,
-          "priceAmerican": "-333",
-          "priceFractional": "3/10",
-          "mainLine": false,
+          "price": 1.84,
+          "priceAmerican": "-119",
+          "priceFractional": "21/25",
+          "mainLine": true,
           "exchangeMeta": null
          }
         }
        },
-       "151343": {
+       "14277": {
         "players": {
          "0": {
-          "active": true,
+          "active": false,
           "betslip": null,
-          "bookmakerOutcomeId": "-0.5/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 2.89,
-          "priceAmerican": "189",
-          "priceFractional": "189/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1590": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735141/6/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "1590": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 301.0,
-          "playerName": null,
-          "price": 1.332,
-          "priceAmerican": "-301",
-          "priceFractional": "1/3",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1591": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.8,
-          "priceAmerican": "180",
-          "priceFractional": "9/5",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678737/0/moneyline",
-      "marketActive": true,
-      "outcomes": {
-       "151": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.253Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 111.0,
+          "bookmakerOutcomeId": "-2.5/away",
+          "bookmakerChangedAt": "2026-11-28T19:00:00.000Z",
+          "changedAt": "2026-11-28T19:00:00.341Z",
+          "limit": 277.0,
           "playerName": null,
           "price": 1.9,
           "priceAmerican": "-111",
           "priceFractional": "9/10",
           "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "152": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.253Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 130.0,
-          "playerName": null,
-          "price": 1.769,
-          "priceAmerican": "-130",
-          "priceFractional": "10/13",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1588": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735140/6/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "1588": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.5/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 188.0,
-          "playerName": null,
-          "price": 1.531,
-          "priceAmerican": "-188",
-          "priceFractional": "43/81",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1589": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.5/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.26,
-          "priceAmerican": "126",
-          "priceFractional": "63/50",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1582": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735136/6/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "1582": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-1.0/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 3.07,
-          "priceAmerican": "207",
-          "priceFractional": "207/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1583": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-1.0/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 369.0,
-          "playerName": null,
-          "price": 1.271,
-          "priceAmerican": "-369",
-          "priceFractional": "13/48",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151341": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678738/57709735142/1/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "151341": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-1.0/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 5.14,
-          "priceAmerican": "414",
-          "priceFractional": "207/50",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151342": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-1.0/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 1538.0,
-          "playerName": null,
-          "price": 1.052,
-          "priceAmerican": "-1923",
-          "priceFractional": "4/77",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151281": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678738/1/moneyline",
-      "marketActive": true,
-      "outcomes": {
-       "151282": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 102.0,
-          "playerName": null,
-          "price": 1.781,
-          "priceAmerican": "-128",
-          "priceFractional": "57/73",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151281": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 90.0,
-          "playerName": null,
-          "price": 1.884,
-          "priceAmerican": "-113",
-          "priceFractional": "61/69",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151351": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678738/57709735145/1/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "151351": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.5/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 1860.0,
-          "playerName": null,
-          "price": 1.043,
-          "priceAmerican": "-2326",
-          "priceFractional": "4/93",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151352": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.5/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 5.37,
-          "priceAmerican": "437",
-          "priceFractional": "437/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151349": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678738/57709735144/1/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "151350": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 4.98,
-          "priceAmerican": "398",
-          "priceFractional": "199/50",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151349": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 1249.0,
-          "playerName": null,
-          "price": 1.064,
-          "priceAmerican": "-1562",
-          "priceFractional": "5/78",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151285": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678738/1/totals",
-      "marketActive": true,
-      "outcomes": {
-       "151285": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/over",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 121.0,
-          "playerName": null,
-          "price": 1.657,
-          "priceAmerican": "-152",
-          "priceFractional": "23/35",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151286": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "1.0/under",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 2.04,
-          "priceAmerican": "104",
-          "priceFractional": "26/25",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1586": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678736/6/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "1587": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.0/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 132.0,
-          "playerName": null,
-          "price": 1.757,
-          "priceAmerican": "-132",
-          "priceFractional": "53/70",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1586": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.0/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 109.0,
-          "playerName": null,
-          "price": 1.917,
-          "priceAmerican": "-109",
-          "priceFractional": "11/12",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1524": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735139/6/totals",
-      "marketActive": true,
-      "outcomes": {
-       "1525": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "5.0/under",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 228.0,
-          "playerName": null,
-          "price": 1.438,
-          "priceAmerican": "-228",
-          "priceFractional": "39/89",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1524": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "5.0/over",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.42,
-          "priceAmerican": "142",
-          "priceFractional": "71/50",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "151347": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678738/1/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "151347": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.5/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 238.0,
-          "playerName": null,
-          "price": 1.336,
-          "priceAmerican": "-298",
-          "priceFractional": "33/98",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "151348": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "0.5/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.273Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 80.0,
-          "playerName": null,
-          "price": 2.79,
-          "priceAmerican": "179",
-          "priceFractional": "179/100",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "153": {
-      "bookmakerMarketId": "line/19/5154/1641144203/3819678736/6/moneyline",
-      "marketActive": true,
-      "outcomes": {
-       "153": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.48,
-          "priceAmerican": "148",
-          "priceFractional": "37/25",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "155": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.28,
-          "priceAmerican": "128",
-          "priceFractional": "32/25",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "154": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "draw",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 3.38,
-          "priceAmerican": "238",
-          "priceFractional": "119/50",
-          "mainLine": true,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1584": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735138/6/spreads",
-      "marketActive": true,
-      "outcomes": {
-       "1584": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-0.5/home",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.44,
-          "priceAmerican": "144",
-          "priceFractional": "36/25",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1585": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "-0.5/away",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 222.0,
-          "playerName": null,
-          "price": 1.45,
-          "priceAmerican": "-222",
-          "priceFractional": "9/20",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       }
-      }
-     },
-     "1520": {
-      "bookmakerMarketId": "altLine/19/5154/1641144203/3819678736/57709735137/6/totals",
-      "marketActive": true,
-      "outcomes": {
-       "1521": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "4.0/under",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 100.0,
-          "playerName": null,
-          "price": 2.09,
-          "priceAmerican": "109",
-          "priceFractional": "109/100",
-          "mainLine": false,
-          "exchangeMeta": null
-         }
-        }
-       },
-       "1520": {
-        "players": {
-         "0": {
-          "active": true,
-          "betslip": null,
-          "bookmakerOutcomeId": "4.0/over",
-          "bookmakerChangedAt": "2026-11-28T04:01:25.227Z",
-          "changedAt": "2026-11-28T04:01:26.105Z",
-          "limit": 166.0,
-          "playerName": null,
-          "price": 1.602,
-          "priceAmerican": "-166",
-          "priceFractional": "59/98",
-          "mainLine": false,
           "exchangeMeta": null
          }
         }

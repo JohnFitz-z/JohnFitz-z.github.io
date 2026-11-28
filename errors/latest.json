@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-28T08:47:35Z",
+ "scanned_at": "2026-11-28T20:50:46Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
   "USA · NCAA, Regular Season",
-  "USA · NCAA, Regular Season",
-  "England · Elite League",
-  "Russia · VHL",
-  "Denmark · 1. Division"
+  "ITF Women · Funchal",
+  "Qatar · Stars League",
+  "Sweden · SHL",
+  "Argentina · LNB"
  ],
- "stake_fixtures": 119,
- "both_books": 89,
- "markets_compared": 709,
+ "stake_fixtures": 23,
+ "both_books": 20,
+ "markets_compared": 231,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 688,
-  "offline_priced": 21,
+  "stale_compared": 205,
+  "offline_priced": 26,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,13 +29,13 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 77,
+ "requests_left_this_month": 75,
  "errors": [],
  "month": {
   "flagged": 25,
-  "closed": 23,
+  "closed": 24,
   "avg_ev": 0.0498,
-  "avg_clv": 0.052,
-  "beat_close": 21
+  "avg_clv": 0.0514,
+  "beat_close": 22
  }
 }

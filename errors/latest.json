@@ -1,22 +1,22 @@
 {
  "status": "ok",
- "scanned_at": "2026-11-28T03:49:15Z",
+ "scanned_at": "2026-11-28T08:47:35Z",
  "tournaments": 5,
  "leagues_available": 172,
  "leagues_scanned": [
   "USA · NCAA, Regular Season",
-  "USA · NBA",
-  "Uruguay · Primera Division",
-  "Canada · OHL",
-  "USA · NCAA, Regular Season"
+  "USA · NCAA, Regular Season",
+  "England · Elite League",
+  "Russia · VHL",
+  "Denmark · 1. Division"
  ],
- "stake_fixtures": 69,
- "both_books": 50,
- "markets_compared": 413,
+ "stake_fixtures": 119,
+ "both_books": 89,
+ "markets_compared": 709,
  "min_ev": 0.03,
  "detectors": {
-  "stale_compared": 413,
-  "offline_priced": 0,
+  "stale_compared": 688,
+  "offline_priced": 21,
   "self_priced": 0,
   "palpable_skipped": 0,
   "steam": 0,
@@ -29,7 +29,7 @@
   "offline": 0,
   "self": 0
  },
- "requests_left_this_month": 79,
+ "requests_left_this_month": 77,
  "errors": [],
  "month": {
   "flagged": 25,
